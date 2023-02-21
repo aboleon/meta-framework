@@ -1,0 +1,63 @@
+
+.suggestions {
+    min-width: 400px;
+    z-index: 1;
+    background-color: #fff;
+    border: 1px solid rgba(0, 0, 0, .15);
+    border-radius: 4px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+    background-clip: padding-box;
+    padding: 10px 0;
+    display: none;
+    overflow-y: scroll;
+    position: absolute;
+
+    > a {
+        margin: 5px 10px 0;
+    }
+
+    .badge {
+        margin: 5px;
+        cursor: default;
+
+        &:hover {
+            color: white !important;
+        }
+    }
+
+    ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+
+        li {
+            text-align: left;
+            padding: 3px 10px;
+            white-space: nowrap;
+
+            &:hover {
+                background: #43b2d8;
+                color: #fff;
+                cursor: default;
+
+                a {
+                    color: white;
+                }
+            }
+
+            &.no-effect:hover {
+                background: none;
+                color: initial;
+            }
+        }
+    }
+
+    p {
+        padding: 10px;
+        margin: -1px;
+    }
+
+    button {
+        margin: 10px 20px 0 10px;
+    }
+}
