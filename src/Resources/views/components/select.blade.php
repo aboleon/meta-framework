@@ -2,7 +2,7 @@
     $id = rtrim(str_replace(['[',']'],'_', $name),'_');
 @endphp
 @if ($label)
-    <label for="{{ $id }}" class="form-label">{{ $label }}</label>
+    <label for="{{ $id }}" class="form-label">{!! $label !!}</label>
 @endif
 
 <select id="{{ $id }}"

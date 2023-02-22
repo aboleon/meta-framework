@@ -29,6 +29,7 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
         $this->publishes([
             __DIR__ . '/../publishables/config/metaframework.php' => config_path('metaframework.php'),
             __DIR__ . '/../publishables/assets/' => public_path('vendor/metaframework/'),
+            __DIR__ . '/../publishables/lang/' => base_path('lang'),
         ], 'metaframework');
     }
 

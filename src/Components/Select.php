@@ -21,7 +21,7 @@ class Select extends Component
         public bool $group = false,
     )
     {
-        $this->defaultselecttext = $this->defaultselecttext ?: '---  '. trans('ui.select_option') .' ---';
+        $this->defaultselecttext = $this->defaultselecttext ?: '---  '. __('metaframework.select_option') .' ---';
     }
 
     public function render(): Renderable
