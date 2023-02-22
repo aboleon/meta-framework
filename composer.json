@@ -3,7 +3,7 @@
     "description": "Meta Framework CMS",
     "minimum-stability": "stable",
     "license": "proprietary",
-    "version": "0.1.0",
+    "version": "0.1.1",
     "keywords": [
         "meta framework"
     ],
@@ -15,7 +15,8 @@
     ],
     "require": {
         "php": "^8.1",
-        "illuminate/support": "^10.0"
+        "illuminate/support": "^10.0",
+        "illuminate/view": "^10.1"
     },
     "autoload": {
         "psr-4": {

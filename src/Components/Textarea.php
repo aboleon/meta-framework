@@ -13,7 +13,7 @@ class Textarea extends Component
         public string|null $value,
         public string|array $class = '',
         public array $params = [],
-        public string $height='',
+        public int $height=200,
         public bool $required = false)
     {
     }
