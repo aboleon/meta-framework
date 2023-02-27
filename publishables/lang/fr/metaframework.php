@@ -110,4 +110,5 @@ return [
     'record' => [
         'deleted' => 'La suppression est effectuée',
     ],
+    'validation-banner' => 'Toutes les informations ne sont pas correctement remplies. Veuillez corriger.'
 ];
