@@ -8,7 +8,7 @@ use Illuminate\View\Component;
 class Notice extends Component
 {
     public function __construct(
-        public string $message,
+        public ?string $message=null,
         public string $type='info'
     ){}
 
