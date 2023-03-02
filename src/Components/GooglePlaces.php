@@ -16,11 +16,11 @@ class GooglePlaces extends Component
      *      [types => (cities)]
      */
 
+    public Collection $required;
+
     public function __construct(
         public GooglePlacesInterface $geo,
-        public Collection            $required,
         public string                $field = 'wa_geo',
-        //public array                 $countries = [],
         public string                $random_id = '',
         public array                 $params = [],
         public string                $placeholder = '',
@@ -28,7 +28,6 @@ class GooglePlaces extends Component
         public ?string               $label = null
     )
     {
-        //$this->countries = static::countries();
         $this->random_id = Str::random(4);
         $this->required = collect($this->params['required'] ?? []);
     }

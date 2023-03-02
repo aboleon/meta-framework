@@ -1,1 +1,1 @@
-<div class="alert alert-{{ $type }}">{{ $message }}</div>
+<div class="rounded p-3 fw-bold text-dark" style="background-color: #D0DBE0">{{ $message }}</div>
