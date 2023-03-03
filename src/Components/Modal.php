@@ -9,7 +9,7 @@ class Modal extends Component
 {
     public function __construct(
         public string $route,
-        public string $question,
+        public ?string $question = null,
         public string $title = '',
         public string $reference = '',
         public array $params = []
