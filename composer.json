@@ -14,8 +14,8 @@
     ],
     "require": {
         "php": "^8.1",
-        "illuminate/support": "^10.0",
-        "illuminate/view": "^10.1"
+        "css-crush/css-crush": "^4.0",
+        "laravel/framework": "^10.0"
     },
     "autoload": {
         "psr-4": {
@@ -28,5 +28,10 @@
                 "MetaFramework\\ServiceProvider"
             ]
         }
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "preferred-install": "dist",
+        "sort-packages": true
     }
 }

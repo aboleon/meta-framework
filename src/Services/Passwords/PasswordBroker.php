@@ -1,0 +1,82 @@
+<?php
+
+declare(strict_types=1);
+
+namespace MetaFramework\Services\Passwords;
+
+use MetaFramework\Traits\Responses;
+use MetaFramework\Traits\Validation;
+use Illuminate\Http\Request;
+
+/**
+ * This class is responsible for managing password change requests.
+ */
+final class PasswordBroker
+{
+    use Responses; // The Responses trait provides convenience methods for returning HTTP responses.
+    use Validation; // The Validation trait provides methods for validating input data.
+
+    private PasswordRequest $requested; // The PasswordRequest object containing the password change data.
+    private PasswordGenerator $generator; // The PasswordGenerator object used to generate new passwords.
+
+    /**
+     * Create a new PasswordBroker instance.
+     *
+     * @param Request $request The HTTP request object containing the password change data.
+     */
+    public function __construct(Request $request)
+    {
+        // Create a new PasswordRequest object.
+        $this->requested = new PasswordRequest($request);
+        // Create a new PasswordGenerator object.
+        $this->generator = new PasswordGenerator();
+
+        $this->passwordBroker();
+    }
+
+    /**
+     * Is there a request for password change ?
+     * @return bool
+     */
+    public function requestedChange(): bool
+    {
+        return $this->requested->requestedChange();
+    }
+
+    /**
+     * Get the public and hashed versions of the password.
+     *
+     * @return array<string> An array containing the encrypted and public versions of the password.
+     */
+    public function getPasswords(): array
+    {
+        return $this->generator->getPasswords();
+    }
+
+    /**
+     * Generate a new final password and update the password generator.
+     *
+     * @return PasswordBroker The current PasswordBroker instance.
+     */
+    public function passwordBroker(): PasswordBroker
+    {
+        $this->generator->makePassword($this->requested->password());
+        return $this;
+    }
+
+    /**
+     * The message showing the public password
+     */
+    public function printPublicPassword(): string
+    {
+        return "Le mot de passe est ". $this->generator->getPublicPassword();
+    }
+
+    /**
+     * Gets the encrypted version of the generated password
+     */
+    public function getEncryptedPassword(): string
+    {
+        return $this->generator->getPublicPassword();
+    }
+}

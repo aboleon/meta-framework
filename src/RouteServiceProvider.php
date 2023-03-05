@@ -1,0 +1,58 @@
+<?php
+
+namespace MetaFramework;
+
+use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
+use Illuminate\Support\Facades\Route;
+
+class RouteServiceProvider extends ServiceProvider
+{
+    /**
+     * The root namespace to assume when generating URLs to actions.
+     *
+     * @var string
+     */
+    protected $defer = false;
+    protected $namespace = '\MetaFramework\Controllers';
+    public const HOME = '/';
+
+    /**
+     * Called before routes are registered.
+     *
+     * Register any model bindings or pattern based filters.
+     *
+     * @return void
+     */
+    public function boot()
+    {
+        parent::boot();
+    }
+
+    /**
+     * Define the routes for the application.
+     *
+     * @return void
+     */
+    public function map()
+    {
+        $this->mapWebRoutes();
+    }
+
+    /**
+     * Define the "web" routes for the application.
+     *
+     * These routes all receive session state, CSRF protection, etc.
+     *
+     * @return void
+     */
+    protected function mapWebRoutes()
+    {
+        Route::prefix(config('metaframework.urls.backend', 'metaframework'))
+            ->middleware(['web','auth:sanctum'])
+            ->namespace($this->namespace)
+            ->name('metaframework.')
+            ->group(function () {
+                include __DIR__ . '/Routes/web.php';
+            });
+    }
+}
