@@ -1,1 +1,1 @@
-<div class="rounded p-3 fw-bold text-dark" style="background-color: #D0DBE0">{{ $message }}</div>
+<div class="mfw-notice rounded p-3 fw-bold text-dark {{ $class }}">{!! $message !!}</div>

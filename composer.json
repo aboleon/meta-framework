@@ -15,12 +15,16 @@
     "require": {
         "php": "^8.1",
         "css-crush/css-crush": "^4.0",
-        "laravel/framework": "^10.0"
+        "intervention/image": "^2.7",
+        "laravel/framework": "^10.3"
     },
     "autoload": {
         "psr-4": {
             "MetaFramework\\": "src"
-        }
+        },
+        "files": [
+            "src/Functions/loader.php"
+        ]
     },
     "extra": {
         "laravel": {
@@ -33,5 +37,8 @@
         "optimize-autoloader": true,
         "preferred-install": "dist",
         "sort-packages": true
+    },
+    "require-dev": {
+        "phpstan/phpstan": "^1.10"
     }
 }

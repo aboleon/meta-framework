@@ -2,7 +2,7 @@
 
 namespace MetaFramework\Components;
 
-use App\Models\Forms;
+use MetaFramework\Models\Forms;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\View\Component;
 

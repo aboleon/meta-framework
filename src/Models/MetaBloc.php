@@ -2,16 +2,12 @@
 
 namespace MetaFramework\Models;
 
-use App\Models\Meta;
-use App\Models\Meta\Bloc;
 use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Support\Facades\File;
 use Throwable;
 
 final class MetaBloc
 {
-    use HasFactory;
 
     protected static string $path = 'app/Models/Meta/Taxonomy/Bloc';
     protected static string $namespace = 'App\Models\Meta\Taxonomy\Bloc';
@@ -19,7 +15,7 @@ final class MetaBloc
     public static function getModels(): array
     {
         $data = [
-            Bloc::class
+            MetaBloc::class
         ];
 
         $blocs = File::files(base_path(self::$path));

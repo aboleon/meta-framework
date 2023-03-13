@@ -9,7 +9,7 @@
         {!! csscrush_tag(public_path('vendor/metaframework/css/meta/editable.css')) !!}
     @endpush
 
-    <form method="post" action="{{ route(config('metaframework.urls.backend').'.meta.store') }}">
+    <form method="post" action="{{ route(\MetaFramework\Accessors\Routing::backend().'.meta.store') }}">
         @csrf
         <input type="hidden" name="meta_type" value="{{ $data->type }}">
         <x-metaframework::meta-card :meta="$data"/>

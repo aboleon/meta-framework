@@ -32,7 +32,7 @@
                 console.log(data);
                 if (!data.hasOwnProperty('error')) {
                     setTimeout(function () {
-                        window.location.href = '/{{ config('metaframework.urls.backend') }}/meta/show/bloc/' + data.meta.id;
+                        window.location.href = '/{{ \MetaFramework\Accessors\Routing::backend() }}/meta/show/bloc/' + data.meta.id;
                     }, 2000);
                 }
             }

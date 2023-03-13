@@ -10,10 +10,8 @@ use MetaFramework\Traits\{
     Translation,
     TreeBuilder};
 use MetaFramework\Abstract\MetaModel;
-use App\Mediaclass\Interfaces\MediaclassInterface;
-use App\Mediaclass\Traits\Mediaclass;
-use App\Models\Forms;
-use App\Models\Meta\DefaultProxy;
+use MetaFramework\Mediaclass\Interfaces\MediaclassInterface;
+use MetaFramework\Mediaclass\Traits\Mediaclass;
 use Illuminate\Support\Str;
 use MetaFramework\Accessors\Locale;
 use Illuminate\Database\Eloquent\{
@@ -170,7 +168,7 @@ class Meta extends Model implements MediaclassInterface
      * Retourne l'image d'illustration de base du Meta model,
      * si elle existe
      */
-    public function illustration(): ?\App\Mediaclass\Models\Mediaclass
+    public function illustration(): ?\MetaFramework\Mediaclass\Models\Mediaclass
     {
         return $this->media->where('group', 'meta')->first();
     }

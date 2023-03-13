@@ -1,10 +1,9 @@
 <?php
 
-namespace App\View\Components;
+namespace MetaFramework\Components;
 
-use App\Abstract\MetaModel;
-use App\Models\Meta;
-use App\Models\MetaSubModel;
+use MetaFramework\Abstract\MetaModel;
+use MetaFramework\Models\Meta;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\View\Component;
 

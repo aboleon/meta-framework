@@ -4,6 +4,9 @@ namespace MetaFramework;
 
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Route;
+use MetaFramework\Accessors\Routing;
+use MetaFramework\Mediaclass\Accessors\Cropable;
+use MetaFramework\Mediaclass\Models\Mediaclass;
 
 class RouteServiceProvider extends ServiceProvider
 {
@@ -47,7 +50,7 @@ class RouteServiceProvider extends ServiceProvider
      */
     protected function mapWebRoutes()
     {
-        Route::prefix(config('metaframework.urls.backend', 'metaframework'))
+        Route::prefix(Routing::backend())
             ->middleware(['web','auth:sanctum'])
             ->namespace($this->namespace)
             ->name('metaframework.')
