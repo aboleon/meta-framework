@@ -1,0 +1,9 @@
+.mfw-notice {
+    background-color: #D0DBE0;
+    a {
+        color:#b02a37;
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}

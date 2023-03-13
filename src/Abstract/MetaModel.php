@@ -2,7 +2,7 @@
 
 namespace MetaFramework\Abstract;
 
-use App\Mediaclass\Interfaces\MediaclassInterface;
+use MetaFramework\Mediaclass\Interfaces\MediaclassInterface;
 use MetaFramework\Models\Meta;
 use Illuminate\Database\Eloquent\Builder;
 

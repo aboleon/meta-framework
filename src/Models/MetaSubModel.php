@@ -14,7 +14,7 @@ class MetaSubModel
     {
         $this->subModelClass = ($this->meta->type == 'bloc' && !empty($this->meta->taxonomy))
             ? $this->meta->taxonomy
-            : '\App\Models\Meta\\' . Str::studly($this->meta->type);
+            : '\MetaFramework\Models\Meta\\' . Str::studly($this->meta->type);
 
         $this->subModel = class_exists($this->subModelClass)
             ? new $this->subModelClass

@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace MetaFramework\Services\Passwords;
 
-use MetaFramework\Traits\Responses;
 use MetaFramework\Traits\Validation;
 use Illuminate\Http\Request;
 
@@ -13,7 +12,6 @@ use Illuminate\Http\Request;
  */
 final class PasswordBroker
 {
-    use Responses; // The Responses trait provides convenience methods for returning HTTP responses.
     use Validation; // The Validation trait provides methods for validating input data.
 
     private PasswordRequest $requested; // The PasswordRequest object containing the password change data.

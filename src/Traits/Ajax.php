@@ -4,12 +4,10 @@ declare(strict_types=1);
 
 namespace MetaFramework\Traits;
 
-use MetaFramework\Traits\Responses;
 use Illuminate\Http\JsonResponse;
 
 trait Ajax
 {
-    use Responses;
 
     public function distribute(): array|JsonResponse
     {

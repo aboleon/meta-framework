@@ -3,6 +3,7 @@
 namespace MetaFramework\Controllers;
 
 use MetaFramework\{
+    Accessors\Routing,
     Models\Forms,
     Models\Meta,
     Models\MetaSubModel,
@@ -25,7 +26,7 @@ class MetaController extends Controller
 
     public function __construct()
     {
-        $this->backend_url = config('metaframework.urls.backend');
+        $this->backend_url = Routing::backend();
     }
 
     public function index($type): Renderable

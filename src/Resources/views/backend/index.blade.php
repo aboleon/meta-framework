@@ -3,7 +3,7 @@
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('meta.'.$type.'.label') }} &raquo;
             <a class="btn btn-sm btn-nav-blue"
-               href="{{ route(config('metaframework.urls.backend').'.meta.create', ['type'=>$type]) }}">Créer</a>
+               href="{{ route(\MetaFramework\Accessors\Routing::backend().'.meta.create', ['type'=>$type]) }}">Créer</a>
         </h2>
     </x-slot>
 
@@ -41,7 +41,7 @@
                             </li>
                             <li>
                                 <a class="dropdown-item"
-                                   href="{{ route(config('metaframework.urls.backend').'.meta.show', ['type'=>$type, 'id'=>$item->id]) }}"><i
+                                   href="{{ route(\MetaFramework\Accessors\Routing::backend().'.meta.show', ['type'=>$type, 'id'=>$item->id]) }}"><i
                                         class="fas fa-pen"></i> Éditer</a>
                             </li>
 
@@ -50,7 +50,7 @@
                                 icon='<i class="fas fa-trash"></i>' title="Supprimer"/>
                         </ul>
                     </div>
-                    <x-metaframework::modal :route="route(config('metaframework.urls.backend').'.meta.destroy', $item->id)"
+                    <x-metaframework::modal :route="route(\MetaFramework\Accessors\Routing::backend().'.meta.destroy', $item->id)"
                              question="Supprimer {{ $item->title }} ?"
                              reference="destroy_{{ $item->id }}"/>
                 </td>

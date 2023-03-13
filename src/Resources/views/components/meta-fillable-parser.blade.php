@@ -2,7 +2,7 @@
 
     @switch($key)
         @case('_media')
-            <x-mediaclass-uploadable :model="$model->meta" :settings="$value"/>
+            <x-mediaclass::uploadable :model="$model->meta" :settings="$value"/>
             @break;
         @default
             @switch($value['type'] ?? '')
@@ -22,7 +22,7 @@
                     <x-metaframework::input type="number" :name="$model->translatableInput($inputkey)" :value="$content" :label="$value['label'] ?? ''" :params="$value['params'] ?? []"/>
                     @break
                 @case('_media')
-                    <x-mediaclass-uploadable :model="$model->meta" :settings="$value"/>
+                    <x-mediaclass::uploadable :model="$model->meta" :settings="$value"/>
                     @break;
                 @case('repeatable')
 

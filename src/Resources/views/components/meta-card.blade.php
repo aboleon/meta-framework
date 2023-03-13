@@ -46,7 +46,7 @@
             <legend class="toggle">Image de présentation</legend>
             <div class="toggable">
                 <div class="tab-content base">
-                    <x-mediaclass-uploadable :model="$meta" :settings="['group'=>'meta']" size="small"/>
+                    <x-mediaclass::uploadable :model="$meta" :settings="['group'=>'meta']" size="small"/>
                 </div>
             </div>
         </fieldset>
@@ -95,14 +95,14 @@
 
                 @if ($meta->uses('forms'))
                     <div class="mt-3">
-                        <x-metaframework::select label="Formulaire" name="meta[forms]" :values="App\Models\Forms::selectables()" :affected="$meta->form?->name"/>
+                        <x-metaframework::select label="Formulaire" name="meta[forms]" :values="\MetaFramework\Models\Forms::selectables()" :affected="$meta->form?->name"/>
                     </div>
                 @endif
 
                 {{--
                                     @if ($meta->type == 'blog')
-                                        {!! \App\Models\Meta\BlogCategories::form($meta) !!}
-                                        {!! \App\Models\Meta\BlogCategories::form($meta, 'tag') !!}
+                                        {!! \MetaFramework\Models\Meta\BlogCategories::form($meta) !!}
+                                        {!! \MetaFramework\Models\Meta\BlogCategories::form($meta, 'tag') !!}
                                     @endif
                 --}}
             </div>

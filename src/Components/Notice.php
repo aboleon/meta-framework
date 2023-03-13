@@ -8,9 +8,11 @@ use Illuminate\View\Component;
 class Notice extends Component
 {
     public function __construct(
-        public ?string $message=null,
-        public string $type='info'
-    ){}
+        public ?string $message = null,
+        public string  $class = ''
+    )
+    {
+    }
 
     public function render(): Renderable
     {

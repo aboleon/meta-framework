@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Database\Eloquent\Builder;
+
 function d($var, ?string $varname = null): void
 {
     echo '<pre class="dumper" style="margin:30px 0 40px">';
@@ -27,5 +29,25 @@ function d($var, ?string $varname = null): void
 function de($var, $varname = null): void
 {
     d($var, $varname);
+    exit;
+}
+function dSql(Builder $query) {
+
+    $sql = $query->toSql();
+    $bindings = $query->getBindings();
+
+// Combine the bindings into the SQL query
+    foreach ($bindings as $binding) {
+        $value = is_numeric($binding) ? $binding : "'" . $binding . "'";
+        $sql = preg_replace('/\?/', $value, $sql, 1);
+    }
+
+// Output the SQL query with bindings
+    d($sql);
+
+}
+
+function deSql(Builder $query) {
+    dSql($query);
     exit;
 }

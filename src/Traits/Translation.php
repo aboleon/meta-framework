@@ -4,12 +4,13 @@ declare(strict_types=1);
 
 namespace MetaFramework\Traits;
 
-//use Spatie\Translatable\HasTranslations;
+use Spatie\Translatable\HasTranslations;
+
+use MetaFramework\Accessors\Locale;
 
 trait Translation
 {
-    use Locale;
-    //use HasTranslations;
+    use HasTranslations;
 
     public array $translatable;
     private object $updatable;
@@ -48,7 +49,7 @@ trait Translation
     public function translatableInput(string $name, string $locale = null): string
     {
         if (cache('multilang')) {
-            return $name.'['.$locale ?: $this->locale() .']';
+            return $name.'['.$locale ?: Locale::locale() .']';
         }
 
         return $name;
