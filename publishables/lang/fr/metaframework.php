@@ -110,5 +110,11 @@ return [
     'record' => [
         'deleted' => 'La suppression est effectuée',
     ],
-    'validation-banner' => 'Toutes les informations ne sont pas correctement remplies. Veuillez corriger.'
+    'validation-banner' => 'Toutes les informations ne sont pas correctement remplies. Veuillez corriger.',
+    'errors' => [
+        'composing_data' => "Les données n'ont pas pu être composées correctement."
+    ],
+    'passwords' => [
+        'is' => "Le mot de passe est <strong>:password</strong>"
+    ]
 ];

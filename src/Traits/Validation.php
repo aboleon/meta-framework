@@ -28,14 +28,15 @@ trait Validation
     private function ensureDataIsValid(FormRequest $request, string $key): bool
     {
 
-        $this->validated_data = is_array($request->validated()) && array_key_exists($key, $request->validated())
+        $this->validated_data[$key] = is_array($request->validated()) && array_key_exists($key, $request->validated())
             ? (array)$request->validated($key)
             : [];
 
-        if (!$this->validated_data) {
-            $this->responseWarning("Les données n'ont pas pu être composées correctement.");
+        if (!$this->validated_data[$key]) {
+            $this->responseWarning(__('metaframework.errors.composing_data'));
         }
-        return (bool)$this->validated_data;
+
+        return $this->hasErrors();
 
     }
 }

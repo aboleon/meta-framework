@@ -3,6 +3,7 @@
      data-model-id="{{ $model->id }}"
      data-positions="{{ $positions }}"
      data-group="{{ $group }}"
+     data-has-description="{{ $description }}"
 >
     <div class="controls d-flex justify-between align-items-center" style="background: #EFEFEF">
         <span class="subcontrol mediaclass-uploader"><i class="fa fa-image"></i> {{ $label }}</span>
@@ -10,7 +11,7 @@
     </div>
     <div class="mediaclass-upload-container"></div>
     <div class="uploaded">
-        <x-mediaclass::stored :positions="$positions" :medias="$model->media->where('group', $group)" />
+        <x-mediaclass::stored :positions="$positions" :medias="$model->media->where('group', $group)" :description="$description" />
     </div>
 </div>
 

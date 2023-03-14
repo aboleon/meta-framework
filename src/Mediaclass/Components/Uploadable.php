@@ -13,11 +13,13 @@ class Uploadable extends Component
         public string $group = 'media',
         public string $size = '',
         public string $label = 'Médias',
+        public int|bool $description = true,
         public array $settings = []
     )
     {
         $this->group = $this->settings['group'] ?? $this->group;
         $this->label = $this->settings['label'] ?? $this->label;
+        $this->description = $this->description ? 1 : 0;
     }
 
 

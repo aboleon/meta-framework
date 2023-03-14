@@ -3,10 +3,10 @@
         @php
             $cropable = new \MetaFramework\Mediaclass\Accessors\Cropable($media);
         @endphp
-        <div class="unlinkable uploaded-image my-2" data-id="{{ $media->id }}" id="mediaclass-{{$media->id}}">
+        <div class="mediaclass unlinkable uploaded-image my-2" data-id="{{ $media->id }}" id="mediaclass-{{$media->id}}">
             <span class="unlink"><i class="bi bi-x-circle-fill"></i></span>
             <div class="row m-0">
-                <div class="col-sm-3 impImg p-0 relative preview" style="background: url({{  $media->url($cropable->isCropped ? 'cropped': 'sm') }}) center no-repeat;background-size: contain">
+                <div class="col-sm-3 impImg p-0 position-relative preview" style="background: url({{  $media->url($cropable->isCropped ? 'cropped': 'sm') }}) center no-repeat;">
                     <div class="actions">
                         <a target="_blank" href="{{ $media->url() }}" class="zoom">
                             <i class="fa-sharp fa-solid fa-magnifying-glass"></i>
@@ -22,10 +22,10 @@
                         </div>
                     </div>
                     <div class="row params mt-2">
-                        <div class="col-sm-7 description no-multilang">
+                        <div class="col-sm-7 description no-multilang {{ !$description ? 'd-none' :'' }}">
                             <b>Description
                                 <span class="lang">Français</span></b>
-                            @foreach($media->projectLocales() as $locale)
+                            @foreach(\MetaFramework\Accessors\Locale::projectLocales() as $locale)
                                 <textarea name="mediaclass[{{ $media->id }}][description][{{ $locale }}]" type="text" class="mt-2 form-control description">{!! $media->description[$locale] !!}</textarea>
                             @endforeach
                         </div>

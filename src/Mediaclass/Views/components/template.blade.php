@@ -66,7 +66,7 @@
                         </div>
                     </div>
 
-            @foreach($model->mediaLocales() as $locale)
+            @foreach(\MetaFramework\Accessors\Locale::projectLocales() as $locale)
                     <div class="row params mt-2">
                         <div class="col-sm-7 description {{ \MetaFramework\Accessors\Locale::multilang() ? '' :'no-multilang' }}"><b>Description <span class="lang">{{ trans('lang.'.$locale.'.label') }}</span></b>
                             <textarea name="description[{{ $locale }}]" type="text" class="mt-2 form-control description"></textarea>

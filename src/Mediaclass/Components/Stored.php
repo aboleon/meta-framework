@@ -15,10 +15,11 @@ class Stored extends Component
      */
     public function __construct(
         public Collection $medias,
-        public bool $positions = false
+        public bool $positions = false,
+        public int|bool $description = true
     )
     {
-        //
+        $this->description = $this->description ? 1 : 0;
     }
 
     public function render(): Renderable
