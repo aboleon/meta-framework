@@ -6,17 +6,14 @@ namespace MetaFramework;
 use Illuminate\Support\Facades\{
     App,
     Blade,
-    Cache,
     View};
 use MetaFramework\Facades\{
     Cached,
     Nav
 };
-use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Pagination\Paginator;
-use MetaFramework\Mediaclass\Models\Mediaclass;
+use MetaFramework\Mediaclass\Accessors\Mediaclass;
 use MetaFramework\Models\Meta;
-use MetaFramework\Models\User;
 
 class ServiceProvider extends \Illuminate\Support\ServiceProvider
 {

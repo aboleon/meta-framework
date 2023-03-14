@@ -3,10 +3,12 @@
 namespace MetaFramework\Mediaclass\Accessors;
 
 
+use Illuminate\Support\Str;
 use MetaFramework\Mediaclass\Interfaces\MediaclassInterface;
 use MetaFramework\Mediaclass\Models\Mediaclass as MediaclassModel;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Database\Eloquent\Collection as EloquentCollection;
+use ReflectionClass;
 
 class Mediaclass
 {
@@ -24,7 +26,12 @@ class Mediaclass
     {
         $this->image = [];
         $this->image_instance = null;
-        $this->default_img = asset('media/imgholder.png');
+        $this->default_img = self::defaultImgUrl();
+    }
+
+    public static function defaultImgUrl(): string
+    {
+        return asset('media/imgholder.png');
     }
 
     public function group(string $group): static
@@ -83,7 +90,7 @@ class Mediaclass
 
     public function get(): array
     {
-        if ($this->single ) {
+        if ($this->single) {
             $this->fetch()->first()->serve();
             $this->image = current($this->image);
         } else {
@@ -161,25 +168,25 @@ class Mediaclass
     private function parseImage(MediaclassModel $instance)
     {
         //try {
-            $sizes = array_merge(array_keys(config('mediaclass.dimensions')), ['cropped']);
-            $urls = [];
-            foreach ($sizes as $size) {
-                $file = $this->object->accessKey() . '/' . $instance->dimensionPrefix($size) . $instance->filename . $instance->extension();
+        $sizes = array_merge(array_keys(config('mediaclass.dimensions')), ['cropped']);
+        $urls = [];
+        foreach ($sizes as $size) {
+            $file = $this->object->accessKey() . '/' . $instance->dimensionPrefix($size) . $instance->filename . $instance->extension();
 
-                if (Storage::disk('media')->exists($file)) {
-                    $urls[$size] = Storage::disk('media')->url($file);
-                }
+            if (Storage::disk('media')->exists($file)) {
+                $urls[$size] = Storage::disk('media')->url($file);
             }
+        }
 
-            $this->image[] = [
-                'position' => $instance->position,
-                'description' => $instance->description[app()->getLocale()],
-                'urls' => $urls,
-                'url' => $urls ? end($urls) : ''
-            ];
-     /*   } catch (Throwable $e) {
-            report($e);
-        }*/
+        $this->image[] = [
+            'position' => $instance->position,
+            'description' => $instance->description[app()->getLocale()],
+            'urls' => $urls,
+            'url' => $urls ? end($urls) : ''
+        ];
+        /*   } catch (Throwable $e) {
+               report($e);
+           }*/
 
         return $this;
     }
