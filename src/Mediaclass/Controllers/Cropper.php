@@ -22,7 +22,7 @@ class Cropper
             $file = $media->file('xl');
             $image = Image::make($file);
 
-            $filename = $media->bindedModel()->access_key . '/cropped_' . $media->filename . $media->extension();
+            $filename = $media->bindedModel()->access_key . '/cropped_' . $media->filename . '.' . $media->extension();
 
             Storage::disk('media')->put($filename,
                 $image->crop(

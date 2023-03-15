@@ -171,7 +171,7 @@ class Mediaclass
         $sizes = array_merge(array_keys(config('mediaclass.dimensions')), ['cropped']);
         $urls = [];
         foreach ($sizes as $size) {
-            $file = $this->object->accessKey() . '/' . $instance->dimensionPrefix($size) . $instance->filename . $instance->extension();
+            $file = $this->object->accessKey() . '/' . $instance->dimensionPrefix($size) . $instance->filename . '.'. $instance->extension();
 
             if (Storage::disk('media')->exists($file)) {
                 $urls[$size] = Storage::disk('media')->url($file);

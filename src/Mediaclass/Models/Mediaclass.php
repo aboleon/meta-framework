@@ -5,7 +5,9 @@ namespace MetaFramework\Mediaclass\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Illuminate\Support\Facades\Storage;
+use MetaFramework\Mediaclass\Accessors\Path;
 use MetaFramework\Mediaclass\Traits\Accessors;
+use Symfony\Component\Mime\MimeTypes;
 
 class Mediaclass extends Model
 {
@@ -23,13 +25,9 @@ class Mediaclass extends Model
         return $this->morphTo();
     }
 
-    public function extension(): string
+    public function extension(): ?string
     {
-        return match ($this->mime) {
-            'image/png' => '.png',
-            'image/svg', 'image/svg+xml' => '.svg',
-            default => '.jpg',
-        };
+       return MimeTypes::getDefault()->getExtensions($this->mime)[0] ?? null;
     }
 
     public function sizeable(): bool
@@ -42,17 +40,17 @@ class Mediaclass extends Model
 
     public function url(string $size = 'sm'): string
     {
-        return Storage::disk('media')->url($this->model->accessKey() . '/' . $this->dimensionPrefix(prefix: $size) . $this->filename . $this->extension());
+        return Storage::disk('media')->url(Path::mediaFolderName($this->model) . '/' . $this->dimensionPrefix(prefix: $size) . $this->filename .'.'. $this->extension());
     }
 
     public function file(string $size = 'sm'): string
     {
-        return Storage::disk('media')->get($this->model->accessKey() . '/' . $this->dimensionPrefix(prefix: $size) . $this->filename . $this->extension());
+        return Storage::disk('media')->get(Path::mediaFolderName($this->model) . '/' . $this->dimensionPrefix(prefix: $size) . $this->filename .'.'. $this->extension());
     }
 
     public function isCropped(): bool
     {
-        return Storage::disk('media')->exists($this->model->accessKey() . '/' . $this->dimensionPrefix(prefix: 'cropped') . $this->filename . $this->extension());
+        return Storage::disk('media')->exists(Path::mediaFolderName($this->model) . '/' . $this->dimensionPrefix(prefix: 'cropped') . $this->filename .'.'. $this->extension());
 
     }
 
