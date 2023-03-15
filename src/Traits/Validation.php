@@ -31,12 +31,11 @@ trait Validation
         $this->validated_data[$key] = is_array($request->validated()) && array_key_exists($key, $request->validated())
             ? (array)$request->validated($key)
             : [];
-
         if (!$this->validated_data[$key]) {
             $this->responseWarning(__('metaframework.errors.composing_data'));
         }
 
-        return $this->hasErrors();
+        return !$this->hasErrors();
 
     }
 }
