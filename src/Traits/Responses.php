@@ -17,14 +17,16 @@ trait Responses
     protected bool $disable_redirects = false;
     protected bool $ajax_mode = false;
 
-    public function enableAjaxMode(): void
+    public function enableAjaxMode(): static
     {
         $this->ajax_mode = true;
+        return $this;
     }
 
-    public function disableAjaxMode(): void
+    public function disableAjaxMode(): static
     {
         $this->ajax_mode = false;
+        return $this;
     }
 
     public function disableMessages(): static
@@ -46,6 +48,10 @@ trait Responses
 
     public function fetchResponse(): array
     {
+        if ($this->ajax_mode && array_key_exists('messages', $this->response)) {
+            $this->response['ajax_messages'] = $this->response['messages'];
+            unset($this->response['messages']);
+        }
         return $this->response;
     }
 
@@ -88,7 +94,7 @@ trait Responses
     public function responseNotice($message): static
     {
         if ($this->enabledMessages()) {
-            $this->response[$this->messagesKey()][]['info'] = $message;
+            $this->response['messages'][]['info'] = $message;
         }
         return $this;
     }
@@ -97,9 +103,9 @@ trait Responses
     {
         if ($this->enabledMessages()) {
             if (!empty($key)) {
-                $this->response[$this->messagesKey()][$key]['success'] = $message;
+                $this->response['messages'][$key]['success'] = $message;
             } else {
-                $this->response[$this->messagesKey()][]['success'] = $message;
+                $this->response['messages'][]['success'] = $message;
             }
             return $this;
         }
@@ -116,7 +122,7 @@ trait Responses
     {
         if ($this->enabledMessages()) {
             $this->response['error'] = true;
-            $this->response[$this->messagesKey()][]['danger'] = $message;
+            $this->response['messages'][]['danger'] = $message;
         }
     }
 
@@ -124,7 +130,7 @@ trait Responses
     {
         if ($this->enabledMessages()) {
             $this->response['abort'] = true;
-            $this->response[$this->messagesKey()][]['danger'] = $message;
+            $this->response['messages'][]['danger'] = $message;
         }
     }
 
@@ -132,7 +138,7 @@ trait Responses
     {
         if ($this->enabledMessages()) {
             $this->response['error'] = true;
-            $this->response[$this->messagesKey()][]['warning'] = $message;
+            $this->response['messages'][]['warning'] = $message;
         }
     }
 
@@ -180,7 +186,7 @@ trait Responses
 
         if ($messages) {
             foreach ($messages as $message) {
-                $this->response[$this->messagesKey()][] = $message;
+                $this->response['messages'][] = $message;
             }
             $this->response['error'] = $object->hasErrors();
         }
