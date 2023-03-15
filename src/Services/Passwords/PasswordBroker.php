@@ -75,6 +75,6 @@ final class PasswordBroker
      */
     public function getEncryptedPassword(): string
     {
-        return $this->generator->getPublicPassword();
+        return $this->generator->getEncryptedPassword();
     }
 }
