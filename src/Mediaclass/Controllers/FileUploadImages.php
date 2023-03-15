@@ -162,7 +162,7 @@ class FileUploadImages
 
         foreach ($this->dimensions as $key => $dimensions) {
 
-            $file = $this->model->accessKey() . '/' . $dimensions['width'] . '_' . $this->filename . '.' . $this->mime_type;
+            $file = $this->folder_name . '/' . $dimensions['width'] . '_' . $this->filename . '.' . $this->mime_type;
 
             Storage::disk('media')->put($file,
                 $this->image->resize($dimensions['width'], $dimensions['height'], function ($constraint) {

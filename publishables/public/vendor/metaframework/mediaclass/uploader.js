@@ -28,7 +28,6 @@ const MediaclassUploader = {
             ajax(formData, MediaclassUploader.template());
             $(document).ajaxSuccess(function () {
                 selector.remove();
-                console.log('restatnts', c.find('.unlinkable').length, $('.mediaclass-alerts').data('msg'));
                 if (c.find('.unlinkable').length < 1) {
                     $('.mediaclass-alerts').html('<div class="alert alert-info">' + $('.mediaclass-alerts').data('msg') + '</div>');
                 }
@@ -40,7 +39,6 @@ const MediaclassUploader = {
             let instantiator = $(this).closest('.mediaclass-uploadable'),
                 uploadContainer = MediaclassUploader.uploadableContainer($(this));
             if (uploadContainer.find('.fileupload-container').length < 1) {
-                console.log('Added one');
                 uploadContainer.html(MediaclassUploader.template().html());
                 uploadContainer.attr('data-description', instantiator.data('description'));
                 MediaclassUploader.initFileupload(uploadContainer);
@@ -55,7 +53,7 @@ const MediaclassUploader = {
             {
                 previewMaxWidth: 220,
                 previewMaxHeight: 220,
-                acceptFileTypes: /(\.|\/)(jpe?g|png|svg)$/i,
+                acceptFileTypes: /(\.|\/)(jpe?g|png|svg|pdf)$/i,
                 maxFileSize: 15000000,
                 autoUpload: false,
                 maxNumberOfFiles: 100,
@@ -67,9 +65,7 @@ const MediaclassUploader = {
             });
     },
     positions: function (uploadable) {
-        console.log('DECLARING POSITIONS');
         uploadable.find('.positions i').off().on('click', function () {
-            console.log('I CLICKED');
             let p = $(this).closest('.positions');
             p.find('i').removeClass('active');
             $(this).addClass('active');
@@ -89,7 +85,7 @@ const MediaclassUploader = {
         let fileuploadContainer = this.fileupload(uploadContainer),
             uploadable = this.uploadable(fileuploadContainer),
             hide_description = Number(uploadable.attr('data-has-description')) !== 1;
-console.log(hide_description,'hide_description',Number(uploadable.attr('data-has-description')));
+        console.log(hide_description, 'hide_description', Number(uploadable.attr('data-has-description')));
         fileuploadContainer.off().on('fileuploadadd', function (e, data) {
             fileuploadContainer.find('.uploadables').removeClass('d-none');
             setTimeout(function () {
@@ -117,29 +113,34 @@ console.log(hide_description,'hide_description',Number(uploadable.attr('data-has
                     notificator(data.errors, 'danger', MediaclassUploader.messages());
                 } else {
 
-                    let biggest_file = data.urls['xl'],
-                        smallest_file = data.urls['sm']
-                    ;
                     uploadable.find('.files').delay(500).fadeOut(function () {
                         $(this).html('').show();
                     });
-console.log(hide_description);
+
                     let html = '<div class="mediaclass unlinkable uploaded-image my-2" data-id="' + data.uploaded.id + '" id="mediaclass-' + data.uploaded.id + '">' +
                         '<span class="unlink"><i class="bi bi-x-circle-fill"></i></span>' +
-                        '<div class="row m-0">' +
-                        '<div class="col-sm-3 impImg p-0 position-relative preview" style="background: url(' + smallest_file + ') center no-repeat;">' +
-                        '<div class="actions">' +
-                        '<a target="_blank" href="' + biggest_file + '" class="zoom"><i class="fa-sharp fa-solid fa-magnifying-glass"></i></a>' +
-                        data.cropable_link +
-                        '</div>' +
-                        '<div class="sizes">' + data.sizes + '</div>' +
-                        '</div><div class="col-sm-9 impFileName">' +
+                        '<div class="row m-0"><div class="col-sm-3 impImg p-0 position-relative preview ' + data.filetype + '" style="background-image: url(' + data.preview + ');">';
+
+                    html = html.concat('<div class="actions"><a target="_blank" href="' + data.link + '" class="zoom"><i class="fa-sharp fa-solid fa-magnifying-glass"></i></a>');
+
+                    if (data.filetype === 'image') {
+                        html = html.concat(data.cropable_link);
+                    }
+
+                    html = html.concat('</div>');
+
+                    if (data.filetype === 'image') {
+                        html = html.concat('<div class="sizes">' + data.sizes + '</div>');
+                    }
+
+                    html = html.concat('</div>' +
+                        '<div class="col-sm-9 impFileName">' +
                         '<div class="row infos">' +
                         '<div class="col-sm-12"><p class="name">' + data.uploaded.original_filename + '</p></div>' +
                         '</div>' +
 
                         '<div class="row params mt-2">' +
-                        '<div class="col-sm-7 description no-multilang'+(hide_description ? ' d-none': '')+'">';
+                        '<div class="col-sm-7 description no-multilang' + (hide_description ? ' d-none' : '') + '">');
 
                     for (const [key, value] of Object.entries(data.uploaded.description)) {
                         html = html.concat('<b>Description <span class="lang">' + MediaclassUploader.langs[key] + '</span></b>' +
@@ -236,7 +237,7 @@ console.log(hide_description);
         }, 1500);
     },
     cropped: function (result) {
-        console.log('Cropped callback', result);
+        //console.log('Cropped callback', result);
         let media = $('#mediaclass-' + result.uploaded.id);
         media.find('.preview').attr('style', 'background:url(' + result.urls['xl'] + ')');
         media.find('.sizes').html(result.sizes);

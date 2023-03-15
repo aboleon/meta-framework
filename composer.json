@@ -17,7 +17,8 @@
         "css-crush/css-crush": "^4.0",
         "intervention/image": "^2.7",
         "laravel/framework": "^10.3",
-        "spatie/laravel-translatable": "^6.3"
+        "spatie/laravel-translatable": "^6.3",
+        "symfony/mime": "^6.2"
     },
     "autoload": {
         "psr-4": {
