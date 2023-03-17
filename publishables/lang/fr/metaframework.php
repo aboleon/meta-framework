@@ -23,7 +23,7 @@ return [
     'email_address' => 'Adresse e-mail',
     'appointment' => 'Rendez-vous',
     'save' => 'Enregistrer',
-    'edit' => 'Editer',
+    'edit' => 'Éditer',
     'cancel' => 'Annuler',
     'confirm' => 'Confirmer',
     'delete' => 'Supprimer',
