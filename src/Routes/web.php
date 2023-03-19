@@ -2,15 +2,18 @@
 
 use Illuminate\Support\Facades\Route;
 use MetaFramework\Accessors\Routing;
-use MetaFramework\Controllers\AjaxController;
-use MetaFramework\Controllers\MetaController;
-use MetaFramework\Controllers\NavController;
+use MetaFramework\Controllers\{
+    AjaxController,
+    MetaController,
+    NavController,
+    SiteOwnerController};
 
 Route::prefix(Routing::backend())
     ->middleware(['web', 'auth:sanctum'])->group(function () {
         // Ajax requests
         Route::post('ajax', [AjaxController::class, 'distribute'])->name('ajax');
 
+        Route::resource('siteowner', SiteOwnerController::class);
         Route::resource('nav', NavController::class);
 
         Route::prefix('meta')->name('meta.')->group(function () {
