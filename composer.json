@@ -34,9 +34,9 @@
                 "MetaFramework\\ServiceProvider"
             ],
             "aliases": {
-                "Meta": "MetaFacade",
-                "Nav": "NavFacade",
-                "Mediclass": "MediaclassFacade"
+                "Meta": "MetaFramework\\Facades\\MetaFacade",
+                "Nav": "MetaFramework\\Facades\\NavFacade",
+                "Mediclass": "MetaFramework\\Mediaclass\\Facades\\MediaclassFacade"
             }
         }
     },
