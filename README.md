@@ -24,3 +24,5 @@ php artisan vendor:publish --tag=metaframework
 - 0.3.* Mediaclass uploader 
 - 0.4.* Mediaclass uploader Documents
 - 0.5 Components Simple Links 1
+- 0.6 Nav (untested)
+- 0.7 Facades
