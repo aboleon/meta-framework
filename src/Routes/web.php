@@ -6,6 +6,7 @@ use MetaFramework\Controllers\{
     AjaxController,
     MetaController,
     NavController,
+    SettingsController,
     SiteOwnerController};
 
 Route::prefix(Routing::backend())
@@ -26,4 +27,9 @@ Route::prefix(Routing::backend())
         Route::patch('meta/{id}', [MetaController::class, 'patch']);
         Route::resource('meta', MetaController::class)->except(['create', 'index'])->except(['create','show']);
 
+        // Settings
+        Route::prefix('settings')->name('settings.')->group(function() {
+            Route::get('show', [SettingsController::class, 'index'])->name('index');
+            Route::post('update', [SettingsController::class, 'update'])->name('update');
+        });
     });

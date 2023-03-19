@@ -1,4 +1,4 @@
-<x-app-layout>
+<x-backend-layout>
 
     @push('css')
         <style>
@@ -56,4 +56,4 @@
     </div>
 
     @include('lib.sortable')
-</x-app-layout>
+</x-backend-layout>

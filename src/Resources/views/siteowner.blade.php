@@ -1,4 +1,4 @@
-<x-app-layout>
+<x-backend-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             Identité de l'enteprise
@@ -62,5 +62,5 @@
                 </div>
             </div>
         </div>
-</x-app-layout>
+</x-backend-layout>
 

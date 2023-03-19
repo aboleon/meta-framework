@@ -1,4 +1,4 @@
-<x-app-layout>
+<x-backend-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ $data->id ? "Édition d'une" : "Nouvelle" }} entrée du Menu
@@ -142,4 +142,4 @@
         </script>
     @endpush
     @include('lib.tinymce')
-</x-app-layout>
+</x-backend-layout>
