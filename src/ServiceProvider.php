@@ -8,12 +8,11 @@ use Illuminate\Support\Facades\{
     Blade,
     View};
 use MetaFramework\Facades\{
-    Cached,
+    Meta,
     Nav
 };
 use Illuminate\Pagination\Paginator;
 use MetaFramework\Mediaclass\Accessors\Mediaclass;
-use MetaFramework\Models\Meta;
 
 class ServiceProvider extends \Illuminate\Support\ServiceProvider
 {
@@ -44,9 +43,6 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
             return new Meta();
         });
 
-        App::bind('cached', function () {
-            return new Cached();
-        });
         App::bind('mediaclass', function () {
             return new Mediaclass();
         });
