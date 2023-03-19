@@ -36,7 +36,7 @@
             "aliases": {
                 "Meta": "MetaFramework\\Facades\\MetaFacade",
                 "Nav": "MetaFramework\\Facades\\NavFacade",
-                "Mediclass": "MetaFramework\\Mediaclass\\Facades\\MediaclassFacade"
+                "Mediaclass": "MetaFramework\\Mediaclass\\Facades\\MediaclassFacade"
             }
         }
     },
