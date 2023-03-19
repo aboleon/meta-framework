@@ -4,7 +4,7 @@ namespace  MetaFramework\Mediaclass\Facades;
 
 use Illuminate\Support\Facades\Facade;
 
-class Mediaclass extends Facade
+class MediaclassFacade extends Facade
 {
     protected static $cached = false;
 

@@ -4,10 +4,10 @@ namespace  MetaFramework\Facades;
 
 use Illuminate\Support\Facades\Facade;
 
-class Nav extends Facade
+class MetaFacade extends Facade
 {
     public static function getFacadeAccessor(): string
     {
-        return 'nav';
+        return 'meta';
     }
 }

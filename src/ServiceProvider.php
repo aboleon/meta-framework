@@ -7,17 +7,30 @@ use Illuminate\Support\Facades\{
     App,
     Blade,
     View};
-use MetaFramework\Facades\{
-    Meta,
-    Nav
-};
 use Illuminate\Pagination\Paginator;
+use MetaFramework\Facades\MetaFacade;
+use MetaFramework\Facades\NavFacade;
 use MetaFramework\Mediaclass\Accessors\Mediaclass;
+use MetaFramework\Mediaclass\Facades\MediaclassFacade;
+use MetaFramework\Models\Meta;
+use MetaFramework\Models\Nav;
 
 class ServiceProvider extends \Illuminate\Support\ServiceProvider
 {
     public function register()
     {
+        /**
+         * Façades
+         */
+        $this->app->singleton('nav', fn($app) => new Nav());
+        $this->app->singleton('meta', fn($app) => new Meta());
+        $this->app->singleton('mediaclass', fn($app) => new Mediaclass());
+
+
+        $this->app->bind('MetaFramework\Facades\NavFacade', fn($app) => new NavFacade());
+        $this->app->bind('MetaFramework\Facades\MetaFacade', fn($app) => new MetaFacade());
+        $this->app->bind('MetaFramework\Mediaclass\Facades\MediaclassFacade', fn($app) => new MediaclassFacade());
+
     }
 
     public function boot()
@@ -32,20 +45,6 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
         $this->loadRoutesFrom(__DIR__.'/Mediaclass/Routes/panel.php');
         $this->loadRoutesFrom(__DIR__.'/Routes/web.php');
 
-        /**
-         * Façades
-         */
-        App::bind('nav', function () {
-            return new Nav();
-        });
-
-        App::bind('meta', function () {
-            return new Meta();
-        });
-
-        App::bind('mediaclass', function () {
-            return new Mediaclass();
-        });
 
         View::share('current_locale', App::getLocale());
 

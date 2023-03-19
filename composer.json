@@ -32,7 +32,12 @@
         "laravel": {
             "providers": [
                 "MetaFramework\\ServiceProvider"
-            ]
+            ],
+            "aliases": {
+                "Meta": "MetaFacade",
+                "Nav": "NavFacade",
+                "Mediclass": "MediaclassFacade"
+            }
         }
     },
     "config": {
