@@ -2,18 +2,17 @@
 
 namespace MetaFramework\Models;
 
-use App\Actions\Translator;
-use App\Models\Meta;
-use App\Traits\Locale;
-use App\Traits\Responses;
-use App\Traits\Translation;
+use MetaFramework\Accessors\Locale;
+use MetaFramework\Accessors\Routing;
+use MetaFramework\Actions\Translator;
+use MetaFramework\Traits\Responses;
+use MetaFramework\Traits\Translation;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Support\Collection;
 
 class Nav extends Model
 {
-    use Locale;
     use Responses;
     use Translation;
 
@@ -49,8 +48,8 @@ class Nav extends Model
         parent::__construct($attributes);
         $this->translatable = array_keys($this->fillables);
 
-        $this->selectables = config('nav.selectables');
-        $this->custom_selectables = config('nav.custom_selectables');
+        $this->selectables = config('metaframework-nav.selectables');
+        $this->custom_selectables = config('metaframework-nav.custom_selectables');
 
     }
 
@@ -129,7 +128,7 @@ class Nav extends Model
         $this->clearCache();
 
         $this->responseSuccess(__('ui.record_created'));
-        $this->redirectRoute('panel.nav.index');
+        $this->redirectRoute(Routing::backend().'.nav.index');
 
         return $this;
     }
@@ -141,7 +140,7 @@ class Nav extends Model
 
     public function clearCache()
     {
-        foreach (config('translatable.locales') as $locale) {
+        foreach (Locale::locales() as $locale) {
             foreach (array_keys($this->zones) as $key) {
                 cache()->forget($key . '_nav_' . $locale);
             }

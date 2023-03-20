@@ -84,11 +84,9 @@ class MetaController extends Controller
             }
         })->first();
 
-
         if (!$this->data['data']) {
             abort(404, 'Ce type de contenu n\'est pas défini.');
         }
-
 
         $this->data['model'] = (new MetaSubModel($this->data['data']))->model();
 
@@ -98,7 +96,7 @@ class MetaController extends Controller
 
         $views = [];
         $views[] = $this->backend_url . '.metaframework.' . $type . '.edit';
-        $views[] = 'metaframework.backend.default';
+        $views[] = 'metaframework::backend.edit';
 
         return view()->first($views)->with($this->data);
     }

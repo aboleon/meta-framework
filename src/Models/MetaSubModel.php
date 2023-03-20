@@ -14,16 +14,14 @@ class MetaSubModel
     {
         $this->subModelClass = ($this->meta->type == 'bloc' && !empty($this->meta->taxonomy))
             ? $this->meta->taxonomy
-            : '\MetaFramework\Models\Meta\\' . Str::studly($this->meta->type);
+            : '\App\Models\Meta\\' . Str::studly($this->meta->type);
 
         $this->subModel = class_exists($this->subModelClass)
             ? new $this->subModelClass
             : new DefaultProxy;
-
         if (
             $this->meta->id &&
-            ($this->subModel instanceof DefaultProxy === false) &&
-            !$this->subModel->uses['meta_model']
+            !$this->isMeta()
         ) {
             $this->subModel = $this->subModel->where('meta_id', $this->meta->id)->first() ?? $this->subModel;
         }
@@ -66,5 +64,10 @@ class MetaSubModel
     public function model(): MetaModel
     {
         return $this->subModel;
+    }
+
+    public function isMeta(): bool
+    {
+        return $this->subModel->getTable() == $this->meta->getTable();
     }
 }

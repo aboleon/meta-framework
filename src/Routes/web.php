@@ -10,6 +10,7 @@ use MetaFramework\Controllers\{
     SiteOwnerController};
 
 Route::prefix(Routing::backend())
+    ->name('metaframework.')
     ->middleware(['web', 'auth:sanctum'])->group(function () {
         // Ajax requests
         Route::post('ajax', [AjaxController::class, 'distribute'])->name('ajax');

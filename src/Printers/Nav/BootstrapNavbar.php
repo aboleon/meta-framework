@@ -2,14 +2,11 @@
 
 namespace MetaFramework\Printers\Nav;
 
-use MetaFramework\Models\Nav;
-use MetaFramework\Traits\Locale;
 use MetaFramework\Traits\Translation;
 
 class BootstrapNavbar
 {
     use Builder;
-    use Locale;
     use Translation;
 
     private array $link_classes;

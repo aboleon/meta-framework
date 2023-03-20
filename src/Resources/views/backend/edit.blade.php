@@ -1,5 +1,5 @@
-<backend-layout>
-    <x-metaframework::slot name="header">
+<x-backend-layout>
+    <x-slot name="header">
         <div class="float-end d-flex align-items-center me-3">
 
             @if ($model->buttons['status'])
@@ -8,11 +8,11 @@
                 @if ($data->type !='bloc')
                     @if ($model->buttons['index'])
                         <a class="btn btn-sm btn-secondary py-2 mx-2"
-                           href="{{ $data->subModel()->urls['index'] ?: route(\MetaFramework\Accessors\Routing::backend().'.meta.list', ['type'=>$data->type]) }}">Liste {{ __('meta.'.$data->type.'.label') }}</a>
+                           href="{{ $data->subModel()->urls['index'] ?: route('metaframework.meta.list', ['type'=>$data->type]) }}">Liste {{ __('meta.'.$data->type.'.label') }}</a>
                     @endif
                     @if ($model->buttons['create'])
                         <a class="btn btn-sm btn-info py-2"
-                           href="{{ route(\MetaFramework\Accessors\Routing::backend().'.meta.create', ['type'=>$data->type]) }}">Créer</a>
+                           href="{{ route('metaframework.meta.create', ['type'=>$data->type]) }}">Créer</a>
                     @endif
                 @else
 
@@ -22,13 +22,13 @@
                         Supprimer
                     </a>
 
-                    <x-metaframework::modal :route="route(\MetaFramework\Accessors\Routing::backend().'.meta.destroy', $data->id)"
+                    <x-metaframework::modal :route="route('metaframework.meta.destroy', $data->id)"
                              question="Supprimer ce bloc ?"
-                             :params="['redirect' => route(\MetaFramework\Accessors\Routing::backend().'.meta.show', ['type'=>$data->hasParent->type, 'id'=>$data->hasParent->id])]"
+                             :params="['redirect' => route('metaframework.meta.show', ['type'=>$data->hasParent->type, 'id'=>$data->hasParent->id])]"
                              reference="destroy_{{ $data->id }}"/>
 
                     <a class="btn btn-sm btn-secondary py-2 mx-2"
-                       href="{{ route(\MetaFramework\Accessors\Routing::backend().'.meta.show', ['type'=>$data->hasParent->type, 'id'=>$data->hasParent->id]) }}"><i style="font-size: 12px" class="opacity-50 fa-solid fa-angles-right"></i> {{ $data->hasParent->title }}
+                       href="{{ route('metaframework.meta.show', ['type'=>$data->hasParent->type, 'id'=>$data->hasParent->id]) }}"><i style="font-size: 12px" class="opacity-50 fa-solid fa-angles-right"></i> {{ $data->hasParent->title }}
                     </a>
                 @endif
             <div id="topbar_submit">
@@ -38,12 +38,12 @@
         <h2 class="font-semibold leading-tight" style="font-size: 24px">
             <x-metaframework::meta-url :locale="$current_locale" :meta="$data->type != 'bloc' ? $data : $data->hasParent"/>
         </h2>
-    </x-metaframework::slot>
+    </x-slot>
 
     @push('css')
         {!! csscrush_tag(public_path('vendor/metaframework/css/meta/editable.css')) !!}
     @endpush
-    <form method="post" action="{{ $data->id ? route(\MetaFramework\Accessors\Routing::backend().'.meta.update', $data->id) : route(\MetaFramework\Accessors\Routing::backend().'.meta.store') }}" enctype="multipart/form-data" id="wagaia-form">
+    <form method="post" action="{{ $data->id ? route('metaframework.meta.update', $data->id) : route(\MetaFramework\Accessors\Routing::backend().'.meta.store') }}" enctype="multipart/form-data" id="wagaia-form">
         @csrf
         @if ($data->id)
             @if (!$data->trashed())
@@ -79,4 +79,4 @@
     @push('js')
         <script src="{{ asset('vendor/metaframeworkjs/published_status.js') }}"></script>
     @endpush
-</backend-layout>
+</x-backend-layout>

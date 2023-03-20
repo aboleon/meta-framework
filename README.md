@@ -29,3 +29,4 @@ php artisan vendor:publish --tag=metaframework
 - 0.8 Site Owner (untested)
 - 0.9 Settings (untested)
 - 0.10 Suppressor / Translator
+- 0.11 Meta CMS
