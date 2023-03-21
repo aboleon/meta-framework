@@ -9,7 +9,7 @@
         @if (!$disablename)
             name="{{ $name }}"
         @endif
-        class="form-control" title="{{ $label ?: $name }}">
+        class="form-control form-select" title="{{ $label ?: $name }}">
     @if ($nullable)
         <option value="">{{ $defaultselecttext }}</option>
     @endif

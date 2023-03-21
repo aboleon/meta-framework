@@ -9,6 +9,11 @@ use MetaFramework\Mediaclass\Accessors\Path;
 use MetaFramework\Mediaclass\Traits\Accessors;
 use Symfony\Component\Mime\MimeTypes;
 
+/**
+ * @property string $filename
+ * @property string $position
+ * @property array $description
+ */
 class Mediaclass extends Model
 {
     use Accessors;

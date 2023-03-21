@@ -55,7 +55,12 @@
         border-color: var(--ab-blue);
     }
 }
-
+.btn-warning {
+    background-color: #ffcc31;
+    &:hover {
+        background-color: #f6b900;
+    }
+}
 
 .btn-xs {
     padding: 2px 4px;

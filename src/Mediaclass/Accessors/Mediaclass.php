@@ -12,7 +12,7 @@ use ReflectionClass;
 
 class Mediaclass
 {
-    public string $group = 'meta';
+    public string $group = 'media';
     public MediaclassInterface $object;
     protected array $params = [];
     protected array $image = [];
@@ -71,11 +71,10 @@ class Mediaclass
         return $this;
     }
 
-    public function serve(): static
+    public function serve(): array
     {
-
         if (!$this->image_instance) {
-            return $this;
+            return $this->image;
         }
 
         if (!is_countable($this->image_instance)) {
@@ -85,26 +84,17 @@ class Mediaclass
                 $this->parseImage($item);
             }
         }
-        return $this;
-    }
-
-    public function get(): array
-    {
-        if ($this->single) {
-            $this->fetch()->first()->serve();
-            $this->image = current($this->image);
-        } else {
-            $this->fetch()->serve();
-        }
         return $this->image;
     }
 
-    public function url(string $prefix = 'cropped'): string
+    public function url(string $prefix = 'cropped', ?string $default_img = null): string
     {
-        $media = (array)($this->fetch()->single()->get());
+        $this->fetch()->serve();
 
-        if (!array_key_exists('urls', $media)) {
-            return '';
+        $media = current($this->image);
+
+        if (empty($media)) {
+            return $default_img ?? ($this->with_default ? $this->defaultImgUrl() : '');
         }
 
         return current(array_filter($media['urls'], fn($item) => $item == $prefix, ARRAY_FILTER_USE_KEY)) ?: end($media['urls']);
@@ -171,7 +161,7 @@ class Mediaclass
         $sizes = array_merge(array_keys(config('mediaclass.dimensions')), ['cropped']);
         $urls = [];
         foreach ($sizes as $size) {
-            $file = $this->object->accessKey() . '/' . $instance->dimensionPrefix($size) . $instance->filename . '.'. $instance->extension();
+            $file = Path::mediaFolderName($this->object) . '/' . $instance->dimensionPrefix($size) . $instance->filename . '.'. $instance->extension();
 
             if (Storage::disk('media')->exists($file)) {
                 $urls[$size] = Storage::disk('media')->url($file);

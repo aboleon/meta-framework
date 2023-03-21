@@ -410,3 +410,53 @@ footer {
     background: var(--base-1);
     padding: 3px 10px;
 }
+
+ul.mfw-actions {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    list-style: none;
+    li {
+        margin-right: 5px;
+        &:last-of-type {
+            margin-right: 0;
+        }
+        a {
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            .fa, .fas {
+                font-size: 14px;
+            }
+        }
+    }
+}
+#topbar-actions {
+    margin-right: 10px;
+    a,.btn {
+        font-size: 14px;
+        padding:7px 10px !important;
+    }
+    .separator {
+        margin: 0 10px;
+        padding-left: 10px;
+        border-right: 2px dotted #bdbdbd;
+        display: inline-block;
+        height: 100%;
+    }
+}
+#user_avatar {
+    img {
+        height: 40px;
+    }
+}
+#my-account {
+    a {
+        transition: 300ms all ease;
+        &:hover {
+            color: var(--base-1)
+        }
+    }
+}
