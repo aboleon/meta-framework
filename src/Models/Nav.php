@@ -2,14 +2,14 @@
 
 namespace MetaFramework\Models;
 
-use MetaFramework\Accessors\Locale;
-use MetaFramework\Accessors\Routing;
-use MetaFramework\Actions\Translator;
-use MetaFramework\Traits\Responses;
-use MetaFramework\Traits\Translation;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Support\Collection;
+use MetaFramework\Accessors\Locale;
+use MetaFramework\Accessors\Routing;
+use MetaFramework\Actions\Translator;
+use MetaFramework\Polyglote\Traits\Translation;
+use MetaFramework\Traits\Responses;
 
 class Nav extends Model
 {

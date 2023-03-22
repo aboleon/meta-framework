@@ -3,12 +3,12 @@
 namespace MetaFramework\Actions;
 
 
-use MetaFramework\Accessors\Locale;
-use MetaFramework\Traits\{
-    Responses,
-    Translation};
 use Exception;
 use Illuminate\Database\Eloquent\Model;
+use MetaFramework\Accessors\Locale;
+use MetaFramework\Polyglote\Traits\Translation;
+use MetaFramework\Traits\{
+    Responses};
 use Throwable;
 
 class Translator

@@ -2,25 +2,24 @@
 
 namespace MetaFramework\Models;
 
-use MetaFramework\Traits\{
-    AccessKey,
-    MetaParams,
-    OnlineStatus,
-    Responses,
-    Translation,
-    TreeBuilder};
-use MetaFramework\Abstract\MetaModel;
-use MetaFramework\Mediaclass\Interfaces\MediaclassInterface;
-use MetaFramework\Mediaclass\Traits\Mediaclass;
-use Illuminate\Support\Str;
-use MetaFramework\Accessors\Locale;
 use Illuminate\Database\Eloquent\{
     Model,
     Relations\BelongsTo,
     Relations\HasMany,
     Relations\HasOne,
-    SoftDeletes
-};
+    SoftDeletes};
+use Illuminate\Support\Str;
+use MetaFramework\Abstract\MetaModel;
+use MetaFramework\Accessors\Locale;
+use MetaFramework\Mediaclass\Interfaces\MediaclassInterface;
+use MetaFramework\Mediaclass\Traits\Mediaclass;
+use MetaFramework\Polyglote\Traits\Translation;
+use MetaFramework\Traits\{
+    AccessKey,
+    MetaParams,
+    OnlineStatus,
+    Responses,
+    TreeBuilder};
 
 class Meta extends Model implements MediaclassInterface
 {

@@ -2,8 +2,7 @@
 
 namespace MetaFramework\Printers\Nav;
 
-use MetaFramework\Models\Nav;
-use MetaFramework\Traits\Translation;
+use MetaFramework\Polyglote\Traits\Translation;
 
 class Footer
 {

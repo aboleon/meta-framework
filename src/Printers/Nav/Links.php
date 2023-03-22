@@ -2,7 +2,7 @@
 
 namespace MetaFramework\Printers\Nav;
 
-use MetaFramework\Traits\Translation;
+use MetaFramework\Polyglote\Traits\Translation;
 
 class Links
 {

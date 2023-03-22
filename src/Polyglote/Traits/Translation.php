@@ -2,9 +2,7 @@
 
 declare(strict_types=1);
 
-namespace MetaFramework\Traits;
-
-use Spatie\Translatable\HasTranslations;
+namespace MetaFramework\Polyglote\Traits;
 
 use MetaFramework\Accessors\Locale;
 
