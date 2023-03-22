@@ -30,3 +30,6 @@ php artisan vendor:publish --tag=metaframework
 - 0.9 Settings (untested)
 - 0.10 Suppressor / Translator
 - 0.11 Meta CMS
+- 0.12 Mediaclass Accessor
+- 0.13 Polyglote (Spatie laravel-translatable integration)
+- 0.14 Meta Cms routes

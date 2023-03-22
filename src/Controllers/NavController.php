@@ -35,7 +35,7 @@ class NavController extends Controller
 
         return view('metaframework::nav.edit')->with([
             'data' => $nav,
-            'route' => route('panel.nav.store'),
+            'route' => route('metaframework.nav.store'),
             'parent' => (int)request('parent') ? Nav::query()->where('id', request('parent'))->first() : null,
             'selectables' => $nav->fetchSelectableInventory()
         ]);
@@ -60,7 +60,7 @@ class NavController extends Controller
     {
         return view('metaframework::nav.edit')->with([
             'data' => $nav,
-            'route' => route('panel.nav.update', $nav),
+            'route' => route('metaframework.nav.update', $nav),
             'parent' => $nav->parent ? Nav::query()->where('id', $nav->parent)->first() : null,
             'selectables' => $nav->fetchSelectableInventory()
         ]);

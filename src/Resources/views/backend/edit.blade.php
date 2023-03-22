@@ -43,7 +43,7 @@
     @push('css')
         {!! csscrush_tag(public_path('vendor/metaframework/css/meta/editable.css')) !!}
     @endpush
-    <form method="post" action="{{ $data->id ? route('metaframework.meta.update', $data->id) : route(\MetaFramework\Accessors\Routing::backend().'.meta.store') }}" enctype="multipart/form-data" id="wagaia-form">
+    <form method="post" action="{{ $data->id ? route('metaframework.meta.update', $data->id) : route('metaframework.meta.store') }}" enctype="multipart/form-data" id="wagaia-form">
         @csrf
         @if ($data->id)
             @if (!$data->trashed())

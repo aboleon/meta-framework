@@ -15,7 +15,7 @@
                     <ul id="meta_bloc_list" class="m-0 mb-3 p-0">
                     <?php
                     foreach($blocs as $bloc) {
-                        echo '<li data-id="'.$bloc->id.'" '.($bloc->id == $meta->id ? ' class="active"':'').'><a href="'.route('panel.meta.show', ['type'=>'bloc', 'id'=>$bloc->id]).'">'.($bloc->translation('title') ?: 'Sans titre').'<code class="d-block">'.$bloc->taxonomy::getLabel().'</code></a></li>';
+                        echo '<li data-id="'.$bloc->id.'" '.($bloc->id == $meta->id ? ' class="active"':'').'><a href="'.route('metaframework.meta.show', ['type'=>'bloc', 'id'=>$bloc->id]).'">'.($bloc->translation('title') ?: 'Sans titre').'<code class="d-block">'.$bloc->taxonomy::getLabel().'</code></a></li>';
                     }
                     echo '</ul>';
                 }

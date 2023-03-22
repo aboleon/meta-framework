@@ -17,7 +17,7 @@ trait OnlineStatus
 
     public function printStatusAsBadge(string $class = 'float-end'): string
     {
-        return '<div id="published_status" data-ajax-url="' . route('ajax') . '" data-status="' . $this->statusTag() . '" data-id="' . $this->id . '" data-class="' . get_class($this) . '" class="' . $class . ' bg-' . $this->statusClass() . '">' . $this->statusLabel() . '</div>';
+        return '<div id="published_status" data-ajax-url="' . route('metaframework.ajax') . '" data-status="' . $this->statusTag() . '" data-id="' . $this->id . '" data-class="' . get_class($this) . '" class="' . $class . ' bg-' . $this->statusClass() . '">' . $this->statusLabel() . '</div>';
     }
 
     public function statusClass(): string

@@ -10,7 +10,7 @@
     @endpush
     <x-metaframework::validation-errors/>
     <x-metaframework::response-messages/>
-    <form method="post" action="{{ route(\MetaFramework\Accessors\Routing::backend().'.settings.update') }}">
+    <form method="post" action="{{ route('metaframework.settings.update') }}">
         @csrf
         <div class="row editable">
             @foreach($config_settings as $config_setting)
@@ -24,7 +24,7 @@
                                                            :label="$input['title'] ?? ''"
                                                            :value="old($input['name']) ?: MetaFramework\Models\Setting::get($input['name']) ?: ''"/>
                                 @once
-                                    @include('lib.tinymce')
+                                    @include('metaframework::lib.tinymce')
                                 @endonce
                             @else
                                 <x-metaframework::input name="{{$input['name']}}"

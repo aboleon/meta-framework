@@ -128,7 +128,7 @@ class Nav extends Model
         $this->clearCache();
 
         $this->responseSuccess(__('ui.record_created'));
-        $this->redirectRoute(Routing::backend().'.nav.index');
+        $this->redirectRoute('metaframework.nav.index');
 
         return $this;
     }

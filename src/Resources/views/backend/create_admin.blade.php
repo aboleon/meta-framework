@@ -12,7 +12,7 @@
 
                 <x-metaframework::validation-banner/>
                 <x-metaframework::response-messages/>
-                    <form method="post" action="{{ route(\MetaFramework\Accessors\Routing::backend().'.meta.create_admin') }}" class="p-4">
+                    <form method="post" action="{{ route('metaframework.meta.create_admin') }}" class="p-4">
                         @csrf
                         <x-metaframework::input name="type" label="Type"/>
                         <div class="mt-5 main-save">

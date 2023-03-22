@@ -1,6 +1,6 @@
 <x-backend-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+        <h2>
             Identité de l'enteprise
         </h2>
     </x-slot>
@@ -10,7 +10,7 @@
 
                 <div class="row m-3">
                     <div class="col">
-                        <form method="post" action="{!! route('panel.siteowner.store') !!}">
+                        <form method="post" action="{!! route('metaframework.siteowner.store') !!}">
                             @csrf
                             <fieldset>
                                 <legend>Identité de l'association</legend>

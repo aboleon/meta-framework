@@ -43,7 +43,7 @@ class Cropable
                        data-crop-h="' . end($this->settings['sizes']) . '"
                        data-bs-toggle="modal"
                        data-bs-target="#mediaclass-crop"
-                       href="' . route(Routing::backend().'.mediaclass.cropable', $this->media) . '">
+                       href="' . route('mediaclass.cropable', $this->media) . '">
                         <i class="fa-solid fa-crop"></i>
                     </a>';
     }

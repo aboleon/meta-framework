@@ -12,12 +12,12 @@
             <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink_actions">
                 <li>
                     <a class="dropdown-item"
-                       href="{!! route($backend_url.'nav.create', ['parent' => $item->id]) !!}">
+                       href="{!! route('metaframework.nav.create', ['parent' => $item->id]) !!}">
                         <i class="text-dark fas fa-plus"></i>Sous-menu</a>
                 </li>
                 <li>
                     <a class="dropdown-item"
-                       href="{!! route($backend_url.'.nav.edit', $item->id) !!}">
+                       href="{!! route('metaframework.nav.edit', $item->id) !!}">
                         <i class="text-dark fas fa-pen"></i>Éditer</a>
                 </li>
                 <x-metaframework::modal-actions
@@ -26,7 +26,7 @@
             </ul>
         </div>
 
-        <x-metaframework::modal :route="route($backend_url.'nav.destroy', $item->id)"
+        <x-metaframework::modal :route="route('metaframework.nav.destroy', $item->id)"
                  :question="__('ui.should_i_delete_record')"
                  reference="destroy_{{ $item->id }}"/>
     </td>

@@ -123,7 +123,7 @@ class MetaController extends Controller
 
         (new MetaSubModel($meta))->process();
 
-        $this->redirect_to = route($this->backend_url . '.meta.edit', ['type' => $meta->type, 'id' => $meta->id]);
+        $this->redirect_to = route('metaframework.meta.edit', ['type' => $meta->type, 'id' => $meta->id]);
 
         Artisan::call('cache:clear');
 
