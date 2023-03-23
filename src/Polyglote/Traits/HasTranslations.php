@@ -20,6 +20,7 @@ use Illuminate\Support\Str;
 use MetaFramework\Accessors\Locale;
 use MetaFramework\Polyglote\Events\TranslationHasBeenSetEvent;
 use MetaFramework\Polyglote\Exceptions\AttributeIsNotTranslatable;
+use MetaFramework\Polyglote\Translatable;
 
 trait HasTranslations
 {
