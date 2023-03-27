@@ -21,6 +21,9 @@ use MetaFramework\Traits\{
     Responses,
     TreeBuilder};
 
+/**
+ * @property ?string|bool $published
+ */
 class Meta extends Model implements MediaclassInterface
 {
     use AccessKey;

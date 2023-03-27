@@ -92,12 +92,35 @@ trait MetaParams
         return static::where('meta_id', $meta->id)->first();
     }
 
-    public function reliesOnMeta(): bool
+    public function hasForms(): void
+    {
+        $this->uses['forms'] = true;
+    }
+
+    public function isUsingForms(): bool
+    {
+        return $this->uses['forms'] === true;
+    }
+
+    public function hasBlocs(): void
+    {
+        $this->uses['blocs'] = true;
+    }
+
+    public function isUsingBlocs(): bool
+    {
+        return $this->uses['blocs'] === true;
+    }
+
+    public function reliesOnMeta(): void
+    {
+        $this->uses['meta_model'] = true;
+    }
+
+    public function isReliyingOnMeta(): bool
     {
         return $this->uses['meta_model'];
     }
-
-
 
     /**
      * Vérifie si le Model utilise une configuration / paramétrage donné

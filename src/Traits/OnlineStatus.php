@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Builder;
 trait OnlineStatus
 {
 
-    public function isActive(string $tag=''): string
+    public function isActive(string $tag = ''): string
     {
         $allowed_tags = ['div', 'td', 'th'];
         $tag = in_array($tag, $allowed_tags) ? $tag : 'span';
@@ -38,5 +38,10 @@ trait OnlineStatus
     public function scopePublished(Builder $query): Builder
     {
         return $query->where('published', 1);
+    }
+
+    public function isPublished(): bool
+    {
+        return (bool)$this->published;
     }
 }

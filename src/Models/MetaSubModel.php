@@ -19,12 +19,15 @@ class MetaSubModel
         $this->subModel = class_exists($this->subModelClass)
             ? new $this->subModelClass
             : new DefaultProxy;
-        if (
-            $this->meta->id &&
-            !$this->isMeta()
-        ) {
-            $this->subModel = $this->subModel->where('meta_id', $this->meta->id)->first() ?? $this->subModel;
+
+        if ($this->meta->id) {
+            if ($this->subModel->isReliyingOnMeta()) {
+                $this->subModel->id = $this->meta->id;
+            } else {
+                $this->subModel = $this->subModel->where('meta_id', $this->meta->id)->first() ?? $this->subModel;
+            }
         }
+
     }
 
     public function hasContent(): bool
@@ -38,7 +41,7 @@ class MetaSubModel
      */
     public function process(): static
     {
-        if (!$this->subModel->reliesOnMeta()) {
+        if (!$this->subModel->isReliyingOnMeta()) {
 
             $data = [];
             $this->unsetMetaAsTransltable();

@@ -87,6 +87,12 @@ class Mediaclass
         return $this->image;
     }
 
+    public function get()
+    {
+        $this->fetch()->serve();
+        return $this;
+    }
+
     public function url(string $prefix = 'cropped', ?string $default_img = null): string
     {
         $this->fetch()->serve();

@@ -2,7 +2,7 @@
 
     @switch($key)
         @case('_media')
-            <x-mediaclass::uploadable :model="$model->meta ?? \MetaFramework\Accessors\Metas::fetchSingleByType($model::$signature)" :settings="$value"/>
+            <x-mediaclass::uploadable :model="$model" :settings="$value"/>
             @break;
         @default
             @switch($value['type'] ?? '')

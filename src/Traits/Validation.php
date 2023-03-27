@@ -15,7 +15,21 @@ trait Validation
      */
     protected array $validated_data = [];
 
-    protected function validation(): void
+    public function addValidationRules(array $rules): void
+    {
+        $this->validation_rules = array_merge($this->validation_rules, $rules);
+    }
+    public function addValidationMessages(array $rules): void
+    {
+        $this->validation_messages = array_merge($this->validation_messages, $rules);
+    }
+
+    public function validatedData(?string $key): array
+    {
+        return $key ? ($this->validated_data[$key] ?? $this->validated_data) : $this->validated_data;
+    }
+
+    public function validation(): void
     {
         if ($this->validation_rules) {
             $this->validated_data = request()->validate(
