@@ -8,13 +8,12 @@ use Illuminate\Http\JsonResponse;
 
 trait Ajax
 {
+    use Responses;
 
     public function distribute(): array|JsonResponse
     {
-        $this->response['input'] = request()->all();
-        if (request()->filled('callback')) {
-            $this->response['callback'] = request('callback');
-        }
+        $this->fetchInput();
+        $this->fetchCallback();
 
         if (!request()->filled('action')) {
             $this->responseError('Cette requête ne peut pas être interprêtée.');
@@ -27,5 +26,17 @@ trait Ajax
         }
 
         return $this->{request('action')}();
+    }
+
+    public function fetchInput(): void
+    {
+        $this->response['input'] = request()->all();
+    }
+
+    public function fetchCallback(): void
+    {
+        if (request()->filled('callback')) {
+            $this->response['callback'] = request('callback');
+        }
     }
 }
