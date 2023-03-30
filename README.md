@@ -34,3 +34,4 @@ php artisan vendor:publish --tag=metaframework
 - 0.13 Polyglote (Spatie laravel-translatable integration)
 - 0.14 Meta Cms routes
 - 0.15 Meta Cms Core
+- 0.16 Countries + optgroup select component

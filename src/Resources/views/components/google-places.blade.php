@@ -52,7 +52,7 @@
         </div>
         <div class="mb-3 col-sm-8 col-country">
             <label for="geo_country_{{ $random_id }}" class="form-label">{{ trans('metaframework.geo.country') }}</label>
-            <input class="field country form-control {{ $tagRequired('country') }}" name="{{ $field }}[country]" value="{{ $error ? old($field.'.country') : ($geo->country ?? '') }}" placeholder="{{ trans('metaframework.geo.country') }} *" id="geo_country_{{ $random_id }}" />
+            <input class="field country form-control {{ $tagRequired('country') }}" name="{{ $field }}[country]" value="{{ $error ? old($field.'.country') : ($geo->country_code ? \MetaFramework\Accessors\Countries::getCountryNameByCode($geo->country_code) : '') }}" placeholder="{{ trans('metaframework.geo.country') }} *" id="geo_country_{{ $random_id }}" />
         </div>
     </div>
     <input type="hidden" class="wa_geo_lat" name="{{ $field }}[lat]" value="{{ $error ? old($field.'.lat') : ($geo->lat ?? '') }}"/>
