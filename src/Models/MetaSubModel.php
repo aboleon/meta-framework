@@ -73,4 +73,10 @@ class MetaSubModel
     {
         return $this->subModel->getTable() == $this->meta->getTable();
     }
+
+    public function content()
+    {
+        return $this->subModel->content;
+    }
+
 }

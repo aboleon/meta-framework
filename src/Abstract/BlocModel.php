@@ -17,11 +17,6 @@ abstract class BlocModel extends MetaModel
     {
         parent::__construct($attributes);
         $this->fillables = [
-            '_media' => [
-                'group' => 'meta',
-                'label' => 'Image',
-                'positions' => true
-            ],
             'meta[title]' => [
                 'type' => 'input',
                 'label' => 'Titre '
@@ -50,4 +45,5 @@ abstract class BlocModel extends MetaModel
     {
         return static::$taxonomy;
     }
+
 }

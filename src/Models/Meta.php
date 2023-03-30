@@ -134,7 +134,7 @@ class Meta extends Model implements MediaclassInterface
         if (request()->has('meta.content')) {
             $this->translatable[] = 'content';
         }
-
+$a = [];
         foreach ($this->translatable as $value) {
             foreach (config('translatable.locales') as $locale) {
                 $data = (
@@ -142,7 +142,7 @@ class Meta extends Model implements MediaclassInterface
                     ? Str::slug($this->translatableFromRequest('meta.url', $locale) ?: $this->translatableFromRequest('meta.title', $locale))
                     : $this->translatableFromRequest('meta.' . $value, $locale)
                 );
-                $this->saveTranslation($value, $locale, $data);
+               $this->saveTranslation($value, $locale, $data);
             }
         }
         if ($this->subModel()->store_in_content) {

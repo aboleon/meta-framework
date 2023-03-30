@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Unit\Traits;
+namespace Tests\Unit\Accessors;
 
 use MetaFramework\Models\Meta;
 use PHPUnit\Framework\TestCase;

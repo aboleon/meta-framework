@@ -2,6 +2,7 @@
 
 namespace Tests\Unit\Traits;
 
+use MetaFramework\Models\Bloc;
 use MetaFramework\Models\Meta;
 use PHPUnit\Framework\TestCase;
 
@@ -59,4 +60,28 @@ class MetaParamsTest extends TestCase
         // Assert
         $this->assertTrue($testable->isUsingBlocs());
     }
+
+    /**
+     * @test
+     * @covers MetaParams::reliesOnMeta
+     * @covers MetaParams::isReliyingOnMeta
+     */
+    /*
+    public function submodel_is_storing_content_as_json_in_meta_table()
+    {
+        // Arrange
+        $meta = new Meta();
+        $meta->type = 'bloc';
+        $meta->taxonomy = 'MetaFramework\Models\Bloc';
+
+        $testable = $meta->subModel();
+
+        $this->assertFalse($testable->isStoringMetaContentAsJson());
+
+        // Act
+        $testable->hasBlocs();
+
+        // Assert
+        $this->assertTrue($testable->isUsingBlocs());
+    }*/
 }

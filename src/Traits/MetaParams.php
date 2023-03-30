@@ -9,7 +9,7 @@ trait MetaParams
 {
 
     public bool $is_single = false;
-    public bool $store_in_content = false;
+    public bool $store_content_as_json = false;
 
     public array $uses = [
         'template' => false,
@@ -120,6 +120,16 @@ trait MetaParams
     public function isReliyingOnMeta(): bool
     {
         return $this->uses['meta_model'];
+    }
+
+    public function storeMetaContentAsJson(): bool
+    {
+        return $this->store_content_as_json = true;
+    }
+
+    public function isStoringMetaContentAsJson(): bool
+    {
+        return $this->store_content_as_json === true;
     }
 
     /**

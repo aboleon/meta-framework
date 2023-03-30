@@ -55,18 +55,22 @@ trait HasTranslations
 
     public function setAttribute($key, $value)
     {
-        if ($this->isTranslatableAttribute($key) && is_array($value)) {
-            return $this->setTranslations($key, $value);
+        if (Locale::multilang()) {
+            if ($this->isTranslatableAttribute($key) && is_array($value)) {
+                return $this->setTranslations($key, $value);
+            }
+
+            // Pass arrays and untranslatable attributes to the parent method.
+            if (!$this->isTranslatableAttribute($key) || is_array($value)) {
+                return parent::setAttribute($key, $value);
+            }
+
+            // If the attribute is translatable and not already translated, set a
+            // translation for the current app locale.
+            return $this->setTranslation($key, $this->getLocale(), $value);
         }
 
-        // Pass arrays and untranslatable attributes to the parent method.
-        if (!$this->isTranslatableAttribute($key) || is_array($value)) {
-            return parent::setAttribute($key, $value);
-        }
-
-        // If the attribute is translatable and not already translated, set a
-        // translation for the current app locale.
-        return $this->setTranslation($key, $this->getLocale(), $value);
+        return parent::setAttribute($key, $value);
     }
 
     public function translate(string $key, string $locale = '', bool $useFallbackLocale = true): mixed

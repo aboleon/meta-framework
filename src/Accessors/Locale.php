@@ -2,13 +2,16 @@
 
 declare(strict_types=1);
 
+
 namespace MetaFramework\Accessors;
+
+use Illuminate\Support\Facades\Cache;
 
 class Locale
 {
     public static function multilang(): bool
     {
-        return cache()->rememberForever('metaframework.multilang', fn() => config('metaframework.translatable.multilang'));
+        return Cache::rememberForever('metaframework.multilang', fn() => config('metaframework.translatable.multilang'));
     }
 
     public static function locale(): string
