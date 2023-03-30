@@ -15,8 +15,8 @@
     @endif
 
     @if ($group)
-        @foreach($values as $optgroup)
-            <optgroup label="{{ $optgroup['name'] }}">
+        @foreach($values as $optgroup_id => $optgroup)
+            <optgroup data-id="{{ $optgroup_id }}" label="{{ $optgroup['name'] }}">
                 @foreach($optgroup['values'] as $key => $value)
                     <option value="{{ $key }}"{{ $affected && $key == $affected ? 'selected' : '' }}>{{ $value }}</option>
                 @endforeach
