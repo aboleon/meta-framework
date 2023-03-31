@@ -2,23 +2,23 @@
 
 namespace MetaFramework\Controllers;
 
+use Illuminate\Contracts\Support\Renderable;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Facades\DB;
 use MetaFramework\{
     Accessors\Routing,
     Models\Forms,
     Models\Meta,
     Models\MetaSubModel,
-    Traits\Responses,
-    Traits\Validation};
-use Illuminate\Contracts\Support\Renderable;
-use Illuminate\Http\RedirectResponse;
-use Illuminate\Support\Facades\Artisan;
-use Illuminate\Support\Facades\DB;
+    Services\Validation\ValidationTrait,
+    Traits\Responses};
 use Throwable;
 
 class MetaController extends Controller
 {
     use Responses;
-    use Validation;
+    use ValidationTrait;
 
     private $object;
     private array $data = [];

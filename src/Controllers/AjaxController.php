@@ -3,14 +3,14 @@
 
 namespace MetaFramework\Controllers;
 
-use MetaFramework\Traits\Ajax;
-use MetaFramework\Traits\Validation;
 use Illuminate\Support\Facades\DB;
+use MetaFramework\Services\Validation\ValidationTrait;
+use MetaFramework\Traits\Ajax;
 
 class AjaxController extends Controller
 {
     use Ajax;
-    use Validation;
+    use ValidationTrait;
 
 
     /**

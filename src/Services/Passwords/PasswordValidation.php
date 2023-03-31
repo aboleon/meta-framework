@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace MetaFramework\Services\Passwords;
 
-use MetaFramework\Abstract\ValidationAbstract;
+use MetaFramework\Services\Validation\ValidationAbstract;
 
 final class PasswordValidation extends ValidationAbstract
 {

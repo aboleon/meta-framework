@@ -34,7 +34,10 @@ table {
         caption-side: top;
     }
 }
-
+/* Google Places*/
+.pac-container {
+    z-index: 999999;
+}
 .pagination > .active > a,
 .pagination > .active > a:focus,
 .pagination > .active > a:hover,

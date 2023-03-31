@@ -1,10 +1,11 @@
 <?php
 
-namespace MetaFramework\Traits;
+namespace MetaFramework\Services\Validation;
 
 use Illuminate\Foundation\Http\FormRequest;
+use MetaFramework\Traits\Responses;
 
-trait Validation
+trait ValidationTrait
 {
     use Responses;
 
@@ -24,7 +25,7 @@ trait Validation
         $this->validation_messages = array_merge($this->validation_messages, $rules);
     }
 
-    public function validatedData(?string $key): array
+    public function validatedData(?string $key=null): array
     {
         return $key ? ($this->validated_data[$key] ?? $this->validated_data) : $this->validated_data;
     }
@@ -39,7 +40,7 @@ trait Validation
         }
     }
 
-    private function ensureDataIsValid(FormRequest $request, string $key): bool
+    protected function ensureDataIsValid(FormRequest $request, string $key): bool
     {
 
         $this->validated_data[$key] = is_array($request->validated()) && array_key_exists($key, $request->validated())

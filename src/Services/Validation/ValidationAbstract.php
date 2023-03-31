@@ -1,6 +1,6 @@
 <?php
 
-namespace MetaFramework\Abstract;
+namespace MetaFramework\Services\Validation;
 
 abstract class ValidationAbstract
 {

@@ -3,16 +3,18 @@
 namespace MetaFramework\Controllers;
 
 use Illuminate\Contracts\Support\Renderable;
+use Illuminate\Http\{
+    RedirectResponse,
+    Request};
 use MetaFramework\Models\SiteOwner;
+use MetaFramework\Services\Validation\ValidationTrait;
 use MetaFramework\Traits\Responses;
-use MetaFramework\Traits\Validation;
-use Illuminate\Http\{RedirectResponse, Request};
 use Throwable;
 
 class SiteOwnerController extends Controller
 {
     use Responses;
-    use Validation;
+    use ValidationTrait;
 
     public function index(): Renderable
     {

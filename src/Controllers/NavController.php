@@ -7,14 +7,14 @@ use Illuminate\Http\RedirectResponse;
 use MetaFramework\Accessors\Locale;
 use MetaFramework\Models\Nav;
 use MetaFramework\Printers\Nav\Table;
+use MetaFramework\Services\Validation\ValidationTrait;
 use MetaFramework\Traits\Responses;
-use MetaFramework\Traits\Validation;
 use Throwable;
 
 class NavController extends Controller
 {
     use Responses;
-    use Validation;
+    use ValidationTrait;
 
     public function index(): Renderable
     {

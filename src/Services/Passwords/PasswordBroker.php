@@ -4,15 +4,15 @@ declare(strict_types=1);
 
 namespace MetaFramework\Services\Passwords;
 
-use MetaFramework\Traits\Validation;
 use Illuminate\Http\Request;
+use MetaFramework\Services\Validation\ValidationTrait;
 
 /**
  * This class is responsible for managing password change requests.
  */
 final class PasswordBroker
 {
-    use Validation; // The Validation trait provides methods for validating input data.
+    use ValidationTrait; // The Validation trait provides methods for validating input data.
 
     private PasswordRequest $requested; // The PasswordRequest object containing the password change data.
     private PasswordGenerator $generator; // The PasswordGenerator object used to generate new passwords.
