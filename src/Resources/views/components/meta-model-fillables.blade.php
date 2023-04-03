@@ -1,9 +1,10 @@
 @php
+    $must_translate = MetaFramework\Accessors\Locale::multilang();
     $model = $meta->subModel();
     $content = $model;
 
     if ($model->isReliyingOnMeta()) {
-        $content = $model->isStoringMetaContentAsJson() ? $meta->content : $meta;
+        $content = $model->isStoringMetaContentAsJson() ? json_decode($meta->content,true) : $meta;
     }
 @endphp
 
@@ -78,7 +79,7 @@
                                     @foreach($collection['schema'] as $subkey => $value)
 
                                         @php
-                                            if (!$model->store_in_content) {
+                                            if (!$model->isStoringMetaContentAsJson()) {
                                                 $content_value = \MetaFramework\Accessors\Locale::multilang() ? ($found_content[$subkey][$locale] ?? '') : ($found_content[$subkey] ?? '');
                                             } else {
                                                 $content_value = $found_content[$key][$subkey] ?? ''; // TODO: no multilang
@@ -97,7 +98,12 @@
                                         if ($is_meta) {
                                             $key = str_replace(['meta[',']'],'', $key);
                                         }
-                                        $content_value = ($key != '_media') ? $content->translation($key, $locale) : null;
+                                        $content_value = ($key != '_media')
+                                            ? ($must_translate
+                                                ? $content->translation($key, $locale)
+                                                : ($content[$key] ?? null)
+                                                )
+                                            : null;
                                     @endphp
 
                                     <x-metaframework::meta-fillable-parser

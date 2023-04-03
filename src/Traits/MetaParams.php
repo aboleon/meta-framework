@@ -77,16 +77,6 @@ trait MetaParams
         return $this->belongsTo(Meta::class, 'meta_id');
     }
 
-    public function process(): static
-    {
-        foreach($this->translatable as $key) {
-            $this->{$key} = request($this->signature.'.'.$key);
-        }
-        $this->save();
-
-        return $this;
-    }
-
     public function editable(Meta $meta): static|null
     {
         return static::where('meta_id', $meta->id)->first();

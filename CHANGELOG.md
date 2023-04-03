@@ -17,3 +17,5 @@
 - 0.15 Meta Cms Core
 - 0.16 Countries + optgroup select component
 - 0.17 Meta Cms Options, Blocs, Translations
+- 0.18 Validation Instance
+- 0.19 Meta Cms, Json Content

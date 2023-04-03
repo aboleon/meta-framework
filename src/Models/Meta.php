@@ -134,7 +134,7 @@ class Meta extends Model implements MediaclassInterface
         if (request()->has('meta.content')) {
             $this->translatable[] = 'content';
         }
-$a = [];
+
         foreach ($this->translatable as $value) {
             foreach (config('translatable.locales') as $locale) {
                 $data = (
@@ -145,8 +145,8 @@ $a = [];
                $this->saveTranslation($value, $locale, $data);
             }
         }
-        if ($this->subModel()->store_in_content) {
-            $this->saveTranslation('content', config('app.fallback_locale'), request($this->subModel()->getSignature()));
+        if ($this->subModel()->isStoringMetaContentAsJson()) {
+            $this->content = request($this->subModel()->getSignature());
         }
 
 
