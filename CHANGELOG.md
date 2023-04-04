@@ -19,3 +19,4 @@
 - 0.17 Meta Cms Options, Blocs, Translations
 - 0.18 Validation Instance
 - 0.19 Meta Cms, Json Content
+- 0.20 Mediaclass Temp uploads

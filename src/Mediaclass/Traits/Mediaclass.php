@@ -5,8 +5,10 @@ namespace MetaFramework\Mediaclass\Traits;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\LazyCollection;
 use Illuminate\Support\Str;
 use MetaFramework\Accessors\Locale;
+use MetaFramework\Mediaclass\Accessors\Path;
 use MetaFramework\Traits\Responses;
 use ReflectionClass;
 use Throwable;
@@ -52,10 +54,36 @@ trait Mediaclass
         }
 
         if (request()->has('mediaclass_temp_id')) {
+
+            $recorded = \MetaFramework\Mediaclass\Models\Mediaclass::where('temp', request('mediaclass_temp_id'))->get();
+
+            if ($recorded->isEmpty()) {
+                return $this;
+            }
+
             \MetaFramework\Mediaclass\Models\Mediaclass::where('temp', request('mediaclass_temp_id'))->update([
                 'model_id' => $this->model()->id,
                 'temp' => null
             ]);
+
+            $modelFolder = Path::mediaFolderName($this->model());
+            $tempFolder = Path::mediaTempFolderName($this->model());
+
+            LazyCollection::make($recorded)->each(function($row) use($tempFolder, $modelFolder) {
+
+                $files = File::glob(Storage::disk('media')
+                    ->path($tempFolder . DIRECTORY_SEPARATOR . '*' . $row->filename . '*'));
+
+                if ($files) {
+                    Path::checkMakeDir(Storage::disk('media')->path($modelFolder));
+                    foreach($files as $media) {
+                        File::move($media, str_replace($tempFolder, $modelFolder, $media));
+                    }
+                }
+
+            });
+
+
         }
 
         return $this;

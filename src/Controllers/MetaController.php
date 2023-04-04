@@ -120,6 +120,7 @@ class MetaController extends Controller
         $meta = Meta::makeMeta(request('meta_type'));
 
         $meta->process();
+        $meta->processMedia();
 
         (new MetaSubModel($meta))->process();
 

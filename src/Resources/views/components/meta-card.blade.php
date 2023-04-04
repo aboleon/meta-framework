@@ -41,7 +41,7 @@
             </div>
         </div>
     </fieldset>
-    @if ($model->uses('images') && $meta->id)
+    @if ($model->uses('images'))
         <fieldset>
             <legend class="toggle">Image de présentation</legend>
             <div class="toggable">
