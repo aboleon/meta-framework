@@ -41,6 +41,8 @@ class FileUploadImages
         $this->temp = request('mediaclass_temp_id') ?: null;
 
         $this->response['filetype'] = 'image';
+
+        $this->setModel(request('model'));
     }
 
     public function setModel(string $model): static
@@ -63,8 +65,8 @@ class FileUploadImages
     public function delete(): static
     {
         try {
-            $this->media = Mediaclass::query()->findOrFail(request('id'));
-            File::delete(File::glob(Storage::disk('media')->path((string)$this->media->model->accessKey()) . DIRECTORY_SEPARATOR . '*' . $this->media->filename . '*'));
+            $this->media = Mediaclass::query()->find(request('id'));
+            File::delete(File::glob(Storage::disk('media')->path($this->folder_name . DIRECTORY_SEPARATOR . '*' . $this->media->filename . '*')));
             $this->media->delete();
         } catch (Throwable $e) {
             $this->responseException($e);
@@ -109,7 +111,7 @@ class FileUploadImages
         $this->response['filetype'] = 'file';
         $this->response['filename'] = $this->filename . '.' . $this->uploadedFile->guessExtension();
         $this->response['link'] = Storage::disk('media')->url($this->response['filename'] . '?' . time());;
-        $this->response['fileicon'] = asset('vendor/metaframework/mediaclass/images/files/'.$this->uploadedFile->guessExtension().'.png');
+        $this->response['fileicon'] = asset('vendor/metaframework/mediaclass/images/files/' . $this->uploadedFile->guessExtension() . '.png');
         $this->response['preview'] = $this->response['fileicon'];
 
         try {

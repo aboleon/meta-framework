@@ -11,12 +11,13 @@
     </div>
     <div class="mediaclass-upload-container"></div>
     <div class="uploaded">
-        <x-mediaclass::stored :positions="$positions" :medias="$model->media->where('group', $group)" :description="$description" />
+        <x-mediaclass::stored :positions="$positions" :medias="$model->media->where('group', $group)" :description="$description"/>
     </div>
 </div>
-
 @once
-    <input type="hidden" id="mediaclass_temp_id" name="mediaclass_temp_id" value="{{ Str::random(32) }}">
+    @if ($model instanceof \MetaFramework\Mediaclass\Interfaces\MediaclassInterface && !isset($model->id))
+        <input type="hidden" id="mediaclass_temp_id" name="mediaclass_temp_id" value="{{ Str::random(32) }}">
+    @endif
     @include('mediaclass::fileupload_scripts')
     <x-mediaclass::template :model="$model"/>
 @endonce

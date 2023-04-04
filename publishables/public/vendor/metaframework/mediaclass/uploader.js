@@ -24,7 +24,7 @@ const MediaclassUploader = {
         $('.unlink').off().on('click', function () {
             let selector = $(this).closest('.unlinkable'),
                 c = selector.closest('.uploaded'),
-                formData = 'action=delete&id=' + selector.attr('data-id');
+                formData = 'action=delete&id=' + selector.attr('data-id')+'&model='+ c.closest('.mediaclass-uploadable').attr('data-model');
             ajax(formData, MediaclassUploader.template());
             $(document).ajaxSuccess(function () {
                 selector.remove();
@@ -176,7 +176,7 @@ const MediaclassUploader = {
         });
         fileuploadContainer.bind('fileuploadsubmit', function (e, data) {
             MediaclassUploader.messages().html('');
-
+            let temp_media_id = $('#mediaclass_temp_id');
             data.formData = [];
             data.formData.push(
                 {
@@ -205,7 +205,7 @@ const MediaclassUploader = {
                 },
                 {
                     name: 'mediaclass_temp_id',
-                    value: $('#mediaclass_temp_id').val(),
+                    value: temp_media_id.length ? temp_media_id.val() : '',
                 },
             );
 
