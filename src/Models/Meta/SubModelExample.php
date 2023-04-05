@@ -28,7 +28,6 @@ class SubModelExample extends MetaModel
             ],
         ];
 
-        $this->reliesOnMeta();
         $this->hasBlocs();
 
         $this->disabled_meta = [

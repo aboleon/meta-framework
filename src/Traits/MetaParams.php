@@ -15,7 +15,7 @@ trait MetaParams
         'template' => false,
         'template_file' => false,
         'forms' => false,
-        'meta_model' => false,
+        'meta_model' => true,
         'images' => true,
         'parent' => false,
         'blocs' => false,
@@ -102,19 +102,14 @@ trait MetaParams
         return $this->uses['blocs'] === true;
     }
 
-    public function reliesOnMeta(): void
-    {
-        $this->uses['meta_model'] = true;
-    }
-
     public function isReliyingOnMeta(): bool
     {
-        return $this->uses['meta_model'];
+        return $this->getTable() == (new Meta())->getTable();
     }
 
-    public function storeMetaContentAsJson(): bool
+    public function storeMetaContentAsJson(): void
     {
-        return $this->store_content_as_json = true;
+        $this->store_content_as_json = true;
     }
 
     public function isStoringMetaContentAsJson(): bool
