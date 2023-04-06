@@ -14,6 +14,6 @@ class NavOpeningLink extends Component
 
     public function render(): Renderable
     {
-        return view('metaframework::components.nav-opening-link');
+        return view('mfw::components.nav-opening-link');
     }
 }

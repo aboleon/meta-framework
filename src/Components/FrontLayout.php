@@ -14,6 +14,6 @@ class FrontLayout extends Component
      */
     public function render(): Renderable
     {
-        return view('metaframework::layouts.front');
+        return view('mfw::layouts.front');
     }
 }

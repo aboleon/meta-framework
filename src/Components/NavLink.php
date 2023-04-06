@@ -17,6 +17,6 @@ class NavLink extends Component
 
     public function render(): Renderable
     {
-        return view('metaframework::components.nav-link');
+        return view('mfw::components.nav-link');
     }
 }

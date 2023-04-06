@@ -21,6 +21,6 @@ class MetaFillableParser extends Component
 
     public function render(): Renderable
     {
-        return view('metaframework::components.meta-fillable-parser');
+        return view('mfw::components.meta-fillable-parser');
     }
 }

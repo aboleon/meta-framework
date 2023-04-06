@@ -35,8 +35,8 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
 
     public function boot()
     {
-        $this->loadViewsFrom(__DIR__ . '/Resources/views', 'metaframework');
-        Blade::componentNamespace('\MetaFramework\\Components', 'metaframework');
+        $this->loadViewsFrom(__DIR__ . '/Resources/views', 'mfw');
+        Blade::componentNamespace('\MetaFramework\\Components', 'mfw');
 
         $this->loadViewsFrom(__DIR__ . '/Mediaclass/Views', 'mediaclass');
         Blade::componentNamespace('MetaFramework\Mediaclass\\Components', 'mediaclass');
@@ -59,10 +59,10 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
     {
         $this->publishes([
             __DIR__ . '/../publishables/config/' => config_path(),
-            __DIR__ . '/../publishables/public/vendor/metaframework' => public_path('vendor/metaframework/'),
+            __DIR__ . '/../publishables/public/vendor/mfw' => public_path('vendor/mfw/'),
             __DIR__ . '/../publishables/lang/' => base_path('lang'),
             __DIR__ . '/../publishables/database/migrations/' => database_path(),
-        ], 'metaframework');
+        ], 'mfw');
 
     }
 

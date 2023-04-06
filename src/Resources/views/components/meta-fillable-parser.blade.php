@@ -7,19 +7,19 @@
         @default
             @switch($value['type'] ?? '')
                 @case('textarea')
-                    <x-metaframework::textarea :name="$model->translatableInput($inputkey)" class="{{ $value['class'] ?? '' }}" :value="$content" :label="$value['label'] ?? ''"/>
+                    <x-mfw::textarea :name="$model->translatableInput($inputkey)" class="{{ $value['class'] ?? '' }}" :value="$content" :label="$value['label'] ?? ''"/>
                     @break
                 @case('component')
                     @if (auth()->user()->hasRole('dev'))
                         <code class="d-block pb-2">
-                            {!! 'metaframework.backend.'.$model->type.'.component_'.$subkey !!}
-                            {{ !view()->exists('metaframework.backend.'.$model->type.'.component_'.$subkey) ? ' - A créer' : '' }}
+                            {!! 'mfw.backend.'.$model->type.'.component_'.$subkey !!}
+                            {{ !view()->exists('mfw.backend.'.$model->type.'.component_'.$subkey) ? ' - A créer' : '' }}
                         </code>
                     @endif
                     @includeIf('panel.'.$model->type.'.component_'.$subkey)
                     @break
                 @case('number')
-                    <x-metaframework::input type="number" :name="$model->translatableInput($inputkey)" :value="$content" :label="$value['label'] ?? ''" :params="$value['params'] ?? []"/>
+                    <x-mfw::input type="number" :name="$model->translatableInput($inputkey)" :value="$content" :label="$value['label'] ?? ''" :params="$value['params'] ?? []"/>
                     @break
                 @case('_media')
                     <x-mediaclass::uploadable :model="$model->meta ?? \MetaFramework\Accessors\Metas::fetchSingleByType($model::$signature)" :settings="$value"/>
@@ -36,7 +36,7 @@
                             <div class="col-md-11 col-sm-10">
                                 <div class="row">
                                     @foreach($value['schema'] as $rep_key => $rep_val)
-                                        <x-metaframework::meta-fillable-parser
+                                        <x-mfw::meta-fillable-parser
                                             :model="$model"
                                             :key="$key"
                                             :subkey="$rep_key"
@@ -50,7 +50,7 @@
                     @endfor
                     @break
                 @default
-                    <x-metaframework::input :name="$model->translatableInput($inputkey)" :value="$content" :label="$value['label'] ?? ''" :params="$value['params'] ?? []"/>
+                    <x-mfw::input :name="$model->translatableInput($inputkey)" :value="$content" :label="$value['label'] ?? ''" :params="$value['params'] ?? []"/>
             @endswitch
     @endswitch
 </div>

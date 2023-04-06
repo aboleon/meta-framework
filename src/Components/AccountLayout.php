@@ -14,6 +14,6 @@ class AccountLayout extends Component
      */
     public function render(): Renderable
     {
-        return view('metaframework::layouts.account');
+        return view('mfw::layouts.account');
     }
 }

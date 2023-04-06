@@ -25,6 +25,6 @@ class Checkbox extends Component
 
     public function render(): Renderable
     {
-        return view('metaframework::components.checkbox');
+        return view('mfw::components.checkbox');
     }
 }

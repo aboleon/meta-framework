@@ -19,6 +19,6 @@ class CustomFillables extends Component
 
     public function render(): Renderable
     {
-        return view('metaframework::components.custom-fillables');
+        return view('mfw::components.custom-fillables');
     }
 }

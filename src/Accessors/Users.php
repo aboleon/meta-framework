@@ -13,7 +13,7 @@ class Users
 
     public function __construct()
     {
-        $this->user_types = config('metaframework-users');
+        $this->user_types = config('mfw-users');
     }
 
     public function usersOfType(string $type): Collection
@@ -43,7 +43,7 @@ class Users
 
     public function userTypes(): array
     {
-        return $this->user_types;
+        return $this->user_types ?? [];
     }
 
     public function userType(string|int|null $type = null): array

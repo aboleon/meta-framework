@@ -18,7 +18,7 @@ class SiteOwnerController extends Controller
 
     public function index(): Renderable
     {
-        return view('metaframework::siteowner')->with('data', SiteOwner::first());
+        return view('mfw::siteowner')->with('data', SiteOwner::first());
     }
 
     public function store(Request $request): RedirectResponse

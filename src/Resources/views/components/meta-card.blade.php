@@ -17,21 +17,21 @@
     <fieldset>
         <legend class="toggle">Résumé</legend>
         <div class="toggable">
-            <x-metaframework::language-tabs/>
+            <x-mfw::language-tabs/>
             <div class="tab-content base">
-                @foreach(config('metaframework.translatable.locales') as $locale)
+                @foreach(config('mfw.translatable.locales') as $locale)
                     <div class="tab-pane fade {!! $locale == app()->getLocale() ? 'show active': null !!}" id="tab_meta_content_{{ $locale }}" role="tabpanel" aria-labelledby="tab_meta_link_content_{{ $locale }}">
                         <div class="row mb-4">
                             @foreach($meta->fillables as $key=>$value)
                                 @switch($value['type'])
                                     @case('textarea')
                                         <div class="meta_{{ $key. ' '. ($value['class'] ?? 'col-12') }} mb-4{{ $model->visibility($key) }}">
-                                            <x-metaframework::textarea :name="$meta->translatableInput('meta['.$key.']')" class="{{ $value['class'] ?? '' }}" :value="$meta->translation($key, $locale)" :label="$value['label']"/>
+                                            <x-mfw::textarea :name="$meta->translatableInput('meta['.$key.']')" class="{{ $value['class'] ?? '' }}" :value="$meta->translation($key, $locale)" :label="$value['label']"/>
                                         </div>
                                         @break
                                     @default
                                         <div class="meta_{{ $key . ' '. ($value['class'] ?? 'col-12') }} mb-4{{ $model->visibility($key) }}">
-                                            <x-metaframework::input :name="$meta->translatableInput('meta['.$key.']')" :value="$meta->translation($key, $locale)" :label="$value['label']"/>
+                                            <x-mfw::input :name="$meta->translatableInput('meta['.$key.']')" :value="$meta->translation($key, $locale)" :label="$value['label']"/>
                                         </div>
                                 @endswitch
                             @endforeach
@@ -53,9 +53,9 @@
     @endif
 
     @if ($meta->id)
-        @includeIf('metaframework.meta.'.$meta->type.'.custom_meta')
+        @includeIf('mfw.meta.'.$meta->type.'.custom_meta')
         @if ($meta->taxonomy)
-            @includeIf('metaframework.backend.'.$meta->type.'.custom_meta'.'._'.$meta->taxonomy)
+            @includeIf('mfw.backend.'.$meta->type.'.custom_meta'.'._'.$meta->taxonomy)
         @endif
     @endif
         <fieldset>
@@ -65,7 +65,7 @@
                     @foreach($model->model_configs as $key => $values)
                         @switch($values['type'])
                             @case('checkbox')
-                                <x-metaframework::single-checkbox :value="$key" name="meta[configs][{{$key}}]" :label="$values['label']" :affected="$meta->configs[$key] ?? null"/>
+                                <x-mfw::single-checkbox :value="$key" name="meta[configs][{{$key}}]" :label="$values['label']" :affected="$meta->configs[$key] ?? null"/>
                                 @break
                         @endswitch
                     @endforeach
@@ -80,7 +80,7 @@
 
                 <div class="col-12 mb-4 {{ !auth()->user()->hasRole('dev') ? 'd-none' : '' }}">
                     {{-- @if ($meta->model()->instance->isVisible('taxonomy'))} --}}
-                    <x-metaframework::input name="meta[taxonomy]" value="{{ $meta->taxonomy }}" label="Taxonomie"/>
+                    <x-mfw::input name="meta[taxonomy]" value="{{ $meta->taxonomy }}" label="Taxonomie"/>
 
                     @role('dev')
                     <code>Visible en mode dev uniquement</code>
@@ -89,13 +89,13 @@
 
                 @if ($meta->uses('template'))
                     <div>
-                        <x-metaframework::input label="Template" name="meta[template]" :value="$meta->template"/>
+                        <x-mfw::input label="Template" name="meta[template]" :value="$meta->template"/>
                     </div>
                 @endif
 
                 @if ($meta->uses('forms'))
                     <div class="mt-3">
-                        <x-metaframework::select label="Formulaire" name="meta[forms]" :values="\MetaFramework\Models\Forms::selectables()" :affected="$meta->form?->name"/>
+                        <x-mfw::select label="Formulaire" name="meta[forms]" :values="\MetaFramework\Models\Forms::selectables()" :affected="$meta->form?->name"/>
                     </div>
                 @endif
 

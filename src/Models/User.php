@@ -16,8 +16,8 @@ class User extends Model
     {
         parent::__construct($attributes);
 
-        $this->table = config('metaframework.tables.user');
-        $this->user_types = config('metaframework-users');
+        $this->table = config('mfw.tables.user');
+        $this->user_types = config('mfw-users');
     }
 
 

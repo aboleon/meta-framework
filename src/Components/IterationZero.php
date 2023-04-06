@@ -25,6 +25,6 @@ class IterationZero extends Component
     public
     function render()
     {
-        return view('metaframework::components.iteration-zero');
+        return view('mfw::components.iteration-zero');
     }
 }

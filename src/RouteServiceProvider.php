@@ -53,7 +53,7 @@ class RouteServiceProvider extends ServiceProvider
         Route::prefix(Routing::backend())
             ->middleware(['web', 'auth:sanctum'])
             ->namespace($this->namespace)
-            ->name('metaframework.')
+            ->name('mfw.')
             ->group(function () {
                 include __DIR__ . '/Routes/web.php';
             });

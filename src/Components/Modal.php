@@ -21,6 +21,6 @@ class Modal extends Component
 
     public function render(): Renderable
     {
-        return view('metaframework::components.modal');
+        return view('mfw::components.modal');
     }
 }

@@ -67,7 +67,7 @@ final class PasswordBroker
      */
     public function printPublicPassword(): string
     {
-        return __('metaframework.passwords.is', ['password' => $this->generator->getPublicPassword()]);
+        return __('mfw.passwords.is', ['password' => $this->generator->getPublicPassword()]);
     }
 
     /**

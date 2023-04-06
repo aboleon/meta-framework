@@ -16,7 +16,7 @@ class RestoreModalLink extends Component
         public ?string $title = null,
     )
     {
-        $this->title = $this->title ?: __('metaframework.restore');
+        $this->title = $this->title ?: __('mfw.restore');
     }
 
     /**
@@ -24,6 +24,6 @@ class RestoreModalLink extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('metaframework::components.restore-modal-link');
+        return view('mfw::components.restore-modal-link');
     }
 }

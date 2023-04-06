@@ -20,6 +20,6 @@ class Textarea extends Component
 
     public function render(): Renderable
     {
-        return view('metaframework::components.textarea');
+        return view('mfw::components.textarea');
     }
 }

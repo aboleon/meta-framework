@@ -16,6 +16,6 @@ class Notice extends Component
 
     public function render(): Renderable
     {
-        return view('metaframework::components.notice');
+        return view('mfw::components.notice');
     }
 }

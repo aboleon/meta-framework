@@ -21,6 +21,6 @@ class MetaBlocs extends Component
 
     public function render(): Renderable
     {
-        return view('metaframework::components.meta-blocs');
+        return view('mfw::components.meta-blocs');
     }
 }

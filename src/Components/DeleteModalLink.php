@@ -16,7 +16,7 @@ class DeleteModalLink extends Component
         public ?string $title = null,
     )
     {
-        $this->title = $this->title ?: __('metaframework.delete');
+        $this->title = $this->title ?: __('mfw.delete');
     }
 
     /**
@@ -24,6 +24,6 @@ class DeleteModalLink extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('metaframework::components.delete-modal-link');
+        return view('mfw::components.delete-modal-link');
     }
 }

@@ -19,6 +19,6 @@ class NavHeaderLink extends Component
 
     public function render(): Renderable
     {
-        return view('metaframework::components.nav-header-link');
+        return view('mfw::components.nav-header-link');
     }
 }

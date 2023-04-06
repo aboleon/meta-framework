@@ -26,16 +26,16 @@ class NavController extends Controller
             $data[$zone] = (new Table($nav->query()->where('zone', $zone)->get()->sortBy('position')))();
         }
 
-        return view('metaframework::nav.index')->with($data);
+        return view('mfw::nav.index')->with($data);
     }
 
     public function create(): Renderable
     {
         $nav = new Nav;
 
-        return view('metaframework::nav.edit')->with([
+        return view('mfw::nav.edit')->with([
             'data' => $nav,
-            'route' => route('metaframework.nav.store'),
+            'route' => route('mfw.nav.store'),
             'parent' => (int)request('parent') ? Nav::query()->where('id', request('parent'))->first() : null,
             'selectables' => $nav->fetchSelectableInventory()
         ]);
@@ -58,9 +58,9 @@ class NavController extends Controller
 
     public function edit(Nav $nav): Renderable
     {
-        return view('metaframework::nav.edit')->with([
+        return view('mfw::nav.edit')->with([
             'data' => $nav,
-            'route' => route('metaframework.nav.update', $nav),
+            'route' => route('mfw.nav.update', $nav),
             'parent' => $nav->parent ? Nav::query()->where('id', $nav->parent)->first() : null,
             'selectables' => $nav->fetchSelectableInventory()
         ]);

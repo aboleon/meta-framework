@@ -21,6 +21,6 @@ class LanguageTabs extends Component
 
     public function render(): Renderable
     {
-        return view('metaframework::components.language-tabs');
+        return view('mfw::components.language-tabs');
     }
 }

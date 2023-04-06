@@ -14,6 +14,6 @@ class GuestLayout extends Component
      */
     public function render()
     {
-        return view('metaframework::layouts.guest');
+        return view('mfw::layouts.guest');
     }
 }

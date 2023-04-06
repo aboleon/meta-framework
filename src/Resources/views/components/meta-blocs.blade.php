@@ -1,5 +1,5 @@
 @if (($model->uses('blocs') && $meta->id) or $meta->type == 'bloc')
-    <div class="bloc-editable" id="meta_blocs" data-ajax="{{ route('metaframework.ajax') }}">
+    <div class="bloc-editable" id="meta_blocs" data-ajax="{{ route('mfw.ajax') }}">
         @if ($meta->type == 'bloc')
         <input type="hidden" name="meta[parent]" value="{{ $meta->parent }}"/>
         <input type="hidden" name="meta[taxonomy]" value="{{ $meta->taxonomy }}"/>
@@ -8,21 +8,21 @@
             <legend class="">Blocs</legend>
         </fieldset>
 
-        <div id="assigned_blocs" data-ajax="{{ route('metaframework.ajax') }}">
+        <div id="assigned_blocs" data-ajax="{{ route('mfw.ajax') }}">
             @php
                 $blocs = \MetaFramework\Models\MetaBloc::getBlocsForMeta($meta->type == 'bloc' ? $meta->parent : $meta->id);
                 if ($blocs->isNotEmpty()) { ?>
                     <ul id="meta_bloc_list" class="m-0 mb-3 p-0">
                     <?php
                     foreach($blocs as $bloc) {
-                        echo '<li data-id="'.$bloc->id.'" '.($bloc->id == $meta->id ? ' class="active"':'').'><a href="'.route('metaframework.meta.show', ['type'=>'bloc', 'id'=>$bloc->id]).'">'.($bloc->translation('title') ?: 'Sans titre').'<code class="d-block">'.$bloc->taxonomy::getLabel().'</code></a></li>';
+                        echo '<li data-id="'.$bloc->id.'" '.($bloc->id == $meta->id ? ' class="active"':'').'><a href="'.route('mfw.meta.show', ['type'=>'bloc', 'id'=>$bloc->id]).'">'.($bloc->translation('title') ?: 'Sans titre').'<code class="d-block">'.$bloc->taxonomy::getLabel().'</code></a></li>';
                     }
                     echo '</ul>';
                 }
             @endphp
         </div>
 
-        <x-metaframework::select name="meta_blocs_selector" :values="\MetaFramework\Models\MetaBloc::selectableArray()" label="Affecter un bloc" :affected="collect()" :nullable="false" :disablename="true"/>
+        <x-mfw::select name="meta_blocs_selector" :values="\MetaFramework\Models\MetaBloc::selectableArray()" label="Affecter un bloc" :affected="collect()" :nullable="false" :disablename="true"/>
 
         <span id="add_meta_bloc" class="btn btn-default btn-sm mt-3">Ajouter un bloc</span>
     </div>
@@ -38,7 +38,7 @@
             }
         </script>
     @endpush
-    @include('metaframework::lib.sortable')
+    @include('mfw::lib.sortable')
     @push('js')
         <script>
             $(function () {

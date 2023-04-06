@@ -41,7 +41,7 @@ trait Builder
     {
         if ($item->meta) {
             $links = [];
-            $links[] = config('metaframework-nav.urls.'. $item->meta->type) ?? '';
+            $links[] = config('mfw-nav.urls.'. $item->meta->type) ?? '';
             $links[] = $item->meta->translation('url', $this->locale());
             $this->link = url(implode('/', array_filter($links)));
         } else {

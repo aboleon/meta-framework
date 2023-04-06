@@ -14,6 +14,6 @@ class AppLayout extends Component
      */
     public function render(): Renderable
     {
-        return view('metaframework::layouts.app');
+        return view('mfw::layouts.app');
     }
 }

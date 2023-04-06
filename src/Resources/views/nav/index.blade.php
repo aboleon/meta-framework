@@ -16,7 +16,7 @@
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             Menu principal &raquo;
             <a class="btn btn-sm btn-success"
-               href="{{ route('metaframework.nav.create') }}">Créer une entrée principale</a>
+               href="{{ route('mfw.nav.create') }}">Créer une entrée principale</a>
 
         </h2>
     </x-slot>
@@ -24,8 +24,8 @@
     <div class="py-12">
         <div class="max-w-12xl mx-auto sm:px-6 lg:px-8">
 
-            <div id="messages" data-ajax="{{ route('metaframework.ajax') }}">
-                <x-metaframework::response-messages/>
+            <div id="messages" data-ajax="{{ route('mfw.ajax') }}">
+                <x-mfw::response-messages/>
             </div>
 
             @foreach($zones as $key => $title)
@@ -55,5 +55,5 @@
         </div>
     </div>
 
-    @include('metaframework::lib.sortable')
+    @include('mfw::lib.sortable')
 </x-backend-layout>

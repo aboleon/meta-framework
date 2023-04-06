@@ -12,6 +12,6 @@ class Pagination extends Component
 
     public function render()
     {
-        return view('metaframework::components.pagination');
+        return view('mfw::components.pagination');
     }
 }

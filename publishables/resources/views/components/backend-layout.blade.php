@@ -47,7 +47,7 @@
         </div>
 
         @section('messages')
-            <x-metaframework::response-messages/>
+            <x-mfw::response-messages/>
         @show
 
         <div class="container-fluid" id="main">

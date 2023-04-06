@@ -23,6 +23,6 @@ class BadAccess extends Component
      */
     public function render()
     {
-        return view('metaframework::components.bad-access');
+        return view('mfw::components.bad-access');
     }
 }

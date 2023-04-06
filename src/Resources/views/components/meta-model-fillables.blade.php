@@ -85,7 +85,7 @@
                                                 $content_value = $found_content[$key][$subkey] ?? ''; // TODO: no multilang
                                             }
                                         @endphp
-                                        <x-metaframework::meta-fillable-parser
+                                        <x-mfw::meta-fillable-parser
                                                 :model="$model"
                                                 :key="$key"
                                                 :subkey="$subkey"
@@ -106,7 +106,7 @@
                                             : null;
                                     @endphp
 
-                                    <x-metaframework::meta-fillable-parser
+                                    <x-mfw::meta-fillable-parser
                                             :model="$model"
                                             :subkey="$key"
                                             :key="$key"
@@ -128,7 +128,7 @@
     @endforeach
 @endif
 @once
-    @include('metaframework::lib.tinymce')
+    @include('mfw::lib.tinymce')
     @push('js')
         <link rel="stylesheet" href="{{ asset('vendor/jquery-ui-1.13.0.custom/jquery-ui.min.css') }}">
         <script src="{{ asset('vendor/jquery-ui-1.13.0.custom/jquery-ui.min.js') }}"></script>

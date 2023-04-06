@@ -18,6 +18,6 @@ class NavOpeningHeader extends Component
 
     public function render(): Renderable
     {
-        return view('metaframework::components.nav-opening-header');
+        return view('mfw::components.nav-opening-header');
     }
 }

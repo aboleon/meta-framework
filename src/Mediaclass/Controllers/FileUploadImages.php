@@ -111,7 +111,7 @@ class FileUploadImages
         $this->response['filetype'] = 'file';
         $this->response['filename'] = $this->filename . '.' . $this->uploadedFile->guessExtension();
         $this->response['link'] = Storage::disk('media')->url($this->response['filename'] . '?' . time());;
-        $this->response['fileicon'] = asset('vendor/metaframework/mediaclass/images/files/' . $this->uploadedFile->guessExtension() . '.png');
+        $this->response['fileicon'] = asset('vendor/mfw/mediaclass/images/files/' . $this->uploadedFile->guessExtension() . '.png');
         $this->response['preview'] = $this->response['fileicon'];
 
         try {
@@ -131,7 +131,7 @@ class FileUploadImages
         $this->response['filename'] = $this->filename . '.svg';
         $file = $this->folder_name . '/' . $this->response['filename'];
         $img = Storage::disk('media')->url($file . '?' . time());
-        $this->response['fileicon'] = asset('vendor/metaframework/mediaclass/images/files/svg.png');
+        $this->response['fileicon'] = asset('vendor/mfw/mediaclass/images/files/svg.png');
 
         try {
             $this->media = $this->store();
@@ -157,7 +157,7 @@ class FileUploadImages
         $this->urls = [];
 
         $this->mime_type = (str_replace('image/', '', $this->image->mime()) == 'png' ? 'png' : 'jpg');
-        $this->response['fileicon'] = asset('vendor/metaframework/mediaclass/images/files/jpg.png');
+        $this->response['fileicon'] = asset('vendor/mfw/mediaclass/images/files/jpg.png');
         $ratio = ($this->image->width() / $this->image->height()) > 1 ? 'h' : 'v';
         $this->response['ratio'] = $ratio;
 

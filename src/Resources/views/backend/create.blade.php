@@ -6,13 +6,13 @@
     </x-slot>
 
     @push('css')
-        {!! csscrush_tag(public_path('vendor/metaframework/css/meta/editable.css')) !!}
+        {!! csscrush_tag(public_path('vendor/mfw/css/meta/editable.css')) !!}
     @endpush
 
-    <form method="post" action="{{ route('metaframework.meta.store') }}">
+    <form method="post" action="{{ route('mfw.meta.store') }}">
         @csrf
         <input type="hidden" name="meta_type" value="{{ $data->type }}">
-        <x-metaframework::meta-card :meta="$data"/>
-        <x-metaframework::btn-save/>
+        <x-mfw::meta-card :meta="$data"/>
+        <x-mfw::btn-save/>
     </form>
 </x-backend-layout>

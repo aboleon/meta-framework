@@ -12,21 +12,21 @@
             <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink_actions">
                 <li>
                     <a class="dropdown-item"
-                       href="{!! route('metaframework.nav.create', ['parent' => $item->id]) !!}">
+                       href="{!! route('mfw.nav.create', ['parent' => $item->id]) !!}">
                         <i class="text-dark fas fa-plus"></i>Sous-menu</a>
                 </li>
                 <li>
                     <a class="dropdown-item"
-                       href="{!! route('metaframework.nav.edit', $item->id) !!}">
+                       href="{!! route('mfw.nav.edit', $item->id) !!}">
                         <i class="text-dark fas fa-pen"></i>Éditer</a>
                 </li>
-                <x-metaframework::modal-actions
+                <x-mfw::modal-actions
                     reference="destroy_{{ $item->id }}"
                     icon='<i class="text-danger fas fa-trash"></i>' title="Supprimer"/>
             </ul>
         </div>
 
-        <x-metaframework::modal :route="route('metaframework.nav.destroy', $item->id)"
+        <x-mfw::modal :route="route('mfw.nav.destroy', $item->id)"
                  :question="__('ui.should_i_delete_record')"
                  reference="destroy_{{ $item->id }}"/>
     </td>
