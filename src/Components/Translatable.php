@@ -14,6 +14,6 @@ class Translatable extends Component
 
     public function render(): Renderable
     {
-        return view('metaframework::components.translatable');
+        return view('mfw::components.translatable');
     }
 }

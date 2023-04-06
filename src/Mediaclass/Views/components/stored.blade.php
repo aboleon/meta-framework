@@ -3,7 +3,7 @@
         @php
             $is_image = $isImage($media);
             $cropable = new \MetaFramework\Mediaclass\Accessors\Cropable($media);
-            $preview = $isImage($media) ? $media->url($cropable->isCropped ? 'cropped': 'sm') : asset('vendor/metaframework/mediaclass/images/files/' . $media->extension().'.png');
+            $preview = $isImage($media) ? $media->url($cropable->isCropped ? 'cropped': 'sm') : asset('vendor/mfw/mediaclass/images/files/' . $media->extension().'.png');
         @endphp
         <div class="mediaclass unlinkable uploaded-image my-2" data-id="{{ $media->id }}" id="mediaclass-{{$media->id}}">
             <span class="unlink"><i class="bi bi-x-circle-fill"></i></span>

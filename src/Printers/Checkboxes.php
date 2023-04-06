@@ -43,7 +43,7 @@ class Checkboxes
     private function entry(string &$html, $item, $parent = null): void
     {
         $html .= '<li>';
-        $html .= View::make('metaframework::components.checkbox', [
+        $html .= View::make('mfw::components.checkbox', [
             'value' => $item->id,
             'name' => $this->name,
             'affected' => $this->affected,

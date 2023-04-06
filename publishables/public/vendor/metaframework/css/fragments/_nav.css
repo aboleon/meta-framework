@@ -125,16 +125,6 @@ ul.nav.navbar-nav {
                 }
             }
 
-            /* &:after {
-                 margin-top: 4px;
-                 content:'';
-                 display: block;
-                 width: 20px;
-                 height: 2px;
-                 background: white;
-             }
-             */
-
             i.fa-chevron-down {
                 position: absolute;
                 top: 50%;
@@ -269,6 +259,27 @@ ul.nav.navbar-nav {
             ul {
                 &:before {
                     background-color: var(--ab-blue-grey);
+                }
+            }
+        }
+
+        &.sh-red {
+            i {
+                background: #bd2b56;
+            }
+            &:hover, > a:hover, li:hover, &.active {
+                background: #bd2b56;
+                span {
+                    color:white;
+                }
+                color: white !important;
+                i {
+                    color: white;
+                }
+            }
+            ul {
+                &:before {
+                    background-color: #bd2b56;
                 }
             }
         }

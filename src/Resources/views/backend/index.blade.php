@@ -3,12 +3,12 @@
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('meta.'.$type.'.label') }} &raquo;
             <a class="btn btn-sm btn-nav-blue"
-               href="{{ route('metaframework.meta.create', ['type'=>$type]) }}">Créer</a>
+               href="{{ route('mfw.meta.create', ['type'=>$type]) }}">Créer</a>
         </h2>
     </x-slot>
 
 
-    <x-metaframework::response-messages/>
+    <x-mfw::response-messages/>
 
     <div class="bg-white shadow-xl sm:rounded-lg px-4 py-2 mb-4" style="margin: 0 -12px">
 
@@ -41,16 +41,16 @@
                             </li>
                             <li>
                                 <a class="dropdown-item"
-                                   href="{{ route('metaframework.meta.show', ['type'=>$type, 'id'=>$item->id]) }}"><i
+                                   href="{{ route('mfw.meta.show', ['type'=>$type, 'id'=>$item->id]) }}"><i
                                         class="fas fa-pen"></i> Éditer</a>
                             </li>
 
-                            <x-metaframework::modal-actions
+                            <x-mfw::modal-actions
                                 reference="destroy_{{ $item->id }}"
                                 icon='<i class="fas fa-trash"></i>' title="Supprimer"/>
                         </ul>
                     </div>
-                    <x-metaframework::modal :route="route('metaframework.meta.destroy', $item->id)"
+                    <x-mfw::modal :route="route('mfw.meta.destroy', $item->id)"
                              question="Supprimer {{ $item->title }} ?"
                              reference="destroy_{{ $item->id }}"/>
                 </td>
@@ -64,7 +64,7 @@
         @endforelse
         </tbody>
     </table>
-    <x-metaframework::pagination :object="$data"/>
+    <x-mfw::pagination :object="$data"/>
 
     </div>
 </x-backend-layout>

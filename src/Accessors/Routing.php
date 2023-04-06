@@ -7,7 +7,7 @@ class Routing
 
     public static function backend(): string
     {
-        return config('metaframework.urls.backend', 'metaframework');
+        return config('mfw.urls.backend', 'mfw');
     }
 
 }

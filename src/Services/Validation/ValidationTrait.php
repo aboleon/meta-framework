@@ -47,7 +47,7 @@ trait ValidationTrait
             ? (array)$request->validated($key)
             : [];
         if (!$this->validated_data[$key]) {
-            $this->responseWarning(__('metaframework.errors.composing_data'));
+            $this->responseWarning(__('mfw.errors.composing_data'));
         }
 
         return !$this->hasErrors();

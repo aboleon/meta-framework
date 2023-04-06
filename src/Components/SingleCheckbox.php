@@ -23,6 +23,6 @@ class SingleCheckbox extends Component
 
     public function render(): Renderable
     {
-        return view('metaframework::components.single-checkbox');
+        return view('mfw::components.single-checkbox');
     }
 }

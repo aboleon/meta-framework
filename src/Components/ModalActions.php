@@ -18,6 +18,6 @@ class ModalActions extends Component
 
     public function render(): Renderable
     {
-        return view('metaframework::components.modal-actions');
+        return view('mfw::components.modal-actions');
     }
 }

@@ -48,8 +48,8 @@ class Nav extends Model
         parent::__construct($attributes);
         $this->translatable = array_keys($this->fillables);
 
-        $this->selectables = config('metaframework-nav.selectables');
-        $this->custom_selectables = config('metaframework-nav.custom_selectables');
+        $this->selectables = config('mfw-nav.selectables');
+        $this->custom_selectables = config('mfw-nav.custom_selectables');
 
     }
 
@@ -128,7 +128,7 @@ class Nav extends Model
         $this->clearCache();
 
         $this->responseSuccess(__('ui.record_created'));
-        $this->redirectRoute('metaframework.nav.index');
+        $this->redirectRoute('mfw.nav.index');
 
         return $this;
     }

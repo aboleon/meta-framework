@@ -22,6 +22,6 @@ class Input extends Component
 
     public function render(): Renderable
     {
-        return view('metaframework::components.input');
+        return view('mfw::components.input');
     }
 }

@@ -7,7 +7,6 @@ return [
     'continue' => 'Continuer',
     'redo' => 'Refaire',
     'infos' => 'Informations',
-    'action' => 'Actions',
     'administrators' => 'Administrateurs',
     'contacts' => 'Contacts',
     'groups' => 'Groupes',
@@ -15,9 +14,11 @@ return [
     'active' => 'Actifs',
     'archived' => 'Archivés',
     'actions' => [
-        'admin_only' => "Cette action est réservée aux administrateurs"
+        'admin_only' => "Cette action est réservée aux administrateurs",
+        'btn' => 'Actions'
     ],
     'select_option' => "Sélectionner",
+    'create' => "Créer",
     'creation' => 'Création',
     'last_actity' => 'Dernière activité',
     'email_address' => 'Adresse e-mail',
@@ -86,7 +87,7 @@ return [
     'nav' => [
         'dashboard' => 'Tableau de bord',
     ],
-    'save_quit' => 'Enregister et quitter',
+    'save_quit' => 'Enregister & Sortir',
     'save_quit_confirm' => 'Voulez-vous enregistrer et quitter ?',
     'two_factor' => [
         'regenerate' => 'Regénerer les codes de secours',

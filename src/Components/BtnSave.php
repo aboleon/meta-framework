@@ -20,6 +20,6 @@ class BtnSave extends Component
 
     public function render(): Renderable
     {
-        return view('metaframework::components.btn-save');
+        return view('mfw::components.btn-save');
     }
 }

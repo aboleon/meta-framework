@@ -27,6 +27,6 @@ class BtnGroup extends Component
      */
     public function render(): Renderable
     {
-        return view('metaframework::components.btn-group');
+        return view('mfw::components.btn-group');
     }
 }

@@ -13,6 +13,6 @@ class ValidationError extends Component
     }
     public function render(): Renderable
     {
-        return view('metaframework::components.validation-error');
+        return view('mfw::components.validation-error');
     }
 }

@@ -8,9 +8,9 @@
     @push('css')
         {!! csscrush_tag(public_path('css/show.css')) !!}
     @endpush
-    <x-metaframework::validation-errors/>
-    <x-metaframework::response-messages/>
-    <form method="post" action="{{ route('metaframework.settings.update') }}">
+    <x-mfw::validation-errors/>
+    <x-mfw::response-messages/>
+    <form method="post" action="{{ route('mfw.settings.update') }}">
         @csrf
         <div class="row editable">
             @foreach($config_settings as $config_setting)
@@ -19,15 +19,15 @@
                         <h2>{{ $config_setting['title'] }}</h2>
                         @foreach($config_setting['elements'] as $input)
                             @if($input['type'] == 'textarea')
-                                <x-metaframework::textarea :name="$input['name']"
+                                <x-mfw::textarea :name="$input['name']"
                                                            class="{{$input['class'] ?? ''}}"
                                                            :label="$input['title'] ?? ''"
                                                            :value="old($input['name']) ?: MetaFramework\Models\Setting::get($input['name']) ?: ''"/>
                                 @once
-                                    @include('metaframework::lib.tinymce')
+                                    @include('mfw::lib.tinymce')
                                 @endonce
                             @else
-                                <x-metaframework::input name="{{$input['name']}}"
+                                <x-mfw::input name="{{$input['name']}}"
                                                         type="{{ $input['type'] }}"
                                                         label="{!! $input['title'] ?? '' !!}"
                                                         className="{{ $input['class'] ?? '' }}"
@@ -38,6 +38,6 @@
                 </div>
             @endforeach
         </div>
-        <x-metaframework::btn-save/>
+        <x-mfw::btn-save/>
     </form>
 </x-backend-layout>

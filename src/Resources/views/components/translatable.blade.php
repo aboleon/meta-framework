@@ -1,4 +1,4 @@
-@foreach(config('metaframework.translatable.locales') as $locale)
+@foreach(config('mfw.translatable.locales') as $locale)
     <div class="tab-pane fade {!! $locale == app()->getLocale() ? 'show active': null !!}"
          id="tab_content_{{ $locale }}" role="tabpanel"
          aria-labelledby="tab_link_content_{{ $locale }}">
@@ -8,7 +8,7 @@
                     @case('textarea')
                     @case('textarea_extended')
                     <div class="col-12">
-                        <x-metaframework::textarea name="{{$key}}[{{$locale}}]"
+                        <x-mfw::textarea name="{{$key}}[{{$locale}}]"
                                               :className="$value['type'] .' '.($value['class']??'') "
                                               value="{!! $model->translation($key, $locale) !!}"
                                               label="{{$value['label']}}"/>
@@ -17,7 +17,7 @@
                     @default
 
                     <div class="{{ $value['class'] ?? 'col-12' }}">
-                        <x-metaframework::input name="{{$key}}[{{$locale}}]"
+                        <x-mfw::input name="{{$key}}[{{$locale}}]"
                                            value="{{ $model->translation($key, $locale) }}"
                                            label="{{$value['label']}}"/>
                     </div>

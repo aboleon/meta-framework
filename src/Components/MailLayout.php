@@ -9,6 +9,6 @@ class MailLayout extends Component
 {
     public function render(): Renderable
     {
-        return view('metaframework::layouts.mail');
+        return view('mfw::layouts.mail');
     }
 }

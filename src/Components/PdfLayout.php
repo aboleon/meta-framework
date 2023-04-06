@@ -9,6 +9,6 @@ class PdfLayout extends Component
 {
     public function render(): Renderable
     {
-        return view('metaframework::layouts.pdf');
+        return view('mfw::layouts.pdf');
     }
 }

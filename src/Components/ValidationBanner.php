@@ -23,6 +23,6 @@ class ValidationBanner extends Component
      */
     public function render()
     {
-        return view('metaframework::components.validation-banner');
+        return view('mfw::components.validation-banner');
     }
 }

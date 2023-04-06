@@ -32,8 +32,8 @@ class MetaController extends Controller
     public function index($type): Renderable
     {
         return view()->first([
-            $this->backend_url . '.metaframework.' . $type . '.index',
-            'metaframework::backend.index'
+            $this->backend_url . '.mfw.' . $type . '.index',
+            'mfw::backend.index'
         ])->with([
             'data' => Meta::where('type', $type)->orderBy('id', 'desc')->paginate(),
             'type' => $type,
@@ -53,10 +53,10 @@ class MetaController extends Controller
 
             $this->validation();
 
-            return redirect()->route('metaframework.meta.create', ['type' => request('type')]);
+            return redirect()->route('mfw.meta.create', ['type' => request('type')]);
         }
 
-        return view('metaframework::backend.create_admin');
+        return view('mfw::backend.create_admin');
     }
 
     public function create($type): Renderable
@@ -69,7 +69,7 @@ class MetaController extends Controller
         if (method_exists($this, 'dataView_' . $type)) {
             $this->{'dataView_' . $type}();
         }
-        return view()->first([$this->backend_url . '.metaframework.' . $type . '.create', 'metaframework::backend.create'])->with($this->data);
+        return view()->first([$this->backend_url . '.mfw.' . $type . '.create', 'mfw::backend.create'])->with($this->data);
     }
 
     public function show($type, int $id = null): Renderable
@@ -95,8 +95,8 @@ class MetaController extends Controller
         }
 
         $views = [];
-        $views[] = $this->backend_url . '.metaframework.' . $type . '.edit';
-        $views[] = 'metaframework::backend.edit';
+        $views[] = $this->backend_url . '.mfw.' . $type . '.edit';
+        $views[] = 'mfw::backend.edit';
 
         return view()->first($views)->with($this->data);
     }
@@ -104,8 +104,8 @@ class MetaController extends Controller
     public function edit(Meta $metum): Renderable
     {
         return view()->first([
-            $this->backend_url . '.metaframework.' . $metum->type . '.create',
-            'metaframework::backend.create'
+            $this->backend_url . '.mfw.' . $metum->type . '.create',
+            'mfw::backend.create'
         ])->with('data', $metum);
     }
 
@@ -124,7 +124,7 @@ class MetaController extends Controller
 
         (new MetaSubModel($meta))->process();
 
-        $this->redirect_to = route('metaframework.meta.show', ['type' => $meta->type, 'id' => $meta->id]);
+        $this->redirect_to = route('mfw.meta.show', ['type' => $meta->type, 'id' => $meta->id]);
 
         Artisan::call('cache:clear');
 
@@ -179,12 +179,12 @@ class MetaController extends Controller
         if (request()->filled('meta.forms')) {
             if (is_null($this->object->form)) {
                 $this->object->form()->save(new Forms([
-                    'name' => request('metaframework.forms')
+                    'name' => request('mfw.forms')
                 ]));
             } else {
-                if ($this->object->form->name != request('metaframework.forms')) {
+                if ($this->object->form->name != request('mfw.forms')) {
                     $this->object->form()->update([
-                        'name' => request('metaframework.forms')
+                        'name' => request('mfw.forms')
                     ]);
                 }
             }

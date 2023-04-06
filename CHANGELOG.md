@@ -21,3 +21,4 @@
 - 0.19 Meta Cms, Json Content
 - 0.20 Mediaclass Temp uploads
 - 0.21 Meta Cms Tuning
+- 0.22 Meta Cms : Vat, metaframework => mfw

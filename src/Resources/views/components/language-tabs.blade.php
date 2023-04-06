@@ -1,6 +1,6 @@
 @if(\MetaFramework\Accessors\Locale::multilang())
     <ul id="{{ $id }}_tabs" class="nav nav-tabs admintabs" role="tablist">
-        @foreach(config('metaframework.translatable.locales') as $locale)
+        @foreach(config('mfw.translatable.locales') as $locale)
             <li class="nav-item " role="presentation">
                 <button class="nav-link {!! $locale == app()->getLocale() ? 'active': null !!}"
                         id="{{ $id }}_linkbtn_{{ $locale }}"

@@ -21,6 +21,6 @@ class EditLink extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('metaframework::components.edit-link');
+        return view('mfw::components.edit-link');
     }
 }

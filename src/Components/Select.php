@@ -21,11 +21,11 @@ class Select extends Component
         public bool $group = false,
     )
     {
-        $this->defaultselecttext = $this->defaultselecttext ?: '---  '. __('metaframework.select_option') .' ---';
+        $this->defaultselecttext = $this->defaultselecttext ?: '---  '. __('mfw.select_option') .' ---';
     }
 
     public function render(): Renderable
     {
-        return view('metaframework::components.select');
+        return view('mfw::components.select');
     }
 }

@@ -7,16 +7,18 @@ use MetaFramework\Controllers\{
     MetaController,
     NavController,
     SettingsController,
-    SiteOwnerController};
+    SiteOwnerController,
+    VatController};
 
 Route::prefix(Routing::backend())
-    ->name('metaframework.')
+    ->name('mfw.')
     ->middleware(['web', 'auth:sanctum'])->group(function () {
         // Ajax requests
         Route::post('ajax', [AjaxController::class, 'distribute'])->name('ajax');
 
         Route::resource('siteowner', SiteOwnerController::class);
         Route::resource('nav', NavController::class);
+        Route::resource('vat', VatController::class);
 
         Route::prefix('meta')->name('meta.')->group(function () {
             Route::any('admin/create', [MetaController::class, 'createAdmin'])->name('create_admin');

@@ -18,6 +18,6 @@ class Radio extends Component
 
     public function render(): Renderable
     {
-        return view('metaframework::components.radio');
+        return view('mfw::components.radio');
     }
 }

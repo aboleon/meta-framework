@@ -18,6 +18,6 @@ class Tab extends Component
 
     public function render(): Renderable
     {
-        return view('metaframework::components.tab');
+        return view('mfw::components.tab');
     }
 }

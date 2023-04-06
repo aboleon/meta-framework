@@ -18,6 +18,6 @@ class MetaUrl extends Component
 
     public function render(): Renderable
     {
-        return view('metaframework::components.meta-url');
+        return view('mfw::components.meta-url');
     }
 }

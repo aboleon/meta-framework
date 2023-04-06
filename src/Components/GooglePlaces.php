@@ -34,7 +34,7 @@ class GooglePlaces extends Component
 
     public function render(): Renderable
     {
-        return view('metaframework::components.google-places');
+        return view('mfw::components.google-places');
     }
 
     public function tagRequired(string $key): string
