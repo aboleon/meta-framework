@@ -12,5 +12,5 @@ php artisan vendor:publish --tag=metaframework
 #### Components
     
 ```blade
-<x-metaframework::input name="phone" :value="$data->phone" />
+<x-mfw::input name="phone" :value="$data->phone" />
 ```
