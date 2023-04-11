@@ -5,7 +5,7 @@ namespace MetaFramework\Components;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\View\Component;
 
-class TranslatableFillablesTabs extends Component
+class TranslatableTabs extends Component
 {
     public function __construct(
         public object $model,
@@ -19,6 +19,6 @@ class TranslatableFillablesTabs extends Component
 
     public function render(): Renderable
     {
-        return view('mfw::components.translatable-fillables-tabs');
+        return view('mfw::components.translatable-tabs');
     }
 }
