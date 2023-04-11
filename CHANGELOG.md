@@ -22,3 +22,4 @@
 - 0.20 Mediaclass Temp uploads
 - 0.21 Meta Cms Tuning
 - 0.22 Meta Cms : Vat, metaframework => mfw
+- 0.23 Mediaclass Accessor

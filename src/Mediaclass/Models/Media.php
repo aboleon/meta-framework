@@ -14,7 +14,7 @@ use Symfony\Component\Mime\MimeTypes;
  * @property string $position
  * @property array $description
  */
-class Mediaclass extends Model
+class Media extends Model
 {
     use Accessors;
 

@@ -1,6 +1,6 @@
-<link href="{!! asset('Mediaclass/jcrop/jquery.Jcrop.css') !!}" rel="stylesheet">
-<script src="{!! asset('Mediaclass/jcrop/jquery.Jcrop.js') !!}"></script>
-<script src="{!! asset('Mediaclass/jcrop/jcrop.js') !!}"></script>
+<link href="{!! asset('Media/jcrop/jquery.Jcrop.css') !!}" rel="stylesheet">
+<script src="{!! asset('Media/jcrop/jquery.Jcrop.js') !!}"></script>
+<script src="{!! asset('Media/jcrop/jcrop.js') !!}"></script>
 <script>
     function cropped(result) {
         if (!result.hasOwnProperty('error')) {

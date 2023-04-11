@@ -25,10 +25,12 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
         $this->app->singleton('nav', fn($app) => new Nav());
         $this->app->singleton('meta', fn($app) => new Meta());
         $this->app->singleton('mediaclass', fn($app) => new Mediaclass());
+        $this->app->singleton('mediaclass', fn($app) => new Mediaclass());
 
 
         $this->app->bind('MetaFramework\Facades\NavFacade', fn($app) => new NavFacade());
         $this->app->bind('MetaFramework\Facades\MetaFacade', fn($app) => new MetaFacade());
+        $this->app->bind('MetaFramework\Mediaclass\Facades\MediaclassFacade', fn($app) => new MediaclassFacade());
         $this->app->bind('MetaFramework\Mediaclass\Facades\MediaclassFacade', fn($app) => new MediaclassFacade());
 
     }

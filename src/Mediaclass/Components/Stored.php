@@ -5,7 +5,7 @@ namespace MetaFramework\Mediaclass\Components;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\View\Component;
-use MetaFramework\Mediaclass\Models\Mediaclass;
+use MetaFramework\Mediaclass\Models\Media;
 
 class Stored extends Component
 {
@@ -23,12 +23,12 @@ class Stored extends Component
         $this->description = $this->description ? 1 : 0;
     }
 
-    public function isFile(Mediaclass $media): bool
+    public function isFile(Media $media): bool
     {
         return !str_contains($media->mime, 'image');
     }
 
-    public function isImage(Mediaclass $media): bool
+    public function isImage(Media $media): bool
     {
         return str_contains($media->mime, 'image');
     }
