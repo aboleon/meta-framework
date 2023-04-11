@@ -3,7 +3,7 @@
         @foreach(config('mfw.translatable.locales') as $locale)
             <li class="nav-item " role="presentation">
                 <button class="nav-link {!! $locale == app()->getLocale() ? 'active': null !!}"
-                        id="{{ $id }}_linkbtn_{{ $locale }}"
+                        id="{{ $id }}_btn_{{ $locale }}"
                         data-bs-toggle="tab"
                         data-bs-target="#{{ $id }}_{{ $locale }}"
                         type="button" role="tab"
