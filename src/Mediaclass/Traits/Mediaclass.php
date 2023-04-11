@@ -9,6 +9,7 @@ use Illuminate\Support\LazyCollection;
 use Illuminate\Support\Str;
 use MetaFramework\Accessors\Locale;
 use MetaFramework\Mediaclass\Accessors\Path;
+use MetaFramework\Mediaclass\Models\Media;
 use MetaFramework\Traits\Responses;
 use ReflectionClass;
 use Throwable;
@@ -27,7 +28,7 @@ trait Mediaclass
      */
     public function media(): MorphMany
     {
-        return $this->morphMany(\MetaFramework\Mediaclass\Models\Mediaclass::class, 'model');
+        return $this->morphMany(Media::class, 'model');
     }
 
     public function model(): static
@@ -46,7 +47,7 @@ trait Mediaclass
     {
         if (request()->has('mediaclass')) {
             foreach (request('mediaclass') as $key => $value) {
-                \MetaFramework\Mediaclass\Models\Mediaclass::where('id', $key)->update([
+                Media::where('id', $key)->update([
                     'description' => $value['description'],
                     'position' => $value['position']
                 ]);
@@ -55,13 +56,13 @@ trait Mediaclass
 
         if (request()->has('mediaclass_temp_id')) {
 
-            $recorded = \MetaFramework\Mediaclass\Models\Mediaclass::where('temp', request('mediaclass_temp_id'))->get();
+            $recorded = Media::where('temp', request('mediaclass_temp_id'))->get();
 
             if ($recorded->isEmpty()) {
                 return $this;
             }
 
-            \MetaFramework\Mediaclass\Models\Mediaclass::where('temp', request('mediaclass_temp_id'))->update([
+            Media::where('temp', request('mediaclass_temp_id'))->update([
                 'model_id' => $this->model()->id,
                 'temp' => null
             ]);

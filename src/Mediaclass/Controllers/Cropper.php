@@ -3,7 +3,7 @@
 namespace MetaFramework\Mediaclass\Controllers;
 
 use MetaFramework\Mediaclass\Accessors\Cropable;
-use MetaFramework\Mediaclass\Models\Mediaclass;
+use MetaFramework\Mediaclass\Models\Media;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
 use MetaFramework\Traits\Responses;
@@ -18,7 +18,7 @@ class Cropper
         $cropper = new Cropper;
 
         try {
-            $media = Mediaclass::query()->findOrFail(request('object_id'));
+            $media = Media::query()->findOrFail(request('object_id'));
             $file = $media->file('xl');
             $image = Image::make($file);
 

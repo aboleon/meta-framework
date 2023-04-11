@@ -5,7 +5,7 @@ namespace MetaFramework\Mediaclass\Controllers;
 use MetaFramework\Mediaclass\Accessors\Cropable;
 use MetaFramework\Mediaclass\Accessors\Path;
 use MetaFramework\Mediaclass\Interfaces\MediaclassInterface;
-use MetaFramework\Mediaclass\Models\Mediaclass;
+use MetaFramework\Mediaclass\Models\Media;
 use Exception;
 use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Support\Facades\File;
@@ -30,7 +30,7 @@ class FileUploadImages
     protected object $uploadedFile;
 
 
-    private Mediaclass $media;
+    private Media $media;
     private ?string $temp;
     private ?int $model_id;
     private string $folder_name = '';
@@ -65,7 +65,7 @@ class FileUploadImages
     public function delete(): static
     {
         try {
-            $this->media = Mediaclass::query()->find(request('id'));
+            $this->media = Media::query()->find(request('id'));
             File::delete(File::glob(Storage::disk('media')->path($this->folder_name . DIRECTORY_SEPARATOR . '*' . $this->media->filename . '*')));
             $this->media->delete();
         } catch (Throwable $e) {
@@ -200,7 +200,7 @@ class FileUploadImages
     /**
      * @throws \Exception
      */
-    private function store(): Mediaclass
+    private function store(): Media
     {
         if (in_array($this->model->type, config('app.cacheables'))) {
             cache()->forget($this->model->type);
@@ -209,10 +209,10 @@ class FileUploadImages
         $morphable = Relation::morphMap() ? array_key_first(array_filter(Relation::morphMap(), fn($item) => $item == get_class($this->model))) : get_class($this->model);
         if (!$morphable) {
             File::delete(File::glob(Storage::disk('media')->path((string)$this->model->accessKey()) . DIRECTORY_SEPARATOR . '*' . $this->filename . '*'));
-            throw new Exception("Invalid Mediaclass morphable");
+            throw new Exception("Invalid Media morphable");
         }
 
-        return Mediaclass::query()->create([
+        return Media::query()->create([
             'model_type' => $morphable,
             'model_id' => $this->model_id,
             'group' => request('group') ?: 'media',

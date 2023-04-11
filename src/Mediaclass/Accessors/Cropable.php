@@ -3,8 +3,7 @@
 namespace MetaFramework\Mediaclass\Accessors;
 
 
-use MetaFramework\Accessors\Routing;
-use MetaFramework\Mediaclass\Models\Mediaclass as MediaclassModel;
+use MetaFramework\Mediaclass\Models\Media;
 use MetaFramework\Mediaclass\Traits\Accessors;
 
 class Cropable
@@ -14,13 +13,13 @@ class Cropable
     private array|bool $settings;
     public bool $isCropped;
 
-    public function __construct(public MediaclassModel $media)
+    public function __construct(public Media $media)
     {
         $this->settings();
         $this->checkIfCropped();
     }
 
-    public static function form(MediaclassModel $media)
+    public static function form(Media $media)
     {
         return view('mediaclass::cropper')->with([
             'media' => $media,

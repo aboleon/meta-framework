@@ -170,7 +170,7 @@ class Meta extends Model implements MediaclassInterface
      * Retourne l'image d'illustration de base du Meta model,
      * si elle existe
      */
-    public function illustration(): ?\MetaFramework\Mediaclass\Models\Mediaclass
+    public function illustration(): ?\MetaFramework\Mediaclass\Models\Media
     {
         return $this->media->where('group', 'meta')->first();
     }
