@@ -63,7 +63,6 @@ class Mediaclass
 
     public function __construct()
     {
-        $this->media = [];
         $this->mediaCollection = null;
         $this->default_img = self::defaultImgUrl();
 
@@ -234,8 +233,18 @@ class Mediaclass
      */
     public function forModel(MediaclassInterface $object)
     {
+        $this->media = [];
         $this->on($object)->fetch()->parse();
         return $this;
+    }
+
+    /**
+     * Récupère le premier média pour un Model
+     * @return array
+     */
+    public function first(): array
+    {
+        return $this->media[0] ?? [];
     }
 
     /**
@@ -273,9 +282,9 @@ class Mediaclass
      */
     public function url(string $prefix = 'cropped', ?string $default_img = null): string
     {
-        $media = current($this->media);
+        $media = $this->media[0] ?? [];
 
-        if (empty($media)) {
+        if (!$media) {
             return $default_img ?? ($this->with_default ? $this->defaultImgUrl() : '');
         }
 
