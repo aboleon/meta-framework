@@ -1,5 +1,6 @@
 ### Changelog
 
+- 0.28 Mediaclass Accessor
 - 0.27 Components, CSS
 - 0.26 Mediaclass
 - 0.25 General update (various)

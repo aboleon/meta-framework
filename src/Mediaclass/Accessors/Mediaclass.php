@@ -60,7 +60,6 @@ class Mediaclass
 
     public function __construct()
     {
-        $this->group = $this->defaultGroup();
         $this->mediaCollection = null;
         $this->default_img = self::defaultImgUrl();
 
@@ -119,7 +118,7 @@ class Mediaclass
      * @param string $size The size of the image. Default is 'sm'.
      * @return static The current instance of the class for method chaining.
      */
-    public function size(string $size = 'sm'): static
+    public function setSize(string $size = 'sm'): static
     {
         $this->size = $size;
         return $this;
@@ -172,6 +171,8 @@ class Mediaclass
         $this->mediaCollection = $this->selected_group
             ? $this->object->media->where('group', $this->selected_group)
             : $this->object->media;
+
+        $this->unsetSelectedGroup();
 
         return $this;
     }
@@ -316,8 +317,10 @@ class Mediaclass
      *
      * @return string The rendered image HTML tags.
      */
-    public function render(): string
+    public function render(string $size = 'sm'): string
     {
+        $this->setSize($size);
+
         if (!$this->media) {
             if ($this->with_default) {
                 $this->media[] = [
@@ -328,7 +331,7 @@ class Mediaclass
 
         if ($this->single) {
             $media = $this->first();
-            $url = $media['urls'][$this->size] ?? ($media['url'] ?? false);
+            $url = $this->setRenderUrl($media);
             if ($url) {
                 $html = '<img src="' . $url . '" ';
                 foreach ($this->params as $key => $value) {
@@ -344,14 +347,37 @@ class Mediaclass
         $html = '';
         foreach ($this->media as $media) {
 
-            $html .= '<img src="' . $media['url'] . '" ';
+            $url = $this->setRenderUrl($media);
+
+            if (!$url) {
+                continue;
+            }
+
+            $html .= '<img src="' . $url . '" ';
             foreach ($this->params as $key => $value) {
                 $html .= $key . '="' . $value . '" ';
             }
             $html .= '/>';
         }
 
+        $this->unsetSize();
+
         return $html;
+    }
+
+    private function setRenderUrl(array $media): string|bool
+    {
+        return $media['urls'][$this->size] ?? ($media['url'] ?? ($this->with_default === true ? static::defaultImgUrl() : false));
+    }
+
+    private function unsetSize(): void
+    {
+        $this->size = 'sm';
+    }
+
+    private function unsetSelectedGroup(): void
+    {
+        $this->selected_group = null;
     }
 
 }
