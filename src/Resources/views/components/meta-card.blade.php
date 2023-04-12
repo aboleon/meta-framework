@@ -65,7 +65,7 @@
                     @foreach($model->model_configs as $key => $values)
                         @switch($values['type'])
                             @case('checkbox')
-                                <x-mfw::single-checkbox :value="$key" name="meta[configs][{{$key}}]" :label="$values['label']" :affected="$meta->configs[$key] ?? null"/>
+                                <x-mfw::checkbox :value="$key" name="meta[configs][{{$key}}]" :label="$values['label']" :affected="$meta->configs[$key] ?? null"/>
                                 @break
                         @endswitch
                     @endforeach

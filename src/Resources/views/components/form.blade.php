@@ -34,7 +34,7 @@
                             <x-mfw::btn-group :name="$field['name']" :label="$label" :values="$field['values']" :affected="old($field['name']) ?: $field['default']"/>
                             @break
                         @case('checkbox')
-                            <x-mfw::single-checkbox :name="$field['name']" :label="$label" value="1" :affected="null"/>
+                            <x-mfw::checkbox :name="$field['name']" :label="$label" value="1" :affected="null"/>
                             @break
                         @case('select')
                             <x-mfw::select :name="$field['name']" :label="$label" :values="$field['values']" :affected="null" />

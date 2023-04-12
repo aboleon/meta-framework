@@ -25,19 +25,23 @@ body {
     background-color: var(--ab-blue);
     border-color: var(--ab-blue);
 }
+
 .btn-nav-blue:hover {
     color: white;
     background-color: #4caf50;
 }
+
 table {
     caption {
         caption-side: top;
     }
 }
+
 /* Google Places*/
 .pac-container {
     z-index: 999999;
 }
+
 .pagination > .active > a,
 .pagination > .active > a:focus,
 .pagination > .active > a:hover,
@@ -129,8 +133,8 @@ legend, .legend {
     color: #424242;
 }
 
-.focus-out{
-    #search_result{
+.focus-out {
+    #search_result {
         display: none;
     }
 }
@@ -148,10 +152,11 @@ legend, .legend {
     padding: 10px 0;
     display: none;
 
-    &.bottom{
+    &.bottom {
         top: 66px;
         bottom: auto;
     }
+
     li {
         display: flex;
         align-items: center;
@@ -190,6 +195,7 @@ legend, .legend {
                     color: white;
                 }
             }
+
             &.no-effect:hover {
                 background: initial;
                 color: initial;
@@ -408,6 +414,7 @@ footer {
         }
     }
 }
+
 .invalid-feedback {
     color: white;
     background: var(--base-1);
@@ -419,29 +426,36 @@ ul.mfw-actions {
     padding: 0;
     display: flex;
     list-style: none;
+
     li {
         margin-right: 5px;
+
         &:last-of-type {
             margin-right: 0;
         }
+
         a {
             width: 30px;
             height: 30px;
             display: flex;
             align-items: center;
             justify-content: center;
+
             .fa, .fas {
                 font-size: 14px;
             }
         }
     }
 }
+
 #topbar-actions {
     margin-right: 10px;
-    a,.btn {
+
+    a, .btn {
         font-size: 14px;
-        padding:7px 10px !important;
+        padding: 7px 10px !important;
     }
+
     .separator {
         margin: 0 10px;
         padding-left: 10px;
@@ -449,17 +463,32 @@ ul.mfw-actions {
         display: inline-block;
         height: 100%;
     }
+
+    a > i {
+        margin-right: 4px;
+    }
+
+    .devcode {
+        margin: 0;
+    }
 }
+
 #user_avatar {
     img {
         height: 40px;
     }
 }
+
 #my-account {
     a {
         transition: 300ms all ease;
+
         &:hover {
             color: var(--base-1)
         }
     }
+}
+
+.mfw-line-separator {
+    border-bottom: 2px dashed #bdbdbd;
 }

@@ -17,10 +17,11 @@ class Checkbox extends Component
         public Collection $affected,
         public string|null $label = '',
         public string $class ='',
+        public bool $switch = false,
     ) {
         $this->affected = $this->affected ?? collect();
         $this->forLabel = str_replace(['[',']'],'', $this->name) . $this->value;
-        $this->isSelected = (bool)$this->affected->contains($this->value);
+        $this->isSelected = $this->affected->contains($this->value);
     }
 
     public function render(): Renderable

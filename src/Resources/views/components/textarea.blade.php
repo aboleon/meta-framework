@@ -3,7 +3,7 @@
 @endphp
 @if ($label)
     <label for="{{$id}}" class="form-label">
-        {{ $label }}
+        {{ $label  . ($required ? ' *' : '') }}
     </label>
 @endif
 <textarea name="{{ $name }}"
