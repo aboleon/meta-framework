@@ -2,6 +2,7 @@
 
 namespace MetaFramework\Mediaclass\Accessors;
 
+use Illuminate\Support\Arr;
 use MetaFramework\Mediaclass\Interfaces\MediaclassInterface;
 use MetaFramework\Mediaclass\Models\Media;
 use Illuminate\Support\Facades\Storage;
@@ -25,7 +26,7 @@ class Mediaclass
     public MediaclassInterface $object;
 
     /**
-     * User provided params for the IMG tag
+     * User provided attributes for the IMG tag
      */
     protected array $params = [];
 
@@ -132,13 +133,25 @@ class Mediaclass
     /**
      * Sets a custom parameter for the image instance to be returned in the img tag.
      * ex class => someClass
-     * @param string $key The parameter key.
-     * @param string $value The parameter value.
+     * @param array|string $key The parameter key.
+     * @param string|null $value The parameter value.
      * @return static The current instance of the class for method chaining.
      */
-    public function param(string $key, string $value): static
+    public function param(array|string $key, ?string $value = null, bool $reset = false): static
     {
-        $this->params[$key] = $value;
+        if ($reset) {
+            $this->params = [];
+        }
+
+        if (!is_array($key)) {
+            $this->params[$key] = $value;
+            return $this;
+        }
+
+        foreach ($key as $arrayKey => $arrayValue) {
+            $this->params[$arrayKey] = $arrayValue;
+        }
+
         return $this;
     }
 
@@ -252,7 +265,7 @@ class Mediaclass
      *
      * @return \Illuminate\Database\Eloquent\Collection A database collection
      */
-    public function mediaCollection(): EloquentCollection
+    public function get(): EloquentCollection
     {
         return $this->mediaCollection;
     }
@@ -282,7 +295,7 @@ class Mediaclass
      */
     public function url(string $prefix = 'cropped', ?string $default_img = null): string
     {
-        $media = $this->media[0] ?? [];
+        $media = $this->first();
 
         if (!$media) {
             return $default_img ?? ($this->with_default ? $this->defaultImgUrl() : '');
@@ -307,7 +320,8 @@ class Mediaclass
         }
 
         if ($this->single) {
-            $url = $this->media['urls'][$this->size] ?? ($this->media['url'] ?? false);
+            $media = $this->first();
+            $url = $media['urls'][$this->size] ?? ($media['url'] ?? false);
             if ($url) {
                 $html = '<img src="' . $url . '" ';
                 foreach ($this->params as $key => $value) {

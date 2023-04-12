@@ -3,9 +3,9 @@ Sub CMS Framework pour Laravel
 ### Installation
 
 ```bash
-composer require aboleon/metaframework`
+composer require aboleon/mfw`
 
-php artisan vendor:publish --tag=metaframework
+php artisan vendor:publish --tag=mfw
 ```
 ### Utilisation
 

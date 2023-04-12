@@ -24,3 +24,4 @@
 - 0.22 Meta Cms : Vat, metaframework => mfw
 - 0.23 Mediaclass Accessor
 - 0.24 TranslatableFillables & FillableParser components
+- 0.25 General update (various)

@@ -77,6 +77,6 @@
         </div>
     </div>
     @push('js')
-        <script src="{{ asset('vendor/mfwjs/published_status.js') }}"></script>
+        <script src="{{ asset('vendor/mfw/js/published_status.js') }}"></script>
     @endpush
 </x-backend-layout>
