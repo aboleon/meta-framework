@@ -3,6 +3,7 @@
 namespace MetaFramework\Mediaclass\Controllers;
 
 use MetaFramework\Mediaclass\Accessors\Cropable;
+use MetaFramework\Mediaclass\Accessors\Mediaclass;
 use MetaFramework\Mediaclass\Accessors\Path;
 use MetaFramework\Mediaclass\Interfaces\MediaclassInterface;
 use MetaFramework\Mediaclass\Models\Media;
@@ -62,12 +63,27 @@ class FileUploadImages
         return $this;
     }
 
+    /**
+     * Deletes a Mediaclass record and all its files
+     * Deletes the relative directory if it is empty
+     * @return $this
+     */
     public function delete(): static
     {
         try {
-            $this->media = Media::query()->find(request('id'));
-            File::delete(File::glob(Storage::disk('media')->path($this->folder_name . DIRECTORY_SEPARATOR . '*' . $this->media->filename . '*')));
-            $this->media->delete();
+            $media = Media::query()->find(request('id'));
+            $path = Path::mediaFolderName($media->model);
+            File::delete(
+                File::glob(
+                    Storage::disk('media')->path($path . DIRECTORY_SEPARATOR . '*' . $media->filename . '*')
+                )
+            );
+
+            if (count(Storage::disk('media')->files($path)) === 0) {
+                Storage::disk('media')->deleteDirectory($path);
+            }
+
+            $media->delete();
         } catch (Throwable $e) {
             $this->responseException($e);
             report($e);
@@ -215,7 +231,7 @@ class FileUploadImages
         return Media::query()->create([
             'model_type' => $morphable,
             'model_id' => $this->model_id,
-            'group' => request('group') ?: 'media',
+            'group' => request('group') ?: Mediaclass::defaultGroup(),
             'description' => request('description'),
             'position' => request('position') ?: 'left',
             'mime' => $this->uploadedFile->getMimeType(),

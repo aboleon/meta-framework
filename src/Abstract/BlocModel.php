@@ -17,6 +17,9 @@ abstract class BlocModel extends MetaModel
     {
         parent::__construct($attributes);
         $this->fillables = [
+            '_media' => [
+                'label' => 'Image'
+            ],
             'meta[title]' => [
                 'type' => 'input',
                 'label' => 'Titre '

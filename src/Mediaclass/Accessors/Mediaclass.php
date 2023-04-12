@@ -10,10 +10,6 @@ use Illuminate\Database\Eloquent\Collection as EloquentCollection;
 
 class Mediaclass
 {
-    /**
-     * Default group label in Mediaclass database
-     */
-    public string $group = 'media';
 
     /**
      * Selected group for querying Mediaclass database
@@ -64,9 +60,20 @@ class Mediaclass
 
     public function __construct()
     {
+        $this->group = $this->defaultGroup();
         $this->mediaCollection = null;
         $this->default_img = self::defaultImgUrl();
 
+    }
+
+    /**
+     * Returns the default group label
+     *
+     * @return string
+     */
+    public static function defaultGroup(): string
+    {
+        return 'media';
     }
 
     /**
