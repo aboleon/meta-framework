@@ -103,12 +103,10 @@ class Mediaclass
      * Sets the group for the image to be looked up in database.
      *
      * @param string $group The group name for the image.
-     * @return static The current instance of the class for method chaining.
      */
-    public function group(string $group): static
+    private function setGroup(string $group): void
     {
         $this->selected_group = $group;
-        return $this;
     }
 
     /**
@@ -252,8 +250,11 @@ class Mediaclass
      * @param \MetaFramework\Mediaclass\Interfaces\MediaclassInterface $object
      * @return $this
      */
-    public function forModel(MediaclassInterface $object)
+    public function forModel(MediaclassInterface $object, ?string $group=null)
     {
+        if ($group) {
+            $this->setGroup($group);
+        }
         $this->media = [];
         $this->on($object)->fetch()->parse();
         return $this;
