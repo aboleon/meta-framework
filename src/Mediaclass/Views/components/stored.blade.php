@@ -32,13 +32,16 @@
                             <b>Description
                                 <span class="lang">Français</span></b>
                             @foreach(\MetaFramework\Accessors\Locale::projectLocales() as $locale)
-                                <textarea name="mediaclass[{{ $media->id }}][description][{{ $locale }}]" type="text" class="mt-2 form-control description">{!! $media->description[$locale] !!}</textarea>
+                                <x-mfw::textarea name="mediaclass[{{ $media->id }}][description][{{ $locale }}]" :height="100" class="mt-2 description" :value="$media->description[$locale]" label="Description"/>
                             @endforeach
                         </div>
                         <div class="col-sm-5 positions text-center ps-2{{ $positions ? '' : ' d-none' }}">
                             <b>Positions par rapport au contenu</b>
                             <div class="choices pt-2">
-                                <i class="bi bi-arrow-left-square-fill active" data-position="left"></i><i class="bi bi-arrow-up-square-fill active" data-position="up"></i><i class="bi bi-arrow-down-square-fill active" data-position="down"></i><i class="bi bi-arrow-right-square-fill active" data-position="right"></i><input type="hidden" name="mediaclass[{{ $media->id }}][position]" value="{{ $media->position }}">
+                                @foreach($getPositionning() as $p)
+                                <i class="bi bi-arrow-{{ $p }}-square-fill{{ ($media->position == $p ? ' active':'') }}" data-position="{{ $p }}"></i>
+                                @endforeach
+                                <input type="hidden" name="mediaclass[{{ $media->id }}][position]" value="{{ $media->position }}">
                             </div>
                         </div>
                     </div>

@@ -22,8 +22,15 @@ use MetaFramework\Traits\{
     TreeBuilder};
 
 /**
- * @property ?string|bool $published
+ * Model méthods & properties
+ *
+ * @property null|int $published
+ * @property HasOne $hasParent
+ * @property string $taxonomy
+ * @property null|int $parent
+ * @property string $type
  */
+
 class Meta extends Model implements MediaclassInterface
 {
     use AccessKey;

@@ -1,5 +1,6 @@
 ### Changelog
 
+- 0.29 Meta CMS / Mediaclass fixes
 - 0.28 Mediaclass Accessor
 - 0.27 Components, CSS
 - 0.26 Mediaclass

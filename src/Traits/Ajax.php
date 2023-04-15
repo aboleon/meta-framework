@@ -12,6 +12,7 @@ trait Ajax
 
     public function distribute(): array|JsonResponse
     {
+        $this->enableAjaxMode();
         $this->fetchInput();
         $this->fetchCallback();
 
@@ -24,6 +25,7 @@ trait Ajax
             $this->responseError('Cette requête ne peut pas être traitée.');
             return response()->json($this->response, 405);
         }
+
 
         return $this->{request('action')}();
     }

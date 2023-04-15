@@ -4,8 +4,10 @@
 namespace MetaFramework\Controllers;
 
 use Illuminate\Support\Facades\DB;
+use MetaFramework\Models\Meta;
 use MetaFramework\Services\Validation\ValidationTrait;
 use MetaFramework\Traits\Ajax;
+use Throwable;
 
 class AjaxController extends Controller
 {
@@ -50,6 +52,26 @@ class AjaxController extends Controller
             return $this->fetchResponse();
         }
         return [];
+    }
+
+
+    public function addMetaBloc()
+    {
+        try {
+            $meta = Meta::makeMeta('bloc');
+            $meta->parent = request('parent');
+            $meta->taxonomy = request('bloc');
+            $meta->save();
+
+            $this->responseSuccess("Le bloc " . request('bloc')::getLabel() . ' a été ajouté à ' . $meta->hasParent->title);
+            $this->responseElement('meta', $meta);
+            $this->responseElement('callback', 'redirectAfterMetaBloc');
+
+        } catch (Throwable $e) {
+            $this->responseException($e);
+        }
+        return $this->fetchResponse();
+
     }
 
 }
