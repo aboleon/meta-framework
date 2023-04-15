@@ -1,3 +1,6 @@
+@php
+    $positions = (array_key_exists('positions',$settings) && $settings['positions'] === true);
+@endphp
 <div class="mediaclass-uploadable {{ $size }}"
      data-model="{{ get_class($model) }}"
      data-model-id="{{ $model->id }}"

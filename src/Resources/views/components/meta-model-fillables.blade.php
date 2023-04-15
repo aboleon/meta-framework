@@ -11,7 +11,7 @@
 @if ($model->fillables)
     @foreach($model->fillables as $key => $collection)
         @php
-            $repeatable = ((int)$collection['repeatable'] ??=1) ?: 1;
+            $repeatable = (int)$collection['repeatable'] ??=1;
             $iterable = $repeatable;
 
             $clonable = $collection['clonable'] ?? false;

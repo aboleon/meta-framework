@@ -246,6 +246,12 @@ const MediaclassUploader = {
         this.hideModal();
     },
     init: function () {
+
+        let mu = $('.mediaclass-uploadable');
+        if (mu.length) {
+          mu.each(() => MediaclassUploader.positions($(this)));
+        }
+
         this.uploaderCall();
         this.unlinkable();
         this.modalCrop();

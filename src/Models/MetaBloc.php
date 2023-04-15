@@ -4,9 +4,10 @@ namespace MetaFramework\Models;
 
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\File;
+use MetaFramework\Abstract\BlocModel;
 use Throwable;
 
-final class MetaBloc
+final class MetaBloc extends BlocModel
 {
 
     protected static string $path = 'app/Models/Meta/Taxonomy/Bloc';
@@ -15,10 +16,11 @@ final class MetaBloc
     public static function getModels(): array
     {
         $data = [
-            MetaBloc::class
+            Bloc::class
         ];
 
         $blocs = File::files(base_path(self::$path));
+
         if ($blocs) {
             foreach ($blocs as $file) {
                 $data[] = self::$namespace . '\\' . $file->getFilenameWithoutExtension();

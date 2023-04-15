@@ -9,11 +9,10 @@ use MetaFramework\Mediaclass\Models\Media;
 
 class Stored extends Component
 {
-    /**
-     * Create a new component instance.
-     *
-     * @return void
-     */
+    protected array $positionning = [
+      'left','up','down','right'
+    ];
+
     public function __construct(
         public Collection $medias,
         public bool       $positions = false,
@@ -36,5 +35,10 @@ class Stored extends Component
     public function render(): Renderable
     {
         return view('mediaclass::components.stored');
+    }
+
+    public function getPositionning(): array
+    {
+        return $this->positionning;
     }
 }
