@@ -187,10 +187,10 @@ class Mediaclass
         }
 
         if (!is_countable($this->mediaCollection)) {
-            $this->parseImage($this->mediaCollection);
+            $this->parseMedia($this->mediaCollection);
         } else {
             foreach ($this->mediaCollection as $item) {
-                $this->parseImage($item);
+                $this->parseMedia($item);
             }
         }
         return $this;
@@ -214,7 +214,7 @@ class Mediaclass
      * @param Media $instance The Media instance to be parsed.
      * @return static The current instance of the class for method chaining.
      */
-    private function parseImage(Media $instance): static
+    public function parseMedia(Media $instance): static
     {
         $sizes = array_merge(array_keys(config('mediaclass.dimensions')), ['cropped']);
         $urls = [];
@@ -250,7 +250,7 @@ class Mediaclass
      * @param \MetaFramework\Mediaclass\Interfaces\MediaclassInterface $object
      * @return $this
      */
-    public function forModel(MediaclassInterface $object, ?string $group=null)
+    public function forModel(MediaclassInterface $object, ?string $group = null)
     {
         if ($group) {
             $this->setGroup($group);
@@ -379,6 +379,27 @@ class Mediaclass
     private function unsetSelectedGroup(): void
     {
         $this->selected_group = null;
+    }
+
+    public static function printUrl(array $media, string $size = 'sm'): string
+    {
+        return $media['urls'][$size] ?? $media['url'];
+    }
+
+    public function printImage(array $media, string $size = 'sm'): string
+    {
+        $params = array_merge($this->params, $media['params']);
+        if (!array_key_exists('alt', $params)) {
+            $params['alt'] = $media['description'];
+        }
+
+        $html = '<img src="' . self::printUrl($media, $size) . '" ';
+        foreach ($params as $key => $value) {
+            $html .= $key . '="' . $value . '" ';
+        }
+        $html .= '/>';
+
+        return $html;
     }
 
 }
