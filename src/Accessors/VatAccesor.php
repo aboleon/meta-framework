@@ -2,6 +2,7 @@
 
 namespace MetaFramework\Accessors;
 
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Cache;
 use MetaFramework\Models\Vat;
 
@@ -24,7 +25,7 @@ class VatAccesor
     }
 
 
-    public static function vats(): array
+    public static function vats(): Collection
     {
         return Cache::rememberForever('vats', fn() => Vat::query()->pluck('rate', 'id'));
 
@@ -45,5 +46,10 @@ class VatAccesor
     public static function readableArrayList(): array
     {
         return VatAccesor::vats()->sortBy('default')->map(fn($item) => number_format($item / 100, 2))->toArray();
+    }
+
+    public static function selectables(): array
+    {
+        return VatAccesor::readableArrayList();
     }
 }
