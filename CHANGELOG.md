@@ -1,5 +1,6 @@
 ### Changelog
 
+- 0.32 Meta CMS fillables, tinymce
 - 0.31 Vat Accessor
 - 0.30 Mediaclass array printers
 - 0.29 Meta CMS / Mediaclass fixes

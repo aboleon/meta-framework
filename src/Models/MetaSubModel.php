@@ -23,6 +23,8 @@ class MetaSubModel
         if ($this->meta->id) {
             if ($this->subModel->isReliyingOnMeta()) {
                 $this->subModel->id = $this->meta->id;
+                $this->subModel->taxonomy = $this->meta->taxonomy;
+                $this->subModel->type = $this->meta->type;
             } else {
                 $this->subModel = $this->subModel->where('meta_id', $this->meta->id)->first() ?? $this->subModel;
             }

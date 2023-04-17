@@ -2,9 +2,13 @@
 
 namespace MetaFramework\Abstract;
 
+use Illuminate\Support\Str;
+use MetaFramework\Interfaces\MetaConfig;
 use MetaFramework\Mediaclass\Interfaces\MediaclassInterface;
 use MetaFramework\Models\Meta;
 use Illuminate\Database\Eloquent\Builder;
+use ReflectionClass;
+use Throwable;
 
 /**
  * Le MetaModel hérite des fonctionnalités du Root Meta model et
@@ -44,5 +48,19 @@ abstract class MetaModel extends Meta implements MediaclassInterface
     public function store(): static
     {
         return $this;
+    }
+
+    public function getFillables(): array
+    {
+        try {
+            if ($this->type != 'bloc') {
+                $taxonomyClass = (new ReflectionClass('\App\Models\Meta\Taxonomy\\' . ucfirst(Str::camel(Str::snake($this->taxonomy)))));
+                if ($taxonomyClass->implementsInterface(MetaConfig::class)) {
+                    $this->fillables = array_merge($this->fillables, $taxonomyClass->newInstance()->fillables());
+                }
+            }
+        } catch (Throwable) {}
+
+        return $this->fillables;
     }
 }

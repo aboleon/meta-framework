@@ -6,6 +6,7 @@
     if ($model->isReliyingOnMeta()) {
         $content = $model->isStoringMetaContentAsJson() ? json_decode($meta->content,true) : $meta;
     }
+$model->getFillables();
 @endphp
 
 @if ($model->fillables)
@@ -219,10 +220,10 @@
                     }
                     if ($(this).hasClass('simplified')) {
                       console.log('setting sip');
-                      tinymce.init(simplified_tinymce_settings(id));
+                      tinymce.init(mfw_simplified_tinymce_settings(id));
                     }
                     if ($(this).hasClass('extended')) {
-                      tinymce.init(default_tinymce_settings(id));
+                      tinymce.init(mfw_default_tinymce_settings(id));
                     }
                   });
                 }, 100);
