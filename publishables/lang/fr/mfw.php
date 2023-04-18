@@ -1,5 +1,6 @@
 <?php
 return [
+    'name' => 'Nom',
     'add' => 'Ajouter',
     'NC' => 'Non communiqué',
     'or' => 'ou',

@@ -1,5 +1,6 @@
 ### Changelog
 
+- 0.34 MetaFramework divers
 - 0.33 Delete Link Modal params
 - 0.32 Meta CMS fillables, tinymce
 - 0.31 Vat Accessor

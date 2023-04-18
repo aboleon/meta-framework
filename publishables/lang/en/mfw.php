@@ -1,5 +1,6 @@
 <?php
 return [
+    'name' => 'Name',
     'homepage' => 'Home',
     'search' => 'Search',
     'help' => 'Help',
