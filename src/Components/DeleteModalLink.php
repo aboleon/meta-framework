@@ -8,15 +8,25 @@ use Illuminate\View\Component;
 
 class DeleteModalLink extends Component
 {
+
+    private string $params_as_string = ' ';
+
     /**
      * Create a new component instance.
      */
     public function __construct(
-        public string $reference,
+        public string  $reference,
         public ?string $title = null,
+        public array   $params = []
     )
     {
         $this->title = $this->title ?: __('mfw.delete');
+
+        if ($this->params) {
+            foreach ($this->params as $param => $setting) {
+                $this->params_as_string .= $param . '="' . $setting . '" ';
+            }
+        }
     }
 
     /**
@@ -24,6 +34,6 @@ class DeleteModalLink extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('mfw::components.delete-modal-link');
+        return view('mfw::components.delete-modal-link')->with('params_as_string', rtrim($this->params_as_string));
     }
 }
