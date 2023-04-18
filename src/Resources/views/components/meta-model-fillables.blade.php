@@ -17,11 +17,12 @@ $model->getFillables();
 
             $clonable = $collection['clonable'] ?? false;
             $schema = isset($collection['schema']);
-            $key_content = $content->{$key} ?? null;
+            $key_content = is_array($content[$key]) ? $content[$key] : ($content->{$key} ?? null);
 
             if ($clonable) {
                 $iterable = is_countable($key_content) ? count($key_content) : 1;
             }
+
 
         @endphp
 
@@ -79,20 +80,21 @@ $model->getFillables();
                                     @endif
                                     @foreach($collection['schema'] as $subkey => $value)
 
+                                        @if ($subkey == '_media')
+                                            @continue
+                                        @endif
                                         @php
-                                            if (!$model->isStoringMetaContentAsJson()) {
-                                                $content_value = \MetaFramework\Accessors\Locale::multilang() ? ($found_content[$subkey][$locale] ?? '') : ($found_content[$subkey] ?? '');
-                                            } else {
-                                                $content_value = $found_content[$key][$subkey] ?? ''; // TODO: no multilang
-                                            }
+                                            $content_value = \MetaFramework\Accessors\Locale::multilang() ? ($found_content[$subkey][$locale] ?? '') : ($found_content[$subkey] ?? '');
                                         @endphp
-                                        <x-mfw::meta-fillable-parser
-                                                :model="$model"
-                                                :key="$key"
-                                                :subkey="$subkey"
-                                                :value="$value"
-                                                :content="$content_value"
-                                                :inputkey="$input_key.'['.$subkey.']'"/>
+
+                                            <x-mfw::meta-fillable-parser
+                                                    :model="$model"
+                                                    :key="$key"
+                                                    :subkey="$subkey"
+                                                    :value="$value"
+                                                    :content="$content_value"
+                                                    :inputkey="$input_key.'['.$subkey.']'"/>
+
                                     @endforeach
                                 @else
                                     @php
@@ -228,6 +230,9 @@ $model->getFillables();
                   });
                 }, 100);
               }
+            },
+            resetMedia: function (cloned) {
+
             },
           };
           clonableContent.init();

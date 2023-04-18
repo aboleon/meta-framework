@@ -1,5 +1,4 @@
 <div class="{{ $value['class'] ?? 'col-12' }} mb-4{{ $model->visibility($key) }}">
-
     @switch($key)
         @case('_media')
             <x-mediaclass::uploadable :model="$model" :settings="$value"/>
@@ -25,7 +24,7 @@
                     <x-mediaclass::uploadable :model="$model->meta ?? \MetaFramework\Accessors\Metas::fetchSingleByType($model::$signature)" :settings="$value"/>
                     @break;
                 @case('repeatable')
-
+                @case('clonable')
                     @for($i=0;$i<$value['count'];++$i)
                         <div class="row">
                             <div class="col-md-1 col-sm-2 repeatable pe-0">
