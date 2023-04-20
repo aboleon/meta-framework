@@ -180,7 +180,7 @@ trait Responses
         return redirect()->back()->with('session_response', $this->fetchResponse());
     }
 
-    protected function pushMessages(object $object)
+    public function pushMessages(object $object)
     {
         $messages = $object->fetchResponse()[$this->messagesKey()] ?? [];
 
@@ -202,6 +202,18 @@ trait Responses
         }
         report($e);
         return $this;
+    }
+
+    /**
+     * Redirige vers une route après l'enregistrement
+     * @param string $url
+     * @return void
+     */
+    public function saveAndRedirect(string $url): void
+    {
+        if (request()->has('save_and_redirect')) {
+            $this->redirect_to = $url;
+        }
     }
 
     private function messagesKey(): string

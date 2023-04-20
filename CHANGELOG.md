@@ -1,5 +1,6 @@
 ### Changelog
 
+- 0.36 MetaFramework divers
 - 0.35 Meta CMS clonable
 - 0.34 MetaFramework divers
 - 0.33 Delete Link Modal params

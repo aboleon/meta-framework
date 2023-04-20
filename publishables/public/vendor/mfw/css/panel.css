@@ -5,13 +5,12 @@
 @import "fragments/_alerts.css";
 @import "fragments/_buttons.css";
 @import "fragments/components.css";
+@import "fragments/publication_status.css";
 
 @for height in range(50, 500) {
-    .h-#
-
-(height) {
-    height: #(height)px;
-}
+    .h-# (height) {
+        height: #(height)px;
+    }
 }
 body {
     font-family: 'Nunito', sans-serif;
@@ -32,6 +31,11 @@ body {
 }
 
 table {
+    &.table {
+        td {
+            vertical-align: middle;
+        }
+    }
     caption {
         caption-side: top;
     }

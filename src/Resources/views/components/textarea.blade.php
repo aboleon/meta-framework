@@ -1,5 +1,6 @@
 @php
     $id = rtrim(str_replace(['[',']'],'_', $name),'_');
+    $field_name = str_replace(['[', ']'], ['.', ''], $name);
 @endphp
 @if ($label)
     <label for="{{$id}}" class="form-label">
@@ -17,3 +18,6 @@
           @if($required)
               required
 @endif>{!! $value !!}</textarea>
+@error($field_name)
+<div class="invalid-feedback d-block">{{ $message }}</div>
+@enderror

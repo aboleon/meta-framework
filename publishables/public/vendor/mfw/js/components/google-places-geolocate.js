@@ -1,3 +1,6 @@
+function isGoogleMapsApiLoaded() {
+    return typeof google !== 'undefined' && typeof google.maps !== 'undefined';
+}
 function initialize() {
 
   // Bias the autocomplete object to the user's geographical location,

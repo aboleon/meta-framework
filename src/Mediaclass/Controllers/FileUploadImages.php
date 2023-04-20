@@ -43,11 +43,15 @@ class FileUploadImages
 
         $this->response['filetype'] = 'image';
 
-        $this->setModel(request('model'));
+        $this->setModel(request('model')); // TODO: enlever du construct
     }
 
-    public function setModel(string $model): static
+    public function setModel(?string $model=null): static
     {
+        if (!$model) {
+            return $this;
+        }
+
         try {
             $this->model = (new ReflectionClass($model))->newInstance();
 

@@ -1,5 +1,6 @@
 @php
     $id = rtrim(str_replace(['[',']'],'_', $name),'_');
+    $field_name = str_replace(['[', ']'], ['.', ''], $name);
 @endphp
 @if ($label)
     <label for="{{ $id }}" class="form-label">{!! $label !!}</label>
@@ -30,3 +31,4 @@
 
     @endif
 </select>
+<x-mfw::validation-error :field="$field_name"/>

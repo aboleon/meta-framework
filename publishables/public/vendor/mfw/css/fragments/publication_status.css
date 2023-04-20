@@ -1,3 +1,13 @@
+.mfw-status {
+    color: white;
+    padding: 4px;
+    border-radius: 3px;
+    &.offline {
+        background: rgba(224, 28, 28, .68);
+        border: 1px solid transparent;
+    }
+}
+
 #publicationStatus {
 
     label {
@@ -47,7 +57,7 @@
     }
 }
 
-#mfw-published_status {
+#published_status {
     font-size: 14px;
     font-weight: 400;
     padding: 9px 14px;
@@ -58,12 +68,15 @@
 
     &.bg-success {
         background-color: #2ca731 !important;
+
         &:hover {
             background-color: #2ca731 !important;
         }
     }
+
     &.bg-danger {
         background-color: var(--nav-dashboard) !important;
+
         &:hover {
             background-color: var(--nav-dashboard) !important;
         }
