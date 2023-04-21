@@ -22,7 +22,7 @@ class Datepicker implements CastsAttributes
 
     public function set($model, $key, $value, $attributes)
     {
-        if ($value === '0000-00-00') {
+        if (!$value) {
             return null;
         }
 
