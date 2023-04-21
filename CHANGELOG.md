@@ -1,5 +1,7 @@
 ### Changelog
 
+- 0.38 Alert Component
+- 0.37 Mediaclass JS
 - 0.36 MetaFramework divers
 - 0.35 Meta CMS clonable
 - 0.34 MetaFramework divers
