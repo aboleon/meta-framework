@@ -19,7 +19,7 @@
 </div>
 @once
     @if ($model instanceof \MetaFramework\Mediaclass\Interfaces\MediaclassInterface && !isset($model->id))
-        <input type="hidden" id="mediaclass_temp_id" name="mediaclass_temp_id" value="{{ Str::random(32) }}">
+        <input type="hidden" name="mediaclass_temp_id" value="{{ Str::random(32) }}">
     @endif
     @include('mediaclass::fileupload_scripts')
     <x-mediaclass::template :model="$model"/>
