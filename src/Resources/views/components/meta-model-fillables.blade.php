@@ -17,7 +17,9 @@ $model->getFillables();
 
             $clonable = $collection['clonable'] ?? false;
             $schema = isset($collection['schema']);
-            $key_content = is_array($content[$key]) ? $content[$key] : ($content->{$key} ?? null);
+            $key_content = (is_array($content[$key]) && array_key_exists($key, $content))
+                ? $content[$key]
+                : ($content->{$key} ?? null);
 
             if ($clonable) {
                 $iterable = is_countable($key_content) ? count($key_content) : 1;
@@ -30,92 +32,82 @@ $model->getFillables();
             @if ($schema)
                 <h2>{{ $collection['label'] }}</h2>
             @endif
-
             @for($i=0;$i<$iterable;++$i)
                 @php
-                    $random_id = \Illuminate\Support\Str::random(8);
+                    $uuid = \Illuminate\Support\Str::random(8);
                     $found_content = $content;
+                    $grouped = str_starts_with($key, '_group');
+                    $is_meta = str_starts_with($key,'meta[');
+
+                    if ($is_meta) {
+                        $key = str_replace(['meta[',']'],'', $key);
+                        $found_content = $content->{$key};
+                    }
+
+                    if($schema && is_array($key_content)) {
+                        $uuid = key($key_content);
+                        $found_content = is_array(current($key_content)) ? array_shift($key_content) : $key_content;
+                    }
+                    $content_value = ($key != '_media')
+                        ? ($must_translate
+                            ? $content->translation($key, $locale)
+                            : ($content[$key] ?? null))
+                        : null;
+                    $input_key = $is_meta
+                        ? $key
+                        : ($model->getSignature(). (
+                            $grouped
+                                ? ''
+                                : ('['.$key.']' . (
+                                    ($repeatable > 1 or $clonable)
+                                        ? '['.$uuid.']'
+                                        : ''
+                                    )
+                                )
+                            )
+                        );
                 @endphp
 
-                <div class="row{{ $clonable ? ' clonable' : '' }}"{!! $clonable ? ' data-id="'.$random_id.'"' : '' !!}>
+                <div class="row{{ $clonable ? ' clonable' : '' }}"{!! $clonable ? ' data-id="'.$uuid.'"' : '' !!}>
                     @if($iterable > 1 or $clonable)
                         <div class="col-md-1 col-sm-2 repeatable pe-0">
                             <div>
                                 <span class="i-counter">{{$i+1}}</span>
                                 @if ($clonable)
-                                    <i class="fa-solid fa-circle-xmark i-remove"></i>
+                                    <i class="fa-solid fa-circle-xmark i-remove not-draggable"></i>
                                 @endif
                             </div>
                         </div>
-                        <div class="col-md-11 col-sm-10">
+
+                        <div class="col-md-11 col-sm-10 not-draggable">
                             <div class="row">
                                 @endif
-                                @php
-                                    $grouped = str_starts_with($key, '_group');
-                                    $is_meta = str_starts_with($key,'meta[');
-                                    $input_key = $is_meta
-                                        ? $key
-                                        : ($model->getSignature(). (
-                                            $grouped
-                                            ? ''
-                                            : ('['.$key.']' . (
-                                                ($repeatable > 1 or $clonable)
-                                                ? '['.$random_id.']'
-                                                : ''
-                                                )
-                                            )
-                                        )
-                                    );
-                                    if ($is_meta) {
-                                        $key = str_replace(['meta[',']'],'', $key);
-                                        $found_content = $content->{$key};
-                                    }
-
-                                @endphp
                                 @if ($schema)
-                                    @if (is_array($key_content))
-                                        @php
-                                            $found_content = is_array(current($key_content)) ? array_shift($key_content) : $key_content;
-                                        @endphp
-                                    @endif
                                     @foreach($collection['schema'] as $subkey => $value)
-
-                                        @if ($subkey == '_media')
-                                            @continue
-                                        @endif
                                         @php
-                                            $content_value = \MetaFramework\Accessors\Locale::multilang() ? ($found_content[$subkey][$locale] ?? '') : ($found_content[$subkey] ?? '');
+                                            $content_value = \MetaFramework\Accessors\Locale::multilang()
+                                                ? ($found_content[$subkey][$locale] ?? '')
+                                                : ($found_content[$subkey] ?? '');
                                         @endphp
-
-                                            <x-mfw::meta-fillable-parser
-                                                    :model="$model"
-                                                    :key="$key"
-                                                    :subkey="$subkey"
-                                                    :value="$value"
-                                                    :content="$content_value"
-                                                    :inputkey="$input_key.'['.$subkey.']'"/>
+                                        <x-mfw::meta-fillable-parser
+                                                :model="$model"
+                                                :key="$key"
+                                                :subkey="$subkey"
+                                                :value="$value"
+                                                :content="$content_value"
+                                                :inputkey="$input_key.'['.$subkey.']'"
+                                                :uuid="$uuid"/>
 
                                     @endforeach
                                 @else
-                                    @php
-                                        if ($is_meta) {
-                                            $key = str_replace(['meta[',']'],'', $key);
-                                        }
-                                        $content_value = ($key != '_media')
-                                            ? ($must_translate
-                                                ? $content->translation($key, $locale)
-                                                : ($content[$key] ?? null)
-                                                )
-                                            : null;
-                                    @endphp
-
                                     <x-mfw::meta-fillable-parser
                                             :model="$model"
                                             :subkey="$key"
                                             :key="$key"
                                             :content="$content_value"
                                             :value="$collection"
-                                            :inputkey="$input_key"/>
+                                            :inputkey="$input_key"
+                                            :uuid="$uuid"/>
                                 @endif
                                 @if($iterable > 1 or $clonable)
                             </div>
@@ -135,6 +127,7 @@ $model->getFillables();
     @push('js')
         <link rel="stylesheet" href="{{ asset('vendor/jquery-ui-1.13.0.custom/jquery-ui.min.css') }}">
         <script src="{{ asset('vendor/jquery-ui-1.13.0.custom/jquery-ui.min.js') }}"></script>
+        {{--<script src="{{ asset('vendor/mfw/components/clonable.js') }}"></script>--}}
         <script>
           const clonableContent = {
             clone: function () {
@@ -148,6 +141,7 @@ $model->getFillables();
                 cloned.insertBefore($(this));
                 clonableContent.resetCounters(container);
                 clonableContent.removeTriggers();
+                clonableContent.resetMedia();
                 container.find('.i-remove').removeClass('d-none');
               });
             },
@@ -157,6 +151,7 @@ $model->getFillables();
                 bcs.each(function () {
                   let bc = $(this);
                   bc.sortable({
+                    cancel: '.not-draggable',
                     stop: function () {
                       bc.find('> div.clonable').each(function (index) {
                         $(this).find('.i-counter').text(index + 1);
@@ -166,6 +161,9 @@ $model->getFillables();
                   });
                 });
               }
+            },
+            resetMedia: function (container) {
+              MediaclassUploader.init();
             },
             removeTriggers: function () {
               $('.clonable .i-remove').off().click(function () {
@@ -230,9 +228,6 @@ $model->getFillables();
                   });
                 }, 100);
               }
-            },
-            resetMedia: function (cloned) {
-
             },
           };
           clonableContent.init();

@@ -236,6 +236,7 @@ class FileUploadImages
             'model_type' => $morphable,
             'model_id' => $this->model_id,
             'group' => request('group') ?: Mediaclass::defaultGroup(),
+            'subgroup' => request('subgroup') ?: null,
             'description' => request('description'),
             'position' => request('position') ?: 'left',
             'mime' => $this->uploadedFile->getMimeType(),

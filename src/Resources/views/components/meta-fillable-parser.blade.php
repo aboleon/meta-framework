@@ -1,7 +1,7 @@
 <div class="{{ $value['class'] ?? 'col-12' }} mb-4{{ $model->visibility($key) }}">
     @switch($key)
         @case('_media')
-            <x-mediaclass::uploadable :model="$model" :settings="$value"/>
+            <x-mediaclass::uploadable :model="$model" :settings="array_merge($value, ['subgroup' => $uuid])"/>
             @break;
         @default
             @switch($value['type'] ?? '')
@@ -21,7 +21,7 @@
                     <x-mfw::input type="number" :name="$model->translatableInput($inputkey)" :value="$content" :label="$value['label'] ?? ''" :params="$value['params'] ?? []"/>
                     @break
                 @case('_media')
-                    <x-mediaclass::uploadable :model="$model->meta ?? \MetaFramework\Accessors\Metas::fetchSingleByType($model::$signature)" :settings="$value"/>
+                    <x-mediaclass::uploadable :model="$model->meta ?? \MetaFramework\Accessors\Metas::fetchSingleByType($model::$signature)" :settings="array_merge($value, ['subgroup' => $uuid])"/>
                     @break;
                 @case('repeatable')
                 @case('clonable')
@@ -36,12 +36,13 @@
                                 <div class="row">
                                     @foreach($value['schema'] as $rep_key => $rep_val)
                                         <x-mfw::meta-fillable-parser
-                                            :model="$model"
-                                            :key="$key"
-                                            :subkey="$rep_key"
-                                            :value="$rep_val"
-                                            :content="is_string($content) ? $content : $content[$rep_key][$i]"
-                                            :inputkey="$inputkey.'['.$rep_key.']['.$i.']'"/>
+                                                :model="$model"
+                                                :key="$key"
+                                                :subkey="$rep_key"
+                                                :value="$rep_val"
+                                                :content="is_string($content) ? $content : $content[$rep_key][$i]"
+                                                :inputkey="$inputkey.'['.$rep_key.']['.$i.']'"
+                                                :uuid="$uuid"/>
                                     @endforeach
                                 </div>
                             </div>

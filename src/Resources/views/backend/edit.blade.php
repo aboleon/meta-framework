@@ -1,6 +1,9 @@
 <x-backend-layout>
     <x-slot name="header">
-        <div class="float-end d-flex align-items-center me-3">
+        <h2>
+            <x-mfw::meta-url :locale="$current_locale" :meta="$data->type != 'bloc' ? $data : $data->hasParent"/>
+        </h2>
+        <div class="d-flex align-items-center" id="topbar-actions">
 
             @if ($model->buttons['status'])
                 {!! $data->printStatusAsBadge() !!}
@@ -15,7 +18,6 @@
                            href="{{ route('mfw.meta.create', ['type'=>$data->type]) }}">Créer</a>
                     @endif
                 @else
-
                     <a class="btn btn-danger ms-2" href="#"
                        data-bs-toggle="modal"
                        data-bs-target="#destroy_{{ $data->id }}">
@@ -31,19 +33,15 @@
                        href="{{ route('mfw.meta.show', ['type'=>$data->hasParent->type, 'id'=>$data->hasParent->id]) }}"><i style="font-size: 12px" class="opacity-50 fa-solid fa-angles-right"></i> {{ $data->hasParent->title }}
                     </a>
                 @endif
-            <div id="topbar_submit">
-                <button id="topbar_submit" form="wagaia-form" class="btn btn-sm btn-warning py-2 mx-2">Enregistrer</button>
-            </div>
+                <div class="separator"></div>
+                <button form="mfw-form" class="btn btn-sm btn-warning py-2 mx-2">Enregistrer</button>
         </div>
-        <h2 class="font-semibold leading-tight" style="font-size: 24px">
-            <x-mfw::meta-url :locale="$current_locale" :meta="$data->type != 'bloc' ? $data : $data->hasParent"/>
-        </h2>
     </x-slot>
 
     @push('css')
         {!! csscrush_tag(public_path('vendor/mfw/css/meta/editable.css')) !!}
     @endpush
-    <form method="post" action="{{ $data->id ? route('mfw.meta.update', $data->id) : route('mfw.meta.store') }}" enctype="multipart/form-data" id="wagaia-form">
+    <form method="post" action="{{ $data->id ? route('mfw.meta.update', $data->id) : route('mfw.meta.store') }}" id="mfw-form">
         @csrf
         @if ($data->id)
             @if (!$data->trashed())

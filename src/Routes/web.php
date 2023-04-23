@@ -23,7 +23,7 @@ Route::prefix(Routing::backend())
         Route::prefix('meta')->name('meta.')->group(function () {
             Route::any('admin/create', [MetaController::class, 'createAdmin'])->name('create_admin');
             Route::get('create/{type}', [MetaController::class, 'create'])->name('create');
-            Route::get('index/{type}', [MetaController::class, 'index'])->name('list');
+            Route::get('index/{type?}', [MetaController::class, 'index'])->name('list');
             Route::get('show/{type}/{id?}', [MetaController::class, 'show'])->name('show');
         });
 

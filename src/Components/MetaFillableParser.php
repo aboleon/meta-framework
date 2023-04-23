@@ -3,6 +3,7 @@
 namespace MetaFramework\Components;
 
 use Illuminate\Contracts\Support\Renderable;
+use Illuminate\Support\Str;
 use Illuminate\View\Component;
 
 class MetaFillableParser extends Component
@@ -13,10 +14,10 @@ class MetaFillableParser extends Component
         public array  $value,
         public string $inputkey,
         public mixed $content,
-        public string $subkey='undefined'
+        public ?string $uuid = null,
+        public string $subkey='undefined',
     )
     {
-        //
     }
 
     public function render(): Renderable

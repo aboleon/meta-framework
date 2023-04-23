@@ -13,6 +13,7 @@ use Symfony\Component\Mime\MimeTypes;
  * @property string $filename
  * @property string $position
  * @property array $description
+ * @property string $mime
  */
 class Media extends Model
 {

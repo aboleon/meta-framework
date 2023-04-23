@@ -6,6 +6,7 @@
      data-model-id="{{ $model->id }}"
      data-positions="{{ $positions }}"
      data-group="{{ $group }}"
+     data-subgroup="{{ $settings['subgroup'] ?? false }}"
      data-has-description="{{ $description }}"
 >
     <div class="controls d-flex justify-between align-items-center" style="background: #EFEFEF">
@@ -14,7 +15,7 @@
     </div>
     <div class="mediaclass-upload-container"></div>
     <div class="uploaded">
-        <x-mediaclass::stored :positions="$positions" :medias="$model->media->where('group', $group)" :description="$description"/>
+        <x-mediaclass::stored :positions="$positions" :model="$model" :group="$group" :subgroup="$settings['subgroup'] ?? null " :description="$description"/>
     </div>
 </div>
 @once

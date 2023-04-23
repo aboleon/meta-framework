@@ -35,9 +35,10 @@
     align-items: center;
     justify-content: center;
     > div {
-        display: block;
+        display: flex;
+        flex-flow: column;
         width: 100px;
-        text-align: center;
+        align-items: center;
     }
     .i-remove {
         font-size: 22px;
@@ -47,14 +48,6 @@
         &:hover {
             color: var(--base-1);
         }
-    }
-    &:after {
-        content:'';
-        display: block;
-        height: 1px;
-        border-bottom: 1px dashed #ccc;
-        width: 100%;
-        margin-left: 13px;
     }
     span {
         display: flex;

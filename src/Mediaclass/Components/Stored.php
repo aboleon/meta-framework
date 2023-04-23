@@ -5,6 +5,7 @@ namespace MetaFramework\Mediaclass\Components;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\View\Component;
+use MetaFramework\Mediaclass\Interfaces\MediaclassInterface;
 use MetaFramework\Mediaclass\Models\Media;
 
 class Stored extends Component
@@ -13,13 +14,21 @@ class Stored extends Component
       'left','up','down','right'
     ];
 
+    public Collection $medias;
+
     public function __construct(
-        public Collection $medias,
+        public MediaclassInterface $model,
+        public string $group,
+        public ?string $subgroup = null,
         public bool       $positions = false,
         public int|bool   $description = true
     )
     {
         $this->description = $this->description ? 1 : 0;
+        $this->medias = $this->model->media->where('group', $this->group);
+        if ($this->subgroup) {
+            $this->medias = $this->medias->where('subgroup', $this->subgroup);
+        }
     }
 
     public function isFile(Media $media): bool

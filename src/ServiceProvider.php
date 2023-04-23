@@ -52,19 +52,36 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
 
         Paginator::useBootstrapFive();
 
-        $this->publishConfig();
+        $this->publishInstall();
+        $this->publishAssets();
+        $this->publishLang();
 
     }
 
-    private
-    function publishConfig()
+    private function publishInstall(): void
     {
         $this->publishes([
             __DIR__ . '/../publishables/config/' => config_path(),
-            __DIR__ . '/../publishables/public/vendor/mfw' => public_path('vendor/mfw/'),
+            __DIR__ . '/../publishables/public/vendor/' => public_path('vendor/'),
             __DIR__ . '/../publishables/lang/' => base_path('lang'),
             __DIR__ . '/../publishables/database/migrations/' => database_path(),
-        ], 'mfw');
+        ], 'mfw-install');
+
+    }
+
+    private function publishAssets(): void
+    {
+        $this->publishes([
+            __DIR__ . '/../publishables/public/vendor/' => public_path('vendor/'),
+        ], 'mfw-assets');
+
+    }
+
+    private function publishLang(): void
+    {
+        $this->publishes([
+            __DIR__ . '/../publishables/lang/' => base_path('lang'),
+        ], 'mfw-lang');
 
     }
 

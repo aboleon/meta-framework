@@ -12,7 +12,8 @@ use MetaFramework\{
     Models\Meta,
     Models\MetaSubModel,
     Services\Validation\ValidationTrait,
-    Traits\Responses};
+    Traits\Responses
+};
 use Throwable;
 
 class MetaController extends Controller
@@ -29,13 +30,15 @@ class MetaController extends Controller
         $this->backend_url = Routing::backend();
     }
 
-    public function index($type): Renderable
+    public function index(?string $type = null): Renderable
     {
-        return view()->first([
-            $this->backend_url . '.mfw.' . $type . '.index',
-            'mfw::backend.index'
-        ])->with([
-            'data' => Meta::where('type', $type)->orderBy('id', 'desc')->paginate(),
+        if ($type) {
+            $views[] = $this->backend_url . '.mfw.' . $type . '.index';
+        }
+        $views[] = 'mfw::backend.index';
+
+        return view()->first($views)->with([
+            'data' => Meta::where('type','!=','bloc')->when($type, fn($q) => $q->where('type', $type))->orderBy('id', 'desc')->paginate(),
             'type' => $type,
             'locale' => app()->getLocale()
         ]);
@@ -103,10 +106,18 @@ class MetaController extends Controller
 
     public function edit(Meta $metum): Renderable
     {
-        return view()->first([
-            $this->backend_url . '.mfw.' . $metum->type . '.create',
-            'mfw::backend.create'
-        ])->with('data', $metum);
+        $this->data['data'] = $metum;
+        $this->data['model'] = (new MetaSubModel($this->data['data']))->model();
+
+        if (method_exists($this, 'dataView_' . $metum->type)) {
+            $this->{'dataView_' . $metum->type}();
+        }
+
+        $views = [];
+        $views[] = $this->backend_url . '.mfw.' . $metum->type . '.edit';
+        $views[] = 'mfw::backend.edit';
+
+        return view()->first($views)->with($this->data);
     }
 
     public function patch($id): RedirectResponse

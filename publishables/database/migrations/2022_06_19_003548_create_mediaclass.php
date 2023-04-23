@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('model_type',255)->index();
             $table->unsignedBigInteger('model_id')->index()->nullable();
             $table->string('group')->index()->default('media');
+            $table->string('subgroup')->nullable();
             $table->json('description')->nullable();
             $table->enum('position', ['left','right','up','down'])->default('up')->index();
             $table->string('original_filename');

@@ -1,3 +1,9 @@
+/*jshint esversion: 8 */
+
+/**
+ * depenes on /vendor/mfw/js/commons.js
+ */
+
 const MediaclassUploader = {
     template: function () {
         return $('#mediaclass-file-upload');
@@ -17,14 +23,11 @@ const MediaclassUploader = {
     progress: function () {
         return $('.mediaclass-progress');
     },
-    base_url: function () {
-        return '/media/publisher/';
-    },
     unlinkable: function () {
         $('.unlink').off().on('click', function () {
             let selector = $(this).closest('.unlinkable'),
                 c = selector.closest('.uploaded'),
-                formData = 'action=delete&id=' + selector.attr('data-id');
+                formData = 'action=delete&id=' + selector.attr('data-id') + '&model=' + c.closest('.mediaclass-uploadable').attr('data-model');
             ajax(formData, MediaclassUploader.template());
             $(document).ajaxSuccess(function () {
                 selector.remove();
@@ -166,17 +169,16 @@ const MediaclassUploader = {
                 console.log(xhr, thrownError);
                 MediaclassUploader.messages().html('<div class="alert alert-danger">Une erreur est survenu lors du téléchargement de votre fichier</div>');
             },
-            always: function (e, data) {
+            always: function () {
                 MediaclassUploader.progress().hide();
             },
-            start: function (e, data) {
+            start: function () {
                 MediaclassUploader.messages().html('');
                 MediaclassUploader.progress().show();
             },
         });
         fileuploadContainer.bind('fileuploadsubmit', function (e, data) {
             MediaclassUploader.messages().html('');
-
             data.formData = [];
             data.formData.push(
                 {
@@ -192,6 +194,10 @@ const MediaclassUploader = {
                     value: uploadable.data('group'),
                 },
                 {
+                    name: 'subgroup',
+                    value: uploadable.data('subgroup'),
+                },
+                {
                     name: 'positions',
                     value: uploadable.data('positions'),
                 },
@@ -205,7 +211,7 @@ const MediaclassUploader = {
                 },
                 {
                     name: 'mediaclass_temp_id',
-                    value: $("input[name='mediaclass_temp_id']").first().val(),
+                    value: $("input[name='mediaclass_temp_id']").first().val() ?? null,
                 },
             );
 
@@ -246,6 +252,11 @@ const MediaclassUploader = {
         this.hideModal();
     },
     init: function () {
+
+        $('.mediaclass-uploadable').each(function () {
+            MediaclassUploader.positions($(this));
+        });
+
         this.uploaderCall();
         this.unlinkable();
         this.modalCrop();
