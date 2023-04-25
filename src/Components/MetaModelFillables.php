@@ -10,10 +10,10 @@ class MetaModelFillables extends Component
 {
     public function __construct(
         public Meta $meta,
-        public string $locale,
+        public ?string $locale=null,
     )
     {
-        //
+        $this->locale ??= app()->getLocale();
     }
 
     public function render(): Renderable

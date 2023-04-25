@@ -2,7 +2,6 @@
 
 namespace MetaFramework\Mediaclass\Accessors;
 
-use Illuminate\Support\Arr;
 use MetaFramework\Mediaclass\Interfaces\MediaclassInterface;
 use MetaFramework\Mediaclass\Models\Media;
 use Illuminate\Support\Facades\Storage;
@@ -277,6 +276,26 @@ class Mediaclass
     public function get(): EloquentCollection
     {
         return $this->mediaCollection;
+    }
+
+    /**
+     * Retriver images for a subgroup
+     *
+     * @return \Illuminate\Database\Eloquent\Collection  collection
+     */
+    public function forSubGroup(string $identifier): EloquentCollection
+    {
+        return $this->mediaCollection->filter(fn($item) => $item->subgroup == $identifier);
+    }
+
+    /**
+     * Retriver images for a group
+     *
+     * @return \Illuminate\Database\Eloquent\Collection  collection
+     */
+    public function forGroup(string $identifier): EloquentCollection
+    {
+        return $this->mediaCollection->filter(fn($item) => $item->group == $identifier);
     }
 
     /**

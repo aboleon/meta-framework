@@ -1,4 +1,3 @@
-
 const clonableContent = {
   clone: function () {
     $('span.btn.cloner').off().click(function () {

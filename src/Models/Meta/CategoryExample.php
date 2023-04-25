@@ -14,7 +14,7 @@ class CategoryExample extends MetaModel
     {
         parent::__construct($attributes);
         $this->fillables = [
-            '_media' => [
+            'media' => [
                 'group' => 'header',
                 'label' => 'Image bandeau'
             ],
