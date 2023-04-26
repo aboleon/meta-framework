@@ -8,7 +8,7 @@ trait BackedEnum
 {
     public static function varname(): string
     {
-        return Str::snake(str_replace('App\Enum\\', '', self::class));
+        return Str::snake((new \ReflectionClass(static::class))->getShortName());
     }
 
     public static function keys(): array
