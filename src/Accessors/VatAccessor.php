@@ -6,7 +6,7 @@ use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Cache;
 use MetaFramework\Models\Vat;
 
-class VatAccesor
+class VatAccessor
 {
     public static function fetchVatRate(int $vat_id): int
     {
@@ -15,13 +15,13 @@ class VatAccesor
 
     public static function vatForPrice(float|int $price, int $vat_id): float|int
     {
-        $vat_rate = VatAccesor::fetchVatRate($vat_id);
+        $vat_rate = VatAccessor::fetchVatRate($vat_id);
         return number_format(($price / (100 + $vat_rate)) * $vat_rate, 2);
     }
 
     public static function netPriceFromVatPrice(float|int $price, int $vat_id): float|int
     {
-        return $price - VatAccesor::vatForPrice($price, $vat_id);
+        return $price - VatAccessor::vatForPrice($price, $vat_id);
     }
 
 
@@ -45,11 +45,11 @@ class VatAccesor
 
     public static function readableArrayList(): array
     {
-        return VatAccesor::vats()->sortBy('default')->map(fn($item) => number_format($item / 100, 2))->toArray();
+        return VatAccessor::vats()->sortBy('default')->map(fn($item) => number_format($item / 100, 2))->toArray();
     }
 
     public static function selectables(): array
     {
-        return VatAccesor::readableArrayList();
+        return VatAccessor::readableArrayList();
     }
 }

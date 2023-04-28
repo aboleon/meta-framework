@@ -14,7 +14,7 @@ class TranslatableTabs extends Component
         public array $fillables = []
     )
     {
-        $this->fillables  = $this->fillables ?: $this->model->fillales;
+        $this->fillables = $this->fillables ?: $this->model->fillables;
     }
 
     public function render(): Renderable
