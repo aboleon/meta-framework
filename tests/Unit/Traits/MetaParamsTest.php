@@ -95,4 +95,23 @@ class MetaParamsTest extends TestCase
         // Assert SubModel will store json in content field
         $this->assertTrue($testable->isStoringMetaContentAsJson());
     }
+
+    /**
+     * @test
+     * @covers MetaParams::hasImage
+     * @covers MetaParams::disableImage
+     */
+    public function model_uses_image()
+    {
+        // Make new submodel variation of Meta model
+        $testable = new Meta();
+
+        // Assert model uses image by default
+        $this->assertTrue($testable->hasImage());
+
+        // Assert model image is disabled
+        $testable->disableImage();
+        $this->assertFalse($testable->hasImage());
+
+    }
 }

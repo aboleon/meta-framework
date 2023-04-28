@@ -134,4 +134,22 @@ trait MetaParams
     {
         return (bool)array_filter($this->configurables, fn($item) => !empty($this->uses[$item]));
     }
+
+    /**
+     * Vérifie si le Model utilise au moins un paramétrage
+     * @throws \Exception
+     */
+    public function hasImage(): bool
+    {
+        return $this->uses('images');
+    }
+
+    /**
+     * Vérifie si le Model utilise au moins un paramétrage
+     * @throws \Exception
+     */
+    public function disableImage(): void
+    {
+        $this->uses['images'] = false;
+    }
 }

@@ -46,7 +46,7 @@
             <legend class="toggle">Image de présentation</legend>
             <div class="toggable">
                 <div class="tab-content base">
-                    <x-mediaclass::uploadable :model="$meta" :settings="['group'=>'meta']" size="small"/>
+                    <x-mediaclass::uploadable :model="$model" :settings="['group'=>'meta']" size="small"/>
                 </div>
             </div>
         </fieldset>

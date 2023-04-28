@@ -30,9 +30,27 @@ class MetaParser
             $this->content = $this->model->isStoringMetaContentAsJson() ? json_decode($this->meta->content, true) : $this->meta;
         }
         $this->model->getFillables();
-
+        $this->media = MediaclassFacade::forModel($this->model);
         $this->locale ??= app()->getLocale();
 
+        $this->data['model'] = [
+            'id' => $this->model->id,
+            'model' => $this->model::class
+        ];
+    }
+
+    /**
+     * Get structured content for MetaModel
+     * @param \MetaFramework\Models\Meta $model
+     * @return array
+     */
+    public static function forModel(Meta $model): array
+    {
+        return (new MetaParser($model))
+            ->parseDefaultImage()
+
+            ->parseFillables()
+            ->getData();
     }
 
     public function getData(): array
@@ -46,10 +64,18 @@ class MetaParser
         return $this;
     }
 
+    public function parseDefaultImage(): self
+    {
+
+        if ($this->model->hasImage()) {
+            $this->data['_default_image'] = $this->media->forGroup('meta')->toArray();
+        }
+
+        return $this;
+    }
+
     public function parseFillables(): self
     {
-        $this->media = MediaclassFacade::forModel($this->model);
-
         if (!$this->model->fillables) {
             return $this;
         }
@@ -74,7 +100,6 @@ class MetaParser
                 ];
                 $this->data[$key]['label'] = $schema_collection;
             }
-
 
             for ($i = 0; $i < $this->iterable; ++$i) {
 

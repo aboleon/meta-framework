@@ -19,7 +19,8 @@ abstract class BlocModel extends MetaModel
         $this->fillables = [
             'media' => [
                 'label' => 'Image',
-                'positions' => true
+                'positions' => true,
+                'type' => 'media'
             ],
             'meta[title]' => [
                 'type' => 'input',

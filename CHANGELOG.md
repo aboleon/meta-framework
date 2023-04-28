@@ -1,5 +1,6 @@
 ### Changelog
 
+- 0.41 Meta CMS Meta Parser
 - 0.40 Meta CMS BO generation, Mediaclass
 - 0.39 Meta CMS Clonable, divers, Mediaclass
 - 0.38 Alert Component
