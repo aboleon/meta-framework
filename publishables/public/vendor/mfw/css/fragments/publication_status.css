@@ -6,6 +6,9 @@
         background: rgba(224, 28, 28, .68);
         border: 1px solid transparent;
     }
+    &.online {
+        color: black;
+    }
 }
 
 #publicationStatus {
@@ -82,4 +85,3 @@
         }
     }
 }
-

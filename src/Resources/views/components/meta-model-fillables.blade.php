@@ -123,6 +123,6 @@
     @push('js')
         <link rel="stylesheet" href="{{ asset('vendor/jquery-ui-1.13.0.custom/jquery-ui.min.css') }}">
         <script src="{{ asset('vendor/jquery-ui-1.13.0.custom/jquery-ui.min.js') }}"></script>
-        <script src="{{ asset('vendor/mfw/components/clonable.js') }}"></script>
+        <script src="{{ asset('vendor/mfw/components/meta-model-fillables/clonable.js') }}"></script>
     @endpush
 @endonce

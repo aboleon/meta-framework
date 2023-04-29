@@ -1,13 +1,17 @@
 <x-backend-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+        <h2>
             {{ __('meta.'.$type.'.label') }}
-            @if ($type)
-                &raquo;
-            <a class="btn btn-sm btn-nav-blue"
-               href="{{ route('mfw.meta.create', ['type'=>$type]) }}">Créer</a>
-            @endif
         </h2>
+        <div class="d-flex align-items-center" id="topbar-actions">
+            @if ($type)
+                <a class="btn btn-sm btn-success"
+                   href="{{ route('mfw.meta.create', ['type'=>$type]) }}">
+                    <i class="fa-solid fa-circle-plus"></i>
+                    Créer</a>
+            @endif
+            <div class="separator"></div>
+        </div>
     </x-slot>
 
 
@@ -35,7 +39,9 @@
                         <td>{{ $item->type }}</td>
                         <td>{{ $item->taxonomy }}</td>
                     @endif
-                    {!! $item->isActive('td') !!}
+                    <td>
+                        {!! $item->isActive('span') !!}
+                    </td>
                     <td>{{ $item->updated_at?->format('d/m/Y H:i') }}</td>
                     <td>
                         <div class="dropdown ui-actions">

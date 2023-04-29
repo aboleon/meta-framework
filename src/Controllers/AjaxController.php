@@ -26,7 +26,7 @@ class AjaxController extends Controller
             $class = request('class');
             $object = new $class;
             $object = $object->find(request('id'));
-            $object->published = (request('from') == 'online' ? 0 : 1);
+            $object->published = (request('from') == 'online' ? null : now());
             $object->save();
             $result['success'] = 1;
         } else {

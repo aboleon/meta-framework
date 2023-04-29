@@ -30,8 +30,7 @@
     background: #48a97c;
     border: 1px solid #48a97c;
     &:hover {
-        background-color: var(--ab-blue);
-        border-color: var(--ab-blue);
+        border-color: #48a97c;
     }
 }
 .btn-default {

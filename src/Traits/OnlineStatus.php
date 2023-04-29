@@ -12,12 +12,12 @@ trait OnlineStatus
         $allowed_tags = ['div', 'td', 'th'];
         $tag = in_array($tag, $allowed_tags) ? $tag : 'span';
 
-        return "<" . $tag . " class='mfw-status " . $this->statusTag() . "'>" . trans('ui.' . ($this->published ? 'yes' : 'no')) . "</" . $tag . ">";
+        return "<" . $tag . " class='mfw-status " . $this->statusTag() . "'>" . ($this->published?->format('d/m/Y H:i') ?: trans('ui.no')) . "</" . $tag . ">";
     }
 
-    public function printStatusAsBadge(string $class = 'float-end'): string
+    public function printStatusAsBadge(): string
     {
-        return '<div id="mfw-published_status" data-ajax-url="' . route('mfw.ajax') . '" data-status="' . $this->statusTag() . '" data-id="' . $this->id . '" data-class="' . get_class($this) . '" class="' . $class . ' bg-' . $this->statusClass() . '"><button type="button" class="btn btn-sm btn-'.$this->statusClass().'">' . $this->statusLabel() . '</button></div>';
+        return '<div id="mfw-published_status" data-ajax-url="' . route('mfw.ajax') . '" data-status="' . $this->statusTag() . '" data-id="' . $this->id . '" data-class="' . get_class($this) . '" data-label-pushonline="'.__('mfw.published.publish').'" data-label-pushoffline="'.__('mfw.published.unpublish').'" data-label-isonline="'.__('mfw.published.online').'" data-label-isoffline="'.__('mfw.published.offline').'"><button type="button" class="btn btn-sm btn-'.$this->statusClass().'">' . $this->statusLabel() . '</button></div>';
     }
 
     public function statusClass(): string

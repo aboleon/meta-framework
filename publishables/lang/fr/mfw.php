@@ -67,8 +67,8 @@ return [
     'published' => [
         'online' => 'En ligne',
         'offline' => 'Hors ligne',
-        'closed' => 'Clôturée',
-        'open' => 'Ouverte',
+        'publish' => 'Mettre en ligne',
+        'unpublish' => 'Mettre hors ligne',
     ],
     'geo' => [
         'street_number' => 'Numéro',

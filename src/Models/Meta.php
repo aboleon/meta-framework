@@ -46,7 +46,8 @@ class Meta extends Model implements MediaclassInterface
     protected $table = 'meta';
     protected $guarded = [];
     protected $casts = [
-        'configs' => 'array'
+        'configs' => 'array',
+        'published' => 'datetime'
     ];
 
     public ?MetaModel $submodel = null;
