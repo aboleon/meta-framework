@@ -3,15 +3,15 @@
 namespace MetaFramework;
 
 
+use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\{
     App,
     Blade,
     View};
-use Illuminate\Pagination\Paginator;
 use MetaFramework\Facades\MetaFacade;
 use MetaFramework\Facades\NavFacade;
-use MetaFramework\Mediaclass\Accessors\Mediaclass;
 use MetaFramework\Mediaclass\Facades\MediaclassFacade;
+use MetaFramework\Mediaclass\Mediaclass;
 use MetaFramework\Models\Meta;
 use MetaFramework\Models\Nav;
 

@@ -5,8 +5,6 @@ namespace MetaFramework;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Route;
 use MetaFramework\Accessors\Routing;
-use MetaFramework\Mediaclass\Accessors\Cropable;
-use MetaFramework\Mediaclass\Models\Media;
 
 class RouteServiceProvider extends ServiceProvider
 {

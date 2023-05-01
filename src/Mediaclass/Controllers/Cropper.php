@@ -2,10 +2,10 @@
 
 namespace MetaFramework\Mediaclass\Controllers;
 
-use MetaFramework\Mediaclass\Accessors\Cropable;
-use MetaFramework\Mediaclass\Models\Media;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
+use MetaFramework\Mediaclass\Cropable;
+use MetaFramework\Mediaclass\Models\Media;
 use MetaFramework\Traits\Responses;
 use Throwable;
 

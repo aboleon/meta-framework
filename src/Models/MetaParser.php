@@ -3,8 +3,8 @@
 namespace MetaFramework\Models;
 
 use MetaFramework\Accessors\Locale;
-use MetaFramework\Mediaclass\Accessors\Mediaclass;
 use MetaFramework\Mediaclass\Facades\MediaclassFacade;
+use MetaFramework\Mediaclass\Mediaclass;
 
 class MetaParser
 {
@@ -33,9 +33,17 @@ class MetaParser
         $this->media = MediaclassFacade::forModel($this->model);
         $this->locale ??= app()->getLocale();
 
-        $this->data['model'] = [
+        $this->data['_model'] = [
             'id' => $this->model->id,
             'model' => $this->model::class
+        ];
+
+        $this->data['_meta'] = [
+            'title' => $this->meta->title,
+            'abstract' => $this->meta->abstract,
+            'url' => $this->meta->url,
+            'title_meta' => $this->meta->title_meta,
+            'abstract_meta' => $this->meta->abstract_meta,
         ];
     }
 
@@ -48,7 +56,6 @@ class MetaParser
     {
         return (new MetaParser($model))
             ->parseDefaultImage()
-
             ->parseFillables()
             ->getData();
     }
@@ -68,7 +75,7 @@ class MetaParser
     {
 
         if ($this->model->hasImage()) {
-            $this->data['_default_image'] = $this->media->forGroup('meta')->toArray();
+            $this->data['_illustration'] = $this->media->forGroup('meta')->toArray();
         }
 
         return $this;
@@ -98,7 +105,7 @@ class MetaParser
                 $schema_collection = [
                     'label' => $collection['label']
                 ];
-                $this->data[$key]['label'] = $schema_collection;
+                $this->data['_content'][$key]['label'] = $schema_collection;
             }
 
             for ($i = 0; $i < $this->iterable; ++$i) {
@@ -149,10 +156,10 @@ class MetaParser
         $type = $data['type'] ??= 'text';
 
         if ($this->iterable > 1) {
-            $this->data[$key]['entries'][$this->iteration][$subkey] = ($type == 'media' ? $this->media->forSubGroup($this->uuid)->toArray() : $content );
+            $this->data['_content'][$key]['entries'][$this->iteration][$subkey] = ($type == 'media' ? $this->media->parsedForSubGroup($this->uuid)->toArray() : $content);
 
         } else {
-            $this->data[$key] = ($type == 'media' ? $this->media->forGroup($data['group'] ?? 'media')->toArray() : $content);
+            $this->data['_content'][$key] = ($type == 'media' ? $this->media->forGroup($data['group'] ?? 'media')->toArray() : $content);
         }
         return $this;
     }

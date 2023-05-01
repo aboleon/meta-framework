@@ -1,5 +1,6 @@
 ### Changelog
 
+- 0.44 Mediaclass Printer & MetaParser
 - 0.43 Online status
 - 0.42 Price Accessor, Cast, fixes
 - 0.41 Meta CMS Meta Parser

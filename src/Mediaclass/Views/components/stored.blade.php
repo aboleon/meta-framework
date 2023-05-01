@@ -2,7 +2,7 @@
     @foreach($medias as $media)
         @php
             $is_image = $isImage($media);
-            $cropable = new \MetaFramework\Mediaclass\Accessors\Cropable($media);
+            $cropable = new \MetaFramework\Mediaclass\Cropable($media);
             $preview = $isImage($media) ? $media->url($cropable->isCropped ? 'cropped': 'sm') : asset('vendor/mfw/mediaclass/images/files/' . $media->extension().'.png');
         @endphp
         <div class="mediaclass unlinkable uploaded-image my-2" data-id="{{ $media->id }}" id="mediaclass-{{$media->id}}">
@@ -39,7 +39,7 @@
                             <b>Positions par rapport au contenu</b>
                             <div class="choices pt-2">
                                 @foreach($getPositionning() as $p)
-                                <i class="bi bi-arrow-{{ $p }}-square-fill{{ ($media->position == $p ? ' active':'') }}" data-position="{{ $p }}"></i>
+                                    <i class="bi bi-arrow-{{ $p }}-square-fill{{ ($media->position == $p ? ' active':'') }}" data-position="{{ $p }}"></i>
                                 @endforeach
                                 <input type="hidden" name="mediaclass[{{ $media->id }}][position]" value="{{ $media->position }}">
                             </div>

@@ -28,6 +28,11 @@
                 @endif
                 <th>Publication</th>
                 <th>Mise à jour</th>
+                @role('dev')
+                <th>Model
+                    <x-mfw::devmark/>
+                </th>
+                @endrole
                 <th style="width: 100px">Actions</th>
             </tr>
             <tbody>
@@ -43,6 +48,11 @@
                         {!! $item->isActive('span') !!}
                     </td>
                     <td>{{ $item->updated_at?->format('d/m/Y H:i') }}</td>
+                    @role('dev')
+                    <td>
+                        {{ $item->id .' | '. get_class($item->subModel()) }}
+                    </td>
+                    @endrole
                     <td>
                         <div class="dropdown ui-actions">
                             <button class="btn btn-xs btn-secondary dropdown-toggle" type="button"

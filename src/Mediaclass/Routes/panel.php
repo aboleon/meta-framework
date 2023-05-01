@@ -1,7 +1,7 @@
 <?php
 
-use MetaFramework\Mediaclass\Accessors\Cropable;
 use Illuminate\Support\Facades\Route;
+use MetaFramework\Mediaclass\Cropable;
 use MetaFramework\Mediaclass\Models\Media;
 
 

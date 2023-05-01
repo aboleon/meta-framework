@@ -2,17 +2,19 @@
 
 namespace MetaFramework\Mediaclass\Controllers;
 
-use MetaFramework\Mediaclass\Accessors\Cropable;
-use MetaFramework\Mediaclass\Accessors\Mediaclass;
-use MetaFramework\Mediaclass\Accessors\Path;
-use MetaFramework\Mediaclass\Interfaces\MediaclassInterface;
-use MetaFramework\Mediaclass\Models\Media;
 use Exception;
+use Illuminate\Contracts\Filesystem\Filesystem;
 use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Intervention\Image\Facades\Image;
+use MetaFramework\Mediaclass\Config;
+use MetaFramework\Mediaclass\Cropable;
+use MetaFramework\Mediaclass\Interfaces\MediaclassInterface;
+use MetaFramework\Mediaclass\Mediaclass;
+use MetaFramework\Mediaclass\Models\Media;
+use MetaFramework\Mediaclass\Path;
 use MetaFramework\Traits\Responses;
 use ReflectionClass;
 use Throwable;
@@ -36,6 +38,8 @@ class FileUploadImages
     private ?int $model_id;
     private string $folder_name = '';
 
+    private Filesystem $disk;
+
     public function __construct()
     {
         $this->model_id = (int)request('model_id') ?: null;
@@ -44,9 +48,10 @@ class FileUploadImages
         $this->response['filetype'] = 'image';
 
         $this->setModel(request('model')); // TODO: enlever du construct
+        $this->disk = Config::getDisk();
     }
 
-    public function setModel(?string $model=null): static
+    public function setModel(?string $model = null): static
     {
         if (!$model) {
             return $this;
@@ -79,12 +84,12 @@ class FileUploadImages
             $path = Path::mediaFolderName($media->model);
             File::delete(
                 File::glob(
-                    Storage::disk('media')->path($path . DIRECTORY_SEPARATOR . '*' . $media->filename . '*')
+                    $this->disk->path($path . DIRECTORY_SEPARATOR . '*' . $media->filename . '*')
                 )
             );
 
-            if (count(Storage::disk('media')->files($path)) === 0) {
-                Storage::disk('media')->deleteDirectory($path);
+            if (count($this->disk->files($path)) === 0) {
+                $this->disk->deleteDirectory($path);
             }
 
             $media->delete();
@@ -130,7 +135,7 @@ class FileUploadImages
     {
         $this->response['filetype'] = 'file';
         $this->response['filename'] = $this->filename . '.' . $this->uploadedFile->guessExtension();
-        $this->response['link'] = Storage::disk('media')->url($this->response['filename'] . '?' . time());;
+        $this->response['link'] = $this->disk->url($this->response['filename'] . '?' . time());;
         $this->response['fileicon'] = asset('vendor/mfw/mediaclass/images/files/' . $this->uploadedFile->guessExtension() . '.png');
         $this->response['preview'] = $this->response['fileicon'];
 
@@ -140,7 +145,7 @@ class FileUploadImages
             $this->responseException($e);
         }
 
-        $this->uploadedFile->move(Storage::disk('media')->path($this->folder_name), $this->response['filename']);
+        $this->uploadedFile->move($this->disk->path($this->folder_name), $this->response['filename']);
 
         $this->mediaResponse();
         return $this;
@@ -150,7 +155,7 @@ class FileUploadImages
     {
         $this->response['filename'] = $this->filename . '.svg';
         $file = $this->folder_name . '/' . $this->response['filename'];
-        $img = Storage::disk('media')->url($file . '?' . time());
+        $img = $this->disk->url($file . '?' . time());
         $this->response['fileicon'] = asset('vendor/mfw/mediaclass/images/files/svg.png');
 
         try {
@@ -159,9 +164,9 @@ class FileUploadImages
             $this->responseException($e);
         }
 
-        $this->uploadedFile->move(Storage::disk('media')->path($this->folder_name), $this->response['filename']);
+        $this->uploadedFile->move($this->disk->path($this->folder_name), $this->response['filename']);
 
-        $this->responseElement('link', Storage::disk('media')->url($file));
+        $this->responseElement('link', $this->disk->url($file));
         $this->responseElement('preview', $img);
 
         $this->mediaResponse();
@@ -186,19 +191,19 @@ class FileUploadImages
 
             $file = $this->folder_name . '/' . $dimensions['width'] . '_' . $this->filename . '.' . $this->mime_type;
 
-            Storage::disk('media')->put($file,
+            $this->disk->put($file,
                 $this->image->resize($dimensions['width'], $dimensions['height'], function ($constraint) {
                     $constraint->aspectRatio();
                     $constraint->upsize();
                 })->stream($this->mime_type, 75));
 
             if (in_array($key, ['xl', 'sm'])) {
-                $this->urls[$key] = Storage::disk('media')->url($file . '?' . time());
+                $this->urls[$key] = $this->disk->url($file . '?' . time());
             }
         }
 
-        $this->responseElement('link', $this->urls['xl'] ?? \MetaFramework\Mediaclass\Accessors\Mediaclass::defaultImgUrl());
-        $this->responseElement('preview', $this->urls['sm'] ?? \MetaFramework\Mediaclass\Accessors\Mediaclass::defaultImgUrl());
+        $this->responseElement('link', $this->urls['xl'] ?? Config::defaultImgUrl());
+        $this->responseElement('preview', $this->urls['sm'] ?? Config::defaultImgUrl());
         $this->responseElement('urls', $this->urls);
 
         try {
@@ -227,15 +232,17 @@ class FileUploadImages
         }
 
         $morphable = Relation::morphMap() ? array_key_first(array_filter(Relation::morphMap(), fn($item) => $item == get_class($this->model))) : get_class($this->model);
+        $path = Path::mediaFolderName($this->model);
+
         if (!$morphable) {
-            File::delete(File::glob(Storage::disk('media')->path((string)$this->model->accessKey()) . DIRECTORY_SEPARATOR . '*' . $this->filename . '*'));
+            File::delete(File::glob($this->disk->path($path . DIRECTORY_SEPARATOR . '*' . $this->filename . '*')));
             throw new Exception("Invalid Media morphable");
         }
 
         return Media::query()->create([
             'model_type' => $morphable,
             'model_id' => $this->model_id,
-            'group' => request('group') ?: Mediaclass::defaultGroup(),
+            'group' => request('group') ?: Config::defaultGroup(),
             'subgroup' => request('subgroup') ?: null,
             'description' => request('description'),
             'position' => request('position') ?: 'left',

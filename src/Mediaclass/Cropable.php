@@ -1,6 +1,6 @@
 <?php
 
-namespace MetaFramework\Mediaclass\Accessors;
+namespace MetaFramework\Mediaclass;
 
 
 use MetaFramework\Mediaclass\Models\Media;
