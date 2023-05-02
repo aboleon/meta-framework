@@ -57,7 +57,7 @@ class Printer
         }
         $url = $this->url();
         if ($url) {
-            return '<img src="' . $url . '" ' . $this->renderParams() . '/>';
+            return '<img loading="lazy" src="' . $url . '" ' . $this->renderParams() . '/>';
         }
         return '';
     }
