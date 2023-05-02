@@ -1,4 +1,4 @@
-/*jshint esversion: 8 */
+/*jshint esversion: 11 */
 
 /**
  * depenes on /vendor/mfw/js/commons.js
@@ -211,7 +211,7 @@ const MediaclassUploader = {
                 },
                 {
                     name: 'mediaclass_temp_id',
-                    value: $("input[name='mediaclass_temp_id']").first().val() ?? null,
+                    value: $("input[name='mediaclass_temp_id']").first().val() ?? '',
                 },
             );
 

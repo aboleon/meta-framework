@@ -75,7 +75,7 @@ class MetaParser
     {
 
         if ($this->model->hasImage()) {
-            $this->data['_illustration'] = $this->media->forGroup('meta')->toArray();
+            $this->data['_illustration'] = $this->media->parsedForGroup('meta')->toArray();
         }
 
         return $this;
