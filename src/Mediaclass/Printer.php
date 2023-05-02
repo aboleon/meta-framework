@@ -20,6 +20,9 @@ class Printer
      */
     protected array $params = [];
 
+    // Srcset & sizes in <img>
+    protected bool $responsive = true;
+
     /**
      * Default image size (base on conventions set up in
      * config/mediaclass.php: xs, sm, md, xl
@@ -78,6 +81,12 @@ class Printer
         return $this->size;
     }
 
+    public function disableResponsive(): self
+    {
+        $this->responsive = false;
+        return $this;
+    }
+
     /**
      * Disables the return of a default image url
      *
@@ -122,14 +131,20 @@ class Printer
             $this->params['alt'] = $this->media->description ?: config('app.name');
         }
 
-        $srcset = $this->srcSet();
-        if ($srcset) {
-            $this->params['srcset'] = implode(', ', $srcset['srcset']);
-            $this->params['sizes'] = implode(', ', array_reverse($srcset['sizes']));
+        if ($this->responsive === true) {
+
+            $srcset = $this->srcSet();
+
+            if ($srcset) {
+                $this->params['srcset'] = implode(', ', $srcset['srcset']);
+                $this->params['sizes'] = implode(', ', array_reverse($srcset['sizes']));
+            }
         }
+
         foreach ($this->params as $key => $value) {
             $html .= $key . '="' . $value . '" ';
         }
+
         return $html;
     }
 

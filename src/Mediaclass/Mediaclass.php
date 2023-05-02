@@ -171,11 +171,10 @@ class Mediaclass
 
     /**
      * Récupère le premier média pour un Model
-     * @return array
      */
-    public function first(): array
+    public function first(): ?Parser
     {
-        return $this->media[0] ?? [];
+        return $this->media[0] ?? null;
     }
 
     /**

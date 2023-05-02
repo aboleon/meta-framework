@@ -25,6 +25,7 @@ class Printer extends Component
         public ?string     $alt = null,
         public array       $params = [],
         public string|bool $default = true,
+        public bool        $responsive = true,
     )
     {
         if ($this->class) {
@@ -39,6 +40,11 @@ class Printer extends Component
             $this->printer = new \MetaFramework\Mediaclass\Printer($model);
 
             $this->printer->setSize($this->size);
+
+            if ($this->responsive === false) {
+                $this->printer->disableResponsive();
+            }
+
             if (!$this->default) {
                 $this->printer->noDefault();
             }
