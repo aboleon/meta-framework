@@ -7,6 +7,7 @@ function d($var, ?string $varname = null): void
     echo '<div class="mfw-meta-parser" style=\'font-family: "Monaco", "Menlo", "Consolas", "Courier New", monospace;font-size: 14px;text-align: left;
     background: #f2f9ff;
     border: 1px solid #d2ecf6;padding: 2%;clear: both;\'><pre class="dumper" style="white-space: break-spaces;
+    word-break: break-all;
     padding: 2%;
     color: #44606e;">';
     echo $varname ? '<span style="font-family: \'Monaco\', \'Menlo\', \'Consolas\', \'Courier New\', monospace;padding: 10px 16px; background: #c3ec94; display: inline-block; border-top: 1px dashed #808080;border-bottom: 1px dashed #808080;margin-bottom: 14px">' . $varname . '</span><br>' : null;
