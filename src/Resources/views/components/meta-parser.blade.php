@@ -15,7 +15,7 @@
     #mfw-toggleButton {
         background: #bd2b56;;
         display: inline-block;
-        position: absolute;
+        position: fixed;
         top: 12px;
         right: 18px;
         z-index: 99999;
