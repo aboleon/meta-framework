@@ -52,12 +52,18 @@ class MetaParser
      * @param \MetaFramework\Models\Meta $model
      * @return array
      */
-    public static function forModel(Meta $model): array
+    public static function forModel(Meta $model, ?string $var = null): array
     {
-        return (new MetaParser($model))
+        $parsed = (new MetaParser($model))
             ->parseDefaultImage()
             ->parseFillables()
             ->getData();
+
+        $varname = $var ?: get_class($model).'\\'.$model->id;
+
+        session(['metaparser.'.$varname => $parsed]);
+
+        return $parsed;
     }
 
     public function getData(): array

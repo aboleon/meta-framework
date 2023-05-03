@@ -2,7 +2,6 @@
 
 namespace MetaFramework;
 
-
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\{
     App,
@@ -17,7 +16,7 @@ use MetaFramework\Models\Nav;
 
 class ServiceProvider extends \Illuminate\Support\ServiceProvider
 {
-    public function register()
+    public function register(): void
     {
         /**
          * Façades
@@ -35,8 +34,9 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
 
     }
 
-    public function boot()
+    public function boot(): void
     {
+
         $this->loadViewsFrom(__DIR__ . '/Resources/views', 'mfw');
         Blade::componentNamespace('\MetaFramework\\Components', 'mfw');
 
@@ -84,6 +84,4 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
         ], 'mfw-lang');
 
     }
-
-
 }
