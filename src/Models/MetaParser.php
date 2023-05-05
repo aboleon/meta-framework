@@ -165,7 +165,7 @@ class MetaParser
             $this->data['_content'][$key]['entries'][$this->iteration][$subkey] = ($type == 'media' ? $this->media->parsedForSubGroup($this->uuid)->toArray() : $content);
 
         } else {
-            $this->data['_content'][$key] = ($type == 'media' ? $this->media->forGroup($data['group'] ?? 'media')->toArray() : $content);
+            $this->data['_content'][$key] = ($type == 'media' ? $this->media->parsedForGroup($data['group'] ?? 'media')->toArray() : $content);
         }
         return $this;
     }
