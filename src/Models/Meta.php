@@ -30,6 +30,7 @@ use MetaFramework\Traits\{
  * @property null|int $parent
  * @property string $type
  * @property mixed $content
+ * @property int $id
  */
 
 class Meta extends Model implements MediaclassInterface

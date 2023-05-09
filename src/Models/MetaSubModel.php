@@ -12,8 +12,8 @@ class MetaSubModel
 
     public function __construct(public Meta $meta)
     {
-        $this->subModelClass = ($this->meta->type == 'bloc' && !empty($this->meta->taxonomy))
-            ? $this->meta->taxonomy
+        $this->subModelClass = ($this->meta->type == 'bloc')
+            ? Bloc::class
             : '\App\Models\Meta\\' . Str::studly($this->meta->type);
 
         $this->subModel = class_exists($this->subModelClass)
@@ -25,6 +25,9 @@ class MetaSubModel
                 $this->subModel->id = $this->meta->id;
                 $this->subModel->taxonomy = $this->meta->taxonomy;
                 $this->subModel->type = $this->meta->type;
+                if ($this->meta->relationLoaded('media')) {
+                    $this->subModel->media = $this->meta->media;
+                }
             } else {
                 $this->subModel = $this->subModel->where('meta_id', $this->meta->id)->first() ?? $this->subModel;
             }
@@ -70,6 +73,7 @@ class MetaSubModel
     {
         return $this->subModel;
     }
+
     public function content()
     {
         return $this->subModel->content;
