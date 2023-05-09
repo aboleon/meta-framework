@@ -1,10 +1,10 @@
 <?php
 
-namespace MetaFramework\Models;
+namespace MetaFramework\Accessors;
 
-use MetaFramework\Accessors\Locale;
 use MetaFramework\Mediaclass\Facades\MediaclassFacade;
 use MetaFramework\Mediaclass\Mediaclass;
+use MetaFramework\Models\Meta;
 
 class MetaParser
 {
@@ -50,6 +50,7 @@ class MetaParser
     /**
      * Get structured content for MetaModel
      * @param \MetaFramework\Models\Meta $model
+     * @param string|null $var
      * @return array
      */
     public static function forModel(Meta $model, ?string $var = null): array
@@ -160,7 +161,6 @@ class MetaParser
     private function parseContent(string $key, string $subkey, array $data, mixed $content): self
     {
         $type = $data['type'] ??= 'text';
-
         if ($this->iterable > 1) {
             $this->data['_content'][$key]['entries'][$this->iteration][$subkey] = ($type == 'media' ? $this->media->parsedForSubGroup($this->uuid)->toArray() : $content);
 

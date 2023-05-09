@@ -96,6 +96,7 @@ class Mediaclass
             $this->parseMedia($this->mediaCollection);
         } else {
             foreach ($this->mediaCollection as $item) {
+                $item->model = $this->object;
                 $this->parseMedia($item);
             }
         }

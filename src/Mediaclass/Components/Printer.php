@@ -23,16 +23,17 @@ class Printer extends Component
         public string      $type = 'img',
         public ?string     $class = null,
         public ?string     $alt = null,
-        public array       $params = [],
+        public array       $param = [],
         public string|bool $default = true,
         public bool        $responsive = true,
+        public bool        $debug = false,
     )
     {
         if ($this->class) {
-            $this->params['class'] = $this->class;
+            $this->param['class'] = $this->class;
         }
         if ($this->alt) {
-            $this->params['alt'] = $this->alt;
+            $this->param['alt'] = $this->alt;
         }
 
         if ($this->model instanceof Parser) {
@@ -48,8 +49,8 @@ class Printer extends Component
             if (!$this->default) {
                 $this->printer->noDefault();
             }
-            if ($this->params) {
-                $this->printer->setParams($this->params);
+            if ($this->param) {
+                $this->printer->setParams($this->param);
             }
             if (in_array($this->type, $this->allowed_types)) {
                 $this->html = $this->printer->{$type}();
@@ -74,10 +75,10 @@ class Printer extends Component
     protected function renderParams(): string
     {
         $html = '';
-        if (!array_key_exists('alt', $this->params)) {
-            $this->params['alt'] = config('app.name');
+        if (!array_key_exists('alt', $this->param)) {
+            $this->param['alt'] = config('app.name');
         }
-        foreach ($this->params as $key => $value) {
+        foreach ($this->param as $key => $value) {
             $html .= $key . '="' . $value . '" ';
         }
 

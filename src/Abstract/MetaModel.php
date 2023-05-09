@@ -58,9 +58,12 @@ abstract class MetaModel extends Meta implements MediaclassInterface
                 if ($taxonomyClass->implementsInterface(MetaConfig::class)) {
                     $this->fillables = array_merge($this->fillables, $taxonomyClass->newInstance()->fillables());
                 }
+            } else {
+                $taxonomyClass = (new ReflectionClass($this->taxonomy));
+                $this->fillables = $taxonomyClass->newInstance()->fillables;
             }
         } catch (Throwable) {}
 
-        return $this->fillables;
+       return $this->fillables;
     }
 }
