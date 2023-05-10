@@ -10,7 +10,7 @@ class Input extends Component
 
     public function __construct(
         public string $name,
-        public int|string|null $value = '',
+        public int|string|float|null $value = '',
         public string $type = 'text',
         public array $params = [],
         public string|null $label = '',
