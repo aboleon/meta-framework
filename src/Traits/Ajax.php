@@ -5,12 +5,13 @@ declare(strict_types=1);
 namespace MetaFramework\Traits;
 
 use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
 
 trait Ajax
 {
     use Responses;
 
-    public function distribute(): array|JsonResponse
+    public function distribute(Request $request): array|JsonResponse
     {
         $this->enableAjaxMode();
         $this->fetchInput();
@@ -27,7 +28,7 @@ trait Ajax
         }
 
 
-        return $this->{request('action')}();
+        return $this->{request('action')}($request);
     }
 
     public function fetchInput(): void

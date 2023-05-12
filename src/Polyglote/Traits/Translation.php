@@ -10,7 +10,7 @@ trait Translation
 {
     use HasTranslations;
 
-    public array $translatable;
+    public array $translatable = [];
     private object $updatable;
 
     public function translation(string $key, string $locale = null): mixed

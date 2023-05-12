@@ -1,5 +1,6 @@
 ### Changelog
 
+- 0.47 Meta CMS Translator, Ajax Trait
 - 0.46 Meta CMS parser, Blocs, Mediaclass
 - 0.45 MetaParser UI
 - 0.44 Mediaclass Printer & MetaParser

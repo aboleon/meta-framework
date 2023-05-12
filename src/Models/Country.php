@@ -10,7 +10,6 @@ class Country extends Model
     use Translation;
 
     public $timestamps = false;
-    public array $translatable;
     public array $fillables = [
         'name' =>[
             'type' => 'text',

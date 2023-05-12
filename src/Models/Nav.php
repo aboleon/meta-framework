@@ -18,9 +18,6 @@ class Nav extends Model
 
     protected $table = 'nav';
 
-    public array $translatable;
-
-
     public array $fillables = [
         'title' => [
             'type' => 'text',
