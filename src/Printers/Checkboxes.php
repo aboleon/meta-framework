@@ -30,7 +30,7 @@ class Checkboxes
     {
         $html = '';
         if ($this->tree->isNotEmpty()) {
-            $html = '<ul>';
+            $html = '<ul class="list-unstyled checkbox-tree">';
             foreach ($this->tree as $item) {
                 $this->entry($html, $item);
             }
@@ -42,15 +42,16 @@ class Checkboxes
 
     private function entry(string &$html, $item, $parent = null): void
     {
-        $html .= '<li>';
+        $html .= '<li data-id="' . $item->id . '"' . ($parent ? ' class="child" data-parent="' . $parent . '"' : '') . '>';
         $html .= View::make('mfw::components.checkbox', [
             'value' => $item->id,
             'name' => $this->name,
             'affected' => $this->affected,
             'class' => '',
             'label' => $item->translation('title'),
-            'forLabel' => str_replace(['[',']'],'', $this->name) . $item->id,
-            'isSelected' => $this->affected->contains($item->id)
+            'forLabel' => str_replace(['[', ']'], '', $this->name) . $item->id,
+            'isSelected' => $this->affected->contains($item->id),
+            'switch' => false
         ])->render();
         self::buildLevels($html, $item);
         $html .= '</li>';
@@ -59,7 +60,7 @@ class Checkboxes
     private function buildLevels(string &$html, $collection): string
     {
         if ($collection->subs->isNotEmpty()) {
-            $html .= '<ul>';
+            $html .= '<ul class="list-unstyled ps-4">';
             foreach ($collection->subs as $items) {
                 $this->entry($html, $items, $items->parent);
             }

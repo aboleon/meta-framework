@@ -15,7 +15,7 @@
             }
     @endphp
     <fieldset>
-        <legend class="toggle">Résumé</legend>
+        <legend class="toggle">Résumé / SEO</legend>
         <div class="toggable">
             <x-mfw::language-tabs/>
             <div class="tab-content base">
@@ -84,6 +84,7 @@
 
                     @role('dev')
                     <code>Visible en mode dev uniquement</code>
+                    <x-mfw::notice class="mt-3" :message="'<span class=\'opacity-50\'>SubModel</span> : '. get_class($meta->subModel())" />
                     @endrole
                 </div>
 

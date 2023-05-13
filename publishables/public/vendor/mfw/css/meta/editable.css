@@ -5,6 +5,7 @@
 @import "../fragments/publication_status.css";
 
 #meta_bloc_list {
+    list-style: none;
     li {
         background-color: rgb(96 125 139 / 12%);
         border-bottom: 1px solid #ccc;
