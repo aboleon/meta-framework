@@ -109,10 +109,7 @@ class MetaParser
             }
 
             if ($schema) {
-                $schema_collection = [
-                    'label' => $collection['label']
-                ];
-                $this->data['_content'][$key]['label'] = $schema_collection;
+                $this->data['_content'][$key]['label'] = $collection['label'];
             }
 
             for ($i = 0; $i < $this->iterable; ++$i) {

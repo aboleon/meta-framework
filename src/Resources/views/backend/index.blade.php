@@ -19,7 +19,7 @@
 
     <div class="bg-white shadow-xl sm:rounded-lg px-4 py-2 mb-4" style="margin: 0 -12px">
 
-        <table class="table">
+        <table class="table table-hover">
             <tr>
                 <th>Titre</th>
                 @if(!$type)

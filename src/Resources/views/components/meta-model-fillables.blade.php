@@ -113,7 +113,7 @@
             @endfor
 
             @if ($clonable)
-                <span class="cloner btn btn-default btn-sm">Ajouter un élément</span>
+                <span class="cloner btn btn-default btn-sm not-draggable">Ajouter un élément</span>
             @endif
         </div>
     @endforeach

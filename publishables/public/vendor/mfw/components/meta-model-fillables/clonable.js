@@ -22,6 +22,7 @@ const clonableContent = {
         bc.sortable({
           cancel: '.not-draggable',
           stop: function () {
+            tinymce.triggerSave();
             bc.find('> div.clonable').each(function (index) {
               $(this).find('.i-counter').text(index + 1);
               clonableContent.resetEditors($(this));
@@ -75,7 +76,7 @@ const clonableContent = {
   resetEditors: function (cloned, reset = false) {
     cloned.find('.tox').remove();
     if (reset) {
-      cloned.find('input').val('');
+      cloned.find('input, textarea').val('');
     }
     let editors = cloned.find('textarea');
     if (editors.length) {
@@ -84,11 +85,10 @@ const clonableContent = {
       setTimeout(function () {
         editors.each(function () {
           let id = '#' + $(this).attr('id');
-          if (reset) {
+          if (reset === true) {
             $(this).text('');
           }
           if ($(this).hasClass('simplified')) {
-            console.log('setting sip');
             tinymce.init(mfw_simplified_tinymce_settings(id));
           }
           if ($(this).hasClass('extended')) {
@@ -97,6 +97,7 @@ const clonableContent = {
         });
       }, 100);
     }
+
   },
 };
 clonableContent.init();
