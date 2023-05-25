@@ -37,7 +37,7 @@ class VatAccessor
     }
 
 
-    public static function defaultRate(): ?self
+    public static function defaultRate(): ?Vat
     {
         return Cache::rememberForever('default_vat_rate', fn() => Vat::query()->where('default', 1)->first());
     }
