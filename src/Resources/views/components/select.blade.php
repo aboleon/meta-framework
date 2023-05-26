@@ -10,7 +10,12 @@
         @if (!$disablename)
             name="{{ $name }}"
         @endif
-        class="form-control form-select" title="{{ $label ?: $name }}">
+        class="form-control form-select" title="{{ $label ?: $name }}"
+@forelse($params as $param => $setting)
+    {{ $param }}="{!! $setting !!}"
+@empty
+@endforelse
+>
     @if ($nullable)
         <option value="">{{ $defaultselecttext }}</option>
     @endif

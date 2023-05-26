@@ -19,6 +19,7 @@ class Select extends Component
         public bool $disablename = false,
         public string $defaultselecttext = '',
         public bool $group = false,
+        public array $params = [],
     )
     {
         $this->defaultselecttext = $this->defaultselecttext ?: '---  '. __('mfw.select_option') .' ---';
