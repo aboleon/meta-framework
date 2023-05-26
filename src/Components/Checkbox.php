@@ -18,6 +18,7 @@ class Checkbox extends Component
         public string|null $label = '',
         public string $class ='',
         public bool $switch = false,
+        public array $params=[]
     ) {
         $this->affected = $this->affected ?? collect();
         $this->forLabel = str_replace(['[',']'],'', $this->name) . $this->value;
