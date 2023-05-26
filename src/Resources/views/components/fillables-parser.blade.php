@@ -5,6 +5,7 @@
     @foreach($fillables as $key=>$value)
         @php
             $array_key = $datakey ? $datakey.'['.$key.']' : $key;
+            $params = $disabled ? ['disabled' => true] : [];
         @endphp
 
         @switch($value['type'] ?? '')
@@ -14,7 +15,8 @@
                                      :value="$error ? old(str_replace(['[', ']'], ['.', ''], $array_key).'.'.$locale) : $model->translation($key, $locale)"
                                      :label="$value['label'] ?? ''"
                                      :class="$value['class'] ?? ''"
-                                     :required="in_array('required',$value)"/>
+                                     :required="in_array('required',$value)"
+                                     :params="$params"/>
                 </div>
                 @break
             @default
@@ -23,7 +25,8 @@
                     <x-mfw::input name="{{$array_key}}[{{$locale}}]"
                                   :value="$error ? old(str_replace(['[', ']'], ['.', ''], $array_key).'.'.$locale) : $model->translation($key, $locale)"
                                   :label="$value['label'] ?? ''"
-                                  :required="in_array('required',$value)"/>
+                                  :required="in_array('required',$value)"
+                                  :params="$params"/>
                 </div>
         @endswitch
     @endforeach

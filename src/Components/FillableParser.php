@@ -11,7 +11,8 @@ class FillableParser extends Component
         public object $model,
         public string $locale,
         public ?string $datakey = null,
-        public array $fillables = []
+        public array $fillables = [],
+        public bool $disabled = false
     )
     {
         $this->fillables  = $this->fillables ?: $this->model->fillales;
