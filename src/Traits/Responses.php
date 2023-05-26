@@ -211,8 +211,12 @@ trait Responses
      */
     public function saveAndRedirect(string $url): void
     {
-        if (request()->has('save_and_redirect')) {
-            $this->redirect_to = $url;
+        if (request()->filled('custom_redirect')) {
+            $this->redirect_to = request('custom_redirect');
+        } else {
+            if (request()->has('save_and_redirect')) {
+                $this->redirect_to = $url;
+            }
         }
     }
 
