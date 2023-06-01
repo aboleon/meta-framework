@@ -13,7 +13,7 @@ class Select extends Component
     public function __construct(
         public array $values,
         public string $name,
-        public mixed $affected,
+        public int|string|null $affected = null,
         public string $label = '',
         public bool $nullable = true,
         public bool $disablename = false,
