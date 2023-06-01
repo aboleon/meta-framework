@@ -1,7 +1,3 @@
-@php
-    $id = rtrim(str_replace(['[',']'],'_', $name),'_');
-    $field_name = str_replace(['[', ']'], ['.', ''], $name);
-@endphp
 @if ($label)
     <label for="{{ $id }}" class="form-label">{!! $label !!}</label>
 @endif
@@ -10,7 +6,7 @@
         @if (!$disablename)
             name="{{ $name }}"
         @endif
-        class="form-control form-select" title="{{ $label ?: $name }}"
+        class="{{ $class }}" title="{{ $label ?: $name }}"
 @forelse($params as $param => $setting)
     {{ $param }}="{!! $setting !!}"
 @empty
@@ -36,4 +32,4 @@
 
     @endif
 </select>
-<x-mfw::validation-error :field="$field_name"/>
+<x-mfw::validation-error :field="$validation_id"/>
