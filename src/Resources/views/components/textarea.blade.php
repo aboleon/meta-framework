@@ -1,7 +1,3 @@
-@php
-    $id = rtrim(str_replace(['[',']'],'_', $name),'_');
-    $field_name = str_replace(['[', ']'], ['.', ''], $name);
-@endphp
 @if ($label)
     <label for="{{$id}}" class="form-label">
         {{ $label  . ($required ? ' *' : '') }}
@@ -10,14 +6,13 @@
 <textarea name="{{ $name }}"
           class="form-control {{ is_array($class) ? explode(' ', $class) : $class }}"
           id="{{ $id }}"
-          {!! !empty($height) ? 'style="height:'.$height.'px"' : '' !!}
+{!! !empty($height) ? 'style="height:'.$height.'px"' : '' !!}
 @forelse($params as $param => $setting)
     {{ $param }}="{!! $setting !!}"
 @empty
 @endforelse
-          @if($required)
-              required
-@endif>{!! $value !!}</textarea>
-@error($field_name)
-<div class="invalid-feedback d-block">{{ $message }}</div>
-@enderror
+@if($required)
+    required
+@endif
+>{!! $value !!}</textarea>
+<x-mfw::validation-error :field="$validation_id"/>
