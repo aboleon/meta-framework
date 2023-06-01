@@ -1,7 +1,3 @@
-@php
-    $id = rtrim(str_replace(['[',']'],'_', $name),'_');
-    $field_name = str_replace(['[', ']'], ['.', ''], $name);
-@endphp
 @if ($label)
     <label for="{{ $id }}" class="form-label">{{ $label . ($required ? ' *' : '') }}</label>
 @endif
@@ -18,6 +14,4 @@
     required
 @endif
 >
-@error($field_name)
-    <div class="invalid-feedback d-block">{{ $message }}</div>
-@enderror
+<x-mfw::validation-error :field="$validation_id"/>
