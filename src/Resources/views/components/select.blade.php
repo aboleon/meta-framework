@@ -6,7 +6,7 @@
         @if (!$disablename)
             name="{{ $name }}"
         @endif
-        class="{{ $class }}" title="{{ $label ?: $name }}"
+        class="{{ $class }}"
 @forelse($params as $param => $setting)
     {{ $param }}="{!! $setting !!}"
 @empty
