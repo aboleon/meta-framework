@@ -165,8 +165,16 @@ trait Responses
         return $this;
     }
 
-    public function sendResponse(): RedirectResponse
+    public function sendResponse(?string $message=null, ?string $type=null ): RedirectResponse
     {
+        if ($message) {
+            if ($type && method_exists($this, 'response'.ucfirst($type))) {
+                $this->{'response'.ucfirst($type)}($message);
+            } else {
+                $this->responseWarning($message);
+            }
+        }
+
         $this->flash();
 
         if ($this->redirect_route) {
