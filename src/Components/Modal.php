@@ -10,13 +10,13 @@ class Modal extends Component
     public function __construct(
         public string $route,
         public ?string $question = null,
-        public string $title = '',
+        public ?string $title = null,
         public string $reference = '',
         public array $params = []
     ) {
-        $this->question = $this->question ?? __('ui.should_i_delete_record');
+        $this->question = $this->question ?? __('mfw.should_i_delete_record');
         $this->reference = $this->reference ?? 'myModal'.$this->reference;
-        $this->title = $this->title ?? __('ui.deletion');
+        $this->title = $this->title ?? __('mfw.deletion');
     }
 
     public function render(): Renderable

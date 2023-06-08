@@ -13,7 +13,7 @@ class BtnSave extends Component
 
     public function __construct(string $label = '', ?string $back = null)
     {
-        $this->label = $label ?: __('ui.save');
+        $this->label = $label ?: __('mfw.save');
         $this->back = $back;
     }
 

@@ -155,7 +155,7 @@ class MetaController extends Controller
             (new MetaSubModel($metum))->process();
 
 
-            $this->responseSuccess(__('ui.record_created'));
+            $this->responseSuccess(__('mfw.record_created'));
             Artisan::call('cache:clear');
 
         } catch (Throwable $e) {

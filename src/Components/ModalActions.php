@@ -13,7 +13,7 @@ class ModalActions extends Component
         public string $icon='',
         public string $class = 'btn-danger'
     ) {
-        $this->title = $this->title ?? __('ui.deletion');
+        $this->title = $this->title ?? __('mfw.deletion');
     }
 
     public function render(): Renderable
