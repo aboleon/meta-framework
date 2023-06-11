@@ -63,7 +63,7 @@
                                 </div>
 
                                 <x-mfw::modal :route="route('panel.vat.destroy', $item->id)"
-                                              :question="__('ui.should_i_delete_record')"
+                                              :question="__('mfw.should_i_delete_record')"
                                               reference="destroy_{{ $item->id }}"/>
                             </td>
                         </tr>

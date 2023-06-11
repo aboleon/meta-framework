@@ -12,6 +12,6 @@
             </label>
         </div>
     @empty
-        {{ __('ui.no_data_provided') }}
+        {{ __('mfw.no_data_provided') }}
     @endforelse
 </div>

@@ -104,7 +104,7 @@ class NavController extends Controller
             $multilang_dependent['title']  => 'required',
         ];
         $this->validation_messages = [
-            $multilang_dependent['title'] . '.required' => __('validation.required', ['attribute' => __('ui.title')])
+            $multilang_dependent['title'] . '.required' => __('validation.required', ['attribute' => __('mfw.title')])
         ];
     }
 }
