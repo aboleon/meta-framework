@@ -30,7 +30,12 @@ trait BackedEnum
                 collect($keys)->map(fn($item) => trans('enum.' . static::varname() . '.' . $item))->toArray()
             );
         });
+    }
 
-
+    public static function getValueFromTranslation(string $keyword): bool|string
+    {
+        return collect(self::translations())->search(function ($item, $key) use ($keyword) {
+            return strtolower($item) == strtolower($keyword);
+        });
     }
 }

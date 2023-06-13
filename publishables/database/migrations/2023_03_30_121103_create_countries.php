@@ -17,7 +17,7 @@ return new class extends Migration {
             $table->longText('name')->nullable();
         });
 
-        if (!\MetaFramework\Accessors\Locale::multilang()) {
+        if (\MetaFramework\Accessors\Locale::multilang()) {
 
 
             $sql = "INSERT INTO `countries` (`id`, `code`, `name`) VALUES
