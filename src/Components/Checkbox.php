@@ -14,13 +14,17 @@ class Checkbox extends Component
     public function __construct(
         public int | string | null $value,
         public string $name,
-        public Collection $affected,
+        public mixed $affected,
         public string|null $label = '',
         public string $class ='',
         public bool $switch = false,
         public array $params=[]
     ) {
-        $this->affected = $this->affected ?? collect();
+
+        if (!$this->affected instanceof Collection) {
+            $this->affected = collect($this->affected);
+        }
+
         $this->forLabel = str_replace(['[',']'],'', $this->name) . $this->value;
         $this->isSelected = $this->affected->contains($this->value);
     }
