@@ -17,7 +17,7 @@ trait OnlineStatus
 
     public function printStatusAsBadge(): string
     {
-        return '<div id="mfw-published_status" data-ajax-url="' . route('mfw.ajax') . '" data-status="' . $this->statusTag() . '" data-id="' . $this->id . '" data-class="' . get_class($this) . '" data-label-pushonline="'.__('mfw.published.publish').'" data-label-pushoffline="'.__('mfw.published.unpublish').'" data-label-isonline="'.__('mfw.published.online').'" data-label-isoffline="'.__('mfw.published.offline').'"><button type="button" class="btn btn-sm btn-'.$this->statusClass().'">' . $this->statusLabel() . '</button></div>';
+        return '<div class="mfw-published_status" data-ajax-url="' . route('mfw.ajax') . '" data-status="' . $this->statusTag() . '" data-id="' . $this->id . '" data-class="' . get_class($this) . '" data-label-pushonline="'.__('mfw.published.publish').'" data-label-pushoffline="'.__('mfw.published.unpublish').'" data-label-isonline="'.__('mfw.published.online').'" data-label-isoffline="'.__('mfw.published.offline').'"><button type="button" class="btn btn-sm btn-'.$this->statusClass().'">' . $this->statusLabel() . '</button></div>';
     }
 
     public function statusClass(): string
