@@ -20,14 +20,14 @@
         @foreach($values as $optgroup_id => $optgroup)
             <optgroup data-id="{{ $optgroup_id }}" label="{{ $optgroup['name'] }}">
                 @foreach($optgroup['values'] as $key => $value)
-                    <option value="{{ $key }}"{{ $affected && $key == $affected ? 'selected' : '' }}>{{ $value }}</option>
+                    <option data-value="{{ Str::slug($value) }}" value="{{ $key }}"{{ $affected && $key == $affected ? 'selected' : '' }}>{{ $value }}</option>
                 @endforeach
             </optgroup>
 
         @endforeach
     @else
         @foreach($values as $key => $value)
-            <option value="{{ $key }}"{{ $affected && $key == $affected ? 'selected' : '' }}>{{ $value }}</option>
+            <option data-value="{{ Str::slug($value) }}" value="{{ $key }}"{{ $affected && $key == $affected ? 'selected' : '' }}>{{ $value }}</option>
         @endforeach
 
     @endif
