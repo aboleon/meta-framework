@@ -1,5 +1,5 @@
 @if ($label)
-    <label for="{{ $id }}" class="form-label">{{ $label . ($required ? ' *' : '') }}</label>
+    <label for="{{ $id }}" class="form-label">{!! $label . ($required ? ' *' : '') !!}</label>
 @endif
 <input type="{{ $type ?? 'text' }}"
        name="{{ $name }}"
