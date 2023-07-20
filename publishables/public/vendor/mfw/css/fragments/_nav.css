@@ -4,7 +4,7 @@
     }
 }
 
-.nav
+.nav,
 .dropdown-submenu {
     position: relative;
 }
@@ -65,6 +65,9 @@ ul.nav.navbar-nav {
 
 
 .nav.side-menu {
+    a {
+        text-decoration: none;
+    }
     > li.sh-blue-grey {
 
         border-bottom: 1px solid #5b7e8e;

@@ -35,7 +35,6 @@ class Printer extends Component
         if ($this->alt) {
             $this->param['alt'] = $this->alt;
         }
-
         if ($this->model instanceof Parser) {
 
             $this->printer = new \MetaFramework\Mediaclass\Printer($model);
