@@ -1,0 +1,78 @@
+@import "../vendor/mfw/css/panel.css";
+@import "../vendor/mfw/css/show.css";
+ul.mfw-actions {
+    float: right;
+    align-items: center;
+    li .lg-link {
+        padding: 5px 6px 4px;
+        margin-top: -1px;
+        display: block;
+        img {
+            border-radius: 2px;
+        }
+        a {
+            display: initial;
+            width: auto;
+            height: auto;
+            color: black;
+            font-weight: 700;
+            &:first-of-type {
+                margin-left: 5px;
+            }
+            &:last-of-type {
+                margin-right: 5px;
+            }
+            &:hover {
+                color: var(--base-1);
+                text-decoration: underline;
+            }
+        }
+    }
+}
+.yajra-datatable, .table.index {
+    thead th:last-of-type {
+        text-align: right;
+    }
+}
+.add-dynamic {
+    cursor: pointer;
+    i {
+        color: #73879C;
+        transition: 200ms all ease;
+        &:hover {
+            color: #48a97c;
+        }
+    }
+}
+
+.btn-danger,.mfw-status.offline, .mfw-bg-red {
+    background: var(--base-1);
+}
+.mfw-bg-green {
+    background: #48a97c;
+}
+.btn-danger:hover {
+    background: #607d8b;
+    border-color:#607d8b;
+}
+.mfw-badge {
+    padding: 4px 10px;
+    border-radius: 25px;
+    font-size: 14px;
+    font-weight: 700;
+}
+.mfw-bg-red {
+    background: var(--base-1);
+    color:white
+}
+.mfw-bg-yellow {
+    background: var(--ab-yellow);
+    color: #1A1A1A;
+}
+.mfw-bg-default {
+    background: var(--ab-blue-grey);
+    color: white;
+}
+b {
+    color: black;
+}

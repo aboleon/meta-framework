@@ -3,9 +3,8 @@
 namespace Database\Seeders;
 
 use App\Models\User;
-use App\Models\UserRole;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use UserRole;
 
 class UserSeeder extends Seeder
 {

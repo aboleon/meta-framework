@@ -16,8 +16,9 @@ return new class extends Migration
         Schema::table('users', function (Blueprint $table) {
             $table->string('first_name')->index();
             $table->string('last_name')->index();
-            $table->timestamp('last_login_at')->nullable(true);
-            $table->timestamp('disabled_at')->nullable(true);
+            $table->timestamp('last_login_at')->nullable();
+            $table->timestamp('disabled_at')->nullable();
+            $table->timestamp('deleted_at')->nullable()->index();
         });
     }
 
