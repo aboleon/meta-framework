@@ -25,7 +25,7 @@ class InputDateMask extends Component
 
     public function render(): Renderable
     {
-        $this->params = array_merge($this->params, ['maxlength' => 10]);
+        $this->params = array_merge($this->params, ['maxlength' => 10, 'placeholder' => $this->translations(app()->getLocale())]);
 
         return view('mfw::components.inputdatemask')->with([
             'label' => $this->label,
@@ -34,5 +34,15 @@ class InputDateMask extends Component
             'value' => $this->value,
             'params' => $this->params
         ]);
+    }
+
+    private function translations(string $locale): string
+    {
+        $translations = [
+          'fr'=>'JJ/MM/AAAA',
+          'en'=>'DD/MM/YYYY'
+        ];
+
+        return $translations[$locale] ?? $translations['en'];
     }
 }
