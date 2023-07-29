@@ -13,7 +13,12 @@ trait BackedEnum
 
     public static function keys(): array
     {
-        return collect(self::cases())->map(fn($case) => $case->value)->toArray();
+        return static::values();
+    }
+
+    public static function values(): array
+    {
+        return array_column(self::cases(), 'value');
     }
 
     public static function translated(string $key): string
