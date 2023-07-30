@@ -112,8 +112,11 @@ span.subcontrol {
 
 .mediaclass {
     .preview {
-        background-size: cover;
+        background-size: contain;
         min-height: 130px;
+        background-repeat: no-repeat;
+        background-position-x: center;
+        background-position-y: center;
     }
 }
 

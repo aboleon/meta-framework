@@ -3,3 +3,5 @@
 /_docs
 /.phpunit.result.cache
 /TODO.md
+*.csscrush
+*.crush.css

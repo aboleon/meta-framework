@@ -16,6 +16,7 @@ return new class extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->enum('type', UserType::keys())->default(UserType::default())->index()->after('id');
+            $table->string('name')->nullable()->change();
             $table->string('first_name')->index();
             $table->string('last_name')->index();
             $table->timestamp('last_login_at')->nullable();
