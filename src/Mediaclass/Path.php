@@ -21,11 +21,7 @@ class Path
     public static function checkMakeDir(string $directory, int $permissions=0755): void
     {
         if (!is_dir($directory)) {
-            d($directory . ' dir is not there');
             mkdir($directory, $permissions, true);
-        } else {
-
-            d($directory . ' dir is there');
         }
     }
 }
