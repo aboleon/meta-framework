@@ -10,7 +10,8 @@ class Alert extends Component
 
     public function __construct(
         public string $message,
-        public string $type = 'danger'
+        public string $type = 'danger',
+        public string $class = ''
     )
     {
     }
