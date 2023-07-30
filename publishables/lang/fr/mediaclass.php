@@ -10,4 +10,5 @@ return [
         'error' => 'Erreur',
         'select' => 'Sélectionner'
     ],
+    'uploaded_at' => "Téléchargé le :date à :time"
 ];

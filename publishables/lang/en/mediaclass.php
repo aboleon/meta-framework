@@ -10,4 +10,5 @@ return [
         'error' => 'Error',
         'select' => 'Select'
     ],
+    'uploaded_at' => "Uploaded on :date at :time"
 ];

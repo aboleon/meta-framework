@@ -24,13 +24,16 @@
                 <div class="col-sm-9 impFileName">
                     <div class="row infos">
                         <div class="col-sm-12">
-                            <p class="name">{{ $media->original_filename }}</p>
+                            <p class="name">
+                                <span class="rounded-1 py-1 px-2 text-bg-secondary">{{ $media->original_filename }}</span>
+                                <span class="rounded-1 py-1 px-2 bg-light-subtle text-dark opacity-75">
+                                {{ __('mediaclass.uploaded_at', ['date' => $media->created_at->format('d/m/Y'), 'time' => $media->created_at->format('H:i')]) }}
+                                </span>
+                            </p>
                         </div>
                     </div>
-                    <div class="row params mt-2">
-                        <div class="col-sm-7 description no-multilang {{ !$description ? 'd-none' :'' }}">
-                            <b>Description
-                                <span class="lang">Français</span></b>
+                    <div class="row params mt-3">
+                        <div class="col-sm-7 description {{ !$description ? 'd-none' :'' }}">
                             @foreach(\MetaFramework\Accessors\Locale::projectLocales() as $locale)
                                 <x-mfw::textarea name="mediaclass[{{ $media->id }}][description][{{ $locale }}]" :height="100" class="mt-2 description" :value="$media->description[$locale]" label="Description"/>
                             @endforeach
