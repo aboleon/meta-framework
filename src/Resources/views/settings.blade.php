@@ -5,9 +5,10 @@
         </h2>
     </x-slot>
 
-    @push('css')
-        {!! csscrush_tag(public_path('css/show.css')) !!}
-    @endpush
+    @php
+        $error = $errors->any();
+    @endphp
+
     <x-mfw::validation-errors/>
     <x-mfw::response-messages/>
     <form method="post" action="{{ route('mfw.settings.update') }}">
@@ -17,21 +18,27 @@
                 <div class="col-md-12">
                     <div class="bloc-editable">
                         <h2>{{ $config_setting['title'] }}</h2>
-                        @foreach($config_setting['elements'] as $input)
-                            @if($input['type'] == 'textarea')
-                                <x-mfw::textarea :name="$input['name']"
-                                                           class="{{$input['class'] ?? ''}}"
-                                                           :label="$input['title'] ?? ''"
-                                                           :value="old($input['name']) ?: MetaFramework\Models\Setting::get($input['name']) ?: ''"/>
+                        @foreach($config_setting['elements'] as $item)
+                            @php
+                                $value = $error
+                                ? old(request('mfw-settings.'.$item['name']))
+                                : (MetaFramework\Models\Setting::value($item['name'])
+                                    ?: \MetaFramework\Models\Setting::defaultSettingValue($item['name']));
+                            @endphp
+                            @if($item['type'] == 'textarea')
+                                <x-mfw::textarea name="mfw-settings[{{ $item['name'] }}]"
+                                                 class="{{  $item['class'] ?? ''}}"
+                                                 :label="$item['title'] ?? ''"
+                                                 :value="$value"/>
                                 @once
                                     @include('mfw::lib.tinymce')
                                 @endonce
                             @else
-                                <x-mfw::input name="{{$input['name']}}"
-                                                        type="{{ $input['type'] }}"
-                                                        label="{!! $input['title'] ?? '' !!}"
-                                                        className="{{ $input['class'] ?? '' }}"
-                                                        value="{!! old($input['name']) ?: MetaFramework\Models\Setting::get($input['name']) ?: '' !!}"/>
+                                <x-mfw::input name="{{$item['name']}}"
+                                              type="{{ $item['type'] }}"
+                                              label="{!! $item['title'] ?? '' !!}"
+                                              class="{{ $item['class'] ?? '' }}"
+                                              value="{!! $value  !!}"/>
                             @endif
                         @endforeach
                     </div>

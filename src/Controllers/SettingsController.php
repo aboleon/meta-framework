@@ -3,6 +3,7 @@
 namespace MetaFramework\Controllers;
 
 use Illuminate\Contracts\Support\Renderable;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Artisan;
 use MetaFramework\Accessors\Routing;
 use MetaFramework\Models\Setting;
@@ -12,21 +13,19 @@ class SettingsController extends Controller
 {
     use Responses;
 
-
-
     public function index(): Renderable
     {
-        return view(Routing::backend().'.show.settings')->with([
-            'config_settings' => config('settings'),
+        return view('mfw::settings')->with([
+            'config_settings' => config('mfw-settings'),
             'settings' => Setting::getAllSettings(),
         ]);
     }
 
-    public function update()
+    public function update(): RedirectResponse
     {
 
         try {
-            $configs = Setting::getConfigElements();
+            $configs = Setting::getConfigElementsKeys();
             $rules = Setting::getValidationRules();
 
 
@@ -42,7 +41,7 @@ class SettingsController extends Controller
 
             }
 
-            Artisan::call('cache:clear');
+            cache()->forget('mfw-settings');
 
             $this->responseSuccess('Configuration enregistré avec succès');
         } catch (\Throwable $e) {
