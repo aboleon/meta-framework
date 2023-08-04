@@ -55,6 +55,11 @@ trait Responses
         return $this->response;
     }
 
+    public function fetchMessages(): array
+    {
+        return $this->response['messages'];
+    }
+
     public function disableRedirects(): static
     {
         $this->disable_redirects = true;
@@ -165,11 +170,11 @@ trait Responses
         return $this;
     }
 
-    public function sendResponse(?string $message=null, ?string $type=null ): RedirectResponse
+    public function sendResponse(?string $message = null, ?string $type = null): RedirectResponse
     {
         if ($message) {
-            if ($type && method_exists($this, 'response'.ucfirst($type))) {
-                $this->{'response'.ucfirst($type)}($message);
+            if ($type && method_exists($this, 'response' . ucfirst($type))) {
+                $this->{'response' . ucfirst($type)}($message);
             } else {
                 $this->responseWarning($message);
             }

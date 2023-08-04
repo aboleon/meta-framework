@@ -10,7 +10,8 @@
         $('.iban').on('keyup change', function () {
           let c = $(this).closest('.iban-validator'), input = $(this);
           $(this).removeClass('is-valid is-invalid');
-          c.find('feedback').addClass('d-none');
+          c.find('.feedback').addClass('d-none');
+          c.find('.invalid-feedback.d-block').remove();
           setDelay(function () {
             if (input.val().length) {
               if (isValidIBANNumber(input.val())) {
