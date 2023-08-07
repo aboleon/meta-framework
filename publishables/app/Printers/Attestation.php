@@ -1,8 +1,8 @@
 <?php
 
 
-use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Response;
+use Barryvdh\DomPDF\Facade\Pdf as PDF;
 
 class Attestation
 {
@@ -13,6 +13,6 @@ class Attestation
         public ModelExample $modelExample,
     )
     {
-        $this->pdf = Pdf::loadView('pdf.attestation_example', ['data' => $modelExample]);
+        $this->pdf = PDF::loadView('pdf.attestation_example', ['data' => $modelExample]);
     }
 }
