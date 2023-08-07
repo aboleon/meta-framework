@@ -2,12 +2,13 @@
 
 namespace MetaFramework\Traits;
 
+use Barryvdh\DomPDF\Pdf;
 use Illuminate\Http\Response;
 
 trait DomPdf
 {
 
-    private \Barryvdh\DomPDF\Pdf $pdf;
+    private Pdf $pdf;
     // composer require "barryvdh/laravel-dompdf"
 
     public function __invoke(): Response

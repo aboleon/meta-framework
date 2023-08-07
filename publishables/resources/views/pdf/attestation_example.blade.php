@@ -38,7 +38,7 @@
             <td style="padding-left: 30px">
                 <p>
                     Je soussignée, Marie-Laure Follot, Directrice du Groupement d’intérêt public, de la formation continue et de l’insertion professionnelle certifie par la présente que...
-                </p
+                </p>
             </td>
         </tr>
     </table>
