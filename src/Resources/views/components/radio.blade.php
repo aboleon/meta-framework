@@ -8,3 +8,4 @@
         {{ __('mfw.no_data_provided') }}
     @endforelse
 </div>
+<x-mfw::validation-error :field="$validation_id"/>

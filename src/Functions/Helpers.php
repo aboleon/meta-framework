@@ -11,6 +11,6 @@ class Helpers
 
     public static function generateValidationId(string $string): string
     {
-        return str_replace(['[', ']'], ['.', ''], $string);
+        return rtrim(str_replace(['[', ']'], ['.', ''], $string), '.');
     }
 }
