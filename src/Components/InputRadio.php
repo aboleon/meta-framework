@@ -5,6 +5,7 @@ namespace MetaFramework\Components;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Support\Str;
 use Illuminate\View\Component;
+use MetaFramework\Functions\Helpers;
 
 class InputRadio extends Component
 {
@@ -19,6 +20,7 @@ class InputRadio extends Component
         public int|string|null $default = null
     )
     {
+        $this->name = Helpers::generateInputName($this->name);
         $this->id = Str::random(16);
     }
 

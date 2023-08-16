@@ -24,6 +24,7 @@ class Input extends Component
     {
         $this->id = Helpers::generateInputId($this->name);
         $this->validation_id = Helpers::generateValidationId($this->name);
+        $this->name = Helpers::generateInputName($this->name);
     }
 
     public function render(): Renderable

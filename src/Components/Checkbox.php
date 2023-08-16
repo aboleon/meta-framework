@@ -5,6 +5,7 @@ namespace MetaFramework\Components;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Support\Collection;
 use Illuminate\View\Component;
+use MetaFramework\Functions\Helpers;
 
 class Checkbox extends Component
 {
@@ -27,6 +28,7 @@ class Checkbox extends Component
 
         $this->forLabel = str_replace(['[',']'],'', $this->name) . $this->value;
         $this->isSelected = $this->affected->contains($this->value);
+        $this->name = Helpers::generateInputName($this->name);
     }
 
     public function render(): Renderable
