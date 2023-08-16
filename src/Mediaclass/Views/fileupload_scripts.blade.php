@@ -1,7 +1,7 @@
-@push('css')
-@include('mediaclass::scripts.css')
-@endpush
+@pushonce('css')
+    @include('mediaclass::scripts.css')
+@endpushonce
 
-@push('js')
+@pushonce('js')
     @include('mediaclass::scripts.js')
-@endpush
+@endpushonce
