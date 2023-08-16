@@ -26,7 +26,7 @@ class Checkbox extends Component
             $this->affected = collect($this->affected);
         }
 
-        $this->forLabel = str_replace(['[',']'],'', $this->name) . $this->value;
+        $this->forLabel = Helpers::generateInputId($this->name);
         $this->isSelected = $this->affected->contains($this->value);
         $this->name = Helpers::generateInputName($this->name);
     }
