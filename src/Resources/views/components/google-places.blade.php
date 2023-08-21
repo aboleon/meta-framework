@@ -2,7 +2,7 @@
 @php
     $error = $errors->any();
 @endphp
-<div class="clearfix gmapsbar" id="mapsbar_{{ $random_id }}">
+<div class="clearfix gmapsbar {{ $field }}" id="mapsbar_{{ $random_id }}">
     <div class="locationField" data-error="">
 
         @if ($label)
