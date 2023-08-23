@@ -16,11 +16,11 @@ class InputDateMask extends Component
         public string                $type = 'text',
         public array                 $params = [],
         public string|null           $label = '',
-        public string                $class = '',
+        public string                $className = '',
         public bool                  $required = false,
     )
     {
-        $this->class = rtrim('inputdatemask ' . $this->class.' ');
+        $this->className = rtrim('inputdatemask ' . $this->className.' ');
     }
 
     public function render(): Renderable
@@ -29,7 +29,7 @@ class InputDateMask extends Component
 
         return view('mfw::components.inputdatemask')->with([
             'label' => $this->label,
-            'class' => $this->class,
+            'className' => $this->className,
             'required' => $this->required,
             'value' => $this->value,
             'params' => $this->params

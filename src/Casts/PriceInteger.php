@@ -1,8 +1,10 @@
 <?php
+
 namespace MetaFramework\Casts;
 
 use DateTime;
 use Illuminate\Contracts\Database\Eloquent\CastsAttributes;
+use Illuminate\Support\Facades\Log;
 
 
 class PriceInteger implements CastsAttributes
@@ -13,11 +15,11 @@ class PriceInteger implements CastsAttributes
      */
     public function get($model, $key, $value, $attributes)
     {
-        return $value/100;
+        return $value / 100;
     }
 
     public function set($model, $key, $value, $attributes)
     {
-        return $value*100;
+        return $value * 100;
     }
 }
