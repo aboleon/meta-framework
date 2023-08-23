@@ -2,6 +2,7 @@
 
 namespace MetaFramework\Traits;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder;
 
 trait OnlineStatus
@@ -12,7 +13,10 @@ trait OnlineStatus
         $allowed_tags = ['div', 'td', 'th'];
         $tag = in_array($tag, $allowed_tags) ? $tag : 'span';
 
-        return "<" . $tag . " class='mfw-status " . $this->statusTag() . "'>" . ($this->published?->format('d/m/Y H:i') ?: trans('mfw.no')) . "</" . $tag . ">";
+        return "<" . $tag . " class='mfw-status " . $this->statusTag() . "'>" .
+            ($this->published instanceof Carbon
+            ? ($this->published?->format('d/m/Y H:i')  ?: trans('mfw.no'))
+            : ($this->published ? trans('mfw.yes') : trans('mfw.no'))) . "</" . $tag . ">";
     }
 
     public function printStatusAsBadge(): string
