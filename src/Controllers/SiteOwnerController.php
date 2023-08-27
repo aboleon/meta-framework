@@ -3,6 +3,7 @@
 namespace MetaFramework\Controllers;
 
 use Illuminate\Contracts\Support\Renderable;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Http\{
     RedirectResponse,
     Request};
@@ -39,6 +40,8 @@ class SiteOwnerController extends Controller
             $object->save();
 
             $this->responseSuccess("Les informations ont été enregistrées.");
+
+            Cache::forget('mfw_siteowner');
 
         } catch (Throwable $e) {
             $this->responseException($e);
