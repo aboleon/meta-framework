@@ -6,6 +6,7 @@
     </x-slot>
 
     <div class="shadow p-4 bg-body-tertiary rounded">
+        <x-mfw::validation-banner/>
         <form method="post" action="{!! route('mfw.siteowner.store') !!}">
             @csrf
             <fieldset>
@@ -23,7 +24,7 @@
                         </div>
                         <div class="row mb-3">
                             <div class="col-xxl-6">
-                                <x-mfw::input name="vat" label="Numéro de TVA" value="{!! old('vat') ?: $data?->vat !!}"/>
+                                <x-mfw::input name="vat_number" label="Numéro de TVA" value="{!! old('vat_number') ?: $data?->vat_number !!}"/>
                             </div>
                             <div class="col-xxl-6">
                                 <x-mfw::input name="reg_number" label="{{ config('mfw.siteowner.reg_number') }}" value="{!! old('reg_number') ?: $data?->reg_number !!}"/>
