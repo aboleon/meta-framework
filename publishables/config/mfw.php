@@ -16,6 +16,7 @@ return [
     ],
     'siteowner' => [
         'active' => true,
+        'reg_number' => 'SIRET',
         'address_lines' => 1
     ]
 ];

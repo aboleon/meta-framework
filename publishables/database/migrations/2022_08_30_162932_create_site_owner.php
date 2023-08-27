@@ -16,14 +16,14 @@ return new class extends Migration
         Schema::create('site_owner', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->text('address');
+            $table->longText('address');
             $table->string('manager');
             $table->string('phone');
             $table->string('vat');
-            $table->string('siret');
+            $table->string('reg_number');
             $table->string('email');
             $table->string('zip');
-            $table->string('ville');
+            $table->string('locality');
         });
     }
 

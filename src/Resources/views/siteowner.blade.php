@@ -26,7 +26,7 @@
                                 <x-mfw::input name="vat" label="Numéro de TVA" value="{!! old('vat') ?: $data?->vat !!}"/>
                             </div>
                             <div class="col-xxl-6">
-                                <x-mfw::input name="siret" label="SIRET" value="{!! old('siret') ?: $data?->siret !!}"/>
+                                <x-mfw::input name="reg_number" label="{{ config('mfw.siteowner.reg_number') }}" value="{!! old('reg_number') ?: $data?->reg_number !!}"/>
                             </div>
                         </div>
                         <div class="row mb-3">
@@ -56,7 +56,7 @@
                                 <x-mfw::input label="Code postal" name="zip" value="{!! old('zip') ?: $data?->zip !!}"/>
                             </div>
                             <div class="col-sm-6">
-                                <x-mfw::input label="Ville" name="ville" value="{!! old('ville') ?: $data?->ville !!}"/>
+                                <x-mfw::input label="Ville" name="locality" value="{!! old('locality') ?: $data?->locality !!}"/>
                             </div>
                         </div>
 
