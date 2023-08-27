@@ -14,4 +14,9 @@ class Identity
         });
     }
 
+    public static function get(string $key): ?string
+    {
+        return cache('mfw_siteowner')?->{$key};
+    }
+
 }
