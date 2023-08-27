@@ -16,7 +16,23 @@ class Identity
 
     public static function get(string $key): ?string
     {
+        if ($key == 'address') {
+            return implode(', ', (array)cache('mfw_siteowner')?->{$key});
+        }
+
         return cache('mfw_siteowner')?->{$key};
+    }
+
+    public static function addressBlock(): string
+    {
+        return nl2br(implode("\n", (array)cache('mfw_siteowner')?->address));
+    }
+
+    public static function addressLine(int $line = 0): ?string
+    {
+        $address = (array)cache('mfw_siteowner')?->address;
+
+        return $address[$line] ?? null;
     }
 
 }
