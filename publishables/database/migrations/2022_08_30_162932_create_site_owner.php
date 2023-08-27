@@ -19,7 +19,7 @@ return new class extends Migration
             $table->longText('address');
             $table->string('manager');
             $table->string('phone');
-            $table->string('vat');
+            $table->string('vat_number');
             $table->string('reg_number');
             $table->string('email');
             $table->string('zip');

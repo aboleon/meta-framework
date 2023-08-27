@@ -26,30 +26,29 @@ class SiteOwnerController extends Controller
     {
         $this->request_validation();
         $this->validation();
-        try {
-            $object = SiteOwner::firstOrNew();
-            $object->name = $request['name'];
-            $object->address = $request['address'];
-            $object->manager = $request['manager'];
-            $object->phone = $request['phone'];
-            $object->vat = $request['vat'];
-            $object->siret = $request['siret'];
-            $object->email = $request['email'];
-            $object->zip = $request['zip'];
-            $object->ville = $request['ville'];
-            $object->save();
 
-            $this->responseSuccess("Les informations ont été enregistrées.");
+        //try {
+        $object = SiteOwner::firstOrNew();
+        $object->name = $request['name'];
+        $object->address = $request['address'];
+        $object->manager = $request['manager'];
+        $object->phone = $request['phone'];
+        $object->vat_number = $request['vat_number'];
+        $object->reg_number = $request['reg_number'];
+        $object->email = $request['email'];
+        $object->zip = $request['zip'];
+        $object->locality = $request['locality'];
+        $object->save();
 
-            Cache::forget('mfw_siteowner');
+        $this->responseSuccess("Les informations ont été enregistrées.");
 
-        } catch (Throwable $e) {
-            $this->responseException($e);
-        } finally {
-            return $this->sendResponse();
-        }
+        Cache::forget('mfw_siteowner');
+
+        /*   } catch (Throwable $e) {
+               $this->responseException($e);
+           } */
+        return $this->sendResponse();
     }
-
 
     private function request_validation(): void
     {
@@ -58,11 +57,11 @@ class SiteOwnerController extends Controller
             'address' => 'required',
             'manager' => 'required',
             'phone' => 'required',
-            'vat' => 'required',
-            'siret' => 'required',
+            'vat_number' => 'required',
+            'reg_number' => 'required',
             'email' => 'required',
             'zip' => 'required',
-            'ville' => 'required',
+            'locality' => 'required',
         ];
 
         $this->validation_messages = [
@@ -70,11 +69,11 @@ class SiteOwnerController extends Controller
             'address.required' => "L'adresse de la structure n'est pas renseignée.",
             'manager.required' => "Le gérant de la structure n'est pas renseigné.",
             'phone.required' => "Le numéro de téléphone n'est pas renseigné.",
-            'vat.required' => "Le numéro TVA n'est pas renseigné.",
-            'siret.required' => "Le SIRET n'est pas renseigné.",
+            'vat_number.required' => "Le numéro TVA n'est pas renseigné.",
+            'reg_number.required' => config('mfw.siteowner.reg_number')." n'est pas renseigné.",
             'email.required' => "L'adresse e-mail n'est pas renseignée.",
             'zip.required' => "Le code postal n'est pas renseigné.",
-            'ville.required' => "La ville n'est pas renseignée.",
+            'locality.required' => "La ville n'est pas renseignée.",
         ];
     }
 }
