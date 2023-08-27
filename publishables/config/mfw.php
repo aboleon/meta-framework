@@ -14,4 +14,8 @@ return [
     'tables' => [
         'user' => 'users'
     ],
+    'siteowner' => [
+        'active' => true,
+        'address_lines' => 1
+    ]
 ];

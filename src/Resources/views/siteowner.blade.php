@@ -9,10 +9,10 @@
         <form method="post" action="{!! route('mfw.siteowner.store') !!}">
             @csrf
             <fieldset>
-                <h4>Informations légales</h4>
 
                 <div class="row">
                     <div class="col-sm-6">
+                        <h4>Informations légales</h4>
                         <div class="row mb-3">
                             <div class="col-xxl-6">
                                 <x-mfw::input name="name" label="Dénomination" value="{!! old('name') ?: $data?->name !!}"/>
@@ -39,9 +39,18 @@
                         </div>
                     </div>
                     <div class="col-sm-6">
+                        <h4>Adresse</h4>
                         <div class="row mb-3">
                             <div class="col-12">
-                                <x-mfw::textarea label="Adresse" height="140" class="mb-3" name="address" value="{!! old('address') ?: $data?->address !!}"/>
+                                @if(config('mfw.siteowner.address_lines') > 1)
+                                    @for($i=0;$i<config('mfw.siteowner.address_lines');++$i)
+                                        <div class="mb-3">
+                                            <x-mfw::input label="L{{ $i+1 }}" name="address[]" value="{!! old('address.'. $i) ?: ($data?->address[$i] ?? '') !!}"/>
+                                        </div>
+                                    @endfor
+                                @else
+                                    <x-mfw::textarea label="Adresse" height="140" class="mb-3" name="address" value="{!! old('address') ?: $data?->address[0] !!}"/>
+                                @endif
                             </div>
                             <div class="col-sm-6">
                                 <x-mfw::input label="Code postal" name="zip" value="{!! old('zip') ?: $data?->zip !!}"/>

@@ -9,4 +9,8 @@ class SiteOwner extends Model
     public $timestamps = false;
     protected $table = 'site_owner';
     protected $guarded = [];
+
+    protected $casts = [
+      'address' => 'json'
+    ];
 }

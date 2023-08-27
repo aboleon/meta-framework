@@ -29,7 +29,7 @@
         <div class="left_col scroll-view sticky-top">
             <div class="navbar nav_title" style="border: 0;">
                 @section('navigation-vertical')
-                    @include('navigation-vertical')
+                    @include('panel.navigation-vertical')
                 @show
             </div>
         </div>
