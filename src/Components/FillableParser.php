@@ -12,10 +12,13 @@ class FillableParser extends Component
         public string $locale,
         public ?string $datakey = null,
         public array $fillables = [],
-        public bool $disabled = false
+        public bool $disabled = false,
+        public array $parsed = []
     )
     {
-        $this->fillables  = $this->fillables ?: $this->model->fillales;
+        if (!$this->parsed) {
+            $this->fillables = $this->fillables ?: $this->model->fillales;
+        }
     }
 
     public function render(): Renderable

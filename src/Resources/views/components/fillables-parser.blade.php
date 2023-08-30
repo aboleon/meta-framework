@@ -30,4 +30,8 @@
                 </div>
         @endswitch
     @endforeach
+@else
+    @if ($parsed)
+        <x-mfw::alert message="A parse was attempted on {!! implode(', ',array_map(fn($item) => '<em>\''.$item.'\'</em>', $parsed), ) !!}" type="warning"/>
+    @endif
 @endif
