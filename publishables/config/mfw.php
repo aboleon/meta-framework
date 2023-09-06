@@ -1,7 +1,6 @@
 <?php
 
 return [
-    'google_places_api_key' => env('GOOGLE_PLACES_API_KEY'),
     'translatable' => [
         'multilang' => true,
         'locales' => ['fr', 'en'],
@@ -18,5 +17,5 @@ return [
         'active' => true,
         'reg_number' => 'SIRET',
         'address_lines' => 1
-    ]
+    ],
 ];

@@ -64,6 +64,6 @@
 @once
     @push('js')
         <script src="{{ asset('vendor/mfw/components/google-places-geolocate.js') }}"></script>
-        <script src="https://maps.googleapis.com/maps/api/js?key={{ config('mfw.google_places_api_key') }}&libraries=places&callback=initialize"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?key={{ config('mfw-api.google.places') }}&libraries=places&callback=initialize"></script>
     @endpush
 @endonce
