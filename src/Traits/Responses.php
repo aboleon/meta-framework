@@ -198,8 +198,9 @@ trait Responses
         $messages = $object->fetchResponse()[$this->messagesKey()] ?? [];
 
         if ($messages) {
+            $key = $this->ajax_mode ? 'ajax_messages' : 'messages';
             foreach ($messages as $message) {
-                $this->response['messages'][] = $message;
+                $this->response[$key][] = $message;
             }
             $this->response['error'] = $object->hasErrors();
         }

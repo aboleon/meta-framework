@@ -25,7 +25,7 @@ class Identity
 
     public static function addressBlock(): string
     {
-        return nl2br(implode("\n", (array)cache('mfw_siteowner')?->address));
+        return implode("\n", (array)cache('mfw_siteowner')?->address);
     }
 
     public static function addressLine(int $line = 0): ?string

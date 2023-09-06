@@ -15,6 +15,7 @@ class Datepicker implements CastsAttributes
     {
         if ($value) {
             $date = DateTime::createFromFormat('Y-m-d', $value);
+
             return $date->format('d/m/Y');
         }
         return null;
