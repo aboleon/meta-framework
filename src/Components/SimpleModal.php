@@ -37,6 +37,7 @@ class SimpleModal extends Component
         if (!$this->cancel) {
             $this->cancel = __('mfw.cancel');
         }
+        $this->callback = $this->callback ?: $this->id;
     }
 
     public function render(): Renderable
