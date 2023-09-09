@@ -4,6 +4,9 @@ namespace MetaFramework\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * @property mixed|null $address
+ */
 class SiteOwner extends Model
 {
     public $timestamps = false;

@@ -7,7 +7,7 @@ use MetaFramework\Models\SiteOwner;
 class Identity
 {
 
-    public static function legal(): SiteOwner
+    public static function model(): ?SiteOwner
     {
         return cache()->rememberForever('mfw_siteowner', function () {
             return SiteOwner::query()->first();
@@ -16,21 +16,20 @@ class Identity
 
     public static function get(string $key): ?string
     {
-        if ($key == 'address') {
-            return implode(', ', (array)cache('mfw_siteowner')?->{$key});
-        }
+        return $key == 'address'
+            ? implode(', ', (array)self::model()?->{$key})
+            : self::model()?->{$key};
 
-        return cache('mfw_siteowner')?->{$key};
     }
 
     public static function addressBlock(): string
     {
-        return implode("\n", (array)cache('mfw_siteowner')?->address);
+        return implode("\n", (array)self::model()?->address);
     }
 
     public static function addressLine(int $line = 0): ?string
     {
-        $address = (array)cache('mfw_siteowner')?->address;
+        $address = (array)self::model()?->address;
 
         return $address[$line] ?? null;
     }
