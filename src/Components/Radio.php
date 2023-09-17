@@ -19,6 +19,7 @@ class Radio extends Component
     )
     {
         $this->validation_id = Helpers::generateValidationId($this->name);
+        $this->affected = $this->affected ?: $this->default;
     }
 
     public function render(): Renderable
