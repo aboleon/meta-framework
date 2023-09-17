@@ -15,7 +15,7 @@ class Checkbox extends Component
     public function __construct(
         public int | string | null $value,
         public string $name,
-        public mixed $affected,
+        public mixed $affected = null,
         public string|null $label = '',
         public string $class ='',
         public bool $switch = false,
