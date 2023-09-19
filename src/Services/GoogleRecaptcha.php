@@ -10,6 +10,7 @@ namespace MetaFramework\Services;
 
 
 use ReCaptcha\ReCaptcha;
+use ReCaptcha\RequestMethod\CurlPost;
 
 class GoogleRecaptcha
 {
@@ -22,7 +23,7 @@ class GoogleRecaptcha
 
         $gRecaptchaResponse = request('g-recaptcha-response');
 
-        $recaptcha = new ReCaptcha(self::secretKey());
+        $recaptcha = new ReCaptcha(self::secretKey(), new CurlPost());
         $resp = $recaptcha
             //->setExpectedHostname($hostname)
             ->verify($gRecaptchaResponse, request()->ip());
