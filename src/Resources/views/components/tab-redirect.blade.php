@@ -6,7 +6,7 @@
             $('#{{ session('mfw_tab_redirect') }}').trigger('click');
         @endif
 
-        $('.mfw-tab').on('shown.bs.tab', function (e) {
+        $('{{ $selector }}').on('shown.bs.tab', function (e) {
           $('#mfw-tab-redirect').val($(e.target).attr('id'));
         });
     </script>
