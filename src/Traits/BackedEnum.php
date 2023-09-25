@@ -43,4 +43,13 @@ trait BackedEnum
             return strtolower($item) == strtolower($keyword);
         });
     }
+
+    public static function toSelectArray(): array
+    {
+        $result = [];
+        foreach (self::cases() as $case) {
+            $result[$case->value] = $case->value;
+        }
+        return $result;
+    }
 }
