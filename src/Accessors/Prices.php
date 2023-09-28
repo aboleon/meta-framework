@@ -22,4 +22,11 @@ class Prices
     {
         return rtrim(number_format($price, 0, ' ') . ' '.$currency);
     }
+
+    public static function formatPrice(int|float $price, bool $isInCents = false): string
+    {
+        $cents = $isInCents ? $price : $price * 100; // avoid floating point arithmetic completely (i.e., good)
+        $string = str_pad($cents, 3, '0', STR_PAD_LEFT);
+        return substr($string, 0, -2) . '.' . substr($string, -2);
+    }
 }
