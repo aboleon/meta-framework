@@ -17,7 +17,7 @@ class Number extends Component
         public int|float|null $value = null,
         public int $min = 0,
         public ?int $max = null,
-        public int $step = 1,
+        public int|float $step = 1,
         public string|null $label = '',
         public string $class = '',
         public bool $required = false,
