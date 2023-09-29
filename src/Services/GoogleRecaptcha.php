@@ -26,8 +26,8 @@ class GoogleRecaptcha
         $recaptcha = new ReCaptcha(self::secretKey(), new CurlPost());
         $resp = $recaptcha
             //->setExpectedHostname($hostname)
+            ->setScoreThreshold(0.7)
             ->verify($gRecaptchaResponse, request()->ip());
-
 
         return $resp->isSuccess();
     }
