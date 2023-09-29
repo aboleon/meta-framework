@@ -28,8 +28,7 @@ class GoogleRecaptcha
             //->setExpectedHostname($hostname)
             ->verify($gRecaptchaResponse, request()->ip());
 
-
-        return $resp->isSuccess();
+        return $resp->isSuccess() && $resp->getScore() > 0.5;
     }
 
     public static function isActive(): bool
