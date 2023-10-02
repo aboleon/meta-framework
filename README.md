@@ -1,5 +1,5 @@
-# Meta Framework Cms
-Sub CMS Framework pour Laravel 
+# Meta Framework
+Sub Framework pour Laravel 
 ### Installation
 
 ```bash
