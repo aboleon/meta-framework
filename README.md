@@ -3,7 +3,7 @@ Sub Framework pour Laravel
 ### Installation
 
 ```bash
-composer require aboleon/mfw`
+composer require aboleon/metaframework`
 
 php artisan vendor:publish --tag=mfw
 ```
