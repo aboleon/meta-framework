@@ -13,9 +13,9 @@ class Prices
         return $price/100;
     }
 
-    public static function toInteger(int $price): int
+    public static function toInteger(int|float $price): int
     {
-        return $price*100;
+        return round($price*100);
     }
 
     public static function readableFormat(int|float $price, string $currency = '€'): string
