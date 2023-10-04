@@ -19,6 +19,7 @@ return [
     'actions' => [
         'admin_only' => "Cette action est réservée aux administrateurs"
     ],
+    'replicate' => 'Dupliquer',
     'select_option' => "Sélectionner",
     'creation' => 'Création',
     'last_actity' => 'Dernière activité',

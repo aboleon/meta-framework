@@ -18,6 +18,7 @@ return [
     'actions' => [
         'admin_only' => "This action is reserved for administrators"
     ],
+    'replicate' => 'Replicate',
     'select_option' => "Select",
     'group' => 'Group',
     'save2' => 'Save',
