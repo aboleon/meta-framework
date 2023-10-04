@@ -1,4 +1,4 @@
-document.querySelectorAll('.inputdatamask').forEach(function (input) {
+document.querySelectorAll('.inputdatemask').forEach(function (input) {
   input.addEventListener('input', function (e) {
     var value = this.value.replace(/\D/g, '').substr(0, 8); // Keep only digits, max length 8
     var day = '';
