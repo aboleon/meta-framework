@@ -38,6 +38,12 @@ trait Mediaclass
         return $this;
     }
 
+    public function getMediaOptions(): array
+    {
+        return [
+            'maxMediaCount' => 0, // Default behavior allows unlimited media items
+        ];
+    }
 
     /**
      * Mets à jour les infos relatives aux médias rattachés
