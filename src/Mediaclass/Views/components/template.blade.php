@@ -17,7 +17,7 @@
                     <span class="btn btn-success btn-sm fileinput-button">
                 <i class="glyphicon glyphicon-plus"></i>
                 <span><?=trans('mediaclass.buttons.select');?></span>
-                <input type="file" name="files[]" {{ ($model->getMediaOptions()['maxMediaCount'] ?? 0) > 1 ? 'multiple' : '' }} />
+                <input type="file" name="files[]" multiple>
             </span>
 
                     <button type="submit" class="btn btn-info btn-sm start mx-2">

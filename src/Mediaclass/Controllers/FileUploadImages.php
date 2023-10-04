@@ -239,18 +239,6 @@ class FileUploadImages
             throw new Exception("Invalid Media morphable");
         }
 
-        // Implementing maxMediaCount behavior with rotation:
-        $currentMediaCount = $this->model->media->count();
-        $maxMediaCount = $this->model->getMediaOptions()['maxMediaCount'];
-
-        if ($maxMediaCount > 0 && $currentMediaCount >= $maxMediaCount) {
-            // Get the oldest media item and delete it
-            $oldestMedia = $this->model->media()->oldest()->first();
-            if ($oldestMedia) {
-                $oldestMedia->delete();
-            }
-        }
-
         return Media::query()->create([
             'model_type' => $morphable,
             'model_id' => $this->model_id,
