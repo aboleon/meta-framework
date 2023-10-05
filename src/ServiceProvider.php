@@ -55,6 +55,7 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
         $this->publishInstall();
         $this->publishAssets();
         $this->publishLang();
+        $this->publishMediaclass();
 
     }
 
@@ -84,6 +85,16 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
         $this->publishes([
             __DIR__ . '/../publishables/lang/' => base_path('lang'),
         ], 'mfw-lang');
+
+    }
+
+    private function publishMediaclass(): void
+    {
+        $this->publishes([
+            __DIR__ . '/../publishables/public/vendor/mfw/mediaclass/' => public_path('vendor/mfw/mediaclass/'),
+            __DIR__ . '/../publishables/lang/fr/mediaclass.php' => base_path('lang/fr/mediaclass.php'),
+            __DIR__ . '/../publishables/lang/en/mediaclass.php' => base_path('lang/en/mediaclass.php'),
+        ], 'mfw-mediaclass');
 
     }
 }

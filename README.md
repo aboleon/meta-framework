@@ -14,3 +14,9 @@ php artisan vendor:publish --tag=mfw
 ```blade
 <x-mfw::input name="phone" :value="$data->phone" />
 ```
+
+### Mediaclass Upload Library
+Après une MAJ des fichiers JS ou traduction :
+```
+php artisan vendor:publish --tag=mfw-mediaclass --force
+```
