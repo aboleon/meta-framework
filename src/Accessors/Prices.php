@@ -18,7 +18,7 @@ class Prices
         if (is_string($price)) {
             $price = floatval(str_replace(',','.', $price));
         }
-        return $price * 100;
+        return round($price * 100);
     }
 
     public static function readableFormat(int|float $price, string $currency = '€'): string
