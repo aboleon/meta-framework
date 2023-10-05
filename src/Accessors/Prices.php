@@ -13,7 +13,7 @@ class Prices
         return $price/100;
     }
 
-    function toInteger(int|float|string $price): int
+    public static function toInteger(int|float|string $price): int
     {
         if (is_string($price)) {
             $price = floatval(str_replace(',','.', $price));
