@@ -10,5 +10,9 @@ return [
         'error' => 'Erreur',
         'select' => 'Sélectionner'
     ],
-    'uploaded_at' => "Téléchargé le :date à :time"
+    'uploaded_at' => "Téléchargé le :date à :time",
+    'errors' => [
+        'missing_model' => "Le média doit obligatoirement appartenir à un objet",
+        'mustBeImage' => "Le fichier n'est pas une image"
+    ]
 ];

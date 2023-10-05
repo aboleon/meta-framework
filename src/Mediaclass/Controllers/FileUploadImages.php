@@ -54,6 +54,7 @@ class FileUploadImages
     public function setModel(?string $model = null): static
     {
         if (!$model) {
+            $this->responseError(__('mediaclass.missing_model'));
             return $this;
         }
 
@@ -257,6 +258,7 @@ class FileUploadImages
     {
         $this->responseElement('uploaded', $this->media);
         $this->responseElement('temp', $this->temp);
+        $this->responseElement('count_files', request('count_files'));
         return $this;
     }
 
