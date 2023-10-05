@@ -9,6 +9,8 @@
             <form method="post" action="{{ $route }}">
                 @if (str_contains($reference, 'destroy'))
                     @method('delete')
+                @elseif (str_contains($reference, 'put'))
+                    @method('put')
                 @endif
                 @csrf
                 <div class="modal-header">
