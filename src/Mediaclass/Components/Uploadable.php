@@ -14,6 +14,16 @@ class Uploadable extends Component
         public string $size = '',
         public string $label = 'Médias',
         public int|bool $description = true,
+        /**
+         * @var int
+         * max number of files to be uploaded
+         */
+        public int $limit = 0,
+        /**
+         * @var string|null
+         * ex 500KB, 5MB (default is 16MB)
+         */
+        public ?string $maxfilesize = null,
         public array $settings = []
     )
     {

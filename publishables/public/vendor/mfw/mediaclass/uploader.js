@@ -1,7 +1,7 @@
 /*jshint esversion: 11 */
 
 /**
- * depenes on /vendor/mfw/js/commons.js
+ * dependds on /vendor/mfw/js/commons.js
  */
 
 const MediaclassUploader = {
@@ -23,8 +23,20 @@ const MediaclassUploader = {
   progress: function () {
     return $('.mediaclass-progress');
   },
-  base_url: function () {
-    return '/media/publisher/';
+  defaultFileSize: 16000000,
+  calculateMaxFileSize: function (size) {
+    let value = this.defaultFileSize;
+    if (!size.includes('KB') && !size.includes('MB')) {
+      return value;
+    }
+    value = Number(size.replace(/\D+/g, ''));
+
+    if (size.includes('KB')) {
+      return value * 1024;
+    }
+    if (size.includes('MB')) {
+      return value * 1024 * 1024;
+    }
   },
   unlinkable: function () {
     $('.unlink').off().on('click', function () {
@@ -54,21 +66,28 @@ const MediaclassUploader = {
       }
     });
   },
+
   uploaderOptions: function (uploadContainer) {
-    let fileuploadContainer = this.fileupload(uploadContainer);
+    let fileuploadContainer = this.fileupload(uploadContainer),
+      uploadable = this.uploadable(uploadContainer),
+      limit = Number(uploadable.data('limit')),
+      inputFileSize = uploadable.data('maxfilesize'),
+      maxFileSize = this.calculateMaxFileSize(inputFileSize);
+
+    console.log(maxFileSize);
     fileuploadContainer.fileupload(
       'option',
       {
         previewMaxWidth: 220,
         previewMaxHeight: 220,
         acceptFileTypes: /(\.|\/)(jpe?g|png|svg|pdf)$/i,
-        maxFileSize: 15000000,
+        maxFileSize: maxFileSize,
         autoUpload: false,
-        maxNumberOfFiles: 100,
+        maxNumberOfFiles: limit,
         messages: {
-          maxNumberOfFiles: 'Vous pouvez télécharger 1 seul fichier',
+          maxNumberOfFiles: uploadable.find('.ui-messages .maxNumberOfFiles').first().text() + ' ' + limit,
           acceptFileTypes: 'Type de fichier non autorisé',
-          maxFileSize: 'Le fichier est trop volumineux (limite 15MB)',
+          maxFileSize: uploadable.find('.ui-messages .maxFileSize').first().text() + ' ' + (inputFileSize !== '' ? inputFileSize : (MediaclassUploader.defaultFileSize / 1024 / 1024)+ 'MB'),
         },
       });
   },
@@ -188,6 +207,14 @@ const MediaclassUploader = {
     fileuploadContainer.bind('fileuploadsubmit', function (e, data) {
       MediaclassUploader.messages().html('');
 
+      let validFiles = 0;
+      uploadable.find('.files > div').each(function () {
+        if ($(this).find('.error').first().text().length < 1) {
+          validFiles += 1;
+        }
+      });
+
+
       data.formData = [];
       data.formData.push(
         {
@@ -224,7 +251,7 @@ const MediaclassUploader = {
         },
         {
           name: 'count_files',
-          value: uploadable.find('.files > div').length,
+          value: validFiles,
         },
       );
 

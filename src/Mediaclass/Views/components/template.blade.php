@@ -4,10 +4,10 @@
     <div class="fileupload-container">
         <div class="mediaclass-messages"></div>
         <div class="mediaclass-fileupload">
-            <div class="hidden messages">
-                <span class="maxNumberOfFiles"><?=trans('mediaclass.maxNumberOfFiles');?></span>
-                <span class="max_elements"><?=trans('mediaclass.max_elements');?></span>
-                <span class="dimensions"><?=trans('mediaclass.img_dimensions_constraint');?></span>
+            <div class="d-none ui-messages">
+                <span class="maxNumberOfFiles"><?= __('mediaclass.errors.maxNumberOfFiles');?></span>
+                <span class="maxFileSize"><?= __('mediaclass.errors.maxFileSize');?></span>
+                <span class="dimensions"><?= __('mediaclass.img_dimensions_constraint');?></span>
             </div>
 
             <!-- The fileupload-buttonbar contains buttons to add/delete files and start/cancel the upload -->
@@ -16,17 +16,17 @@
                     <!-- The fileinput-button span is used to style the file input field as button -->
                     <span class="btn btn-success btn-sm fileinput-button">
                 <i class="glyphicon glyphicon-plus"></i>
-                <span><?=trans('mediaclass.buttons.select');?></span>
+                <span><?= __('mediaclass.buttons.select');?></span>
                 <input type="file" name="files[]" multiple>
             </span>
 
                     <button type="submit" class="btn btn-info btn-sm start mx-2">
                         <i class="glyphicon glyphicon-upload"></i>
-                        <span><?=trans('mediaclass.buttons.download');?></span>
+                        <span><?= __('mediaclass.buttons.download');?></span>
                     </button>
                     <button type="reset" class="btn btn-warning btn-sm cancel">
                         <i class="glyphicon glyphicon-ban-circle"></i>
-                        <span><?=trans('mediaclass.buttons.cancel');?></span>
+                        <span><?= __('mediaclass.buttons.cancel');?></span>
                     </button>
                     <!-- The global file processing state -->
                     <span class="fileupload-process"></span>
@@ -58,17 +58,17 @@
                         </div>
                         <div class="col-sm-3">
                             {% if (!i && !o.options.autoUpload) { %}
-                            <button class="btn btn-info btn-xs start" disabled>{{ trans('mediaclass.buttons.download') }}</button>
+                            <button class="btn btn-info btn-xs start" disabled>{{ __('mediaclass.buttons.download') }}</button>
                             {% } %}
                             {% if (!i) { %}
-                            <button class="btn btn-warning btn-xs cancel">{{ trans('mediaclass.buttons.cancel') }}</button>
+                            <button class="btn btn-warning btn-xs cancel">{{ __('mediaclass.buttons.cancel') }}</button>
                             {% } %}
                         </div>
                     </div>
 
             @foreach(\MetaFramework\Accessors\Locale::projectLocales() as $locale)
                     <div class="row params mt-2">
-                        <div class="col-sm-7 description {{ \MetaFramework\Accessors\Locale::multilang() ? '' :'no-multilang' }}"><b>Description <span class="lang">{{ trans('lang.'.$locale.'.label') }}</span></b>
+                        <div class="col-sm-7 description {{ \MetaFramework\Accessors\Locale::multilang() ? '' :'no-multilang' }}"><b>Description <span class="lang">{{ __('lang.'.$locale.'.label') }}</span></b>
                             <textarea name="description[{{ $locale }}]" type="text" class="mt-2 form-control description"></textarea>
                         </div>
                         <div class="col-sm-5 positions text-center ps-2">

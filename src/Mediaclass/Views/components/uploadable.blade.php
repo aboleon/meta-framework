@@ -2,6 +2,8 @@
     $positions = (array_key_exists('positions',$settings) && $settings['positions'] === true);
 @endphp
 <div class="mediaclass-uploadable {{ $size }}"
+     data-maxfilesize="{{ $maxfilesize }}"
+     data-limit="{{ $limit }}"
      data-model="{{ get_class($model) }}"
      data-model-id="{{ $model->id }}"
      data-positions="{{ $positions }}"
@@ -23,5 +25,5 @@
         <input type="hidden" name="mediaclass_temp_id" value="{{ Str::random(32) }}">
     @endif
     @include('mediaclass::fileupload_scripts')
-    <x-mediaclass::template :model="$model"/>
+    <x-mediaclass::template />
 @endonce
