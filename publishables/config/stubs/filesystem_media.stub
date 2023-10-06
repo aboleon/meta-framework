@@ -1,0 +1,7 @@
+
+        'media' => [
+            'driver' => 'local',
+            'root' => config('app.public_path').'/media',
+            'url' => env('APP_URL').'/media',
+            'visibility' => 'public',
+        ],

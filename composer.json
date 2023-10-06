@@ -14,14 +14,14 @@
     ],
     "require": {
         "php": "^8.1",
-        "css-crush/css-crush": "^4.0",
+        "css-crush/css-crush": "^4.2",
         "intervention/image": "^2.7",
-        "laravel/framework": "^10.3",
+        "laravel/framework": "^10.10",
         "symfony/mime": "^6.2"
     },
     "require-dev": {
         "phpstan/phpstan": "^1.10",
-        "phpunit/phpunit": "^10.0",
+        "phpunit/phpunit": "^10.1",
         "orchestra/testbench": "^8.0"
     },
     "autoload": {

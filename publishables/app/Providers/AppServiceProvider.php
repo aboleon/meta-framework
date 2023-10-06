@@ -1,5 +1,6 @@
 <?php
 
+namespace App\Providers;
 
 use App\Accessors\Cached;
 use MetaFramework\Mediaclass\Accessors\Mediaclass;

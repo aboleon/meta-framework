@@ -20,3 +20,8 @@ Après une MAJ des fichiers JS ou traduction :
 ```
 php artisan vendor:publish --tag=mfw-mediaclass --force
 ```
+
+### License
+
+The Metaframework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
