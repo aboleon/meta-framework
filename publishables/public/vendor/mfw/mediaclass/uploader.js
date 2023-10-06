@@ -83,7 +83,7 @@ const MediaclassUploader = {
         acceptFileTypes: /(\.|\/)(jpe?g|png|svg|pdf)$/i,
         maxFileSize: maxFileSize,
         autoUpload: false,
-        maxNumberOfFiles: limit,
+        maxNumberOfFiles: limit > 0 ? limit : null,
         messages: {
           maxNumberOfFiles: uploadable.find('.ui-messages .maxNumberOfFiles').first().text() + ' ' + limit,
           acceptFileTypes: 'Type de fichier non autorisé',
