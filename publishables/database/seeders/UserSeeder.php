@@ -4,7 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\User;
 use Illuminate\Database\Seeder;
-use UserRole;
+use MetaFramework\Models\UserRole;
 
 class UserSeeder extends Seeder
 {
@@ -16,12 +16,12 @@ class UserSeeder extends Seeder
     public function run()
     {
         $user = User::updateOrCreate(
-            ['email' => 'dev@aboleon.media'],
+            ['email' => 'admin@web.dev'],
             [
-                'name' => 'Aboleon Media',
-                'first_name' => 'Andrian',
-                'last_name' => 'Mihailov',
-                'password' => bcrypt('devadmin'),
+                'name' => 'Admin Dev',
+                'first_name' => 'Admin',
+                'last_name' => 'Dev',
+                'password' => bcrypt('randompassword'),
             ]);
 
         $user->roles()->save(new UserRole(['role_id' => 1]));

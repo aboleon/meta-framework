@@ -36,7 +36,7 @@
     </div>
     <div class="right_col" role="main">
         <div id="topbar" class="sticky-top bg-white shadow-sm rounded px-4 py-2 mb-4">
-            @include('panel.navbar')
+            {{-- @include('panel.navbar') --}}
             <div class="d-flex justify-content-between">
                 @if (isset($header))
                     {{ $header }}

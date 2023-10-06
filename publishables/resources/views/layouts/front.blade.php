@@ -19,7 +19,7 @@
 <body class="body @yield('class_body')" style="background: #1A1A1A">
 {!! App\Accessors\Cached::settings('code_ga') !!}
 <div id="content-global">
-    @includeIf'front.shared.header')
+    @includeIf('front.shared.header')
 
     <main id="main">
         <div id="content" class="container-xl">

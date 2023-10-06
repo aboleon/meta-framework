@@ -1,6 +1,5 @@
 <?php
 
-use App\Enum\UserType;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -15,7 +14,6 @@ return new class extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->enum('type', UserType::keys())->default(UserType::default())->index()->after('id');
             $table->string('name')->nullable()->change();
             $table->string('first_name')->index();
             $table->string('last_name')->index();

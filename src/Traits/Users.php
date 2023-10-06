@@ -22,30 +22,6 @@ trait Users
         return collect($this->userTypes())->where('profile', $type);
     }
 
-    public function adminUsers(): Collection
-    {
-        return collect($this->userTypes())->whereIn('profile', ['admin', 'dev']);
-    }
-
-    public function adminContact():array
-    {
-        return collect($this->userTypes())->where('profile', 'admin')->first();
-    }
-
-    public function publicUsers(): Collection
-    {
-        return collect($this->userTypes())->where('profile', 'public');
-    }
-
-    public function backOfficeUsers(): Collection
-    {
-        return collect($this->userTypes())->where('subgroup', '!=', 'public');
-    }
-
-    public function userTypes(): array
-    {
-        return config('mfw-users');
-    }
 
     public function userType(string|int|null $type = null): array
     {
@@ -110,16 +86,6 @@ trait Users
     public function userRole(): ?int
     {
         return $this->roles->first()?->role_id;
-    }
-
-    public function belongsToSubgroup(string|array $group): bool
-    {
-        return $this->userTypeParser('subgroup', $group);
-    }
-
-    public function belongsToProfile(string|array $profile): bool
-    {
-        return $this->userTypeParser('profile', $profile);
     }
 
     public function hasRole(string|array $role, bool $test = false): bool

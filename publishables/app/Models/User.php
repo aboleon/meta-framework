@@ -1,31 +1,23 @@
 <?php
 
+namespace App\Models;
 
-use App\Interfaces\UserCustomDataInterface;
 use App\Notifications\ResetPasswordNotification;
-use App\Traits\Locale;
 use App\Traits\Users;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Str;
-use Laravel\Fortify\TwoFactorAuthenticatable;
-use Laravel\Jetstream\HasProfilePhoto;
-use Laravel\Sanctum\HasApiTokens;
 use MetaFramework\Mediaclass\Interfaces\MediaclassInterface;
 use MetaFramework\Mediaclass\Traits\Mediaclass;
 use MetaFramework\Traits\Responses;
 
 class User extends Authenticatable implements MediaclassInterface
 {
-    use HasApiTokens;
-
-    use Locale;
     use Mediaclass;
     use Notifiable;
     use Responses;
-    use TwoFactorAuthenticatable;
     use Users;
     use SoftDeletes;
 
@@ -66,14 +58,6 @@ class User extends Authenticatable implements MediaclassInterface
         'last_login_at' => 'datetime'
     ];
 
-    /**
-     * The accessors to append to the model's array form.
-     *
-     * @var array
-     */
-    protected $appends = [
-        'profile_photo_url',
-    ];
 
     public function processRoles(): static
     {

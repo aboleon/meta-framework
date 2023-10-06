@@ -68,6 +68,7 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
             __DIR__ . '/../publishables/database/' => database_path(),
             __DIR__ . '/../publishables/app/' => app_path(),
             __DIR__ . '/../publishables/resources/' => resource_path(),
+            __DIR__ . '/../publishables/routes/' => base_path('routes'),
         ], 'mfw-install');
 
     }
