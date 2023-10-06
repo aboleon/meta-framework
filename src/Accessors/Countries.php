@@ -8,6 +8,7 @@ use Illuminate\Support\Str;
 
 class Countries
 {
+    public const NO_COUNTRY_CODE = 'NC';
 
     /**
      * @return array<mixed>
@@ -24,7 +25,7 @@ class Countries
 
     public static function getCountryNameByCode(?string $code = null): string
     {
-        return self::orderedCodeNameArray()[$code] ?? 'NC';
+        return self::orderedCodeNameArray()[$code] ?? Countries::NO_COUNTRY_CODE;
     }
 
     /**
@@ -34,7 +35,7 @@ class Countries
     public static function selectableByAddressModel(string $addressModel): array
     {
         return $addressModel::distinct('country_code')->get()->mapWithKeys(function ($item) {
-            return [$item->country_code ?? 'NC' => self::getCountryNameByCode($item->country_code)];
+            return [$item->country_code ?? Countries::NO_COUNTRY_CODE => self::getCountryNameByCode($item->country_code)];
         })->toArray();
     }
 
