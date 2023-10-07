@@ -22,7 +22,6 @@ class AjaxController extends Controller
         ini_set('post_max_size', config('mediaclass.post_max_size','64M'));
         ini_set('upload_max_filesize', config('mediaclass.upload_max_filesize','10M'));
 
-        $this->middleware(['auth:sanctum', 'verified', 'roles:' . implode('|', $users->adminUsers()->pluck('id')->toArray())]);
         $this->uploader = new FileUploadImages;
     }
 

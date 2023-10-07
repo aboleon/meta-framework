@@ -67,9 +67,11 @@ class FileUploadImages
 
             $this->folder_name = Path::mediaFolderName($this->model);
 
+
         } catch (Throwable $e) {
             $this->responseException($e, "Unknown " . $model . " class in " . static::class);
         }
+
         return $this;
     }
 
@@ -228,7 +230,7 @@ class FileUploadImages
      */
     private function store(): Media
     {
-        if (in_array($this->model->type, config('app.cacheables'))) {
+        if (config()->has('app.cacheables') & in_array($this->model->type, (array)config('app.cacheables'))) {
             cache()->forget($this->model->type);
         }
 

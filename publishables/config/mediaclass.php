@@ -21,4 +21,5 @@ return [
     'memory_limit' => '256M',
     'post_max_size' => '64M',
     'upload_max_filesize' => '10M',
+    'disk' => 'media'
 ];
