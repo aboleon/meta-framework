@@ -21,7 +21,8 @@ class Stored extends Component
         public string $group,
         public ?string $subgroup = null,
         public bool       $positions = false,
-        public int|bool   $description = true
+        public int|bool   $description = true,
+        public ?string $cropable = null,
     )
     {
         $this->description = $this->description ? 1 : 0;

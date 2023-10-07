@@ -14,6 +14,7 @@ class Uploadable extends Component
         public string $size = '',
         public string $label = 'Médias',
         public int|bool $description = true,
+        public ?string $cropable = null,
         /**
          * @var int
          * max number of files to be uploaded

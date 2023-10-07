@@ -10,7 +10,9 @@ class Cropable
 {
     use Accessors;
 
-    private array|bool $settings;
+    private array $settings = [];
+    private int $cropable_width = 0;
+    private int $cropable_height = 0;
     public bool $isCropped;
 
     public function __construct(public Media $media)
@@ -38,8 +40,8 @@ class Cropable
         }
 
         return '<a class="crop"
-                       data-crop-w="' . current($this->settings['sizes']) . '"
-                       data-crop-h="' . end($this->settings['sizes']) . '"
+                       data-crop-w="' . $this->cropable_width . '"
+                       data-crop-h="' . $this->cropable_height . '"
                        data-bs-toggle="modal"
                        data-bs-target="#mediaclass-crop"
                        href="' . route('mediaclass.cropable', $this->media) . '">
@@ -50,17 +52,31 @@ class Cropable
     public function settings(): self
     {
         $this->settings = $this->media->settings();
+        if (array_key_exists('cropable', $this->settings)) {
+            $this->cropable_width = (int)current($this->settings['cropable']);
+            $this->cropable_height = (int)end($this->settings['cropable']);
+        }
         return $this;
     }
 
+    public function setCropableFromComponent(?string $cropable): self
+    {
+        $this->settings = explode(',', $cropable);
+        $this->cropable_width = (int)current($this->settings);
+        $this->cropable_height = (int)end($this->settings);
+
+        return $this;
+    }
+
+
     public function width(): int
     {
-        return current($this->media->settings()['sizes']);
+        return $this->cropable_width;
     }
 
     public function height(): int
     {
-        return end($this->media->settings()['sizes']);
+        return $this->cropable_height;
     }
 
     public function checkIfCropped(): self
@@ -71,13 +87,13 @@ class Cropable
 
     public function isCropable(): bool
     {
-        return is_array($this->settings) && array_key_exists('cropable', $this->settings) && $this->settings['cropable'] === true;
+        return $this->cropable_width > 0 && $this->cropable_height > 0;
     }
 
     public function printSizes(): string
     {
         if ($this->isCropable() && $this->isCropped) {
-           return current($this->settings['sizes']) . ' x ' . end($this->settings['sizes']) . $this->printCheckMark();
+            return $this->cropable_width . ' x ' . $this->cropable_height . $this->printCheckMark();
         }
         return '';
     }

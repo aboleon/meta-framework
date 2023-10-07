@@ -17,7 +17,7 @@
     </div>
     <div class="mediaclass-upload-container"></div>
     <div class="uploaded">
-        <x-mediaclass::stored :positions="$positions" :model="$model" :group="$group" :subgroup="$settings['subgroup'] ?? null " :description="$description"/>
+        <x-mediaclass::stored :cropable="$cropable" :positions="$positions" :model="$model" :group="$group" :subgroup="$settings['subgroup'] ?? null " :description="$description"/>
     </div>
 </div>
 @once

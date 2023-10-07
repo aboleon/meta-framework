@@ -2,8 +2,9 @@
     @foreach($medias as $media)
         @php
             $is_image = $isImage($media);
-            $cropable = new \MetaFramework\Mediaclass\Cropable($media);
-            $preview = $isImage($media) ? $media->url($cropable->isCropped ? 'cropped': 'sm') : asset('vendor/mfw/mediaclass/images/files/' . $media->extension().'.png');
+            $cropableImg = new \MetaFramework\Mediaclass\Cropable($media);
+            $cropableImg->setCropableFromComponent($cropable);
+            $preview = $isImage($media) ? $media->url($cropableImg->isCropped ? 'cropped': 'sm') : asset('vendor/mfw/mediaclass/images/files/' . $media->extension().'.png');
         @endphp
         <div class="mediaclass unlinkable uploaded-image my-2" data-id="{{ $media->id }}" id="mediaclass-{{$media->id}}">
             <span class="unlink"><i class="bi bi-x-circle-fill"></i></span>
@@ -14,11 +15,11 @@
                             <i class="fa-sharp fa-solid fa-magnifying-glass"></i>
                         </a>
                         @if($is_image)
-                            {!! $cropable->link() !!}
+                            {!! $cropableImg->link() !!}
                         @endif
                     </div>
                     @if($is_image)
-                        <div class="sizes">{!! $cropable->printSizes() !!}</div>
+                        <div class="sizes">{!! $cropableImg->printSizes() !!}</div>
                     @endif
                 </div>
                 <div class="col-sm-9 impFileName">
