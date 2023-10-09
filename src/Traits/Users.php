@@ -16,6 +16,20 @@ trait Users
     private ?int $against_user_id = null;
     private array $target_role;
 
+    public function adminUsers(): Collection
+    {
+        return collect($this->userTypes())->whereIn('profile', ['admin', 'dev']);
+    }
+
+    public function publicUsers(): Collection
+    {
+        return collect($this->userTypes())->where('profile', 'public');
+    }
+
+    public function backOfficeUsers(): Collection
+    {
+        return collect($this->userTypes())->where('subgroup', '!=', 'public');
+    }
 
     public function usersOfType(string $type): Collection
     {
@@ -32,6 +46,10 @@ trait Users
         return $this->userTypes()[$type] ?? $this->userTypes()['default'];
     }
 
+    public function userTypes(): array
+    {
+        return config('mfw-users');
+    }
 
     public function names(): string
     {
@@ -88,6 +106,16 @@ trait Users
         return $this->roles->first()?->role_id;
     }
 
+    public function belongsToSubgroup(string|array $group): bool
+    {
+        return $this->userTypeParser('subgroup', $group);
+    }
+
+    public function belongsToProfile(string|array $profile): bool
+    {
+        return $this->userTypeParser('profile', $profile);
+    }
+
     public function hasRole(string|array $role, bool $test = false): bool
     {
         if (!$role) {
@@ -128,4 +156,5 @@ trait Users
         }
         return $this->hasRole($collection);
     }
+
 }
