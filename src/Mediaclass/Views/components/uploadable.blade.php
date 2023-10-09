@@ -10,6 +10,7 @@
      data-group="{{ $group }}"
      data-subgroup="{{ $settings['subgroup'] ?? false }}"
      data-has-description="{{ $description }}"
+     data-cropable="{{ $cropable }}"
 >
     <div class="controls d-flex justify-between align-items-center" style="background: #EFEFEF">
         <span class="subcontrol mediaclass-uploader"><i class="fa fa-image"></i> {{ $label }}</span>
@@ -26,4 +27,9 @@
     @endif
     @include('mediaclass::fileupload_scripts')
     <x-mediaclass::template />
+@endonce
+
+
+@once
+    <x-mediaclass::crop-modal/>
 @endonce

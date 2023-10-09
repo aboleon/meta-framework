@@ -217,6 +217,7 @@ class FileUploadImages
 
         $this->media->model = $this->model;
         $cropable = new Cropable($this->media);
+        $cropable->setCropableFromComponent((string)request('cropable'));
         $this->responseElement('sizes', $cropable->printSizes());
         $this->responseElement('cropable_link', $cropable->link());
 

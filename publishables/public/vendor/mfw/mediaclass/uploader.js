@@ -253,6 +253,10 @@ const MediaclassUploader = {
           name: 'count_files',
           value: validFiles,
         },
+        {
+          name: 'cropable',
+          value: uploadable.data('cropable'),
+        },
       );
 
       data.context.find('textarea, input').each(function () {

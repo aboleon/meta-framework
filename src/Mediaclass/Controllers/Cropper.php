@@ -4,8 +4,10 @@ namespace MetaFramework\Mediaclass\Controllers;
 
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
+use MetaFramework\Mediaclass\Config;
 use MetaFramework\Mediaclass\Cropable;
 use MetaFramework\Mediaclass\Models\Media;
+use MetaFramework\Mediaclass\Path;
 use MetaFramework\Traits\Responses;
 use Throwable;
 
@@ -22,9 +24,9 @@ class Cropper
             $file = $media->file('xl');
             $image = Image::make($file);
 
-            $filename = $media->bindedModel()->access_key . '/cropped_' . $media->filename . '.' . $media->extension();
+            $filename = Path::mediaFolderName($media->bindedModel()) . '/cropped_' . $media->filename . '.' . $media->extension();
 
-            Storage::disk('media')->put($filename,
+            Config::getDisk()->put($filename,
                 $image->crop(
                     (int)request('wimage'),
                     (int)request('himage'),
@@ -39,6 +41,9 @@ class Cropper
 
 
             $cropable = new Cropable($media);
+            $cropable->setWidth((int)request('wiimage'));
+            $cropable->setHeight((int)request('heimage'));
+
             $img = Storage::disk('media')->url($filename);
             $cropper->responseElement('sizes', $cropable->printSizes());
             $cropper->responseElement('cropable_link', $cropable->link());

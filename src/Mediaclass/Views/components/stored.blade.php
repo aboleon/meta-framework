@@ -9,7 +9,7 @@
         <div class="mediaclass unlinkable uploaded-image my-2" data-id="{{ $media->id }}" id="mediaclass-{{$media->id}}">
             <span class="unlink"><i class="bi bi-x-circle-fill"></i></span>
             <div class="row m-0">
-                <div class="col-sm-3 impImg p-0 position-relative preview {{ $is_image ? 'image' : 'file' }}" style="background-image: url({{ $preview  }});">
+                <div class="col-sm-3 impImg p-0 position-relative preview {{ $is_image ? 'image' : 'file' }}" style="background: url({{ $preview  }});background-size: cover">
                     <div class="actions">
                         <a target="_blank" href="{{ $media->url() }}" class="zoom">
                             <i class="fa-sharp fa-solid fa-magnifying-glass"></i>
@@ -60,3 +60,7 @@
         {!! wg_info_notice("Aucun média n'est ajouté") !!}
     @endif
 </div>
+
+@once
+    <x-mediaclass::crop-modal/>
+@endonce

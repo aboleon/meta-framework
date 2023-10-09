@@ -2,7 +2,7 @@
 
 namespace MetaFramework\Mediaclass;
 
-
+use Illuminate\Support\Facades\Route;
 use MetaFramework\Mediaclass\Models\Media;
 use MetaFramework\Mediaclass\Traits\Accessors;
 
@@ -44,7 +44,7 @@ class Cropable
                        data-crop-h="' . $this->cropable_height . '"
                        data-bs-toggle="modal"
                        data-bs-target="#mediaclass-crop"
-                       href="' . route('mediaclass.cropable', $this->media) . '">
+                       href="' . route('mediaclass.cropable', $this->media) . '?w=' . $this->cropable_width . '&h=' . $this->cropable_height . '">
                         <i class="fa-solid fa-crop"></i>
                     </a>';
     }
@@ -52,10 +52,29 @@ class Cropable
     public function settings(): self
     {
         $this->settings = $this->media->settings();
+
         if (array_key_exists('cropable', $this->settings)) {
             $this->cropable_width = (int)current($this->settings['cropable']);
             $this->cropable_height = (int)end($this->settings['cropable']);
         }
+
+        if (Route::currentRouteName() == 'mediaclass.cropable') {
+            $this->cropable_width = (int)request('w');
+            $this->cropable_height = (int)request('h');
+        }
+
+        return $this;
+    }
+
+    public function setWidth(int $width): self
+    {
+        $this->cropable_width = $width;
+        return $this;
+    }
+
+    public function setHeight(int $height): self
+    {
+        $this->cropable_height = $height;
         return $this;
     }
 
@@ -92,7 +111,7 @@ class Cropable
 
     public function printSizes(): string
     {
-        if ($this->isCropable() && $this->isCropped) {
+        if ($this->isCropped) {
             return $this->cropable_width . ' x ' . $this->cropable_height . $this->printCheckMark();
         }
         return '';
