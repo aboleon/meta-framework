@@ -59,5 +59,11 @@
         "optimize-autoloader": true,
         "preferred-install": "dist",
         "sort-packages": true
-    }
+    },
+    "repositories": [
+        {
+            "type": "path",
+            "url": "../package-meta-framework"
+        }
+    ]
 }
