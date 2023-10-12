@@ -10,14 +10,15 @@ class Textarea extends Component
 {
     private string $id;
     private string $validation_id;
+
     public function __construct(
-        public string $label,
-        public string $name,
-        public string|null $value,
+        public string       $name,
+        public ?string      $value = null,
+        public ?string      $label = null,
         public string|array $class = '',
-        public array $params = [],
-        public int $height=200,
-        public bool $required = false)
+        public array        $params = [],
+        public int          $height = 200,
+        public bool         $required = false)
     {
         $this->id = Helpers::generateInputId($this->name);
         $this->validation_id = Helpers::generateValidationId($this->name);
