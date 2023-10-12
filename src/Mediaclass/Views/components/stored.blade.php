@@ -4,12 +4,12 @@
             $is_image = $isImage($media);
             $cropableImg = new \MetaFramework\Mediaclass\Cropable($media);
             $cropableImg->setCropableFromComponent($cropable);
-            $preview = $isImage($media) ? $media->url($cropableImg->isCropped ? 'cropped': 'sm') : asset('vendor/mfw/mediaclass/images/files/' . $media->extension().'.png');
+            $preview = $is_image ? $media->url($cropableImg->isCropped ? 'cropped': 'sm') : asset('vendor/mfw/mediaclass/images/files/' . $media->extension().'.png');
         @endphp
         <div class="mediaclass unlinkable uploaded-image my-2" data-id="{{ $media->id }}" id="mediaclass-{{$media->id}}">
             <span class="unlink"><i class="bi bi-x-circle-fill"></i></span>
             <div class="row m-0">
-                <div class="col-sm-3 impImg p-0 position-relative preview {{ $is_image ? 'image' : 'file' }}" style="background: url({{ $preview  }});background-size: cover">
+                <div class="col-sm-3 impImg p-0 position-relative preview {{ $is_image ? 'image' : 'file' }}" style="background: url({{ $preview  }});{!! $is_image ?'background-size: cover':'background-size: contain;background-repeat: no-repeat;background-position: center;' !!}">
                     <div class="actions">
                         <a target="_blank" href="{{ $media->url() }}" class="zoom">
                             <i class="fa-sharp fa-solid fa-magnifying-glass"></i>

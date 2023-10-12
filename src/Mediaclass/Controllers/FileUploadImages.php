@@ -47,7 +47,6 @@ class FileUploadImages
 
         $this->response['filetype'] = 'image';
 
-        $this->setModel(request('model')); // TODO: enlever du construct
         $this->disk = Config::getDisk();
     }
 
@@ -61,10 +60,10 @@ class FileUploadImages
         try {
             $this->model = (new ReflectionClass($model))->newInstance();
 
+
             if ($this->model_id) {
                 $this->model = $this->model->find($this->model_id);
             }
-
             $this->folder_name = Path::mediaFolderName($this->model);
 
 
