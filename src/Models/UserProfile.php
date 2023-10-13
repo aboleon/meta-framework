@@ -2,7 +2,7 @@
 
 namespace MetaFramework\Models;
 
-use _docs\app\Models\User;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 

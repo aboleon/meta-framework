@@ -2,7 +2,7 @@
 
 namespace MetaFramework\Services\Avatars;
 
-use _docs\app\Models\User;
+use App\Models\User;
 use Illuminate\Filesystem\FilesystemAdapter;
 use Illuminate\Support\Facades\Storage;
 use MetaFramework\Mediaclass\Path;
