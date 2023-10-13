@@ -2,11 +2,9 @@
 
 namespace MetaFramework\Services\Avatars;
 
-use \App\Models\User;
+use _docs\app\Models\User;
 use Illuminate\Filesystem\FilesystemAdapter;
-use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Str;
 use MetaFramework\Mediaclass\Path;
 
 class Avatar
