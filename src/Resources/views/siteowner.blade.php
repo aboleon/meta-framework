@@ -50,7 +50,7 @@
                                         </div>
                                     @endfor
                                 @else
-                                    <x-mfw::textarea label="Adresse" height="140" class="mb-3" name="address" value="{!! old('address') ?: $data?->address[0] !!}"/>
+                                    <x-mfw::textarea label="Adresse" height="140" class="mb-3" name="address" value="{!! old('address') ?: (is_array($data?->address) ? current($data->address) : $data->address) !!}"/>
                                 @endif
                             </div>
                             <div class="col-sm-6">
