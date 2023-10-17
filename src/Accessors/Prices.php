@@ -23,8 +23,8 @@ class Prices
         return (int)round($price);
     }
 
-    public static function readableFormat(int|float $price, string $currency = '€'): string
+    public static function readableFormat(int|float $price, string $currency = '€', string $decimal_separator = ',', string $thousand_separator = ' '): string
     {
-        return rtrim(number_format($price, 0, ' ') . ' '.$currency);
+        return rtrim(number_format($price, 2, $decimal_separator, $thousand_separator) . ' '.$currency);
     }
 }
