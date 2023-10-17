@@ -1,3 +1,6 @@
+@php
+    $allowedLocales = $attributes['allowed_locales'];
+@endphp
 @if ($medias->isNotEmpty())
     @foreach($medias as $media)
         @php
@@ -9,7 +12,7 @@
         <div class="mediaclass unlinkable uploaded-image my-2" data-id="{{ $media->id }}" id="mediaclass-{{$media->id}}">
             <span class="unlink"><i class="bi bi-x-circle-fill"></i></span>
             <div class="row m-0">
-                <div class="col-sm-3 impImg p-0 position-relative preview {{ $is_image ? 'image' : 'file' }}" style="background: url({{ $preview  }});{!! $is_image ?'background-size: cover':'background-size: contain;background-repeat: no-repeat;background-position: center;' !!}">
+                <div class="col-sm-3 impImg p-0 position-relative preview {{ $is_image ? 'image' : 'file' }}" style="background: url({{ $preview  }});{!! $is_image ?'background-size: contain; background-repeat: no-repeat':'background-size: contain;background-repeat: no-repeat;background-position: center;' !!}">
                     <div class="actions">
                         <a target="_blank" href="{{ $media->url() }}" class="zoom">
                             <i class="fa-sharp fa-solid fa-magnifying-glass"></i>
@@ -36,6 +39,11 @@
                     <div class="row params mt-3">
                         <div class="col-sm-7 description {{ !$description ? 'd-none' :'' }}">
                             @foreach(\MetaFramework\Accessors\Locale::projectLocales() as $locale)
+                                @php
+                                    if(null !== $allowedLocales && !in_array($locale, $allowedLocales)){
+                                        continue;
+                                    }
+                                @endphp
                                 <x-mfw::textarea name="mediaclass[{{ $media->id }}][description][{{ $locale }}]" :height="100" class="mt-2 description" :value="$media->description[$locale]" label="Description ({{ $locale }})"/>
                             @endforeach
                         </div>

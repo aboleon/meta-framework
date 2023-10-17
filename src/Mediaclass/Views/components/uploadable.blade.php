@@ -1,5 +1,6 @@
 @php
     $positions = (array_key_exists('positions',$settings) && $settings['positions'] === true);
+    $allowedLocales = $attributes['allowed_locales'];
 @endphp
 <div class="mediaclass-uploadable {{ $size }}"
      data-maxfilesize="{{ $maxfilesize }}"
@@ -18,7 +19,7 @@
     </div>
     <div class="mediaclass-upload-container"></div>
     <div class="uploaded">
-        <x-mediaclass::stored :cropable="$cropable" :positions="$positions" :model="$model" :group="$group" :subgroup="$settings['subgroup'] ?? null " :description="$description"/>
+        <x-mediaclass::stored  :allowed_locales="$allowedLocales" :cropable="$cropable" :positions="$positions" :model="$model" :group="$group" :subgroup="$settings['subgroup'] ?? null " :description="$description"/>
     </div>
 </div>
 @once
@@ -26,7 +27,7 @@
         <input type="hidden" name="mediaclass_temp_id" value="{{ Str::random(32) }}">
     @endif
     @include('mediaclass::fileupload_scripts')
-    <x-mediaclass::template />
+    <x-mediaclass::template :allowed_locales="$allowedLocales" />
 @endonce
 
 
