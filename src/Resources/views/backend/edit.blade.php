@@ -41,7 +41,7 @@
     @push('css')
         {!! csscrush_tag(public_path('vendor/mfw/css/meta/editable.css')) !!}
     @endpush
-    <div class="m-3">
+    <div class="shadow p-4 bg-body-tertiary rounded">
 
                 <x-mfw::validation-banner/>
                 <x-mfw::validation-errors/>

@@ -5,6 +5,7 @@
             td.phone span {
                 display: block;
             }
+
             table caption {
                 caption-side: top;
             }
@@ -21,38 +22,36 @@
         </h2>
     </x-slot>
 
-    <div class="py-12">
-        <div class="max-w-12xl mx-auto sm:px-6 lg:px-8">
+    <div class="shadow p-4 bg-body-tertiary rounded">
 
-            <div id="messages" data-ajax="{{ route('mfw.ajax') }}">
-                <x-mfw::response-messages/>
-            </div>
-
-            @foreach($zones as $key => $title)
-                <div class="bg-white shadow-xl sm:rounded-lg p-4 mb-5">
-                    <table class="table table-hover">
-                        <caption>{{ $title }}</caption>
-                        <thead style="border-bottom: 2px solid #a7c0cc;">
-                        <tr>
-                            <th>Intitulé</th>
-                            <th>Type</th>
-                            <th>URL</th>
-                            <th style="width: 200px">Actions</th>
-                        </tr>
-                        </thead>
-                        <tbody id="zone_{{ $key }}">
-                        {!! ${$key} !!}
-                        </tbody>
-                    </table>
-                </div>
-                @push('js')
-                    <script>
-                        $(function () {
-                            sortableContent($('#zone_{{$key}}'), 'tr', $('#messages'), 'nav');
-                        });</script>
-                @endpush
-            @endforeach
+        <div id="messages" data-ajax="{{ route('mfw.ajax') }}">
+            <x-mfw::response-messages/>
         </div>
+
+        @foreach($zones as $key => $title)
+            <div class="bg-white shadow-xl sm:rounded-lg p-4 mb-5">
+                <table class="table table-hover">
+                    <caption>{{ $title }}</caption>
+                    <thead style="border-bottom: 2px solid #a7c0cc;">
+                    <tr>
+                        <th>Intitulé</th>
+                        <th>Type</th>
+                        <th>URL</th>
+                        <th style="width: 200px">Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody id="zone_{{ $key }}">
+                    {!! ${$key} !!}
+                    </tbody>
+                </table>
+            </div>
+            @push('js')
+                <script>
+                  $(function () {
+                    sortableContent($('#zone_{{$key}}'), 'tr', $('#messages'), 'nav');
+                  });</script>
+            @endpush
+        @endforeach
     </div>
 
     @include('mfw::lib.sortable')

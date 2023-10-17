@@ -17,7 +17,7 @@
 
     <x-mfw::response-messages/>
 
-    <div class="bg-white shadow-xl sm:rounded-lg px-4 py-2 mb-4" style="margin: 0 -12px">
+    <div class="shadow p-4 bg-body-tertiary rounded">
 
         <table class="table table-hover">
             <tr>

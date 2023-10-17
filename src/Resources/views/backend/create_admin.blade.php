@@ -6,20 +6,16 @@
     </x-slot>
 
 
-    <div class="py-12">
-        <div class="max-w-12xl mx-auto sm:px-6 lg:px-8 mb-5">
-            <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg p-4">
+    <div class="shadow p-4 bg-body-tertiary rounded">
 
-                <x-mfw::validation-banner/>
-                <x-mfw::response-messages/>
-                    <form method="post" action="{{ route('mfw.meta.create_admin') }}" class="p-4">
-                        @csrf
-                        <x-mfw::input name="type" label="Type"/>
-                        <div class="mt-5 main-save">
-                            <x-mfw::btn-save/>
-                        </div>
-                    </form>
+        <x-mfw::validation-banner/>
+        <x-mfw::response-messages/>
+        <form method="post" action="{{ route('mfw.meta.create_admin') }}" class="p-4">
+            @csrf
+            <x-mfw::input name="type" label="Type"/>
+            <div class="mt-5 main-save">
+                <x-mfw::btn-save/>
             </div>
-        </div>
+        </form>
     </div>
 </x-backend-layout>
