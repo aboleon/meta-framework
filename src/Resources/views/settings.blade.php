@@ -26,7 +26,7 @@
                                     ?: \MetaFramework\Models\Setting::defaultSettingValue($item['name']));
                             @endphp
                             @if($item['type'] == 'textarea')
-                                <x-mfw::textarea name="mfw-settings[{{ $item['name'] }}]"
+                                <x-mfw::textarea name="{{ $item['name'] }}"
                                                  class="{{  $item['class'] ?? ''}}"
                                                  :label="$item['title'] ?? ''"
                                                  :value="$value"/>
