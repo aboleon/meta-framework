@@ -128,7 +128,7 @@ class Mediaclass
         return $this;
     }
 
-    public function resetMedia() :self
+    public function resetMedia(): self
     {
         $this->media = [];
         return $this;
@@ -142,16 +142,23 @@ class Mediaclass
 
     /**
      * Récupère les médias pour un Model
-     * @param \MetaFramework\Mediaclass\Interfaces\MediaclassInterface $object
+     * @param ?\MetaFramework\Mediaclass\Interfaces\MediaclassInterface $object
      * @return $this
      */
-    public function forModel(MediaclassInterface $object, ?string $group = null)
+    public function forModel(?MediaclassInterface $object = null, ?string $group = null)
     {
+        $this->media = [];
+
+        if (!$object) {
+            return $this;
+        }
+
         if ($group) {
             $this->setGroup($group);
         }
-        $this->media = [];
+
         $this->on($object)->fetch()->parse();
+
         return $this;
     }
 
