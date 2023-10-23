@@ -13,7 +13,7 @@
                 </div>
                 <div class="modal-footer d-flex justify-content-between">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Revenir</button>
-                    <button type="button" id="mfw-intented-click-confirm" class="btn btn-danger">Continuer sans sauvgarger</button>
+                    <button type="button" id="mfw-intented-click-confirm" class="btn btn-danger">Continuer sans sauvegarder</button>
                 </div>
             </div>
         </div>
