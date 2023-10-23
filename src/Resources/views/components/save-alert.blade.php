@@ -19,47 +19,47 @@
         </div>
     </div>
     <script>
-        setTimeout(function () {
+      setTimeout(function () {
 
-            const mwf_calculateChecksum = () => {
-                return $('{{ $container }}').html();
-            };
+        const mwf_calculateChecksum = () => {
+          return $('{{ $container }}').html();
+        };
 
-            const mfw_intented_click = $('#mfw-intended-click'),
-                mfwUnsavedContenModal = new bootstrap.Modal(document.getElementById('mfw-unsaved-content-modal')),
-                initialChecksum = mwf_calculateChecksum();
+        const mfw_intented_click = $('#mfw-intended-click'),
+          mfwUnsavedContenModal = new bootstrap.Modal(document.getElementById('mfw-unsaved-content-modal')),
+          initialChecksum = mwf_calculateChecksum();
 
-            $('input, textarea, select').change(function() {
-                mfw_intented_click.attr('data-change',1);
-            });
+        $('{{ $container }}').find('input, textarea, select').change(function () {
+          mfw_intented_click.attr('data-change', 1);
+        });
 
-            $('a').off().click(function (e) {
+        $('a').off().click(function (e) {
 
-                const href = $(this).attr('href');
+          const href = $(this).attr('href');
 
-                if (href === undefined) {
-                    return true;
-                }
+          if (href === undefined) {
+            return true;
+          }
 
-                if (href.startsWith('http://') || href.startsWith('https://')) {
+          if (href.startsWith('http://') || href.startsWith('https://')) {
 
-                    let newCheksum = mwf_calculateChecksum();
-                    console.log(newCheksum.length, initialChecksum.length);
-                    if (newCheksum !== initialChecksum || mfw_intented_click.attr('data-change') == 1) {
-                        mfw_intented_click.text(href);
-                        e.preventDefault();
-                        mfwUnsavedContenModal.show();
-                        $('#mfw-intented-click-confirm').off().click(function () {
-                            window.location.assign(mfw_intented_click.text());
-                        });
-                    } else {
-                        return true;
-                    }
-                } else {
-                    return true;
-                }
-            });
-        }, 500);
+            let newCheksum = mwf_calculateChecksum();
+            console.log(newCheksum.length, initialChecksum.length);
+            if (newCheksum !== initialChecksum || mfw_intented_click.attr('data-change') == 1) {
+              mfw_intented_click.text(href);
+              e.preventDefault();
+              mfwUnsavedContenModal.show();
+              $('#mfw-intented-click-confirm').off().click(function () {
+                window.location.assign(mfw_intented_click.text());
+              });
+            } else {
+              return true;
+            }
+          } else {
+            return true;
+          }
+        });
+      }, 500);
     </script>
 
 @endpushonce
