@@ -477,3 +477,14 @@ ul.nav.navbar-nav {
     height: 85px;
     border: 0;
 }
+
+#topbar h2 {
+    font-weight: 700;
+    color: #1A1A1A;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    margin: 3px 0;
+    span {
+        color: #607D8B;
+    }
+}
