@@ -57,12 +57,12 @@ class Setting extends Model
 
     public static function value(string $key): ?string
     {
-        return self::getAllSettings()->filter(fn($item) => $item->name == $key)->first()?->value;
+        return self::getAllSettings()->filter(fn($item) => $item->name == $key)->first()?->value ?? self::defaultSettingValue($key);
     }
 
-    public static function defaultSettingValue(string $key): string
+    public static function defaultSettingValue(string $key): ?string
     {
-        return collect(Setting::getConfigElements())->filter(fn($item) => $item['name'] == $key)->first()['default'] ?? '';
+        return collect(Setting::getConfigElements())->filter(fn($item) => $item['name'] == $key)->first()['default'] ?? null;
     }
 
     public static function getAllSettings(): Collection
