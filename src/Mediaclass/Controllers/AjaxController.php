@@ -17,11 +17,6 @@ class AjaxController extends Controller
     public function __construct()
     {
         $users = (new Users());
-
-        ini_set('memory_limit', config('mediaclass.memory_limit','256M'));
-        ini_set('post_max_size', config('mediaclass.post_max_size','64M'));
-        ini_set('upload_max_filesize', config('mediaclass.upload_max_filesize','10M'));
-
         $this->uploader = new FileUploadImages;
     }
 
