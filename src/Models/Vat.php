@@ -5,6 +5,11 @@ namespace MetaFramework\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Cache;
 
+/**
+ * @property int $rate
+ * @property int $id
+ * @property bool $default
+ */
 class Vat extends Model
 {
 
@@ -18,7 +23,7 @@ class Vat extends Model
     public function manageDefaultState(): void
     {
         if ($this->default == 1) {
-            Vat::where('id', '!=', $this->id)->update(['default' => null]);
+            Vat::query()->where('id', '!=', $this->id)->update(['default' => null]);
             Cache::forget('default_vat_rate');
         }
     }
