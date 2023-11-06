@@ -21,6 +21,7 @@ class Number extends Component
         public string|null $label = '',
         public string $class = '',
         public bool $required = false,
+        public bool $readonly = false,
     )
     {
         $this->id = Helpers::generateInputId($this->name);
@@ -46,6 +47,7 @@ class Number extends Component
             'label' => $this->label,
             'class' => $this->class,
             'required' => $this->required,
+            'readonly' => $this->readonly,
             'value' => $this->value,
             'params' => $this->params
         ]);

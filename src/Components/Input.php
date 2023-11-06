@@ -20,6 +20,7 @@ class Input extends Component
         public string|null           $label = '',
         public string                $class = '',
         public bool                  $required = false,
+        public bool                  $readonly = false,
     )
     {
         $this->id = Helpers::generateInputId($this->name);

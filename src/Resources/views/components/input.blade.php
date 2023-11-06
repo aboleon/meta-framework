@@ -13,5 +13,8 @@
 @if($required)
     required
 @endif
+@if($readonly)
+    readonly
+@endif
 >
 <x-mfw::validation-error :field="$validation_id"/>

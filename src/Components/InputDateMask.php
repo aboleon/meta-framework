@@ -18,6 +18,7 @@ class InputDateMask extends Component
         public string|null           $label = '',
         public string                $class = '',
         public bool                  $required = false,
+        public bool                  $readonly = false,
     )
     {
         $this->class = rtrim('inputdatemask ' . $this->class.' ');
