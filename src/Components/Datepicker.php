@@ -7,12 +7,8 @@ use Illuminate\View\Component;
 
 class Datepicker extends Component
 {
-    /**
-     * @property $config
-     * ex: dateFormat=d/m/Y
-     */
+    # property $config ex: dateFormat=d/m/Y
 
-    private array $params;
     public function __construct(
         public string $name,
         public ?string $value = null,
@@ -21,6 +17,7 @@ class Datepicker extends Component
         public string|null $label = '',
         public ?string $class = null,
         public bool $required = false,
+        public array $params = []
     )
     {
         $this->class = rtrim('datepicker ' . $this->class.' ');
@@ -28,9 +25,12 @@ class Datepicker extends Component
 
     public function render(): Renderable
     {
-        $this->params = [
+        $base_params = [
             'data-date-format' => $this->format,
+            'placeholder' => __('mfw.select_date')
         ];
+
+        $this->params = array_merge($base_params,$this->params);
 
         if ($this->config) {
             $this->params['data-config'] = $this->config;

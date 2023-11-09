@@ -21,6 +21,7 @@ return [
     ],
     'replicate' => 'Dupliquer',
     'select_option' => "Sélectionner",
+    'select_date' => "Choisir une date...",
     'creation' => 'Création',
     'last_actity' => 'Dernière activité',
     'email_address' => 'Adresse e-mail',
