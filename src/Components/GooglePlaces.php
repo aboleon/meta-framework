@@ -41,4 +41,9 @@ class GooglePlaces extends Component
     {
         return $this->required->contains($key) ? $this->tag_required : '';
     }
+
+    public function labelRequired(string $key): string
+    {
+        return $this->required->contains($key) ? ' *': '';
+    }
 }
