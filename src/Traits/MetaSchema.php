@@ -20,4 +20,18 @@ trait MetaSchema
 
         return false;
     }
+
+    protected function hasIndex(Blueprint $table, string $index): bool
+    {
+        $sm = Schema::getConnection()->getDoctrineSchemaManager();
+        $indexes = $sm->listTableIndexes($table->getTable());
+
+        foreach ($indexes as $indexKey) {
+            if (in_array($index, (array) $indexKey->getName())) {
+                return true;
+            }
+        }
+
+        return false;
+    }
 }
