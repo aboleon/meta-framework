@@ -33,7 +33,7 @@
           mfw_intented_click.attr('data-change', 1);
         });
 
-        $('a').off().click(function (e) {
+        $('a').click(function (e) {
 
           const href = $(this).attr('href');
 
