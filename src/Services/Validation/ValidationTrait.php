@@ -20,14 +20,20 @@ trait ValidationTrait
     {
         $this->validation_rules = array_merge($this->validation_rules, $rules);
     }
+
     public function addValidationMessages(array $rules): void
     {
         $this->validation_messages = array_merge($this->validation_messages, $rules);
     }
 
-    public function validatedData(?string $key=null): array
+    public function validatedData(?string $key = null): string|array
     {
         return $key ? ($this->validated_data[$key] ?? $this->validated_data) : $this->validated_data;
+    }
+
+    public function validatedDataStringable(string $key): string|int|float|null
+    {
+        return isset($this->validated_data[$key]) && !is_array($this->validated_data[$key]) ? $this->validated_data[$key] : null;
     }
 
     public function validation(): void
