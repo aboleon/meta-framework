@@ -193,17 +193,22 @@ trait Responses
         return redirect()->back()->with('session_response', $this->fetchResponse());
     }
 
-    public function pushMessages(object $object)
+    public function pushMessages(object $object): static
     {
         $messages = $object->fetchResponse()[$this->messagesKey()] ?? [];
 
+        $key = $this->ajax_mode ? 'ajax_messages' : 'messages';
+        $object->removeFromResponse($key);
+
+        $this->response = array_merge($this->response, $object->fetchResponse());
+
         if ($messages) {
-            $key = $this->ajax_mode ? 'ajax_messages' : 'messages';
             foreach ($messages as $message) {
                 $this->response[$key][] = $message;
             }
             $this->response['error'] = $object->hasErrors();
         }
+
         return $this;
     }
 
@@ -244,6 +249,11 @@ trait Responses
         if (request()->filled('mfw_tab_redirect')) {
             session()->flash('mfw_tab_redirect', request('mfw_tab_redirect'));
         }
+    }
+
+    public function removeFromResponse(string $key): void
+    {
+        unset($this->response[$key]);
     }
 
 }
