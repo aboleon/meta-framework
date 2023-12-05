@@ -8,8 +8,6 @@ use MetaFramework\Functions\Helpers;
 
 class Number extends Component
 {
-
-    private array $params;
     private string $id;
     private string $validation_id;
     public function __construct(
@@ -22,6 +20,7 @@ class Number extends Component
         public string $class = '',
         public bool $required = false,
         public bool $readonly = false,
+        public array $params = []
     )
     {
         $this->id = Helpers::generateInputId($this->name);
@@ -31,10 +30,8 @@ class Number extends Component
 
     public function render(): Renderable
     {
-        $this->params = [
-            'min' => $this->min,
-            'step' => $this->step
-        ];
+        $this->params['min'] = $this->min;
+        $this->params['step'] = $this->step;
 
         if ($this->max) {
             $this->params['max'] = $this->max;
