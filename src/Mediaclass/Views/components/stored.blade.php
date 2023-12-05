@@ -36,7 +36,7 @@
                     <div class="row params mt-3">
                         <div class="col-sm-7 description {{ !$description ? 'd-none' :'' }}">
                             @foreach(\MetaFramework\Accessors\Locale::projectLocales() as $locale)
-                                <x-mfw::textarea name="mediaclass[{{ $media->id }}][description][{{ $locale }}]" :height="100" class="mt-2 description" :value="$media->description[$locale]" label="Description ({{ $locale }})"/>
+                                <x-mfw::textarea name="mediaclass[{{ $media->id }}][description][{{ $locale }}]" :height="100" class="mt-2 description" :value="$media->description[$locale] ?? ''" label="Description ({{ $locale }})"/>
                             @endforeach
                         </div>
                         <div class="col-sm-5 positions text-center ps-2{{ $positions ? '' : ' d-none' }}">
