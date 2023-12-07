@@ -7,7 +7,7 @@
     <script src="{{ asset('vendor/mfw/components/iban-validator.js') }}"></script>
     <script>
       $(function () {
-        $('.iban').on('keyup change', function () {
+        $('.iban').on('blur', function () {
           let c = $(this).closest('.iban-validator'), input = $(this);
           $(this).removeClass('is-valid is-invalid');
           c.find('.feedback').addClass('d-none');
