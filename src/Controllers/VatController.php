@@ -36,12 +36,12 @@ class VatController extends Controller
     public function store(): RedirectResponse
     {
         $this->validation_rules = [
-            'vat.rate' => 'numeric|unique:vat,taux',
+            'vat.rate' => 'numeric|unique:vat,rate',
             'vat.default' => 'nullable'
         ];
         $this->validation_messages = [
-            'vat.taux.numeric' => __('validation.integer', ['attribute' => __('mfw-sellable.vat.label')]),
-            'vat.taux.unique' => __('validation.unique', ['attribute' => __('mfw-sellable.vat.label')]),
+            'vat.rate.numeric' => __('validation.integer', ['attribute' => __('mfw-sellable.vat.label')]),
+            'vat.rate.unique' => __('validation.unique', ['attribute' => __('mfw-sellable.vat.label')]),
         ];
         $this->validation();
 
@@ -79,8 +79,8 @@ class VatController extends Controller
             'vat.default' => 'nullable'
         ];
         $this->validation_messages = [
-            'vat.taux.numeric' => __('validation.integer', ['attribute' => __('mfw-sellable.vat.label')]),
-            'vat.taux.unique' => __('validation.unique', ['attribute' => __('mfw-sellable.vat.label')]),
+            'vat.rate.numeric' => __('validation.integer', ['attribute' => __('mfw-sellable.vat.label')]),
+            'vat.rate.unique' => __('validation.unique', ['attribute' => __('mfw-sellable.vat.label')]),
         ];
         $this->validation();
 

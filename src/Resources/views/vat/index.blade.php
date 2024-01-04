@@ -8,7 +8,7 @@
             <a class="btn btn-sm btn-success"
                href="{{ route('mfw.vat.create') }}">
                 <i class="fa-solid fa-circle-plus"></i>
-                {{ __('mfw.create') }}
+                {{ __('mfw.actions.create') }}
             </a>
 
             <div class="separator"></div>
