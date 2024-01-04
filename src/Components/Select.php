@@ -30,6 +30,8 @@ class Select extends Component
         $this->id = Helpers::generateInputId($this->name);
         $this->validation_id = Helpers::generateValidationId($this->name);
         $this->name = Helpers::generateInputName($this->name);
+
+        $this->label = array_key_exists('required', $this->params) ? $this->label .' * ' : $this->label;
     }
 
     public function render(): Renderable
