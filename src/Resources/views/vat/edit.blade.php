@@ -13,7 +13,7 @@
             <a class="btn btn-sm btn-success"
                href="{{ route('mfw.vat.create') }}">
                 <i class="fa-solid fa-circle-plus"></i>
-                {{ __('mfw.create') }}
+                {{ __('mfw.actions.create') }}
             </a>
 
             <div class="separator"></div>
@@ -23,11 +23,6 @@
     @php
         $error = $errors->any();
     @endphp
-
-    <div class="max-w-7xl text-center mb-4">
-        <a class="btn btn-sm btn-info"
-           href="{{ route('mfw.vat.index') }}">Retour à l'index</a>
-    </div>
 
     <div class="shadow p-3 mb-5 bg-body-tertiary rounded">
         <div class="row m-3">
