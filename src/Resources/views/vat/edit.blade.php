@@ -2,7 +2,7 @@
 
     <x-slot name="header">
         <h2>
-            {{ $data->id ? __('mfw-sellable.vat.label'). " #" . $data->id : __('mfw-sellable.vat.new') }}
+            {{ $data->id ? __('mfw-sellable.vat.label'). " " . $data->rate .' %' : __('mfw-sellable.vat.new') }}
         </h2>
         <div class="d-flex align-items-center" id="topbar-actions">
             <a class="btn btn-sm btn-secondary mx-2"
