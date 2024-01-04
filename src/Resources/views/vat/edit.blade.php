@@ -32,6 +32,7 @@
     <div class="shadow p-3 mb-5 bg-body-tertiary rounded">
         <div class="row m-3">
             <div class="col">
+
                 <x-mfw::response-messages/>
                 <x-mfw::validation-errors/>
 
@@ -40,20 +41,17 @@
                 @endphp
 
                 <form method="post" action="{{ $route }}" id="mfw-form">
-
-
                     @csrf
                     @if($data->id)
                         @method('put')
                     @endif
-
 
                     <div class="row mb-4">
                         <div class="col-12">
                             <h4 class="mt-3">TVA</h4>
                             <div class="row">
                                 <div class="col-lg-6">
-                                    <x-mfw::input name="vat[rate]" :value="$error ? old('vat.rate') : number_format($data->rate, 2, '.')" :label="__('mfw-sellable.vat.percent')"/>
+                                    <x-mfw::number name="vat[rate]" step="0.01" :value="$error ? old('vat.rate') : $data->rate" :label="__('mfw-sellable.vat.percent')"/>
                                 </div>
                                 <div class="col-lg-6">
                                     <x-mfw::radio :values="['Non','Oui']" :affected="$error ? old('vat.default') : $data->default" name="vat[default]" :label="__('mfw-sellable.vat.is_this_default')" :nullable="false"/>

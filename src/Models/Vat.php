@@ -4,6 +4,7 @@ namespace MetaFramework\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Cache;
+use MetaFramework\Casts\PriceInteger;
 
 /**
  * @property int $rate
@@ -18,6 +19,10 @@ class Vat extends Model
     protected $fillable = [
         'rate',
         'default'
+    ];
+
+    protected $casts = [
+      'rate' => PriceInteger::class
     ];
 
     public function manageDefaultState(): void

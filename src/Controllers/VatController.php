@@ -36,7 +36,7 @@ class VatController extends Controller
     public function store(): RedirectResponse
     {
         $this->validation_rules = [
-            'vat.taux' => 'numeric|unique:vat,taux',
+            'vat.rate' => 'numeric|unique:vat,taux',
             'vat.default' => 'nullable'
         ];
         $this->validation_messages = [
@@ -69,13 +69,13 @@ class VatController extends Controller
             'route' => route('mfw.vat.update', $vat)
         ];
 
-        return view('vat.edit')->with($data);
+        return view('mfw::vat.edit')->with($data);
     }
 
     public function update(Vat $vat): RedirectResponse
     {
         $this->validation_rules = [
-            'vat.taux' => 'numeric|unique:vat,taux,'.$vat->id,
+            'vat.rate' => 'numeric|unique:vat,rate,'.$vat->id,
             'vat.default' => 'nullable'
         ];
         $this->validation_messages = [
@@ -83,6 +83,7 @@ class VatController extends Controller
             'vat.taux.unique' => __('validation.unique', ['attribute' => __('mfw-sellable.vat.label')]),
         ];
         $this->validation();
+
 
         try {
             $vat->update(
@@ -110,7 +111,7 @@ class VatController extends Controller
             }
             $vat->delete();
         } catch (Throwable $e) {
-            $this->responseException($e);
+            $this->responseException($e, __('mfw-sellable.vat.is_used'));
         }
 
         return $this->sendResponse();
