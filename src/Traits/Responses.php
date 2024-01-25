@@ -108,9 +108,9 @@ trait Responses
     {
         if ($this->enabledMessages()) {
             if (!empty($key)) {
-                $this->response['messages'][$key]['success'] = $message;
+                $this->response[$this->messagesKey()][$key]['success'] = $message;
             } else {
-                $this->response['messages'][]['success'] = $message;
+                $this->response[$this->messagesKey()][]['success'] = $message;
             }
             return $this;
         }
@@ -127,7 +127,7 @@ trait Responses
     {
         if ($this->enabledMessages()) {
             $this->response['error'] = true;
-            $this->response['messages'][]['danger'] = $message;
+            $this->response[$this->messagesKey()][]['danger'] = $message;
         }
     }
 
@@ -135,7 +135,7 @@ trait Responses
     {
         if ($this->enabledMessages()) {
             $this->response['abort'] = true;
-            $this->response['messages'][]['danger'] = $message;
+            $this->response[$this->messagesKey()][]['danger'] = $message;
         }
     }
 
@@ -143,7 +143,7 @@ trait Responses
     {
         if ($this->enabledMessages()) {
             $this->response['error'] = true;
-            $this->response['messages'][]['warning'] = $message;
+            $this->response[$this->messagesKey()][]['warning'] = $message;
         }
     }
 
@@ -197,14 +197,13 @@ trait Responses
     {
         $messages = $object->fetchResponse()[$this->messagesKey()] ?? [];
 
-        $key = $this->ajax_mode ? 'ajax_messages' : 'messages';
-        $object->removeFromResponse($key);
+        $object->removeFromResponse($this->messagesKey());
 
         $this->response = array_merge($this->response, $object->fetchResponse());
 
         if ($messages) {
             foreach ($messages as $message) {
-                $this->response[$key][] = $message;
+                $this->response[$this->messagesKey()][] = $message;
             }
             $this->response['error'] = $object->hasErrors();
         }
