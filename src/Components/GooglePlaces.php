@@ -18,6 +18,26 @@ class GooglePlaces extends Component
 
     public Collection $required;
 
+    /**
+     * @param GooglePlacesInterface $geo
+     * @param string $field
+     * @param string $random_id
+     * @param array $params
+     * @param string $placeholder
+     * @param string $tag_required
+     * @param string|null $label
+     * @param array $hidden
+     * Hide some fields
+     * --
+     * administrative_area_level_1
+     * administrative_area_level_1_short
+     * administrative_area_level_2
+     * locality
+     * postal_code
+     * route
+     * street_number
+     */
+
     public function __construct(
         public GooglePlacesInterface $geo,
         public string                $field = 'wa_geo',
@@ -25,7 +45,13 @@ class GooglePlaces extends Component
         public array                 $params = [],
         public string                $placeholder = '',
         public string                $tag_required = 'required',
-        public ?string               $label = null
+        public ?string               $label = null,
+        public array                 $hidden = [
+            'administrative_area_level_1_short',
+            'administrative_area_level_1',
+            'administrative_area_level_2',
+            'country_code'
+        ]
     )
     {
         $this->random_id = Str::random(4);
@@ -44,6 +70,11 @@ class GooglePlaces extends Component
 
     public function labelRequired(string $key): string
     {
-        return $this->required->contains($key) ? ' *': '';
+        return $this->required->contains($key) ? ' *' : '';
+    }
+
+    public function inputable(string $key): string
+    {
+        return 'col-'.$key . ' ' . (in_array($key, $this->hidden) ? ' d-none' : '');
     }
 }
