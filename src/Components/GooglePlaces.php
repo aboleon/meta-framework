@@ -17,6 +17,13 @@ class GooglePlaces extends Component
      */
 
     public Collection $required;
+    public ?string $defaultTextAdress = null;
+    private $readonly = [
+        'street_number',
+        'route',
+        'locality',
+        'postal_code'
+    ];
 
     /**
      * @param GooglePlacesInterface $geo
@@ -56,6 +63,7 @@ class GooglePlaces extends Component
     {
         $this->random_id = Str::random(4);
         $this->required = collect($this->params['required'] ?? []);
+        $this->defaultTextAdress = $this->geo->text_address ?? ($this->geo->locality ?? null);
     }
 
     public function render(): Renderable
@@ -76,5 +84,10 @@ class GooglePlaces extends Component
     public function inputable(string $key): string
     {
         return 'col-'.$key . ' ' . (in_array($key, $this->hidden) ? ' d-none' : '');
+    }
+
+    public function readonlies(string $key): string
+    {
+        return !$this->defaultTextAdress && in_array($key, $this->readonly) ? ' lockable' : '';
     }
 }
