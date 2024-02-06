@@ -45,7 +45,7 @@ class VatAccessor
 
     public static function readableArrayList(): array
     {
-        return VatAccessor::vats()->sortBy('default')->map(fn($item) => number_format($item / 100, 2))->toArray();
+        return VatAccessor::vats()->sortBy('default')->map(fn($item) => $item .'%')->toArray();
     }
 
     public static function selectables(): array
