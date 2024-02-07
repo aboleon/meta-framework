@@ -32,7 +32,7 @@
                     @if($data->id)
                         @method('put')
                     @endif
-                    <x-mfw::language-tabs/>
+                    <x-mfw::language-tabs id="tab_content"/>
                     <div class="tab-content base">
                         @foreach(config('translatable.locales') as $locale)
                             <div class="tab-pane fade {!! $locale == app()->getLocale() ? 'show active': null !!}" id="tab_content_{{ $locale }}" role="tabpanel" aria-labelledby="tab_link_content_{{ $locale }}">

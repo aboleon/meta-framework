@@ -17,7 +17,7 @@
     <fieldset>
         <legend class="toggle">Résumé / SEO</legend>
         <div class="toggable">
-            <x-mfw::language-tabs/>
+            <x-mfw::language-tabs id="tab_content"/>
             <div class="tab-content base">
                 @foreach(config('mfw.translatable.locales') as $locale)
                     <div class="tab-pane fade {!! $locale == app()->getLocale() ? 'show active': null !!}" id="tab_meta_content_{{ $locale }}" role="tabpanel" aria-labelledby="tab_meta_link_content_{{ $locale }}">
