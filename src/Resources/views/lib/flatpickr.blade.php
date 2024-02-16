@@ -24,8 +24,6 @@
               }
 
               let custom_config = $(this).attr('data-config');
-              console.log(custom_config);
-              // console.log(custom_config != undefined && custom_config.length);
 
               if (custom_config != undefined && custom_config.length) {
                 custom_config = custom_config.split(',');
