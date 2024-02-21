@@ -31,15 +31,17 @@ trait Ajax
         return $this->{request('action')}($request);
     }
 
-    public function fetchInput(): void
+    public function fetchInput(): static
     {
         $this->response['input'] = request()->all();
+        return $this;
     }
 
-    public function fetchCallback(): void
+    public function fetchCallback(): static
     {
         if (request()->filled('callback')) {
             $this->response['callback'] = request('callback');
         }
+        return $this;
     }
 }
