@@ -14,6 +14,9 @@
 @if($required)
     required
 @endif
+@if($readonly)
+    readonly
+@endif
 >{!! $value !!}</textarea>
 
 <x-mfw::validation-error :field="$validation_id"/>
