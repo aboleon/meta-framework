@@ -18,7 +18,9 @@ class Textarea extends Component
         public string|array $class = '',
         public array        $params = [],
         public int          $height = 200,
-        public bool         $required = false)
+        public bool         $required = false,
+        public bool         $readonly = false
+    )
     {
         $this->id = Helpers::generateInputId($this->name);
         $this->validation_id = Helpers::generateValidationId($this->name);
