@@ -22,12 +22,13 @@ class Select extends Component
         public bool $group = false,
         public ?string $class = null,
         public array $params = [],
+        public string $identifier = ''
     )
     {
         $this->defaultselecttext = $this->defaultselecttext ?: '---  '. __('mfw.select_option') .' ---';
         $this->class = rtrim('form-control form-select '  . $this->class);
 
-        $this->id = Helpers::generateInputId($this->name);
+        $this->id = Helpers::generateInputId($this->name.'_'. $this->identifier);
         $this->validation_id = Helpers::generateValidationId($this->name);
         $this->name = Helpers::generateInputName($this->name);
 

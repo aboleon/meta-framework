@@ -13,9 +13,7 @@ trait Ajax
 
     public function distribute(Request $request): array|JsonResponse
     {
-        $this->enableAjaxMode();
-        $this->fetchInput();
-        $this->fetchCallback();
+        $this->ajaxMode();
 
         if (!request()->filled('action')) {
             $this->responseError('Cette requête ne peut pas être interprêtée.');
@@ -42,6 +40,15 @@ trait Ajax
         if (request()->filled('callback')) {
             $this->response['callback'] = request('callback');
         }
+        return $this;
+    }
+
+    public function ajaxMode(): static
+    {
+        $this->enableAjaxMode();
+        $this->fetchInput();
+        $this->fetchCallback();
+
         return $this;
     }
 }
