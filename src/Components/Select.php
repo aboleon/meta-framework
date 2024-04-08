@@ -12,7 +12,7 @@ class Select extends Component
     private string $validation_id;
 
     public function __construct(
-        public array $values,
+        public string|array $values,
         public string $name,
         public int|string|null $affected = null,
         public string $label = '',

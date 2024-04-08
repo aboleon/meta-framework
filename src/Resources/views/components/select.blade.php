@@ -7,29 +7,36 @@
             name="{{ $name }}"
         @endif
         class="{{ $class }}"
-@forelse($params as $param => $setting)
+@foreach($params as $param => $setting)
     {{ $param }}="{!! $setting !!}"
-@empty
-@endforelse
+@endforeach
 >
-    @if ($nullable)
-        <option value="">{{ $defaultselecttext }}</option>
-    @endif
+    @if (is_array($values))
+        @if ($nullable)
+            <option value="">{{ $defaultselecttext }}</option>
+        @endif
+        @if ($group)
+            @foreach($values as $optgroup_id => $optgroup)
+                <optgroup data-id="{{ $optgroup_id }}" label="{{ $optgroup['name'] }}">
+                    @foreach($optgroup['values'] as $key => $value)
+                        <option data-value="{{ Str::slug($value) }}" value="{{ $key }}"{{ $affected && $key == $affected ? 'selected' : '' }}>{{ $value }}</option>
+                    @endforeach
+                </optgroup>
 
-    @if ($group)
-        @foreach($values as $optgroup_id => $optgroup)
-            <optgroup data-id="{{ $optgroup_id }}" label="{{ $optgroup['name'] }}">
-                @foreach($optgroup['values'] as $key => $value)
-                    <option data-value="{{ Str::slug($value) }}" value="{{ $key }}"{{ $affected && $key == $affected ? 'selected' : '' }}>{{ $value }}</option>
+            @endforeach
+        @else
+            @foreach($values as $key => $value)
+                <option data-value="{{ Str::slug($value) }}" value="{{ $key }}"{{ $affected && $key == $affected ? ' selected' : '' }}>{{ $value }}</option>
                 @endforeach
-            </optgroup>
-
-        @endforeach
+        @endif
     @else
-        @foreach($values as $key => $value)
-            <option data-value="{{ Str::slug($value) }}" value="{{ $key }}"{{ $affected && $key == $affected ? 'selected' : '' }}>{{ $value }}</option>
-        @endforeach
 
+        @if ($nullable)
+            <option value="">{{ $defaultselecttext }}</option>
+        @endif
+
+        {!! $values !!}
     @endif
 </select>
+
 <x-mfw::validation-error :field="$validation_id"/>

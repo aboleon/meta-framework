@@ -52,4 +52,13 @@ class VatAccessor
     {
         return VatAccessor::readableArrayList();
     }
+
+    public static function selectableOptionHtmlList($affected = null): string
+    {
+        $options = '';
+        foreach (VatAccessor::vats()->sortBy('default') as $key => $value) {
+            $options.='<option data-rate="'.$value.'" value="'.$key.'"'.($affected && $affected == $key ? ' selected' : '').'>'.$value.'%</option>'."\r\n";
+        }
+        return $options;
+    }
 }
