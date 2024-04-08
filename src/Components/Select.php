@@ -22,7 +22,7 @@ class Select extends Component
         public bool $group = false,
         public ?string $class = null,
         public array $params = [],
-        public string $identifier = ''
+        public ?string $identifier = null
     )
     {
         $this->defaultselecttext = $this->defaultselecttext ?: '---  '. __('mfw.select_option') .' ---';
