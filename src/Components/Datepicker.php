@@ -17,7 +17,8 @@ class Datepicker extends Component
         public string|null $label = '',
         public ?string $class = null,
         public bool $required = false,
-        public array $params = []
+        public array $params = [],
+        public bool $randomize = false
     )
     {
         $this->class = rtrim('datepicker ' . $this->class.' ');
@@ -37,6 +38,7 @@ class Datepicker extends Component
         }
 
         return view('mfw::components.datepicker')->with([
+            'randomize' => $this->randomize,
             'label' => $this->label,
             'class' => $this->class,
             'required' => $this->required,

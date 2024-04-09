@@ -3,6 +3,7 @@
 namespace MetaFramework\Components;
 
 use Illuminate\Contracts\Support\Renderable;
+use Illuminate\Support\Str;
 use Illuminate\View\Component;
 use MetaFramework\Functions\Helpers;
 
@@ -22,13 +23,14 @@ class Select extends Component
         public bool $group = false,
         public ?string $class = null,
         public array $params = [],
-        public ?string $identifier = null
+        public ?string $identifier = null,
+        public bool $randomize = false
     )
     {
         $this->defaultselecttext = $this->defaultselecttext ?: '---  '. __('mfw.select_option') .' ---';
         $this->class = rtrim('form-control form-select '  . $this->class);
 
-        $this->id = Helpers::generateInputId($this->name.'_'. $this->identifier);
+        $this->id = Helpers::generateInputId($this->name.'_'. $this->identifier . ($this->randomize ? '_'.Str::random(8):''));
         $this->validation_id = Helpers::generateValidationId($this->name);
         $this->name = Helpers::generateInputName($this->name);
 

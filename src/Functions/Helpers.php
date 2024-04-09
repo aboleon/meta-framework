@@ -8,8 +8,7 @@ class Helpers
 {
     public static function generateInputId(string $string): string
     {
-        return rtrim(str_replace(['[', ']', '.'], '_', $string), '_') .
-            ((str_ends_with($string, ']') or str_ends_with($string, '.') or str_ends_with($string, '_')) ? '_'.Str::random(10) : '');
+        return rtrim(str_replace(['[', ']', '.'], '_', $string), '_');
     }
 
     public static function generateValidationId(string $string): string

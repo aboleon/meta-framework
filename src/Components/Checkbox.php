@@ -10,7 +10,7 @@ use MetaFramework\Functions\Helpers;
 
 class Checkbox extends Component
 {
-    public string $forLabel = '';
+    public string $id;
     public bool $isSelected = false;
 
     public function __construct(
@@ -20,7 +20,8 @@ class Checkbox extends Component
         public string|null     $label = '',
         public string          $class = '',
         public bool            $switch = false,
-        public array           $params = []
+        public array           $params = [],
+        public bool $randomize = true
     )
     {
 
@@ -28,7 +29,7 @@ class Checkbox extends Component
             $this->affected = collect($this->affected);
         }
 
-        $this->forLabel = Helpers::generateInputId($this->name . Str::random(10));
+        $this->id = Helpers::generateInputId($this->name . ($this->randomize ? '_' . Str::random(8) : ''));
         $this->isSelected = $this->affected->contains($this->value);
         $this->name = Helpers::generateInputName($this->name);
     }

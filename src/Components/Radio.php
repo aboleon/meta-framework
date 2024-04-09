@@ -15,7 +15,8 @@ class Radio extends Component
         public string          $name,
         public int|string|null $affected,
         public string|null     $label = '',
-        public int|string|null $default = null
+        public int|string|null $default = null,
+        public bool $randomize = true
     )
     {
         $this->validation_id = Helpers::generateValidationId($this->name);
@@ -25,6 +26,7 @@ class Radio extends Component
     {
         return view('mfw::components.radio')
             ->with([
+                'randomize' => $this->randomize,
                 'validation_id' => $this->validation_id,
             ]);
     }

@@ -3,6 +3,7 @@
 namespace MetaFramework\Components;
 
 use Illuminate\Contracts\Support\Renderable;
+use Illuminate\Support\Str;
 use Illuminate\View\Component;
 use MetaFramework\Functions\Helpers;
 
@@ -20,10 +21,11 @@ class Number extends Component
         public string $class = '',
         public bool $required = false,
         public bool $readonly = false,
-        public array $params = []
+        public array $params = [],
+        public bool $randomize = false
     )
     {
-        $this->id = Helpers::generateInputId($this->name);
+        $this->id = Helpers::generateInputId($this->name . ($this->randomize ? '_' . Str::random(8) : ''));
         $this->validation_id = Helpers::generateValidationId($this->name);
         $this->name = Helpers::generateInputName($this->name);
     }
