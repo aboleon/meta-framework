@@ -12,7 +12,8 @@ class Modal extends Component
         public ?string $question = null,
         public ?string $title = null,
         public string $reference = '',
-        public array $params = []
+        public array $params = [],
+        public string $class = '',
     ) {
         $this->question = $this->question ?? __('mfw.should_i_delete_record');
         $this->reference = $this->reference ?? 'myModal'.$this->reference;

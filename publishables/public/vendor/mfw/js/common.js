@@ -68,7 +68,7 @@ let token = function () {
     messages.find('div:last').fadeIn(timer);
   },
   ajax = function (formData, selector) {
-    let ajax_url,
+    let ajax_url = document.querySelector('meta[name="ajax-route"]').content ?? null,
       ajax_url_origin,
       formTag = selector.closest('.form');
 

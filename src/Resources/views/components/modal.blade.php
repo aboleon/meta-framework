@@ -1,5 +1,5 @@
 <div id="{{ $reference }}"
-     class="modal fade"
+     class="modal fade {{ $class }}"
      tabindex="-1"
      aria-hidden="true"
      data-bs-backdrop="static"
@@ -18,12 +18,12 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-hidden="true" aria-label="{{ __('mfw.close') }}">
                     </button>
                 </div>
-                <div class="modal-body">
+                <div class="modal-body text-start">
                     <p>{!! $question !!}</p>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-sm" data-bs-dismiss="modal" aria-hidden="true">{{ __('mfw.cancel') }}</button>
-                    <button class="btn btn-warning btn-sm">{{ __('mfw.confirm') }}</button>
+                    <button type="button" class="btn-cancel btn btn-sm" data-bs-dismiss="modal" aria-hidden="true">{{ __('mfw.cancel') }}</button>
+                    <button class="btn-confirm btn btn-warning btn-sm">{{ __('mfw.confirm') }}</button>
                 </div>
                 @if ($params)
                     @foreach($params as $key=>$value)
