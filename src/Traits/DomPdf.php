@@ -25,4 +25,14 @@ trait DomPdf
     {
         return $this->pdf->output();
     }
+
+
+    public function binary(): string
+    {
+        return $this->output();
+    }
+    public function download(string $filename='pdf_document.pdf'): Response
+    {
+        return $this->pdf->download($filename);
+    }
 }
