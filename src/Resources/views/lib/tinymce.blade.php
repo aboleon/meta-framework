@@ -1,4 +1,4 @@
-@push('js')
+@pushonce('js')
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/5.8.2/tinymce.min.js" defer></script>
     <script>
       $(function () {
@@ -14,4 +14,4 @@
         }
       });
     </script>
-@endpush
+@endpushonce
