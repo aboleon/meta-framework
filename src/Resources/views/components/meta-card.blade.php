@@ -26,12 +26,12 @@
                                 @switch($value['type'])
                                     @case('textarea')
                                         <div class="meta_{{ $key. ' '. ($value['class'] ?? 'col-12') }} mb-4{{ $model->visibility($key) }}">
-                                            <x-mfw::textarea :name="$meta->translatableInput('meta['.$key.']')" class="{{ $value['class'] ?? '' }}" :value="$meta->translation($key, $locale)" :label="$value['label']"/>
+                                            <x-ab-input::textarea :name="$meta->translatableInput('meta['.$key.']')" class="{{ $value['class'] ?? '' }}" :value="$meta->translation($key, $locale)" :label="$value['label']"/>
                                         </div>
                                         @break
                                     @default
                                         <div class="meta_{{ $key . ' '. ($value['class'] ?? 'col-12') }} mb-4{{ $model->visibility($key) }}">
-                                            <x-mfw::input :name="$meta->translatableInput('meta['.$key.']')" :value="$meta->translation($key, $locale)" :label="$value['label']"/>
+                                            <x-ab-input::input :name="$meta->translatableInput('meta['.$key.']')" :value="$meta->translation($key, $locale)" :label="$value['label']"/>
                                         </div>
                                 @endswitch
                             @endforeach
@@ -65,7 +65,7 @@
                     @foreach($model->model_configs as $key => $values)
                         @switch($values['type'])
                             @case('checkbox')
-                                <x-mfw::checkbox :value="$key" name="meta[configs][{{$key}}]" :label="$values['label']" :affected="$meta->configs[$key] ?? null"/>
+                                <x-ab-input::checkbox :value="$key" name="meta[configs][{{$key}}]" :label="$values['label']" :affected="$meta->configs[$key] ?? null"/>
                                 @break
                         @endswitch
                     @endforeach
@@ -80,7 +80,7 @@
 
                 <div class="col-12 mb-4 {{ !auth()->user()->hasRole('dev') ? 'd-none' : '' }}">
                     {{-- @if ($meta->model()->instance->isVisible('taxonomy'))} --}}
-                    <x-mfw::input name="meta[taxonomy]" value="{{ $meta->taxonomy }}" label="Taxonomie"/>
+                    <x-ab-input::input name="meta[taxonomy]" value="{{ $meta->taxonomy }}" label="Taxonomie"/>
 
                     @role('dev')
                     <code>Visible en mode dev uniquement</code>
@@ -90,13 +90,13 @@
 
                 @if ($meta->uses('template'))
                     <div>
-                        <x-mfw::input label="Template" name="meta[template]" :value="$meta->template"/>
+                        <x-ab-input::input label="Template" name="meta[template]" :value="$meta->template"/>
                     </div>
                 @endif
 
                 @if ($meta->uses('forms'))
                     <div class="mt-3">
-                        <x-mfw::select label="Formulaire" name="meta[forms]" :values="\MetaFramework\Models\Forms::selectables()" :affected="$meta->form?->name"/>
+                        <x-ab-input::select label="Formulaire" name="meta[forms]" :values="\MetaFramework\Models\Forms::selectables()" :affected="$meta->form?->name"/>
                     </div>
                 @endif
 

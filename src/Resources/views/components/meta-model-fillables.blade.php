@@ -119,7 +119,6 @@
     @endforeach
 @endif
 @once
-    @include('mfw::lib.tinymce')
     @push('js')
         <link rel="stylesheet" href="{{ asset('vendor/jquery-ui-1.13.0.custom/jquery-ui.min.css') }}">
         <script src="{{ asset('vendor/jquery-ui-1.13.0.custom/jquery-ui.min.js') }}"></script>

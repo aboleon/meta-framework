@@ -1,69 +1,74 @@
 {
-    "name": "aboleon/metaframework",
-    "description": "Meta Framework CMS",
-    "minimum-stability": "stable",
-    "license": "proprietary",
-    "keywords": [
-        "meta framework"
-    ],
-    "authors": [
-        {
-            "name": "Aboleon Media",
-            "email": "dev@aboleon.media"
-        }
-    ],
-    "require": {
-        "php": "^8.1",
-        "css-crush/css-crush": "^4.1",
-        "intervention/image": "^2.7",
-        "laravel/framework": "^10.10",
-        "symfony/mime": "^6.2"
+  "name": "aboleon/metaframework",
+  "description": "Meta Framework CMS",
+  "minimum-stability": "stable",
+  "license": "proprietary",
+  "keywords": [
+    "meta framework"
+  ],
+  "authors": [
+    {
+      "name": "Aboleon Media",
+      "email": "dev@aboleon.media"
+    }
+  ],
+  "require": {
+    "php": "^8.1",
+    "css-crush/css-crush": "^4.1",
+    "intervention/image": "^2.7",
+    "laravel/framework": "^10.10",
+    "aboleon/laravel-inputables": "dev-main",
+    "symfony/mime": "^6.2"
+  },
+  "require-dev": {
+    "phpstan/phpstan": "^1.10",
+    "phpunit/phpunit": "^10.1",
+    "orchestra/testbench": "^8.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "MetaFramework\\": "src"
     },
-    "require-dev": {
-        "phpstan/phpstan": "^1.10",
-        "phpunit/phpunit": "^10.1",
-        "orchestra/testbench": "^8.0"
-    },
-    "autoload": {
-        "psr-4": {
-            "MetaFramework\\": "src"
-        },
-        "files": [
-            "src/Functions/loader.php",
-            "src/Mediaclass/functions.php"
-        ]
-    },
-    "autoload-dev": {
-        "psr-4": {
-            "Tests\\": "tests/"
-        }
-    },
-    "extra": {
-        "laravel": {
-            "providers": [
-                "MetaFramework\\ServiceProvider"
-            ],
-            "aliases": {
-                "Meta": "MetaFramework\\Facades\\MetaFacade",
-                "Nav": "MetaFramework\\Facades\\NavFacade",
-                "Mediaclass": "MetaFramework\\Mediaclass\\Facades\\MediaclassFacade"
-            }
-        }
-    },
-    "scripts": {
-        "post-autoload-dump": [
-            "@php vendor/bin/testbench package:discover --ansi"
-        ]
-    },
-    "config": {
-        "optimize-autoloader": true,
-        "preferred-install": "dist",
-        "sort-packages": true
-    },
-    "repositories": [
-        {
-            "type": "path",
-            "url": "../package-meta-framework"
-        }
+    "files": [
+      "src/Functions/loader.php",
+      "src/Mediaclass/functions.php"
     ]
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Tests\\": "tests/"
+    }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "MetaFramework\\ServiceProvider"
+      ],
+      "aliases": {
+        "Meta": "MetaFramework\\Facades\\MetaFacade",
+        "Nav": "MetaFramework\\Facades\\NavFacade",
+        "Mediaclass": "MetaFramework\\Mediaclass\\Facades\\MediaclassFacade"
+      }
+    }
+  },
+  "scripts": {
+    "post-autoload-dump": [
+      "@php vendor/bin/testbench package:discover --ansi"
+    ]
+  },
+  "config": {
+    "optimize-autoloader": true,
+    "preferred-install": "dist",
+    "sort-packages": true
+  },
+  "repositories": [
+    {
+      "type": "path",
+      "url": "../package-meta-framework"
+    },
+    {
+      "type": "path",
+      "url": "../laravel-inputables"
+    }
+  ]
 }

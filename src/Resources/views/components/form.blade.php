@@ -25,22 +25,22 @@
                     @endphp
                     @switch($field['type'])
                         @case('textarea')
-                            <x-mfw::textarea :name="$field['name']" :label="$label" :value="old($field['name'])"/>
+                            <x-ab-input::textarea :name="$field['name']" :label="$label" :value="old($field['name'])"/>
                             @break
                         @case('radio')
-                            <x-mfw::radio :name="$field['name']" :label="$label" :values="$field['values']" :affected="old($field['name'])"/>
+                            <x-ab-input::radio :name="$field['name']" :label="$label" :values="$field['values']" :affected="old($field['name'])"/>
                             @break
                         @case('btn-group')
                             <x-mfw::btn-group :name="$field['name']" :label="$label" :values="$field['values']" :affected="old($field['name']) ?: $field['default']"/>
                             @break
                         @case('checkbox')
-                            <x-mfw::checkbox :name="$field['name']" :label="$label" value="1" :affected="null"/>
+                            <x-ab-input::checkbox :name="$field['name']" :label="$label" value="1" :affected="null"/>
                             @break
                         @case('select')
-                            <x-mfw::select :name="$field['name']" :label="$label" :values="$field['values']" :affected="null" />
+                            <x-ab-input::select :name="$field['name']" :label="$label" :values="$field['values']" :affected="null" />
                             @break
                         @default
-                            <x-mfw::input type="{{ $field['type'] }}" :name="$field['name']" :label="$label" :value="old($field['name'])" autocomplete="off"/>
+                            <x-ab-input::input type="{{ $field['type'] }}" :name="$field['name']" :label="$label" :value="old($field['name'])" autocomplete="off"/>
                     @endswitch
                 </div>
             @endforeach

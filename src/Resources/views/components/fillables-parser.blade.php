@@ -11,7 +11,7 @@
         @switch($value['type'] ?? '')
             @case('textarea')
                 <div class="{{ $value['class'] ?? 'col-12' }} mb-4">
-                    <x-mfw::textarea name="{{$array_key}}[{{$locale}}]"
+                    <x-ab-input::textarea name="{{$array_key}}[{{$locale}}]"
                                      :value="$error ? old(str_replace(['[', ']'], ['.', ''], $array_key).'.'.$locale) : $model->translation($key, $locale)"
                                      :label="$value['label'] ?? ''"
                                      :class="$value['class'] ?? ''"
@@ -22,7 +22,7 @@
             @default
 
                 <div class="{{ $value['class'] ?? 'col-12' }} mb-4">
-                    <x-mfw::input name="{{$array_key}}[{{$locale}}]"
+                    <x-ab-input::input name="{{$array_key}}[{{$locale}}]"
                                   :value="$error ? old(str_replace(['[', ']'], ['.', ''], $array_key).'.'.$locale) : $model->translation($key, $locale)"
                                   :label="$value['label'] ?? ''"
                                   :required="in_array('required',$value)"
