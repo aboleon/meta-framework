@@ -80,7 +80,6 @@ class MetaParser
 
     public function parseDefaultImage(): self
     {
-
         if ($this->model->hasImage()) {
             $this->data['_illustration'] = $this->media->parsedForGroup('meta')->toArray();
         }

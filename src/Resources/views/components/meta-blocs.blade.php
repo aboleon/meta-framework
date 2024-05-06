@@ -11,6 +11,7 @@
         <div id="assigned_blocs" data-ajax="{{ route('mfw.ajax') }}">
             @php
                 $blocs = \MetaFramework\Models\MetaBloc::getBlocsForMeta($meta->type == 'bloc' ? $meta->parent : $meta->id);
+
                 if ($blocs->isNotEmpty()) { ?>
                     <ul id="meta_bloc_list" class="m-0 mb-3 p-0">
                     <?php

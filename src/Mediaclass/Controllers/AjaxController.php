@@ -22,7 +22,10 @@ class AjaxController extends Controller
 
     public function upload(): array
     {
-        return $this->uploader->setModel(request('model'))->upload()->fetchResponse();
+        return $this->uploader
+            ->setModel((string)request('model'))
+            ->upload()
+            ->fetchResponse();
     }
 
     public function crop(): array
@@ -32,7 +35,9 @@ class AjaxController extends Controller
 
     public function delete(): array
     {
-        return $this->uploader->delete()->fetchResponse();
+        return $this->uploader
+            ->delete()
+            ->fetchResponse();
     }
 
 

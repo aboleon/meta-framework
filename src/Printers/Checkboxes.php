@@ -2,10 +2,12 @@
 
 namespace MetaFramework\Printers;
 
-use MetaFramework\Traits\TreeBuilder;
+use Aboleon\Inputables\Helpers;
 use Illuminate\Database\Eloquent\Collection as EloquentCollection;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\View;
+use Illuminate\Support\Str;
+use MetaFramework\Traits\TreeBuilder;
 
 class Checkboxes
 {
@@ -43,16 +45,19 @@ class Checkboxes
     private function entry(string &$html, $item, $parent = null): void
     {
         $html .= '<li data-id="' . $item->id . '"' . ($parent ? ' class="child" data-parent="' . $parent . '"' : '') . '>';
-        $html .= View::make('ab-input::checkbox', [
-            'value' => $item->id,
-            'name' => $this->name,
-            'affected' => $this->affected,
-            'class' => '',
-            'label' => $item->translation('title'),
-            'forLabel' => str_replace(['[', ']'], '', $this->name) . $item->id,
-            'isSelected' => $this->affected->contains($item->id),
-            'switch' => false
-        ])->render();
+        $html .=
+            View::make('ab-input::checkbox', [
+                'id' => Helpers::generateInputId($this->name . '_' . Str::random(8)),
+                'value' => $item->id,
+                'name' => $this->name,
+                'affected' => $this->affected,
+                'class' => '',
+                'params' => [],
+                'label' => $item->translation('title'),
+                'forLabel' => str_replace(['[', ']'], '', $this->name) . $item->id,
+                'isSelected' => $this->affected->contains($item->id),
+                'switch' => false
+            ])->render();
         self::buildLevels($html, $item);
         $html .= '</li>';
     }

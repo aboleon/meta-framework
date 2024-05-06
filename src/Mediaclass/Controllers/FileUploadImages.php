@@ -60,10 +60,10 @@ class FileUploadImages
         try {
             $this->model = (new ReflectionClass($model))->newInstance();
 
-
             if ($this->model_id) {
                 $this->model = $this->model->find($this->model_id);
             }
+
             $this->folder_name = Path::mediaFolderName($this->model);
 
 
@@ -210,17 +210,21 @@ class FileUploadImages
 
         try {
             $this->media = $this->store();
+
+            $this->media->model = $this->model;
+
+            $cropable = new Cropable($this->media);
+
+            $cropable->setCropableFromComponent((string)request('cropable'));
+            $this->responseElement('sizes', $cropable->printSizes());
+            $this->responseElement('cropable_link', $cropable->link());
+
+            $this->mediaResponse();
+
         } catch (Throwable $e) {
             $this->responseException($e);
         }
 
-        $this->media->model = $this->model;
-        $cropable = new Cropable($this->media);
-        $cropable->setCropableFromComponent((string)request('cropable'));
-        $this->responseElement('sizes', $cropable->printSizes());
-        $this->responseElement('cropable_link', $cropable->link());
-
-        $this->mediaResponse();
 
         return $this;
     }
