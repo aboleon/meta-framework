@@ -2,22 +2,22 @@
 
     <x-slot name="header">
         <h2>
-            {{ $data->id ? __('mfw-sellable.vat.label'). " " . $data->rate .' %' : __('mfw-sellable.vat.new') }}
+            {{ $data->id ? __('aboleon-framework-sellable.vat.label'). " " . $data->rate .' %' : __('aboleon-framework-sellable.vat.new') }}
         </h2>
         <div class="d-flex align-items-center" id="topbar-actions">
             <a class="btn btn-sm btn-secondary mx-2"
-               href="{{ route('mfw.vat.index') }}">
+               href="{{ route('aboleon-framework.vat.index') }}">
                 <i class="fa-solid fa-bars"></i>
                 Index
             </a>
             <a class="btn btn-sm btn-success"
-               href="{{ route('mfw.vat.create') }}">
+               href="{{ route('aboleon-framework.vat.create') }}">
                 <i class="fa-solid fa-circle-plus"></i>
-                {{ __('mfw.actions.create') }}
+                {{ __('aboleon-framework.actions.create') }}
             </a>
 
             <div class="separator"></div>
-            <x-mfw::save-btns/>
+            <x-aboleon-framework::save-btns/>
         </div>
     </x-slot>
     @php
@@ -28,14 +28,14 @@
         <div class="row m-3">
             <div class="col">
 
-                <x-mfw::response-messages/>
-                <x-mfw::validation-errors/>
+                <x-aboleon-framework::response-messages/>
+                <x-aboleon-framework::validation-errors/>
 
                 @php
                     $error = $errors->any();
                 @endphp
 
-                <form method="post" action="{{ $route }}" id="mfw-form">
+                <form method="post" action="{{ $route }}" id="aboleon-framework-form">
                     @csrf
                     @if($data->id)
                         @method('put')
@@ -46,10 +46,10 @@
                             <h4 class="mt-3">TVA</h4>
                             <div class="row">
                                 <div class="col-lg-6">
-                                    <x-ab-input::number name="vat[rate]" step="0.01" :value="$error ? old('vat.rate') : $data->rate" :label="__('mfw-sellable.vat.percent')"/>
+                                    <x-aboleon-inputable::number name="vat[rate]" step="0.01" :value="$error ? old('vat.rate') : $data->rate" :label="__('aboleon-framework-sellable.vat.percent')"/>
                                 </div>
                                 <div class="col-lg-6">
-                                    <x-ab-input::radio :values="[0 => 'Non',1 => 'Oui']" :affected="$error ? old('vat.default') : ($data->default ?: 0)" name="vat[default]" :label="__('mfw-sellable.vat.is_this_default')" :nullable="false"/>
+                                    <x-aboleon-inputable::radio :values="[0 => 'Non',1 => 'Oui']" :affected="$error ? old('vat.default') : ($data->default ?: 0)" name="vat[default]" :label="__('aboleon-framework-sellable.vat.is_this_default')" :nullable="false"/>
                                 </div>
                             </div>
                         </div>
@@ -57,7 +57,7 @@
 
 
                     <div class="mt-5 main-save">
-                        <x-mfw::btn-save/>
+                        <x-aboleon-framework::btn-save/>
                     </div>
                 </form>
 
@@ -66,6 +66,6 @@
     </div>
 
     @push('js')
-        <script src="{{ asset('vendor/mfw/js/published_status.js') }}"></script>
+        <script src="{{ asset('vendor/aboleon/framework/js/published_status.js') }}"></script>
     @endpush
 </x-backend-layout>

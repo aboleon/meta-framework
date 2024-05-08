@@ -20,12 +20,12 @@ class Setting extends Model
 
     public static function getConfigElementsKeys(): array
     {
-        return collect(config('mfw-settings'))->pluck('elements.*.name')->flatten()->toArray();
+        return collect(config('aboleon-framework-settings'))->pluck('elements.*.name')->flatten()->toArray();
     }
 
     public static function getConfigElements(): array
     {
-        return collect(config('mfw-settings'))->reduce(function ($carry, $item) {
+        return collect(config('aboleon-framework-settings'))->reduce(function ($carry, $item) {
             return array_merge($carry, $item['elements'] ?? []);
         }, []);
     }
@@ -33,7 +33,7 @@ class Setting extends Model
 
     private static function getDefinedSettingFields(): Collection
     {
-        return collect(config('mfw-settings'))->pluck('elements')->flatten(1);
+        return collect(config('aboleon-framework-settings'))->pluck('elements')->flatten(1);
     }
 
     public static function add($key, $val): ?Setting
@@ -67,7 +67,7 @@ class Setting extends Model
 
     public static function getAllSettings(): Collection
     {
-        return cache()->rememberForever('mfw-settings', function () {
+        return cache()->rememberForever('aboleon-framework-settings', function () {
             return Setting::all();
         });
     }

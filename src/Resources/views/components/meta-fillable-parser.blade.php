@@ -1,19 +1,19 @@
 <div class="{{ $value['class'] ?? 'col-12' }} mb-4{{ $model->visibility($key) }}">
     @switch($value['type'] ?? '')
         @case('textarea')
-            <x-ab-input::textarea :name="$model->translatableInput($inputkey)" class="{{ $value['class'] ?? '' }}" :value="$content" :label="$value['label'] ?? ''"/>
+            <x-aboleon-inputable::textarea :name="$model->translatableInput($inputkey)" class="{{ $value['class'] ?? '' }}" :value="$content" :label="$value['label'] ?? ''"/>
             @break
         @case('component')
             @if (auth()->user()->hasRole('dev'))
                 <code class="d-block pb-2">
-                    {!! 'mfw.backend.'.$model->type.'.component_'.$subkey !!}
-                    {{ !view()->exists('mfw.backend.'.$model->type.'.component_'.$subkey) ? ' - A créer' : '' }}
+                    {!! 'aboleon-framework.backend.'.$model->type.'.component_'.$subkey !!}
+                    {{ !view()->exists('aboleon-framework.backend.'.$model->type.'.component_'.$subkey) ? ' - A créer' : '' }}
                 </code>
             @endif
             @includeIf('panel.'.$model->type.'.component_'.$subkey)
             @break
         @case('number')
-            <x-ab-input::input type="number" :name="$model->translatableInput($inputkey)" :value="$content" :label="$value['label'] ?? ''" :params="$value['params'] ?? []"/>
+            <x-aboleon-inputable::input type="number" :name="$model->translatableInput($inputkey)" :value="$content" :label="$value['label'] ?? ''" :params="$value['params'] ?? []"/>
             @break
         @case('media')
             <x-mediaclass::uploadable :model="$model" :settings="array_merge($value, ['subgroup' => $uuid])"/>
@@ -30,7 +30,7 @@
                     <div class="col-md-11 col-sm-10">
                         <div class="row">
                             @foreach($value['schema'] as $rep_key => $rep_val)
-                                <x-mfw::meta-fillable-parser
+                                <x-aboleon-framework::meta-fillable-parser
                                         :model="$model"
                                         :key="$key"
                                         :subkey="$rep_key"
@@ -45,6 +45,6 @@
             @endfor
             @break
         @default
-            <x-ab-input::input :name="$model->translatableInput($inputkey)" :value="$content" :label="$value['label'] ?? ''" :params="$value['params'] ?? []"/>
+            <x-aboleon-inputable::input :name="$model->translatableInput($inputkey)" :value="$content" :label="$value['label'] ?? ''" :params="$value['params'] ?? []"/>
     @endswitch
 </div>

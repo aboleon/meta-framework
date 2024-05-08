@@ -23,6 +23,6 @@ class FillableParser extends Component
 
     public function render(): Renderable
     {
-        return view('mfw::components.fillables-parser');
+        return view('aboleon-framework::components.fillables-parser');
     }
 }

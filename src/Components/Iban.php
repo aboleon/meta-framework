@@ -21,6 +21,6 @@ class Iban extends Component
 
     public function render(): Renderable
     {
-        return view('mfw::components.iban');
+        return view('aboleon-framework::components.iban');
     }
 }

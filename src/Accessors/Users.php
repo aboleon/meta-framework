@@ -13,7 +13,7 @@ class Users
 
     public function __construct()
     {
-        $this->user_types = config('mfw-users');
+        $this->user_types = config('aboleon-framework-users');
     }
 
     public function usersOfType(string $type): Collection

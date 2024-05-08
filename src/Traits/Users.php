@@ -48,7 +48,7 @@ trait Users
 
     public function userTypes(): array
     {
-        return config('mfw-users');
+        return config('aboleon-framework-users');
     }
 
     public function names(): string

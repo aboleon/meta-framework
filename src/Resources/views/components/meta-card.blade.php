@@ -17,21 +17,21 @@
     <fieldset>
         <legend class="toggle">Résumé / SEO</legend>
         <div class="toggable">
-            <x-mfw::language-tabs id="tab_content"/>
+            <x-aboleon-framework::language-tabs id="tab_content"/>
             <div class="tab-content base">
-                @foreach(config('mfw.translatable.locales') as $locale)
+                @foreach(config('aboleon-framework.translatable.locales') as $locale)
                     <div class="tab-pane fade {!! $locale == app()->getLocale() ? 'show active': null !!}" id="tab_meta_content_{{ $locale }}" role="tabpanel" aria-labelledby="tab_meta_link_content_{{ $locale }}">
                         <div class="row mb-4">
                             @foreach($meta->fillables as $key=>$value)
                                 @switch($value['type'])
                                     @case('textarea')
                                         <div class="meta_{{ $key. ' '. ($value['class'] ?? 'col-12') }} mb-4{{ $model->visibility($key) }}">
-                                            <x-ab-input::textarea :name="$meta->translatableInput('meta['.$key.']')" class="{{ $value['class'] ?? '' }}" :value="$meta->translation($key, $locale)" :label="$value['label']"/>
+                                            <x-aboleon-inputable::textarea :name="$meta->translatableInput('meta['.$key.']')" class="{{ $value['class'] ?? '' }}" :value="$meta->translation($key, $locale)" :label="$value['label']"/>
                                         </div>
                                         @break
                                     @default
                                         <div class="meta_{{ $key . ' '. ($value['class'] ?? 'col-12') }} mb-4{{ $model->visibility($key) }}">
-                                            <x-ab-input::input :name="$meta->translatableInput('meta['.$key.']')" :value="$meta->translation($key, $locale)" :label="$value['label']"/>
+                                            <x-aboleon-inputable::input :name="$meta->translatableInput('meta['.$key.']')" :value="$meta->translation($key, $locale)" :label="$value['label']"/>
                                         </div>
                                 @endswitch
                             @endforeach
@@ -53,9 +53,9 @@
     @endif
 
     @if ($meta->id)
-        @includeIf('mfw.meta.'.$meta->type.'.custom_meta')
+        @includeIf('aboleon-framework.meta.'.$meta->type.'.custom_meta')
         @if ($meta->taxonomy)
-            @includeIf('mfw.backend.'.$meta->type.'.custom_meta'.'._'.$meta->taxonomy)
+            @includeIf('aboleon-framework.backend.'.$meta->type.'.custom_meta'.'._'.$meta->taxonomy)
         @endif
     @endif
         <fieldset>
@@ -65,7 +65,7 @@
                     @foreach($model->model_configs as $key => $values)
                         @switch($values['type'])
                             @case('checkbox')
-                                <x-ab-input::checkbox :value="$key" name="meta[configs][{{$key}}]" :label="$values['label']" :affected="$meta->configs[$key] ?? null"/>
+                                <x-aboleon-inputable::checkbox :value="$key" name="meta[configs][{{$key}}]" :label="$values['label']" :affected="$meta->configs[$key] ?? null"/>
                                 @break
                         @endswitch
                     @endforeach
@@ -80,23 +80,23 @@
 
                 <div class="col-12 mb-4 {{ !auth()->user()->hasRole('dev') ? 'd-none' : '' }}">
                     {{-- @if ($meta->model()->instance->isVisible('taxonomy'))} --}}
-                    <x-ab-input::input name="meta[taxonomy]" value="{{ $meta->taxonomy }}" label="Taxonomie"/>
+                    <x-aboleon-inputable::input name="meta[taxonomy]" value="{{ $meta->taxonomy }}" label="Taxonomie"/>
 
                     @role('dev')
                     <code>Visible en mode dev uniquement</code>
-                    <x-mfw::notice class="mt-3" :message="'<span class=\'opacity-50\'>SubModel</span> : '. get_class($meta->subModel())" />
+                    <x-aboleon-framework::notice class="mt-3" :message="'<span class=\'opacity-50\'>SubModel</span> : '. get_class($meta->subModel())" />
                     @endrole
                 </div>
 
                 @if ($meta->uses('template'))
                     <div>
-                        <x-ab-input::input label="Template" name="meta[template]" :value="$meta->template"/>
+                        <x-aboleon-inputable::input label="Template" name="meta[template]" :value="$meta->template"/>
                     </div>
                 @endif
 
                 @if ($meta->uses('forms'))
                     <div class="mt-3">
-                        <x-ab-input::select label="Formulaire" name="meta[forms]" :values="\MetaFramework\Models\Forms::selectables()" :affected="$meta->form?->name"/>
+                        <x-aboleon-inputable::select label="Formulaire" name="meta[forms]" :values="\MetaFramework\Models\Forms::selectables()" :affected="$meta->form?->name"/>
                     </div>
                 @endif
 

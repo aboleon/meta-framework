@@ -3,7 +3,7 @@
    data-identifier="{{ $identifier }}"
    class="{{ $class }}"
    data-bs-toggle="modal"
-   data-bs-target="#mfw-simple-modal"
+   data-bs-target="#aboleon-framework-simple-modal"
    data-modal-id="{{ $id }}"
    data-title="{!! $title !!}"
    data-body="{!! $body !!}"
@@ -16,12 +16,12 @@
 </a>
 
 @pushonce('js')
-    <div class="modal fade" id="mfw-simple-modal" tabindex="-1" aria-labelledby="mfw-simple-modal_Label" aria-hidden="true">
+    <div class="modal fade" id="aboleon-framework-simple-modal" tabindex="-1" aria-labelledby="aboleon-framework-simple-modal_Label" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title"></h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="{{ __('mfw.close') }}"></button>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="{{ __('aboleon-framework.close') }}"></button>
                 </div>
                 <div class="modal-body"></div>
                 <div class="modal-footer d-flex justify-content-between">
@@ -32,17 +32,17 @@
         </div>
     </div>
     <script>
-      let mfwSimpleModal = new bootstrap.Modal(document.getElementById('mfw-simple-modal'));
+      let aboleon-frameworkSimpleModal = new bootstrap.Modal(document.getElementById('aboleon-framework-simple-modal'));
 
       $(document).ready(function () {
 
-        let jQuery_mfwSimpleModal = $('#mfw-simple-modal');
+        let jQuery_aboleon-frameworkSimpleModal = $('#aboleon-framework-simple-modal');
 
-        jQuery_mfwSimpleModal.off().on('show.bs.modal', function (event) {
+        jQuery_aboleon-frameworkSimpleModal.off().on('show.bs.modal', function (event) {
           let button = $(event.relatedTarget),
             callback = button.data('callback');
 
-          jQuery_mfwSimpleModal.find('.modal-title').html(button.data('title')).end().
+          jQuery_aboleon-frameworkSimpleModal.find('.modal-title').html(button.data('title')).end().
           find('.modal-body').html(button.data('body')).end().
           find('.btn-cancel').html(button.data('btn-cancel')).end().
           find('.btn-confirm')
@@ -57,7 +57,7 @@
           }
 
         }).on('hide.bs.modal', function () {
-          jQuery_mfwSimpleModal.find('.modal-title, .modal-body, .btn-confirm, .btn-cancel').html('').end().
+          jQuery_aboleon-frameworkSimpleModal.find('.modal-title, .modal-body, .btn-confirm, .btn-cancel').html('').end().
           find('.btn-confirm').attr('class', 'btn btn-confirm').removeAttr('data-model-id').removeAttr('data-identifier');
         });
       });

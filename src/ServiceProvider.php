@@ -35,8 +35,8 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
     public function boot(): void
     {
 
-        $this->loadViewsFrom(__DIR__ . '/Resources/views', 'mfw');
-        Blade::componentNamespace('\MetaFramework\\Components', 'mfw');
+        $this->loadViewsFrom(__DIR__ . '/Resources/views', 'aboleon-framework');
+        Blade::componentNamespace('\MetaFramework\\Components', 'aboleon-framework');
 
         $this->loadViewsFrom(__DIR__ . '/Mediaclass/Views', 'mediaclass');
         Blade::componentNamespace('MetaFramework\Mediaclass\\Components', 'mediaclass');
@@ -67,7 +67,7 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
             __DIR__ . '/../publishables/app/' => app_path(),
             __DIR__ . '/../publishables/resources/' => resource_path(),
             __DIR__ . '/../publishables/routes/' => base_path('routes'),
-        ], 'mfw-install');
+        ], 'aboleon-framework-install');
 
     }
 
@@ -75,7 +75,7 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
     {
         $this->publishes([
             __DIR__ . '/../publishables/public/vendor/' => public_path('vendor/'),
-        ], 'mfw-assets');
+        ], 'aboleon-framework-assets');
 
     }
 
@@ -83,17 +83,17 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
     {
         $this->publishes([
             __DIR__ . '/../publishables/lang/' => base_path('lang'),
-        ], 'mfw-lang');
+        ], 'aboleon-framework-lang');
 
     }
 
     private function publishMediaclass(): void
     {
         $this->publishes([
-            __DIR__ . '/../publishables/public/vendor/mfw/mediaclass/' => public_path('vendor/mfw/mediaclass/'),
+            __DIR__ . '/../publishables/public/vendor/aboleon/mediaclass/' => public_path('vendor/aboleon/mediaclass/'),
             __DIR__ . '/../publishables/lang/fr/mediaclass.php' => base_path('lang/fr/mediaclass.php'),
             __DIR__ . '/../publishables/lang/en/mediaclass.php' => base_path('lang/en/mediaclass.php'),
-        ], 'mfw-mediaclass');
+        ], 'aboleon-framework-mediaclass');
 
     }
 }

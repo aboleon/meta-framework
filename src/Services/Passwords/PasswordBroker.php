@@ -67,7 +67,7 @@ final class PasswordBroker
      */
     public function printPublicPassword(): string
     {
-        return __('mfw.passwords.is', ['password' => $this->generator->getPublicPassword()]);
+        return __('aboleon-framework.passwords.is', ['password' => $this->generator->getPublicPassword()]);
     }
 
     /**

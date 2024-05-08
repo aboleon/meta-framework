@@ -23,6 +23,6 @@ class ValidationErrors extends Component
      */
     public function render()
     {
-        return view('mfw::components.validation-errors');
+        return view('aboleon-framework::components.validation-errors');
     }
 }

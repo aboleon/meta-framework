@@ -1,7 +1,7 @@
 /*jshint esversion: 11 */
 
 /**
- * dependds on /vendor/mfw/js/commons.js
+ * dependds on /vendor/aboleon-framework/js/commons.js
  */
 
 const MediaclassUploader = {

@@ -1,11 +1,11 @@
 @push('css')
-    <link rel="stylesheet" href="{!! asset('vendor/mfw/flatpickr/flatpickr.min.css') !!}"/>
+    <link rel="stylesheet" href="{!! asset('vendor/aboleon/framework/flatpickr/flatpickr.min.css') !!}"/>
     <link rel="stylesheet" type="text/css" href="https://npmcdn.com/flatpickr/dist/themes/airbnb.css">
 @endpush
 
 @push('js')
-    <script src="{!! asset('vendor/mfw/flatpickr/flatpickr.js') !!}"></script>
-    <script src="{!! asset('vendor/mfw/flatpickr/locale/'. app()->getLocale().'.js') !!}"></script>
+    <script src="{!! asset('vendor/aboleon/framework/flatpickr/flatpickr.js') !!}"></script>
+    <script src="{!! asset('vendor/aboleon/framework/flatpickr/locale/'. app()->getLocale().'.js') !!}"></script>
     <script>
       // data-config="enableTime=true,noCalendar=true,dateFormat=d/m/H H:i,minDate=today"
 

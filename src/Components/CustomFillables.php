@@ -19,6 +19,6 @@ class CustomFillables extends Component
 
     public function render(): Renderable
     {
-        return view('mfw::components.custom-fillables');
+        return view('aboleon-framework::components.custom-fillables');
     }
 }

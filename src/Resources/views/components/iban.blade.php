@@ -1,10 +1,10 @@
 <div class="{{  $class }}">
-    <x-ab-input::input :name="$name" class="iban" :value="$value" :label="$label"/>
+    <x-aboleon-inputable::input :name="$name" class="iban" :value="$value" :label="$label"/>
     <div class="feedback invalid-feedback d-none">IBAN invalide</div>
     <div class="feedback valid-feedback d-none">IBAN valide</div>
 </div>
 @pushonce('js')
-    <script src="{{ asset('vendor/mfw/components/iban-validator.js') }}"></script>
+    <script src="{{ asset('vendor/aboleon/framework/components/iban-validator.js') }}"></script>
     <script>
         $(function () {
             $('.iban').on('blur', function () {

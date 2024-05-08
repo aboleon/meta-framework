@@ -12,7 +12,7 @@ use MetaFramework\Controllers\{
 
 
 Route::prefix(Routing::backend())
-    ->name('mfw.')
+    ->name('aboleon-framework.')
     ->middleware(['web', 'auth:sanctum'])->group(function () {
 
         // Ajax requests

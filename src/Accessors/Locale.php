@@ -11,7 +11,7 @@ class Locale
 {
     public static function multilang(): bool
     {
-        return Cache::rememberForever('mfw.multilang', fn() => config('mfw.translatable.multilang')) ?? false;
+        return Cache::rememberForever('aboleon-framework.multilang', fn() => config('aboleon-framework.translatable.multilang')) ?? false;
     }
 
     public static function locale(): string
@@ -21,12 +21,12 @@ class Locale
 
     public static function locales(): array
     {
-        return config('mfw.translatable.locales');
+        return config('aboleon-framework.translatable.locales');
     }
 
     public static function activeLocales(): array
     {
-        return config('mfw.translatable.active_locales');
+        return config('aboleon-framework.translatable.active_locales');
     }
 
     public static function defaultLocale(): string
@@ -41,7 +41,7 @@ class Locale
 
     public static function alternateIsoLocales(): array
     {
-        return collect(config('mfw.translatable.active_locales'))->reject(function ($item) {
+        return collect(config('aboleon-framework.translatable.active_locales'))->reject(function ($item) {
             return $item == app()->getLocale();
         })->values()->toArray();
     }
@@ -50,7 +50,7 @@ class Locale
     {
         $output = '';
 
-        foreach (config('mfw.translatable.active_locales') as $locale) {
+        foreach (config('aboleon-framework.translatable.active_locales') as $locale) {
             $output.= '<link rel="alternate" hreflang="'.$locale.'" href="'.url($locale).'" />'."\n";
             if ($locale == app()->getLocale()) {
                 $output.= '<link rel="alternate" hreflang="x-default" href="'.url($locale).'" />'."\n";
@@ -65,7 +65,7 @@ class Locale
 
     public static function projectLocales(): array
     {
-        return config('mfw.translatable.locales');
+        return config('aboleon-framework.translatable.locales');
     }
 
 }

@@ -9,6 +9,6 @@ class PdfLayout extends Component
 {
     public function render(): Renderable
     {
-        return view('mfw::layouts.pdf');
+        return view('aboleon-framework::layouts.pdf');
     }
 }

@@ -6,7 +6,7 @@
         <div class="d-flex align-items-center" id="topbar-actions">
             @if ($type)
                 <a class="btn btn-sm btn-success"
-                   href="{{ route('mfw.meta.create', ['type'=>$type]) }}">
+                   href="{{ route('aboleon-framework.meta.create', ['type'=>$type]) }}">
                     <i class="fa-solid fa-circle-plus"></i>
                     Créer</a>
             @endif
@@ -15,7 +15,7 @@
     </x-slot>
 
 
-    <x-mfw::response-messages/>
+    <x-aboleon-framework::response-messages/>
 
     <div class="shadow p-4 bg-body-tertiary rounded">
 
@@ -30,7 +30,7 @@
                 <th>Mise à jour</th>
                 @role('dev')
                 <th>Model
-                    <x-mfw::devmark/>
+                    <x-aboleon-framework::devmark/>
                 </th>
                 @endrole
                 <th style="width: 100px">Actions</th>
@@ -70,16 +70,16 @@
                                 @endif
                                 <li>
                                     <a class="dropdown-item"
-                                       href="{{ route('mfw.meta.edit', $item) }}">
+                                       href="{{ route('aboleon-framework.meta.edit', $item) }}">
                                         <i class="fas fa-pen"></i> Éditer</a>
                                 </li>
 
-                                <x-mfw::modal-actions
+                                <x-aboleon-framework::modal-actions
                                         reference="destroy_{{ $item->id }}"
                                         icon='<i class="fas fa-trash"></i>' title="Supprimer"/>
                             </ul>
                         </div>
-                        <x-mfw::modal :route="route('mfw.meta.destroy', $item->id)"
+                        <x-aboleon-framework::modal :route="route('aboleon-framework.meta.destroy', $item->id)"
                                       question="Supprimer {{ $item->title }} ?"
                                       reference="destroy_{{ $item->id }}"/>
                     </td>
@@ -93,7 +93,7 @@
             @endforelse
             </tbody>
         </table>
-        <x-mfw::pagination :object="$data"/>
+        <x-aboleon-framework::pagination :object="$data"/>
 
     </div>
 </x-backend-layout>

@@ -18,6 +18,6 @@ class Tab extends Component
 
     public function render(): Renderable
     {
-        return view('mfw::components.tab');
+        return view('aboleon-framework::components.tab');
     }
 }

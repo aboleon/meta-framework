@@ -33,9 +33,9 @@ class MetaController extends Controller
     public function index(?string $type = null): Renderable
     {
         if ($type) {
-            $views[] = $this->backend_url . '.mfw.' . $type . '.index';
+            $views[] = $this->backend_url . '.aboleon-framework.' . $type . '.index';
         }
-        $views[] = 'mfw::backend.index';
+        $views[] = 'aboleon-framework::backend.index';
 
         return view()->first($views)->with([
             'data' => Meta::where('type','!=','bloc')->when($type, fn($q) => $q->where('type', $type))->orderBy('id', 'desc')->paginate(),
@@ -56,10 +56,10 @@ class MetaController extends Controller
 
             $this->validation();
 
-            return redirect()->route('mfw.meta.create', ['type' => request('type')]);
+            return redirect()->route('aboleon-framework.meta.create', ['type' => request('type')]);
         }
 
-        return view('mfw::backend.create_admin');
+        return view('aboleon-framework::backend.create_admin');
     }
 
     public function create($type): Renderable
@@ -72,7 +72,7 @@ class MetaController extends Controller
         if (method_exists($this, 'dataView_' . $type)) {
             $this->{'dataView_' . $type}();
         }
-        return view()->first([$this->backend_url . '.mfw.' . $type . '.create', 'mfw::backend.create'])->with($this->data);
+        return view()->first([$this->backend_url . '.aboleon-framework.' . $type . '.create', 'aboleon-framework::backend.create'])->with($this->data);
     }
 
     public function show($type, int $id = null): Renderable
@@ -98,8 +98,8 @@ class MetaController extends Controller
         }
 
         $views = [];
-        $views[] = $this->backend_url . '.mfw.' . $type . '.edit';
-        $views[] = 'mfw::backend.edit';
+        $views[] = $this->backend_url . '.aboleon-framework.' . $type . '.edit';
+        $views[] = 'aboleon-framework::backend.edit';
 
         return view()->first($views)->with($this->data);
     }
@@ -114,8 +114,8 @@ class MetaController extends Controller
         }
 
         $views = [];
-        $views[] = $this->backend_url . '.mfw.' . $metum->type . '.edit';
-        $views[] = 'mfw::backend.edit';
+        $views[] = $this->backend_url . '.aboleon-framework.' . $metum->type . '.edit';
+        $views[] = 'aboleon-framework::backend.edit';
 
         return view()->first($views)->with($this->data);
     }
@@ -135,7 +135,7 @@ class MetaController extends Controller
 
         (new MetaSubModel($meta))->process();
 
-        $this->redirect_to = route('mfw.meta.show', ['type' => $meta->type, 'id' => $meta->id]);
+        $this->redirect_to = route('aboleon-framework.meta.show', ['type' => $meta->type, 'id' => $meta->id]);
 
         Artisan::call('cache:clear');
 
@@ -155,7 +155,7 @@ class MetaController extends Controller
             (new MetaSubModel($metum))->process();
 
 
-            $this->responseSuccess(__('mfw.record_created'));
+            $this->responseSuccess(__('aboleon-framework.record_created'));
             Artisan::call('cache:clear');
 
         } catch (Throwable $e) {
@@ -190,12 +190,12 @@ class MetaController extends Controller
         if (request()->filled('meta.forms')) {
             if (is_null($this->object->form)) {
                 $this->object->form()->save(new Forms([
-                    'name' => request('mfw.forms')
+                    'name' => request('aboleon-framework.forms')
                 ]));
             } else {
-                if ($this->object->form->name != request('mfw.forms')) {
+                if ($this->object->form->name != request('aboleon-framework.forms')) {
                     $this->object->form()->update([
-                        'name' => request('mfw.forms')
+                        'name' => request('aboleon-framework.forms')
                     ]);
                 }
             }

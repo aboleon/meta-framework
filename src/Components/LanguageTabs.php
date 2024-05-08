@@ -21,6 +21,6 @@ class LanguageTabs extends Component
 
     public function render(): Renderable
     {
-        return view('mfw::components.language-tabs');
+        return view('aboleon-framework::components.language-tabs');
     }
 }

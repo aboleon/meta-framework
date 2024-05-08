@@ -20,7 +20,7 @@ class DeleteModalLink extends Component
         public array   $params = []
     )
     {
-        $this->title = $this->title ?: __('mfw.delete');
+        $this->title = $this->title ?: __('aboleon-framework.delete');
 
         if ($this->params) {
             foreach ($this->params as $param => $setting) {
@@ -34,6 +34,6 @@ class DeleteModalLink extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('mfw::components.delete-modal-link')->with('params_as_string', rtrim($this->params_as_string));
+        return view('aboleon-framework::components.delete-modal-link')->with('params_as_string', rtrim($this->params_as_string));
     }
 }

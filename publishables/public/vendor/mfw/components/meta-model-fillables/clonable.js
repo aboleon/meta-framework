@@ -89,10 +89,10 @@ const clonableContent = {
             $(this).text('');
           }
           if ($(this).hasClass('simplified')) {
-            tinymce.init(mfw_simplified_tinymce_settings(id));
+            tinymce.init(aboleon-framework_simplified_tinymce_settings(id));
           }
           if ($(this).hasClass('extended')) {
-            tinymce.init(mfw_default_tinymce_settings(id));
+            tinymce.init(aboleon-framework_default_tinymce_settings(id));
           }
         });
       }, 100);

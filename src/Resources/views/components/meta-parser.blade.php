@@ -1,5 +1,5 @@
 <style>
-    #mfw-parser-debug {
+    #aboleon-framework-parser-debug {
         top: 0;
         background: #f9f9f9;
         width: 50%;
@@ -12,7 +12,7 @@
         transform: translateX(100%);
         transition: transform 0.5s;
     }
-    #mfw-toggleButton {
+    #aboleon-framework-toggleButton {
         background: #bd2b56;;
         display: inline-block;
         position: fixed;
@@ -26,10 +26,10 @@
         cursor: pointer;
         transition: 200ms all ease;
     }
-    #mfw-toggleButton:hover {
+    #aboleon-framework-toggleButton:hover {
         background: #18668b;
     }
-    #mfw-parser-header {
+    #aboleon-framework-parser-header {
         font-family: 'Monaco', 'Menlo', 'Consolas', 'Courier New', monospace;
         font-size: 18px;
         background: #0f0f0f;
@@ -37,7 +37,7 @@
         text-align: left;
         padding: 16px 0 16px 40px;
     }
-    #mfw-parser-debug-handler {
+    #aboleon-framework-parser-debug-handler {
         position: absolute;
         left: -5px;
         top: 0;
@@ -46,11 +46,11 @@
         background-color: #0e808f;
         cursor: ew-resize;
     }
-    #mfw-parser-inner {
+    #aboleon-framework-parser-inner {
         background: #d3d3d3;
         padding: 4%;
     }
-    .mfw-parser-iteration {
+    .aboleon-framework-parser-iteration {
         background: #156183;
         color: white;
         font-size: 20px;
@@ -61,42 +61,42 @@
         align-items: center;
         justify-content: center;
     }
-    .mfw-parser-title {
+    .aboleon-framework-parser-title {
         display: flex;
         align-items: center;
         padding-left: 25px;
         font-size: 18px;
     }
-    #mfw-parser-debug::-webkit-scrollbar {
+    #aboleon-framework-parser-debug::-webkit-scrollbar {
         width: 8px;
     }
 
     /* Set the color of the scrollbar track */
-    #mfw-parser-debug::-webkit-scrollbar-track {
+    #aboleon-framework-parser-debug::-webkit-scrollbar-track {
         background-color: #f0f0f0;
     }
 
     /* Set the color of the scrollbar thumb */
-    #mfw-parser-debug::-webkit-scrollbar-thumb {
+    #aboleon-framework-parser-debug::-webkit-scrollbar-thumb {
         background-color: #0e808f;
         border-radius: 6px;
     }
 
     /* Change the color of the scrollbar thumb when hovering */
-    #mfw-parser-debug::-webkit-scrollbar-thumb:hover {
+    #aboleon-framework-parser-debug::-webkit-scrollbar-thumb:hover {
         background-color: #156183;
     }
 </style>
-<button type="button" id="mfw-toggleButton">MetaParser</button>
-<div id="mfw-parser-debug">
-    <div id="mfw-parser-debug-handler"></div>
-    <div id="mfw-parser-header">MetaParser >...</div>
-    <div id="mfw-parser-inner">
+<button type="button" id="aboleon-framework-toggleButton">MetaParser</button>
+<div id="aboleon-framework-parser-debug">
+    <div id="aboleon-framework-parser-debug-handler"></div>
+    <div id="aboleon-framework-parser-header">MetaParser >...</div>
+    <div id="aboleon-framework-parser-inner">
         @if(is_array(session('metaparser')))
             @foreach(session('metaparser') as $key => $item)
                 <div style="display: flex">
-                    <span class="mfw-parser-iteration">{{ $loop->iteration }}</span>
-                    <span class="mfw-parser-title">{{ $key }}</span>
+                    <span class="aboleon-framework-parser-iteration">{{ $loop->iteration }}</span>
+                    <span class="aboleon-framework-parser-title">{{ $key }}</span>
                 </div>
                 {{ d($item) }}
                 <div style="margin: 3% 0"></div>
@@ -109,9 +109,9 @@
 </div>
 <script>
 
-  const toggleButton = document.getElementById('mfw-toggleButton');
-  const resizable = document.getElementById('mfw-parser-debug');
-  const handler = document.getElementById('mfw-parser-debug-handler');
+  const toggleButton = document.getElementById('aboleon-framework-toggleButton');
+  const resizable = document.getElementById('aboleon-framework-parser-debug');
+  const handler = document.getElementById('aboleon-framework-parser-debug-handler');
 
   let isResizing = false;
   let startX;

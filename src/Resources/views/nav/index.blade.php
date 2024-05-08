@@ -17,15 +17,15 @@
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             Menu principal &raquo;
             <a class="btn btn-sm btn-success"
-               href="{{ route('mfw.nav.create') }}">Créer une entrée principale</a>
+               href="{{ route('aboleon-framework.nav.create') }}">Créer une entrée principale</a>
 
         </h2>
     </x-slot>
 
     <div class="shadow p-4 bg-body-tertiary rounded">
 
-        <div id="messages" data-ajax="{{ route('mfw.ajax') }}">
-            <x-mfw::response-messages/>
+        <div id="messages" data-ajax="{{ route('aboleon-framework.ajax') }}">
+            <x-aboleon-framework::response-messages/>
         </div>
 
         @foreach($zones as $key => $title)
@@ -54,5 +54,5 @@
         @endforeach
     </div>
 
-    @include('mfw::lib.sortable')
+    @include('aboleon-framework::lib.sortable')
 </x-backend-layout>

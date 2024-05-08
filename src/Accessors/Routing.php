@@ -7,7 +7,7 @@ class Routing
 
     public static function backend(): string
     {
-        return config('mfw.urls.backend', 'mfw');
+        return config('aboleon-framework.urls.backend', 'aboleon-framework');
     }
 
 }

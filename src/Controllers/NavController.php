@@ -26,16 +26,16 @@ class NavController extends Controller
             $data[$zone] = (new Table($nav->query()->where('zone', $zone)->get()->sortBy('position')))();
         }
 
-        return view('mfw::nav.index')->with($data);
+        return view('aboleon-framework::nav.index')->with($data);
     }
 
     public function create(): Renderable
     {
         $nav = new Nav;
 
-        return view('mfw::nav.edit')->with([
+        return view('aboleon-framework::nav.edit')->with([
             'data' => $nav,
-            'route' => route('mfw.nav.store'),
+            'route' => route('aboleon-framework.nav.store'),
             'parent' => (int)request('parent') ? Nav::query()->where('id', request('parent'))->first() : null,
             'selectables' => $nav->fetchSelectableInventory()
         ]);
@@ -58,9 +58,9 @@ class NavController extends Controller
 
     public function edit(Nav $nav): Renderable
     {
-        return view('mfw::nav.edit')->with([
+        return view('aboleon-framework::nav.edit')->with([
             'data' => $nav,
-            'route' => route('mfw.nav.update', $nav),
+            'route' => route('aboleon-framework.nav.update', $nav),
             'parent' => $nav->parent ? Nav::query()->where('id', $nav->parent)->first() : null,
             'selectables' => $nav->fetchSelectableInventory()
         ]);
@@ -104,7 +104,7 @@ class NavController extends Controller
             $multilang_dependent['title']  => 'required',
         ];
         $this->validation_messages = [
-            $multilang_dependent['title'] . '.required' => __('validation.required', ['attribute' => __('mfw.title')])
+            $multilang_dependent['title'] . '.required' => __('validation.required', ['attribute' => __('aboleon-framework.title')])
         ];
     }
 }

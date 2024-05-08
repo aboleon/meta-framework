@@ -8,13 +8,13 @@
 
     <div class="shadow p-4 bg-body-tertiary rounded">
 
-        <x-mfw::validation-banner/>
-        <x-mfw::response-messages/>
-        <form method="post" action="{{ route('mfw.meta.create_admin') }}" class="p-4">
+        <x-aboleon-framework::validation-banner/>
+        <x-aboleon-framework::response-messages/>
+        <form method="post" action="{{ route('aboleon-framework.meta.create_admin') }}" class="p-4">
             @csrf
-            <x-ab-input::input name="type" label="Type"/>
+            <x-aboleon-inputable::input name="type" label="Type"/>
             <div class="mt-5 main-save">
-                <x-mfw::btn-save/>
+                <x-aboleon-framework::btn-save/>
             </div>
         </form>
     </div>

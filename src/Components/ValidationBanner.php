@@ -23,6 +23,6 @@ class ValidationBanner extends Component
      */
     public function render()
     {
-        return view('mfw::components.validation-banner');
+        return view('aboleon-framework::components.validation-banner');
     }
 }

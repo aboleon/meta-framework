@@ -21,6 +21,6 @@ class MetaBlocs extends Component
 
     public function render(): Renderable
     {
-        return view('mfw::components.meta-blocs');
+        return view('aboleon-framework::components.meta-blocs');
     }
 }

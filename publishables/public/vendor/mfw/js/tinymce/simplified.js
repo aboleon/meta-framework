@@ -1,4 +1,4 @@
-function mfw_simplified_tinymce_settings(targets) {
+function aboleon-framework_simplified_tinymce_settings(targets) {
     let baseHref = location.protocol + '//' + window.location.hostname + '/';
     return {
         selector: targets,
@@ -10,6 +10,6 @@ function mfw_simplified_tinymce_settings(targets) {
         toolbar1: 'blocks fontsize | bold italic underline strikethrough | alignleft aligncenter alignright alignjustify | cut copy paste | bullist numlist | outdent indent blockquote | undo redo | link unlink code | forecolor',
         image_advtab: true,
         language: 'fr_FR',
-        language_url: baseHref + 'vendor/mfw/js/tinymce/langs/fr_FR.js'
+        language_url: baseHref + 'vendor/aboleon-framework/js/tinymce/langs/fr_FR.js'
     };
 }

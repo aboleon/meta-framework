@@ -15,8 +15,8 @@ class SettingsController extends Controller
 
     public function index(): Renderable
     {
-        return view('mfw::settings')->with([
-            'config_settings' => config('mfw-settings'),
+        return view('aboleon-framework::settings')->with([
+            'config_settings' => config('aboleon-framework-settings'),
             'settings' => Setting::getAllSettings(),
         ]);
     }
@@ -41,7 +41,7 @@ class SettingsController extends Controller
 
             }
 
-            cache()->forget('mfw-settings');
+            cache()->forget('aboleon-framework-settings');
 
             $this->responseSuccess('Configuration enregistré avec succès');
         } catch (\Throwable $e) {

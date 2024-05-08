@@ -13,7 +13,7 @@ class Install extends Command
      *
      * @var string
      */
-    protected $signature = 'mfw {argument}';
+    protected $signature = 'aboleon-framework {argument}';
 
     /**
      * The console command description.
@@ -68,7 +68,7 @@ class Install extends Command
 
         $panel_prefix = $this->ask("What is the prefix for your back-office routes");
 
-        file_put_contents(__DIR__ . '/../../publishables/config/mfw.php', "<?php
+        file_put_contents(__DIR__ . '/../../publishables/config/aboleon-framework.php', "<?php
 return [
     'route' => '" . $panel_prefix . "',
     'locales' => ['" . $app_default_lg . "'],

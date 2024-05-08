@@ -46,7 +46,7 @@ class Checkboxes
     {
         $html .= '<li data-id="' . $item->id . '"' . ($parent ? ' class="child" data-parent="' . $parent . '"' : '') . '>';
         $html .=
-            View::make('ab-input::checkbox', [
+            View::make('aboleon-inputable::checkbox', [
                 'id' => Helpers::generateInputId($this->name . '_' . Str::random(8)),
                 'value' => $item->id,
                 'name' => $this->name,

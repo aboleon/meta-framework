@@ -11,14 +11,14 @@
 
         <div class="max-w-7xl text-center mb-4">
             <a class="btn btn-sm btn-info"
-               href="{{ route('mfw.nav.index') }}">Retour à l'index</a>
+               href="{{ route('aboleon-framework.nav.index') }}">Retour à l'index</a>
         </div>
 
         <div class="max-w-7xl sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg p-5">
 
-                <x-mfw::response-messages/>
-                <x-mfw::validation-errors/>
+                <x-aboleon-framework::response-messages/>
+                <x-aboleon-framework::validation-errors/>
 
                 @php
                     $error = $errors->any();
@@ -32,7 +32,7 @@
                     @if($data->id)
                         @method('put')
                     @endif
-                    <x-mfw::language-tabs id="tab_content"/>
+                    <x-aboleon-framework::language-tabs id="tab_content"/>
                     <div class="tab-content base">
                         @foreach(config('translatable.locales') as $locale)
                             <div class="tab-pane fade {!! $locale == app()->getLocale() ? 'show active': null !!}" id="tab_content_{{ $locale }}" role="tabpanel" aria-labelledby="tab_link_content_{{ $locale }}">
@@ -53,7 +53,7 @@
                     <div class="row">
                         <div class="col-md-5">
                             <h4>Zone d'affectation</h4>
-                            <x-ab-input::select :values="$data->zones" name="zone" :affected="$data->zone" :nullable="false"/>
+                            <x-aboleon-inputable::select :values="$data->zones" name="zone" :affected="$data->zone" :nullable="false"/>
                         </div>
                         <div class="col-md-6 offset-md-1">
                             <h4>Type de lien</h4>
@@ -116,7 +116,7 @@
 
 
                     <div class="mt-5 main-save">
-                        <x-mfw::btn-save/>
+                        <x-aboleon-framework::btn-save/>
                     </div>
                 </form>
 

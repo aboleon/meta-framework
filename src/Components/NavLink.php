@@ -17,6 +17,6 @@ class NavLink extends Component
 
     public function render(): Renderable
     {
-        return view('mfw::components.nav-link');
+        return view('aboleon-framework::components.nav-link');
     }
 }

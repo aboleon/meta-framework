@@ -14,6 +14,6 @@ class NavOpeningLink extends Component
 
     public function render(): Renderable
     {
-        return view('mfw::components.nav-opening-link');
+        return view('aboleon-framework::components.nav-opening-link');
     }
 }

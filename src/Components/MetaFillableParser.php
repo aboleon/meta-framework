@@ -22,6 +22,6 @@ class MetaFillableParser extends Component
 
     public function render(): Renderable
     {
-        return view('mfw::components.meta-fillable-parser');
+        return view('aboleon-framework::components.meta-fillable-parser');
     }
 }

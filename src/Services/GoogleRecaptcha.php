@@ -34,7 +34,7 @@ class GoogleRecaptcha
 
     public static function isActive(): bool
     {
-        return (bool)config('mfw-api.google.recaptcha.active') && (!empty(self::siteKey()) or !empty(self::secretKey()));
+        return (bool)config('aboleon-framework-api.google.recaptcha.active') && (!empty(self::siteKey()) or !empty(self::secretKey()));
     }
 
     public static function form(string $form_id): void
@@ -72,12 +72,12 @@ class GoogleRecaptcha
 
     private static function secretKey(): string
     {
-        return config('mfw-api.google.recaptcha.site_secret');
+        return config('aboleon-framework-api.google.recaptcha.site_secret');
     }
 
     private static function siteKey(): string
     {
-        return config('mfw-api.google.recaptcha.site_key');
+        return config('aboleon-framework-api.google.recaptcha.site_key');
     }
 
 }

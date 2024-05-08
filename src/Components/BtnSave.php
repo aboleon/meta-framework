@@ -13,13 +13,13 @@ class BtnSave extends Component
 
     public function __construct(string $label = '', ?string $back = null)
     {
-        $this->label = $label ?: __('mfw.save');
+        $this->label = $label ?: __('aboleon-framework.save');
         $this->back = $back;
     }
 
 
     public function render(): Renderable
     {
-        return view('mfw::components.btn-save');
+        return view('aboleon-framework::components.btn-save');
     }
 }

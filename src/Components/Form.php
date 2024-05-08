@@ -19,6 +19,6 @@ class Form extends Component
 
     public function render(): ?Renderable
     {
-        return $this->form ? view('mfw::components.form') : null;
+        return $this->form ? view('aboleon-framework::components.form') : null;
     }
 }

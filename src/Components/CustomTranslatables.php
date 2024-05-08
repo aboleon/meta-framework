@@ -20,6 +20,6 @@ class CustomTranslatables extends Component
 
     public function render(): Renderable
     {
-        return view('mfw::components.custom-translatables');
+        return view('aboleon-framework::components.custom-translatables');
     }
 }

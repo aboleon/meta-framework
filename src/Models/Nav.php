@@ -45,8 +45,8 @@ class Nav extends Model
         parent::__construct($attributes);
         $this->translatable = array_keys($this->fillables);
 
-        $this->selectables = config('mfw-nav.selectables');
-        $this->custom_selectables = config('mfw-nav.custom_selectables');
+        $this->selectables = config('aboleon-framework-nav.selectables');
+        $this->custom_selectables = config('aboleon-framework-nav.custom_selectables');
 
     }
 
@@ -124,8 +124,8 @@ class Nav extends Model
 
         $this->clearCache();
 
-        $this->responseSuccess(__('mfw.record_created'));
-        $this->redirectRoute('mfw.nav.index');
+        $this->responseSuccess(__('aboleon-framework.record_created'));
+        $this->redirectRoute('aboleon-framework.nav.index');
 
         return $this;
     }

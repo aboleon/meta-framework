@@ -27,6 +27,6 @@ class BtnGroup extends Component
      */
     public function render(): Renderable
     {
-        return view('mfw::components.btn-group');
+        return view('aboleon-framework::components.btn-group');
     }
 }

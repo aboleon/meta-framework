@@ -2,7 +2,7 @@
 
     @section('meta', 'Attestation PDF')
     @push('css')
-        {!!  csscrush_inline(public_path('vendor/mfw/css/pdf.css')) !!}
+        {!!  csscrush_inline(public_path('vendor/aboleon-framework/css/pdf.css')) !!}
     @endpush
 
     <table>

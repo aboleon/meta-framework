@@ -45,7 +45,7 @@ class Table
 
     private function tableRow($item, $level = 0, $parent = null, $bold = false): string
     {
-        return View::make('mfw::components.nav-row', [
+        return View::make('aboleon-framework::components.nav-row', [
             'item' => $item,
             'parent' => $parent,
             'level' => $level,

@@ -18,6 +18,6 @@ class MetaModelFillables extends Component
 
     public function render(): Renderable
     {
-        return view('mfw::components.meta-model-fillables');
+        return view('aboleon-framework::components.meta-model-fillables');
     }
 }

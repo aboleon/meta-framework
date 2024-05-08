@@ -23,6 +23,6 @@ class ResponseMessages extends Component
      */
     public function render()
     {
-        return view('mfw::components.response-messages');
+        return view('aboleon-framework::components.response-messages');
     }
 }

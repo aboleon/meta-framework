@@ -25,6 +25,6 @@ class IterationZero extends Component
     public
     function render()
     {
-        return view('mfw::components.iteration-zero');
+        return view('aboleon-framework::components.iteration-zero');
     }
 }

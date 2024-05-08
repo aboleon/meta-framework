@@ -14,6 +14,6 @@ class GuestLayout extends Component
      */
     public function render()
     {
-        return view('mfw::layouts.guest');
+        return view('aboleon-framework::layouts.guest');
     }
 }

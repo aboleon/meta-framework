@@ -51,7 +51,7 @@ class RouteServiceProvider extends ServiceProvider
         Route::prefix(Routing::backend())
             ->middleware(['web', 'auth:sanctum'])
             ->namespace($this->namespace)
-            ->name('mfw.')
+            ->name('aboleon-framework.')
             ->group(function () {
                 include __DIR__ . '/Routes/web.php';
             });

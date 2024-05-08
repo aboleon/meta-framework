@@ -85,7 +85,7 @@
                                                 ? ($found_content[$subkey][$locale] ?? '')
                                                 : ($found_content[$subkey] ?? '');
                                         @endphp
-                                        <x-mfw::meta-fillable-parser
+                                        <x-aboleon-framework::meta-fillable-parser
                                                 :model="$model"
                                                 :key="$key"
                                                 :subkey="$subkey"
@@ -96,7 +96,7 @@
 
                                     @endforeach
                                 @else
-                                    <x-mfw::meta-fillable-parser
+                                    <x-aboleon-framework::meta-fillable-parser
                                             :model="$model"
                                             :subkey="$key"
                                             :key="$key"
@@ -122,6 +122,6 @@
     @push('js')
         <link rel="stylesheet" href="{{ asset('vendor/jquery-ui-1.13.0.custom/jquery-ui.min.css') }}">
         <script src="{{ asset('vendor/jquery-ui-1.13.0.custom/jquery-ui.min.js') }}"></script>
-        <script src="{{ asset('vendor/mfw/components/meta-model-fillables/clonable.js') }}"></script>
+        <script src="{{ asset('vendor/aboleon/framework/components/meta-model-fillables/clonable.js') }}"></script>
     @endpush
 @endonce

@@ -23,6 +23,6 @@ class BadAccess extends Component
      */
     public function render()
     {
-        return view('mfw::components.bad-access');
+        return view('aboleon-framework::components.bad-access');
     }
 }

@@ -16,6 +16,6 @@ class Notice extends Component
 
     public function render(): Renderable
     {
-        return view('mfw::components.notice');
+        return view('aboleon-framework::components.notice');
     }
 }

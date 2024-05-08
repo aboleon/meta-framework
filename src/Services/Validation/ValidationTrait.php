@@ -53,7 +53,7 @@ trait ValidationTrait
             ? (array)$request->validated($key)
             : [];
         if (!$this->validated_data[$key]) {
-            $this->responseWarning(__('mfw.errors.composing_data'));
+            $this->responseWarning(__('aboleon-framework.errors.composing_data'));
         }
 
         return !$this->hasErrors();

@@ -6,15 +6,15 @@
     </x-slot>
 
     @push('css')
-        {!! csscrush_tag(public_path('vendor/mfw/css/meta/editable.css')) !!}
+        {!! csscrush_tag(public_path('vendor/aboleon/framework/css/meta/editable.css')) !!}
     @endpush
 
     <div class="shadow p-4 bg-body-tertiary rounded">
-        <form method="post" action="{{ route('mfw.meta.store') }}">
+        <form method="post" action="{{ route('aboleon-framework.meta.store') }}">
             @csrf
             <input type="hidden" name="meta_type" value="{{ $data->type }}">
-            <x-mfw::meta-card :meta="$data"/>
-            <x-mfw::btn-save/>
+            <x-aboleon-framework::meta-card :meta="$data"/>
+            <x-aboleon-framework::btn-save/>
         </form>
     </div>
 </x-backend-layout>

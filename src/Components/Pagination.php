@@ -12,6 +12,6 @@ class Pagination extends Component
 
     public function render()
     {
-        return view('mfw::components.pagination');
+        return view('aboleon-framework::components.pagination');
     }
 }

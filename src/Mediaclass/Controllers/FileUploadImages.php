@@ -138,7 +138,7 @@ class FileUploadImages
         $this->response['filetype'] = 'file';
         $this->response['filename'] = $this->filename . '.' . $this->uploadedFile->guessExtension();
         $this->response['link'] = $this->disk->url($this->response['filename'] . '?' . time());;
-        $this->response['fileicon'] = asset('vendor/mfw/mediaclass/images/files/' . $this->uploadedFile->guessExtension() . '.png');
+        $this->response['fileicon'] = asset('vendor/aboleon/mediaclass/images/files/' . $this->uploadedFile->guessExtension() . '.png');
         $this->response['preview'] = $this->response['fileicon'];
 
         try {
@@ -158,7 +158,7 @@ class FileUploadImages
         $this->response['filename'] = $this->filename . '.svg';
         $file = $this->folder_name . '/' . $this->response['filename'];
         $img = $this->disk->url($file . '?' . time());
-        $this->response['fileicon'] = asset('vendor/mfw/mediaclass/images/files/svg.png');
+        $this->response['fileicon'] = asset('vendor/aboleon/mediaclass/images/files/svg.png');
 
         try {
             $this->media = $this->store();
@@ -184,7 +184,7 @@ class FileUploadImages
         $this->urls = [];
 
         $this->mime_type = (str_replace('image/', '', $this->image->mime()) == 'png' ? 'png' : 'jpg');
-        $this->response['fileicon'] = asset('vendor/mfw/mediaclass/images/files/jpg.png');
+        $this->response['fileicon'] = asset('vendor/aboleon/mediaclass/images/files/jpg.png');
         $ratio = ($this->image->width() / $this->image->height()) > 1 ? 'h' : 'v';
         $this->response['ratio'] = $ratio;
 

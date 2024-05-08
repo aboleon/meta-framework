@@ -27,6 +27,6 @@ class MetaCard extends Component
 
     public function render(): Renderable
     {
-        return view('mfw::components.meta-card');
+        return view('aboleon-framework::components.meta-card');
     }
 }

@@ -31,6 +31,6 @@ class TranslatableTabs extends Component
 
     public function render(): Renderable
     {
-        return view('mfw::components.translatable-tabs');
+        return view('aboleon-framework::components.translatable-tabs');
     }
 }

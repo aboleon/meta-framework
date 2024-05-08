@@ -1,6 +1,6 @@
 @if(\MetaFramework\Accessors\Locale::multilang())
     <ul id="{{ $id }}_tabs" class="nav nav-tabs admintabs" role="tablist">
-        @foreach(config('mfw.translatable.locales') as $locale)
+        @foreach(config('aboleon-framework.translatable.locales') as $locale)
             <li class="nav-item " role="presentation">
                 <button class="nav-link {!! $locale == app()->getLocale() ? 'active': null !!}"
                         id="{{ $id }}_btn_{{ $locale }}"

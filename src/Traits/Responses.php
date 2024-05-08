@@ -245,8 +245,8 @@ trait Responses
 
     public function tabRedirect(): void
     {
-        if (request()->filled('mfw_tab_redirect')) {
-            session()->flash('mfw_tab_redirect', request('mfw_tab_redirect'));
+        if (request()->filled('aboleon-framework_tab_redirect')) {
+            session()->flash('aboleon-framework_tab_redirect', request('aboleon-framework_tab_redirect'));
         }
     }
 

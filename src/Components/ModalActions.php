@@ -13,11 +13,11 @@ class ModalActions extends Component
         public string $icon='',
         public string $class = 'btn-danger'
     ) {
-        $this->title = $this->title ?? __('mfw.deletion');
+        $this->title = $this->title ?? __('aboleon-framework.deletion');
     }
 
     public function render(): Renderable
     {
-        return view('mfw::components.modal-actions');
+        return view('aboleon-framework::components.modal-actions');
     }
 }

@@ -32,16 +32,16 @@ class SimpleModal extends Component
     )
     {
         if (!$this->confirm) {
-            $this->confirm = "<i class='fa-solid fa-check'></i>" . __('mfw.confirm');
+            $this->confirm = "<i class='fa-solid fa-check'></i>" . __('aboleon-framework.confirm');
         }
         if (!$this->cancel) {
-            $this->cancel = __('mfw.cancel');
+            $this->cancel = __('aboleon-framework.cancel');
         }
         $this->callback = $this->callback ?: $this->id;
     }
 
     public function render(): Renderable
     {
-        return view('mfw::components.simple-modal');
+        return view('aboleon-framework::components.simple-modal');
     }
 }

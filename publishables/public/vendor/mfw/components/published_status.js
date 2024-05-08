@@ -1,7 +1,7 @@
 $(function () {
   const ps = {
     els: function () {
-      return $('.mfw-published_status');
+      return $('.aboleon-framework-published_status');
     },
     _token: function () {
       return $('meta[name="csrf-token"]').attr('content');

@@ -43,14 +43,14 @@ class GoogleAddressValidation extends ValidationAbstract
     public function messages(): array
     {
         return [
-            $this->prefix . 'street_number.string' => __('validation.string', ['attribute' => strval(__('mfw.geo.street_number'))]),
-            $this->prefix . 'route.string' => __('validation.string', ['attribute' => strval(__('mfw.geo.route'))]),
-            $this->prefix . 'locality.string' => __('validation.string', ['attribute' => strval(__('mfw.geo.locality'))]),
-            $this->prefix . 'postal_code.string' => __('validation.string', ['attribute' => strval(__('mfw.geo.postal_code'))]),
-            $this->prefix . 'country_code.string' => __('validation.string', ['attribute' => strval(__('mfw.geo.country_code'))]),
-            $this->prefix . 'text_address.required' => __('validation.required', ['attribute' => strval(__('mfw.geo.text_address'))]),
-            $this->prefix . 'lat.numeric' => __('validation.required', ['attribute' => strval(__('mfw.geo.lat'))]),
-            $this->prefix . 'lon.numeric' => __('validation.required', ['attribute' => strval(__('mfw.geo.lat'))]),
+            $this->prefix . 'street_number.string' => __('validation.string', ['attribute' => strval(__('aboleon-framework.geo.street_number'))]),
+            $this->prefix . 'route.string' => __('validation.string', ['attribute' => strval(__('aboleon-framework.geo.route'))]),
+            $this->prefix . 'locality.string' => __('validation.string', ['attribute' => strval(__('aboleon-framework.geo.locality'))]),
+            $this->prefix . 'postal_code.string' => __('validation.string', ['attribute' => strval(__('aboleon-framework.geo.postal_code'))]),
+            $this->prefix . 'country_code.string' => __('validation.string', ['attribute' => strval(__('aboleon-framework.geo.country_code'))]),
+            $this->prefix . 'text_address.required' => __('validation.required', ['attribute' => strval(__('aboleon-framework.geo.text_address'))]),
+            $this->prefix . 'lat.numeric' => __('validation.required', ['attribute' => strval(__('aboleon-framework.geo.lat'))]),
+            $this->prefix . 'lon.numeric' => __('validation.required', ['attribute' => strval(__('aboleon-framework.geo.lat'))]),
         ];
     }
 

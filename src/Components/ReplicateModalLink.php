@@ -16,7 +16,7 @@ class ReplicateModalLink extends Component
         public ?string $title = null,
     )
     {
-        $this->title = $this->title ?: __('mfw.replicate');
+        $this->title = $this->title ?: __('aboleon-framework.replicate');
     }
 
     /**
@@ -24,6 +24,6 @@ class ReplicateModalLink extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('mfw::components.replicate-modal-link');
+        return view('aboleon-framework::components.replicate-modal-link');
     }
 }

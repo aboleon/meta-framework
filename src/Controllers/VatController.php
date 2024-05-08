@@ -19,17 +19,17 @@ class VatController extends Controller
 
     public function index(): Renderable
     {
-        return view('mfw::vat.index')->with('data', Vat::all());
+        return view('aboleon-framework::vat.index')->with('data', Vat::all());
     }
 
     public function create(): Renderable
     {
         $data = [
             'data' => new Vat,
-            'route' => route('mfw.vat.store')
+            'route' => route('aboleon-framework.vat.store')
         ];
 
-        return view('mfw::vat.edit')->with($data);
+        return view('aboleon-framework::vat.edit')->with($data);
     }
 
 
@@ -40,8 +40,8 @@ class VatController extends Controller
             'vat.default' => 'nullable'
         ];
         $this->validation_messages = [
-            'vat.rate.numeric' => __('validation.integer', ['attribute' => __('mfw-sellable.vat.label')]),
-            'vat.rate.unique' => __('validation.unique', ['attribute' => __('mfw-sellable.vat.label')]),
+            'vat.rate.numeric' => __('validation.integer', ['attribute' => __('aboleon-framework-sellable.vat.label')]),
+            'vat.rate.unique' => __('validation.unique', ['attribute' => __('aboleon-framework-sellable.vat.label')]),
         ];
         $this->validation();
 
@@ -52,8 +52,8 @@ class VatController extends Controller
 
             $vat->manageDefaultState();
 
-            $this->responseSuccess(__('mfw.record_created'));
-            $this->redirect_route = 'mfw.vat.index';
+            $this->responseSuccess(__('aboleon-framework.record_created'));
+            $this->redirect_route = 'aboleon-framework.vat.index';
 
         } catch (Throwable $e) {
             $this->responseException($e);
@@ -66,10 +66,10 @@ class VatController extends Controller
     {
         $data = [
             'data' => $vat,
-            'route' => route('mfw.vat.update', $vat)
+            'route' => route('aboleon-framework.vat.update', $vat)
         ];
 
-        return view('mfw::vat.edit')->with($data);
+        return view('aboleon-framework::vat.edit')->with($data);
     }
 
     public function update(Vat $vat): RedirectResponse
@@ -79,8 +79,8 @@ class VatController extends Controller
             'vat.default' => 'nullable'
         ];
         $this->validation_messages = [
-            'vat.rate.numeric' => __('validation.integer', ['attribute' => __('mfw-sellable.vat.label')]),
-            'vat.rate.unique' => __('validation.unique', ['attribute' => __('mfw-sellable.vat.label')]),
+            'vat.rate.numeric' => __('validation.integer', ['attribute' => __('aboleon-framework-sellable.vat.label')]),
+            'vat.rate.unique' => __('validation.unique', ['attribute' => __('aboleon-framework-sellable.vat.label')]),
         ];
         $this->validation();
 
@@ -92,8 +92,8 @@ class VatController extends Controller
 
             $vat->manageDefaultState();
 
-            $this->responseSuccess(__('mfw.record_created'));
-            $this->redirect_route = 'mfw.vat.index';
+            $this->responseSuccess(__('aboleon-framework.record_created'));
+            $this->redirect_route = 'aboleon-framework.vat.index';
 
         } catch (Throwable $e) {
             $this->responseException($e);
@@ -111,7 +111,7 @@ class VatController extends Controller
             }
             $vat->delete();
         } catch (Throwable $e) {
-            $this->responseException($e, __('mfw-sellable.vat.is_used'));
+            $this->responseException($e, __('aboleon-framework-sellable.vat.is_used'));
         }
 
         return $this->sendResponse();

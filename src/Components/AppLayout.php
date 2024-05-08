@@ -14,6 +14,6 @@ class AppLayout extends Component
      */
     public function render(): Renderable
     {
-        return view('mfw::layouts.app');
+        return view('aboleon-framework::layouts.app');
     }
 }

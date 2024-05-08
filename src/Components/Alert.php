@@ -18,6 +18,6 @@ class Alert extends Component
 
     public function render(): Renderable
     {
-        return view('mfw::components.alert');
+        return view('aboleon-framework::components.alert');
     }
 }

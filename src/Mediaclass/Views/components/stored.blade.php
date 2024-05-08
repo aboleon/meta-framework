@@ -4,7 +4,7 @@
             $is_image = $isImage($media);
             $cropableImg = new \MetaFramework\Mediaclass\Cropable($media);
             $cropableImg->setCropableFromComponent($cropable);
-            $preview = $is_image ? $media->url($cropableImg->isCropped ? 'cropped': 'sm') : asset('vendor/mfw/mediaclass/images/files/' . $media->extension().'.png');
+            $preview = $is_image ? $media->url($cropableImg->isCropped ? 'cropped': 'sm') : asset('vendor/aboleon/mediaclass/images/files/' . $media->extension().'.png');
         @endphp
         <div class="mediaclass unlinkable uploaded-image my-2" data-id="{{ $media->id }}" id="mediaclass-{{$media->id}}">
             <span class="unlink"><i class="bi bi-x-circle-fill"></i></span>
@@ -36,7 +36,7 @@
                     <div class="row params mt-3">
                         <div class="col-sm-7 description {{ !$description ? 'd-none' :'' }}">
                             @foreach(\MetaFramework\Accessors\Locale::projectLocales() as $locale)
-                                <x-ab-input::textarea name="mediaclass[{{ $media->id }}][description][{{ $locale }}]" :height="100" class="mt-2 description" :value="$media->description[$locale] ?? ''" label="Description ({{ $locale }})"/>
+                                <x-aboleon-inputable::textarea name="mediaclass[{{ $media->id }}][description][{{ $locale }}]" :height="100" class="mt-2 description" :value="$media->description[$locale] ?? ''" label="Description ({{ $locale }})"/>
                             @endforeach
                         </div>
                         <div class="col-sm-5 positions text-center ps-2{{ $positions ? '' : ' d-none' }}">

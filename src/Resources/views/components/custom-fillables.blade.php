@@ -4,7 +4,7 @@
             @case('textarea')
             @case('textarea_extended')
                 <div class="col-12 mb-4">
-                    <x-ab-input::textarea name="custom[fillables][{{$key}}]"
+                    <x-aboleon-inputable::textarea name="custom[fillables][{{$key}}]"
                                 :className="$value['type'] .' '.($value['class']??'') "
                                 value="{!! isset($model->custom['fillables'][$key]) ? $model->custom['fillables'][$key] : '' !!}" label="{{$value['label']}}"/>
                 </div>
@@ -12,7 +12,7 @@
             @default
 
                 <div class="{{ $value['class'] ?? 'col-12' }} mb-4">
-                    <x-ab-input::input name="custom[fillables][{{$key}}]" value="{{ isset($model->custom['fillables'][$key]) ? $model->custom['fillables'][$key] : '' }}" label="{{$value['label']}}"/>
+                    <x-aboleon-inputable::input name="custom[fillables][{{$key}}]" value="{{ isset($model->custom['fillables'][$key]) ? $model->custom['fillables'][$key] : '' }}" label="{{$value['label']}}"/>
                 </div>
 
         @endswitch

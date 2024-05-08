@@ -1,1 +1,1 @@
-<div class="mfw-notice rounded p-3 fw-bold text-dark {{ $class }}">{!! $message !!}</div>
+<div class="aboleon-framework-notice rounded p-3 fw-bold text-dark {{ $class }}">{!! $message !!}</div>

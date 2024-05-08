@@ -9,9 +9,9 @@
         $error = $errors->any();
     @endphp
 
-    <x-mfw::validation-errors/>
-    <x-mfw::response-messages/>
-    <form method="post" action="{{ route('mfw.settings.update') }}">
+    <x-aboleon-framework::validation-errors/>
+    <x-aboleon-framework::response-messages/>
+    <form method="post" action="{{ route('aboleon-framework.settings.update') }}">
         @csrf
         <div class="row editable">
             @foreach($config_settings as $config_setting)
@@ -21,17 +21,17 @@
                         @foreach($config_setting['elements'] as $item)
                             @php
                                 $value = $error
-                                ? old(request('mfw-settings.'.$item['name']))
+                                ? old(request('aboleon-framework-settings.'.$item['name']))
                                 : (MetaFramework\Models\Setting::value($item['name'])
                                     ?: \MetaFramework\Models\Setting::defaultSettingValue($item['name']));
                             @endphp
                             @if($item['type'] == 'textarea')
-                                <x-ab-input::textarea name="{{ $item['name'] }}"
+                                <x-aboleon-inputable::textarea name="{{ $item['name'] }}"
                                                  class="{{  $item['class'] ?? ''}}"
                                                  :label="$item['title'] ?? ''"
                                                  :value="$value"/>
                             @else
-                                <x-ab-input::input name="{{$item['name']}}"
+                                <x-aboleon-inputable::input name="{{$item['name']}}"
                                               type="{{ $item['type'] }}"
                                               label="{!! $item['title'] ?? '' !!}"
                                               class="{{ $item['class'] ?? '' }}"
@@ -42,6 +42,6 @@
                 </div>
             @endforeach
         </div>
-        <x-mfw::btn-save/>
+        <x-aboleon-framework::btn-save/>
     </form>
 </x-backend-layout>

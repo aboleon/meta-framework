@@ -1,4 +1,4 @@
-function mfw_default_tinymce_settings(targets) {
+function aboleon-framework_default_tinymce_settings(targets) {
     let baseHref = location.protocol + '//' + window.location.hostname + '/';
     return {
         selector: targets,
@@ -15,7 +15,7 @@ function mfw_default_tinymce_settings(targets) {
         image_title: true,
         automatic_uploads: true,
         language: 'fr_FR',
-        language_url: baseHref + 'vendor/mfw/js/tinymce/langs/fr_FR.js',
+        language_url: baseHref + 'vendor/aboleon-framework/js/tinymce/langs/fr_FR.js',
         document_base_url: baseHref,
         relative_urls: false,
         remove_script_host: true,

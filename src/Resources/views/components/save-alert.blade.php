@@ -1,7 +1,7 @@
 @props(['container'=> '#main'])
 @pushonce('js')
-    <div id="mfw-intended-click" data-change="0"></div>
-    <div class="modal fade" tabindex="-1" id="mfw-unsaved-content-modal">
+    <div id="aboleon-framework-intended-click" data-change="0"></div>
+    <div class="modal fade" tabindex="-1" id="aboleon-framework-unsaved-content-modal">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -13,7 +13,7 @@
                 </div>
                 <div class="modal-footer d-flex justify-content-between">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Revenir</button>
-                    <button type="button" id="mfw-intented-click-confirm" class="btn btn-danger">Continuer sans sauvegarder</button>
+                    <button type="button" id="aboleon-framework-intented-click-confirm" class="btn btn-danger">Continuer sans sauvegarder</button>
                 </div>
             </div>
         </div>
@@ -25,12 +25,12 @@
           return $('{{ $container }}').html();
         };
 
-        const mfw_intented_click = $('#mfw-intended-click'),
-          mfwUnsavedContenModal = new bootstrap.Modal(document.getElementById('mfw-unsaved-content-modal')),
+        const aboleon-framework_intented_click = $('#aboleon-framework-intended-click'),
+          aboleon-frameworkUnsavedContenModal = new bootstrap.Modal(document.getElementById('aboleon-framework-unsaved-content-modal')),
           initialChecksum = mwf_calculateChecksum();
 
         $('{{ $container }}').find('input, textarea, select').change(function () {
-          mfw_intented_click.attr('data-change', 1);
+          aboleon-framework_intented_click.attr('data-change', 1);
         });
 
         $('a').click(function (e) {
@@ -45,12 +45,12 @@
 
             let newCheksum = mwf_calculateChecksum();
             console.log(newCheksum.length, initialChecksum.length);
-            if (newCheksum !== initialChecksum || mfw_intented_click.attr('data-change') == 1) {
-              mfw_intented_click.text(href);
+            if (newCheksum !== initialChecksum || aboleon-framework_intented_click.attr('data-change') == 1) {
+              aboleon-framework_intented_click.text(href);
               e.preventDefault();
-              mfwUnsavedContenModal.show();
-              $('#mfw-intented-click-confirm').off().click(function () {
-                window.location.assign(mfw_intented_click.text());
+              aboleon-frameworkUnsavedContenModal.show();
+              $('#aboleon-framework-intented-click-confirm').off().click(function () {
+                window.location.assign(aboleon-framework_intented_click.text());
               });
             } else {
               return true;

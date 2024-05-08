@@ -1,13 +1,13 @@
-<input type="hidden" name="mfw_tab_redirect" id="mfw-tab-redirect"/>
+<input type="hidden" name="aboleon-framework_tab_redirect" id="aboleon-framework-tab-redirect"/>
 @push('js')
     <script>
 
-        @if(session('mfw_tab_redirect'))
-            $('#{{ session('mfw_tab_redirect') }}').trigger('click');
+        @if(session('aboleon-framework_tab_redirect'))
+            $('#{{ session('aboleon-framework_tab_redirect') }}').trigger('click');
         @endif
 
         $('{{ $selector }}').on('shown.bs.tab', function (e) {
-          $('#mfw-tab-redirect').val($(e.target).attr('id'));
+          $('#aboleon-framework-tab-redirect').val($(e.target).attr('id'));
         });
     </script>
 @endpush

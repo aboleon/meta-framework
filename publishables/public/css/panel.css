@@ -1,6 +1,6 @@
-@import "../vendor/mfw/css/panel.css";
-@import "../vendor/mfw/css/show.css";
-ul.mfw-actions {
+@import "../vendor/aboleon-framework/css/panel.css";
+@import "../vendor/aboleon-framework/css/show.css";
+ul.aboleon-framework-actions {
     float: right;
     align-items: center;
     li .lg-link {
@@ -45,31 +45,31 @@ ul.mfw-actions {
     }
 }
 
-.btn-danger,.mfw-status.offline, .mfw-bg-red {
+.btn-danger,.aboleon-framework-status.offline, .aboleon-framework-bg-red {
     background: var(--base-1);
 }
-.mfw-bg-green {
+.aboleon-framework-bg-green {
     background: #48a97c;
 }
 .btn-danger:hover {
     background: #607d8b;
     border-color:#607d8b;
 }
-.mfw-badge {
+.aboleon-framework-badge {
     padding: 4px 10px;
     border-radius: 25px;
     font-size: 14px;
     font-weight: 700;
 }
-.mfw-bg-red {
+.aboleon-framework-bg-red {
     background: var(--base-1);
     color:white
 }
-.mfw-bg-yellow {
+.aboleon-framework-bg-yellow {
     background: var(--ab-yellow);
     color: #1A1A1A;
 }
-.mfw-bg-default {
+.aboleon-framework-bg-default {
     background: var(--ab-blue-grey);
     color: white;
 }

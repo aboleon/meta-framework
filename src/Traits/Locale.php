@@ -10,7 +10,7 @@ trait Locale
     public function locale(): string
     {
         /*
-        if (request()->filled('lg') && in_array(request()->lg, config('mfw.translatable.locales'))) {
+        if (request()->filled('lg') && in_array(request()->lg, config('aboleon-framework.translatable.locales'))) {
             return request()->lg;
         }
         */
@@ -19,12 +19,12 @@ trait Locale
 
     public function projectLocales()
     {
-        return config('mfw.translatable.locales');
+        return config('aboleon-framework.translatable.locales');
     }
 
     public function activeLocales()
     {
-        return config('mfw.translatable.active_locales');
+        return config('aboleon-framework.translatable.active_locales');
     }
 
     public function defaultLocale(): string
@@ -39,7 +39,7 @@ trait Locale
 
     public function alternateIsoLocales(): array
     {
-        return collect(config('mfw.translatable.active_locales'))->reject(function ($item) {
+        return collect(config('aboleon-framework.translatable.active_locales'))->reject(function ($item) {
             return $item == app()->getLocale();
         })->values()->toArray();
     }
@@ -48,7 +48,7 @@ trait Locale
     {
         $output = '';
 
-        foreach (config('mfw.translatable.active_locales') as $locale) {
+        foreach (config('aboleon-framework.translatable.active_locales') as $locale) {
             $output.= '<link rel="alternate" hreflang="'.$locale.'" href="'.url($locale).'" />'."\n";
             if ($locale == app()->getLocale()) {
                 $output.= '<link rel="alternate" hreflang="x-default" href="'.url($locale).'" />'."\n";

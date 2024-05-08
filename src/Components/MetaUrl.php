@@ -18,6 +18,6 @@ class MetaUrl extends Component
 
     public function render(): Renderable
     {
-        return view('mfw::components.meta-url');
+        return view('aboleon-framework::components.meta-url');
     }
 }

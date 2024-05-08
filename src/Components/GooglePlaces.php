@@ -68,7 +68,7 @@ class GooglePlaces extends Component
 
     public function render(): Renderable
     {
-        return view('mfw::components.google-places');
+        return view('aboleon-framework::components.google-places');
     }
 
     public function tagRequired(string $key): string

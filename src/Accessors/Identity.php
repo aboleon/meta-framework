@@ -9,7 +9,7 @@ class Identity
 
     public static function model(): ?SiteOwner
     {
-        return cache()->rememberForever('mfw_siteowner', function () {
+        return cache()->rememberForever('aboleon-framework_siteowner', function () {
             return SiteOwner::query()->first();
         });
     }

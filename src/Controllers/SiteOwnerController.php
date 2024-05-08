@@ -20,7 +20,7 @@ class SiteOwnerController extends Controller
 
     public function index(): Renderable
     {
-        return view('mfw::siteowner')->with('data', SiteOwner::first());
+        return view('aboleon-framework::siteowner')->with('data', SiteOwner::first());
     }
 
     public function store(Request $request): RedirectResponse
@@ -41,9 +41,9 @@ class SiteOwnerController extends Controller
             $object->locality = $request['locality'];
             $object->save();
 
-            $this->responseSuccess(__('mfw.record_created'));
+            $this->responseSuccess(__('aboleon-framework.record_created'));
 
-            Cache::forget('mfw_siteowner');
+            Cache::forget('aboleon-framework_siteowner');
 
         } catch (Throwable $e) {
             $this->responseException($e);
@@ -71,7 +71,7 @@ class SiteOwnerController extends Controller
             'manager.required' => "Le gérant de la structure n'est pas renseigné.",
             'phone.required' => "Le numéro de téléphone n'est pas renseigné.",
             'vat_number.required' => "Le numéro TVA n'est pas renseigné.",
-            'reg_number.required' => config('mfw.siteowner.reg_number') . " n'est pas renseigné.",
+            'reg_number.required' => config('aboleon-framework.siteowner.reg_number') . " n'est pas renseigné.",
             'email.required' => "L'adresse e-mail n'est pas renseignée.",
             'zip.required' => "Le code postal n'est pas renseigné.",
             'locality.required' => "La ville n'est pas renseignée.",
