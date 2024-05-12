@@ -1,4 +1,4 @@
-<div class="fillable bloc-editable bloc-clonable" data-repeatable="{{ $repeatable }}">
+<div class="fillable bloc-clonable" data-repeatable="{{ $repeatable }}">
     <h2>{{ $label }}</h2>
 
     @foreach($items as $model)
@@ -17,11 +17,13 @@
                     @foreach($schema as $key => $config)
                         @php
                             $content_value = $model?->{$key};
+                        $inputkey = ltrim(implode('.',[$requestkey,$key]),'.');
                         @endphp
-                        <div class="cloned-{{ $key .' '. ($config['class'] ?? 'col-12') }} mb-3">
+                        <div class="cloned-{{ ltrim(implode('-',[$requestkey,$key]),'-') .' '. ($config['class'] ?? 'col-12') }} mb-3">
+
                             @switch($config['type'] ?? '')
                                 @case('textarea')
-                                    <x-aboleon-inputable::textarea :name="$key.'.'"
+                                    <x-aboleon-inputable::textarea :name="$inputkey.'.'"
                                                                    class="{{ $config['input_class'] ?? '' }}"
                                                                    :value="$content_value"
                                                                    :label="$config['label'] ?? ''"
@@ -29,7 +31,7 @@
                                     @break
                                 @case('number')
                                     <x-aboleon-inputable::input type="number"
-                                                                :name="$key.'.'"
+                                                                :name="$inputkey.'.'"
                                                                 :value="$content_value"
                                                                 :label="$config['label'] ?? ''"
                                                                 :params="$config['params'] ?? []"
@@ -41,7 +43,7 @@
                                                               :randomize="true"/>
                                     @break;
                                 @default
-                                    <x-aboleon-inputable::input :name="$key.'.'"
+                                    <x-aboleon-inputable::input :name="$inputkey.'.'"
                                                                 :value="$content_value"
                                                                 :label="$config['label'] ?? ''"
                                                                 :params="$config['params'] ?? []"

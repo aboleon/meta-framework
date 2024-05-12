@@ -18,7 +18,8 @@ class Clonable extends Component
         public string $label,
         public ClonableInterface $clonable,
         public EloquentCollection|Collection $items,
-        public int $repeatable = 1
+        public int $repeatable = 1,
+        public ?string $requestkey = null
     )
     {
         $this->schema = $this->clonable->cloneSchema();
