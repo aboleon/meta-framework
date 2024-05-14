@@ -25,21 +25,19 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
         $this->app->singleton('meta', fn($app) => new Meta());
         $this->app->singleton('mediaclass', fn($app) => new Mediaclass());
 
-
-        $this->app->bind('MetaFramework\Facades\NavFacade', fn($app) => new NavFacade());
-        $this->app->bind('MetaFramework\Facades\MetaFacade', fn($app) => new MetaFacade());
-        $this->app->bind('MetaFramework\Mediaclass\Facades\MediaclassFacade', fn($app) => new MediaclassFacade());
+        $this->app->bind(NavFacade::class, fn($app) => new NavFacade());
+        $this->app->bind(MetaFacade::class, fn($app) => new MetaFacade());
+        $this->app->bind(MediaclassFacade::class, fn($app) => new MediaclassFacade());
 
     }
 
     public function boot(): void
     {
-
         $this->loadViewsFrom(__DIR__ . '/Resources/views', 'aboleon-framework');
-        Blade::componentNamespace('\MetaFramework\\Components', 'aboleon-framework');
+        Blade::componentNamespace('MetaFramework\\Components', 'aboleon-framework');
 
         $this->loadViewsFrom(__DIR__ . '/Mediaclass/Views', 'mediaclass');
-        Blade::componentNamespace('MetaFramework\Mediaclass\\Components', 'mediaclass');
+        Blade::componentNamespace('MetaFramework\\Mediaclass\\Components', 'mediaclass');
 
         $this->loadRoutesFrom(__DIR__.'/Mediaclass/Routes/public.php');
         $this->loadRoutesFrom(__DIR__.'/Mediaclass/Routes/panel.php');
