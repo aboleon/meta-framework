@@ -1,6 +1,6 @@
 <?php
 
-namespace MetaFramework\Mediaclass\Components;
+namespace Aboleon\MetaFramework\Mediaclass\Components;
 
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\View\Component;

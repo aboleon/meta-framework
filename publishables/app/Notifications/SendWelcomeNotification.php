@@ -2,9 +2,9 @@
 
 namespace App\Notifications;
 
-use MetaFramework\Interfaces\UserInterface;
+use Aboleon\MetaFramework\Interfaces\UserInterface;
 use App\Mail\Welcome;
-use MetaFramework\Traits\Responses;
+use Aboleon\MetaFramework\Traits\Responses;
 use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Support\Facades\Mail;
 use Throwable;

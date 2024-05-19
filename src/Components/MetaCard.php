@@ -1,9 +1,9 @@
 <?php
 
-namespace MetaFramework\Components;
+namespace Aboleon\MetaFramework\Components;
 
-use MetaFramework\Abstract\MetaModel;
-use MetaFramework\Models\Meta;
+use Aboleon\MetaFramework\Abstract\MetaModel;
+use Aboleon\MetaFramework\Models\Meta;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\View\Component;
 

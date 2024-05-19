@@ -74,7 +74,7 @@
                 @if ($meta->uses('parent'))
                     <div>
                         <label class="form-label" for="meta_parent">Affecter à un parent</label>
-                        {!! (new \MetaFramework\Printers\Select(\MetaFramework\Models\Meta::where('type', $meta->type)->get(), 'meta[parent]', $meta->parent))() !!}
+                        {!! (new \Aboleon\MetaFramework\Printers\Select(\Aboleon\MetaFramework\Models\Meta::where('type', $meta->type)->get(), 'meta[parent]', $meta->parent))() !!}
                     </div>
                 @endif
 
@@ -96,14 +96,14 @@
 
                 @if ($meta->uses('forms'))
                     <div class="mt-3">
-                        <x-aboleon-inputable::select label="Formulaire" name="meta[forms]" :values="\MetaFramework\Models\Forms::selectables()" :affected="$meta->form?->name"/>
+                        <x-aboleon-inputable::select label="Formulaire" name="meta[forms]" :values="\Aboleon\MetaFramework\Models\Forms::selectables()" :affected="$meta->form?->name"/>
                     </div>
                 @endif
 
                 {{--
                                     @if ($meta->type == 'blog')
-                                        {!! \MetaFramework\Models\Meta\BlogCategories::form($meta) !!}
-                                        {!! \MetaFramework\Models\Meta\BlogCategories::form($meta, 'tag') !!}
+                                        {!! \Aboleon\MetaFramework\Models\Meta\BlogCategories::form($meta) !!}
+                                        {!! \Aboleon\MetaFramework\Models\Meta\BlogCategories::form($meta, 'tag') !!}
                                     @endif
                 --}}
             </div>

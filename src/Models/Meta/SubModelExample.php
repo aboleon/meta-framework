@@ -1,12 +1,12 @@
 <?php
 
-namespace MetaFramework\Models\Meta;
+namespace Aboleon\MetaFramework\Models\Meta;
 
 use Illuminate\Contracts\Database\Query\Builder;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use MetaFramework\Abstract\MetaModel;
-use MetaFramework\Models\MetaBloc;
+use Aboleon\MetaFramework\Abstract\MetaModel;
+use Aboleon\MetaFramework\Models\MetaBloc;
 
 class SubModelExample extends MetaModel
 {
@@ -56,7 +56,7 @@ class SubModelExample extends MetaModel
 
     /**
      * @param $query
-     * @param \MetaFramework\Models\Meta\CategoryExample|null $category
+     * @param \Aboleon\MetaFramework\Models\Meta\CategoryExample|null $category
      */
     public function scopeOfCategory($query, ?CategoryExample $category): Builder
     {

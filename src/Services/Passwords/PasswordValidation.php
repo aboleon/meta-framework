@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace MetaFramework\Services\Passwords;
+namespace Aboleon\MetaFramework\Services\Passwords;
 
-use MetaFramework\Services\Validation\ValidationAbstract;
+use Aboleon\MetaFramework\Services\Validation\ValidationAbstract;
 
 final class PasswordValidation extends ValidationAbstract
 {
     private int $password_length = 8;
 
     /**
-     * use MetaFramework\Actions\Fortify\PasswordValidationRules;
+     * use Aboleon\MetaFramework\Actions\Fortify\PasswordValidationRules;
      * $this->passwordRules(),
      * @return array<string>
      */

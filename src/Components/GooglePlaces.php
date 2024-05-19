@@ -1,12 +1,12 @@
 <?php
 
-namespace MetaFramework\Components;
+namespace Aboleon\MetaFramework\Components;
 
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
 use Illuminate\View\Component;
-use MetaFramework\Interfaces\GooglePlacesInterface;
+use Aboleon\MetaFramework\Interfaces\GooglePlacesInterface;
 
 class GooglePlaces extends Component
 {

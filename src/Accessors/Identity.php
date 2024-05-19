@@ -1,8 +1,8 @@
 <?php
 
-namespace MetaFramework\Accessors;
+namespace Aboleon\MetaFramework\Accessors;
 
-use MetaFramework\Models\SiteOwner;
+use Aboleon\MetaFramework\Models\SiteOwner;
 
 class Identity
 {

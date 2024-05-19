@@ -1,11 +1,11 @@
 <?php
 
-namespace MetaFramework\Controllers;
+namespace Aboleon\MetaFramework\Controllers;
 
 use Illuminate\Database\Eloquent\SoftDeletes;
-use MetaFramework\Models\Vat;
-use MetaFramework\Traits\Responses;
-use MetaFramework\Services\Validation\ValidationTrait;
+use Aboleon\MetaFramework\Models\Vat;
+use Aboleon\MetaFramework\Traits\Responses;
+use Aboleon\MetaFramework\Services\Validation\ValidationTrait;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Cache;

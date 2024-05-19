@@ -1,11 +1,11 @@
 <?php
 
-namespace MetaFramework\Controllers;
+namespace Aboleon\MetaFramework\Controllers;
 
-use MetaFramework\Interfaces\Mailer;
+use Aboleon\MetaFramework\Interfaces\Mailer;
 use Illuminate\Http\RedirectResponse;
-use MetaFramework\Traits\Ajax;
-use MetaFramework\Traits\Responses;
+use Aboleon\MetaFramework\Traits\Ajax;
+use Aboleon\MetaFramework\Traits\Responses;
 use Throwable;
 
 class MailController extends Controller

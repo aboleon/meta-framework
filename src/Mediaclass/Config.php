@@ -1,6 +1,6 @@
 <?php
 
-namespace MetaFramework\Mediaclass;
+namespace Aboleon\MetaFramework\Mediaclass;
 
 use Illuminate\Contracts\Filesystem\Filesystem;
 use Illuminate\Support\Facades\Storage;

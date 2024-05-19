@@ -1,9 +1,9 @@
 <?php
 
-namespace MetaFramework\Actions;
+namespace Aboleon\MetaFramework\Actions;
 
 
-use MetaFramework\Traits\Responses;
+use Aboleon\MetaFramework\Traits\Responses;
 use Illuminate\Database\Eloquent\Model;
 use Throwable;
 

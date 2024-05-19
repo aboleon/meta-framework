@@ -45,7 +45,7 @@
                         $found_content = is_array(current($key_content)) ? array_shift($key_content) : $key_content;
                     }
                     $content_value = ($key != 'media')
-                        ? (MetaFramework\Accessors\Locale::multilang()
+                        ? (Aboleon\MetaFramework\Accessors\Locale::multilang()
                             ? $content->translation($key, $locale)
                             : ($content[$key] ?? null))
                         : null;
@@ -81,7 +81,7 @@
                                 @if ($schema)
                                     @foreach($collection['schema'] as $subkey => $value)
                                         @php
-                                            $content_value = \MetaFramework\Accessors\Locale::multilang()
+                                            $content_value = \Aboleon\MetaFramework\Accessors\Locale::multilang()
                                                 ? ($found_content[$subkey][$locale] ?? '')
                                                 : ($found_content[$subkey] ?? '');
                                         @endphp

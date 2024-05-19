@@ -1,12 +1,12 @@
 <?php
 
-namespace MetaFramework\Controllers;
+namespace Aboleon\MetaFramework\Controllers;
 
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\DB;
-use MetaFramework\{
+use Aboleon\MetaFramework\{
     Accessors\Routing,
     Models\Forms,
     Models\Meta,

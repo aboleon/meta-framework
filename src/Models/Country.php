@@ -1,8 +1,8 @@
 <?php
 
-namespace MetaFramework\Models;
+namespace Aboleon\MetaFramework\Models;
 
-use MetaFramework\Polyglote\Traits\Translation;
+use Aboleon\MetaFramework\Polyglote\Traits\Translation;
 use Illuminate\Database\Eloquent\Model;
 
 class Country extends Model

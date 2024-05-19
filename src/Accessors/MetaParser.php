@@ -1,10 +1,10 @@
 <?php
 
-namespace MetaFramework\Accessors;
+namespace Aboleon\MetaFramework\Accessors;
 
-use MetaFramework\Mediaclass\Facades\MediaclassFacade;
-use MetaFramework\Mediaclass\Mediaclass;
-use MetaFramework\Models\Meta;
+use Aboleon\MetaFramework\Mediaclass\Facades\MediaclassFacade;
+use Aboleon\MetaFramework\Mediaclass\Mediaclass;
+use Aboleon\MetaFramework\Models\Meta;
 
 class MetaParser
 {
@@ -49,7 +49,7 @@ class MetaParser
 
     /**
      * Get structured content for MetaModel
-     * @param \MetaFramework\Models\Meta $model
+     * @param \Aboleon\MetaFramework\Models\Meta $model
      * @param string|null $var
      * @return array
      */

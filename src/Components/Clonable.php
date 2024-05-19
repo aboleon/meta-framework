@@ -1,13 +1,13 @@
 <?php
 
-namespace MetaFramework\Components;
+namespace Aboleon\MetaFramework\Components;
 
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Database\Eloquent\Collection as EloquentCollection;
 use Illuminate\Support\Collection as Collection;
 use Illuminate\Support\Str;
 use Illuminate\View\Component;
-use MetaFramework\Interfaces\ClonableInterface;
+use Aboleon\MetaFramework\Interfaces\ClonableInterface;
 
 class Clonable extends Component
 {

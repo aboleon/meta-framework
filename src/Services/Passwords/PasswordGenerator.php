@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace MetaFramework\Services\Passwords;
+namespace Aboleon\MetaFramework\Services\Passwords;
 
 use Illuminate\Support\Str;
 

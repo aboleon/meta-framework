@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace MetaFramework\Traits;
+namespace Aboleon\MetaFramework\Traits;
 
 use Exception;
 use Illuminate\Support\Str;

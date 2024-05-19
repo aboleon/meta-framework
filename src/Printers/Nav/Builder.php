@@ -1,8 +1,8 @@
 <?php
 
-namespace MetaFramework\Printers\Nav;
+namespace Aboleon\MetaFramework\Printers\Nav;
 
-use MetaFramework\Models\Nav;
+use Aboleon\MetaFramework\Models\Nav;
 use Illuminate\Database\Eloquent\Collection as EloquentCollection;
 
 trait Builder

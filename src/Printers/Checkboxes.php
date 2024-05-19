@@ -1,13 +1,13 @@
 <?php
 
-namespace MetaFramework\Printers;
+namespace Aboleon\MetaFramework\Printers;
 
 use Aboleon\Inputables\Helpers;
 use Illuminate\Database\Eloquent\Collection as EloquentCollection;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Str;
-use MetaFramework\Traits\TreeBuilder;
+use Aboleon\MetaFramework\Traits\TreeBuilder;
 
 class Checkboxes
 {

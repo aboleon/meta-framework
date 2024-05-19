@@ -1,9 +1,9 @@
 <?php
 
-namespace MetaFramework\Models;
+namespace Aboleon\MetaFramework\Models;
 
 
-use MetaFramework\Abstract\BlocModel;
+use Aboleon\MetaFramework\Abstract\BlocModel;
 
 class Bloc extends BlocModel
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace MetaFramework\Mediaclass;
+namespace Aboleon\MetaFramework\Mediaclass;
 
 class Printer
 {

@@ -1,8 +1,8 @@
 <?php
 
-namespace MetaFramework\Mediaclass\Traits;
+namespace Aboleon\MetaFramework\Mediaclass\Traits;
 
-use MetaFramework\Mediaclass\Config;
+use Aboleon\MetaFramework\Mediaclass\Config;
 
 trait Accessors
 {

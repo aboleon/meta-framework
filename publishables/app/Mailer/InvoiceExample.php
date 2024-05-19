@@ -2,8 +2,8 @@
 
 namespace App\Mailer;
 
-use MetaFramework\Interfaces\Mailer;
-use MetaFramework\Mail\MailerMail;
+use Aboleon\MetaFramework\Interfaces\Mailer;
+use Aboleon\MetaFramework\Mail\MailerMail;
 use Illuminate\Mail\SentMessage;
 use Illuminate\Support\Facades\Mail;
 

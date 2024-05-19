@@ -66,9 +66,9 @@
                         </div>
                     </div>
 
-            @foreach(\MetaFramework\Accessors\Locale::projectLocales() as $locale)
+            @foreach(\Aboleon\MetaFramework\Accessors\Locale::projectLocales() as $locale)
                     <div class="row params mt-2">
-                        <div class="col-sm-7 description {{ \MetaFramework\Accessors\Locale::multilang() ? '' :'no-multilang' }}"><b>Description <span class="lang">{{ __('lang.'.$locale.'.label') }}</span></b>
+                        <div class="col-sm-7 description {{ \Aboleon\MetaFramework\Accessors\Locale::multilang() ? '' :'no-multilang' }}"><b>Description <span class="lang">{{ __('lang.'.$locale.'.label') }}</span></b>
                             <textarea name="description[{{ $locale }}]" type="text" class="mt-2 form-control description"></textarea>
                         </div>
                         <div class="col-sm-5 positions text-center ps-2">

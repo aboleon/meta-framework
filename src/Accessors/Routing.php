@@ -1,6 +1,6 @@
 <?php
 
-namespace MetaFramework\Accessors;
+namespace Aboleon\MetaFramework\Accessors;
 
 class Routing
 {

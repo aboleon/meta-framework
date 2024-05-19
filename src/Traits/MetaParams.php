@@ -1,8 +1,8 @@
 <?php
 
-namespace MetaFramework\Traits;
+namespace Aboleon\MetaFramework\Traits;
 
-use MetaFramework\Models\Meta;
+use Aboleon\MetaFramework\Models\Meta;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 trait MetaParams

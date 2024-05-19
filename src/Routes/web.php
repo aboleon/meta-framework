@@ -1,8 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use MetaFramework\Accessors\Routing;
-use MetaFramework\Controllers\{AjaxController,
+use Aboleon\MetaFramework\Accessors\Routing;
+use Aboleon\MetaFramework\Controllers\{AjaxController,
     MailController,
     MetaController,
     NavController,

@@ -5,7 +5,7 @@ namespace App\Http\Requests;
 use App\Models\User;
 use App\Validation\UserBasicValidation;
 use Illuminate\Foundation\Http\FormRequest;
-use MetaFramework\Services\Passwords\PasswordValidationSet;
+use Aboleon\MetaFramework\Services\Passwords\PasswordValidationSet;
 
 class BackendUserRequest extends FormRequest
 {

@@ -1,13 +1,13 @@
 <?php
 
-namespace MetaFramework\Mediaclass\Models;
+namespace Aboleon\MetaFramework\Mediaclass\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Illuminate\Support\Facades\Storage;
-use MetaFramework\Mediaclass\Config;
-use MetaFramework\Mediaclass\Path;
-use MetaFramework\Mediaclass\Traits\Accessors;
+use Aboleon\MetaFramework\Mediaclass\Config;
+use Aboleon\MetaFramework\Mediaclass\Path;
+use Aboleon\MetaFramework\Mediaclass\Traits\Accessors;
 use Symfony\Component\Mime\MimeTypes;
 
 /**
@@ -17,7 +17,7 @@ use Symfony\Component\Mime\MimeTypes;
  * @property string $mime
  * @property int $id
  * @property string $group
- * @property \MetaFramework\Mediaclass\Interfaces\MediaclassInterface $model
+ * @property \Aboleon\MetaFramework\Mediaclass\Interfaces\MediaclassInterface $model
  */
 class Media extends Model
 {

@@ -4,7 +4,7 @@
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                    aria-expanded="false">
-                    <img src="{!! \MetaFramework\Services\Avatars\Avatar::avatar(auth()->user()) !!}"
+                    <img src="{!! \Aboleon\MetaFramework\Services\Avatars\Avatar::avatar(auth()->user()) !!}"
                          alt="{{ auth()->user()->names() }}" width="36" height="36"/>
                 </a>
                 <ul class="dropdown-menu" style="left:initial;right: 0">

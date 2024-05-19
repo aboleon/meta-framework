@@ -1,18 +1,18 @@
 <?php
 
-namespace MetaFramework;
+namespace Aboleon\MetaFramework;
 
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\{
     App,
     Blade,
     View};
-use MetaFramework\Facades\MetaFacade;
-use MetaFramework\Facades\NavFacade;
-use MetaFramework\Mediaclass\Facades\MediaclassFacade;
-use MetaFramework\Mediaclass\Mediaclass;
-use MetaFramework\Models\Meta;
-use MetaFramework\Models\Nav;
+use Aboleon\MetaFramework\Facades\MetaFacade;
+use Aboleon\MetaFramework\Facades\NavFacade;
+use Aboleon\MetaFramework\Mediaclass\Facades\MediaclassFacade;
+use Aboleon\MetaFramework\Mediaclass\Mediaclass;
+use Aboleon\MetaFramework\Models\Meta;
+use Aboleon\MetaFramework\Models\Nav;
 
 class ServiceProvider extends \Illuminate\Support\ServiceProvider
 {
@@ -34,10 +34,10 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
     public function boot(): void
     {
         $this->loadViewsFrom(__DIR__ . '/Resources/views', 'aboleon-framework');
-        Blade::componentNamespace('MetaFramework\\Components', 'aboleon-framework');
+        Blade::componentNamespace('Aboleon\MetaFramework\\Components', 'aboleon-framework');
 
         $this->loadViewsFrom(__DIR__ . '/Mediaclass/Views', 'mediaclass');
-        Blade::componentNamespace('MetaFramework\\Mediaclass\\Components', 'mediaclass');
+        Blade::componentNamespace('Aboleon\MetaFramework\\Mediaclass\\Components', 'mediaclass');
 
         $this->loadRoutesFrom(__DIR__.'/Mediaclass/Routes/public.php');
         $this->loadRoutesFrom(__DIR__.'/Mediaclass/Routes/panel.php');

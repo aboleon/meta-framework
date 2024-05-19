@@ -1,6 +1,6 @@
 <?php
 
-namespace MetaFramework\Controllers;
+namespace Aboleon\MetaFramework\Controllers;
 
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Support\Facades\Cache;
@@ -8,9 +8,9 @@ use Illuminate\Http\{
     RedirectResponse,
     Request
 };
-use MetaFramework\Models\SiteOwner;
-use MetaFramework\Services\Validation\ValidationTrait;
-use MetaFramework\Traits\Responses;
+use Aboleon\MetaFramework\Models\SiteOwner;
+use Aboleon\MetaFramework\Services\Validation\ValidationTrait;
+use Aboleon\MetaFramework\Traits\Responses;
 use Throwable;
 
 class SiteOwnerController extends Controller

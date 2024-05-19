@@ -1,10 +1,10 @@
 <?php
 
-namespace MetaFramework\Models;
+namespace Aboleon\MetaFramework\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Cache;
-use MetaFramework\Casts\PriceInteger;
+use Aboleon\MetaFramework\Casts\PriceInteger;
 
 /**
  * @property int $rate

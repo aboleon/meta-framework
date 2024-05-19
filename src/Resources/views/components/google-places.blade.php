@@ -87,7 +87,7 @@
                 class="field country {{ $tagRequired('country') }}"
                 :label="trans('aboleon-framework.geo.country') . $labelRequired('country')"
                 name="{{ $field }}[country]"
-                value="{{ $error ? old($field.'.country') : ($geo->country_code ? \MetaFramework\Accessors\Countries::getCountryNameByCode($geo->country_code) : '') }}"
+                value="{{ $error ? old($field.'.country') : ($geo->country_code ? \Aboleon\MetaFramework\Accessors\Countries::getCountryNameByCode($geo->country_code) : '') }}"
                 readonly/>
         </div>
     </div>

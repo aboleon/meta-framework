@@ -1,6 +1,6 @@
 <?php
 
-namespace MetaFramework\Abstract;
+namespace Aboleon\MetaFramework\Abstract;
 
 
 /**

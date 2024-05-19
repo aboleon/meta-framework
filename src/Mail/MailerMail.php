@@ -1,8 +1,8 @@
 <?php
 
-namespace MetaFramework\Mail;
+namespace Aboleon\MetaFramework\Mail;
 
-use MetaFramework\Interfaces\Mailer;
+use Aboleon\MetaFramework\Interfaces\Mailer;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;

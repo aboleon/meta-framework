@@ -1,11 +1,11 @@
 <?php
 
-namespace MetaFramework\Abstract;
+namespace Aboleon\MetaFramework\Abstract;
 
 use Illuminate\Support\Str;
-use MetaFramework\Interfaces\MetaConfig;
-use MetaFramework\Mediaclass\Interfaces\MediaclassInterface;
-use MetaFramework\Models\Meta;
+use Aboleon\MetaFramework\Interfaces\MetaConfig;
+use Aboleon\MetaFramework\Mediaclass\Interfaces\MediaclassInterface;
+use Aboleon\MetaFramework\Models\Meta;
 use Illuminate\Database\Eloquent\Builder;
 use ReflectionClass;
 use Throwable;

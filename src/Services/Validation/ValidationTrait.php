@@ -1,9 +1,9 @@
 <?php
 
-namespace MetaFramework\Services\Validation;
+namespace Aboleon\MetaFramework\Services\Validation;
 
 use Illuminate\Foundation\Http\FormRequest;
-use MetaFramework\Traits\Responses;
+use Aboleon\MetaFramework\Traits\Responses;
 
 trait ValidationTrait
 {

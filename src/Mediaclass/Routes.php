@@ -1,10 +1,10 @@
 <?php
 
-namespace MetaFramework\Mediaclass;
+namespace Aboleon\MetaFramework\Mediaclass;
 
 
 use Illuminate\Support\Facades\Route;
-use MetaFramework\Mediaclass\Models\Media;
+use Aboleon\MetaFramework\Mediaclass\Models\Media;
 
 class Routes
 {

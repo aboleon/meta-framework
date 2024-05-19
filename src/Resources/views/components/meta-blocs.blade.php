@@ -10,7 +10,7 @@
 
         <div id="assigned_blocs" data-ajax="{{ route('aboleon-framework.ajax') }}">
             @php
-                $blocs = \MetaFramework\Models\MetaBloc::getBlocsForMeta($meta->type == 'bloc' ? $meta->parent : $meta->id);
+                $blocs = \Aboleon\MetaFramework\Models\MetaBloc::getBlocsForMeta($meta->type == 'bloc' ? $meta->parent : $meta->id);
 
                 if ($blocs->isNotEmpty()) { ?>
                     <ul id="meta_bloc_list" class="m-0 mb-3 p-0">
@@ -23,7 +23,7 @@
             @endphp
         </div>
 
-        <x-aboleon-inputable::select name="meta_blocs_selector" :values="\MetaFramework\Models\MetaBloc::selectableArray()" label="Affecter un bloc" :affected="collect()" :nullable="false" :disablename="true"/>
+        <x-aboleon-inputable::select name="meta_blocs_selector" :values="\Aboleon\MetaFramework\Models\MetaBloc::selectableArray()" label="Affecter un bloc" :affected="collect()" :nullable="false" :disablename="true"/>
 
         <span id="add_meta_bloc" class="btn btn-default btn-sm mt-3">Ajouter un bloc</span>
     </div>
@@ -33,7 +33,7 @@
                 console.log(data);
                 if (!data.hasOwnProperty('error')) {
                     setTimeout(function () {
-                        window.location.href = '/{{ \MetaFramework\Accessors\Routing::backend() }}/meta/show/bloc/' + data.meta.id;
+                        window.location.href = '/{{ \Aboleon\MetaFramework\Accessors\Routing::backend() }}/meta/show/bloc/' + data.meta.id;
                     }, 2000);
                 }
             }

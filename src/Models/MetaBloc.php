@@ -1,10 +1,10 @@
 <?php
 
-namespace MetaFramework\Models;
+namespace Aboleon\MetaFramework\Models;
 
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\File;
-use MetaFramework\Abstract\BlocModel;
+use Aboleon\MetaFramework\Abstract\BlocModel;
 use Throwable;
 
 final class MetaBloc extends BlocModel

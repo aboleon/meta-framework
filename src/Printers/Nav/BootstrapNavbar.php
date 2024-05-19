@@ -1,8 +1,8 @@
 <?php
 
-namespace MetaFramework\Printers\Nav;
+namespace Aboleon\MetaFramework\Printers\Nav;
 
-use MetaFramework\Polyglote\Traits\Translation;
+use Aboleon\MetaFramework\Polyglote\Traits\Translation;
 
 class BootstrapNavbar
 {

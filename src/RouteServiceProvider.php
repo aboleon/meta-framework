@@ -1,10 +1,10 @@
 <?php
 
-namespace MetaFramework;
+namespace Aboleon\MetaFramework;
 
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Route;
-use MetaFramework\Accessors\Routing;
+use Aboleon\MetaFramework\Accessors\Routing;
 
 class RouteServiceProvider extends ServiceProvider
 {
@@ -14,7 +14,7 @@ class RouteServiceProvider extends ServiceProvider
      * @var string
      */
     protected $defer = false;
-    protected $namespace = '\MetaFramework\Controllers';
+    protected $namespace = '\Aboleon\MetaFramework\Controllers';
     public const HOME = '/';
 
     /**

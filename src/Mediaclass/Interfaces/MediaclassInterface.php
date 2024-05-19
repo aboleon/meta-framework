@@ -1,6 +1,6 @@
 <?php
 
-namespace MetaFramework\Mediaclass\Interfaces;
+namespace Aboleon\MetaFramework\Mediaclass\Interfaces;
 
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 

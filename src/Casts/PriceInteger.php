@@ -1,6 +1,6 @@
 <?php
 
-namespace MetaFramework\Casts;
+namespace Aboleon\MetaFramework\Casts;
 
 use DateTime;
 use Illuminate\Contracts\Database\Eloquent\CastsAttributes;

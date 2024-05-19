@@ -2,7 +2,7 @@
 
 namespace Tests\Unit\Accessors;
 
-use MetaFramework\Models\Meta;
+use Aboleon\MetaFramework\Models\Meta;
 use PHPUnit\Framework\TestCase;
 
 class CountriesTest extends TestCase

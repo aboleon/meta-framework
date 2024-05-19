@@ -1,6 +1,6 @@
 <?php
 
-namespace MetaFramework\Migrations;
+namespace Aboleon\MetaFramework\Migrations;
 
 use Illuminate\Database\Schema\Blueprint;
 

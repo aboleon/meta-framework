@@ -22,7 +22,7 @@
     </div>
 </div>
 @once
-    @if ($model instanceof \MetaFramework\Mediaclass\Interfaces\MediaclassInterface && !isset($model->id))
+    @if ($model instanceof \Aboleon\MetaFramework\Mediaclass\Interfaces\MediaclassInterface && !isset($model->id))
         <input type="hidden" name="mediaclass_temp_id" value="{{ Str::random(32) }}">
     @endif
     @include('mediaclass::fileupload_scripts')

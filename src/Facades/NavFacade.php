@@ -1,6 +1,6 @@
 <?php
 
-namespace  MetaFramework\Facades;
+namespace  Aboleon\MetaFramework\Facades;
 
 use Illuminate\Support\Facades\Facade;
 

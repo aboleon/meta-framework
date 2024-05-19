@@ -1,8 +1,8 @@
 <?php
 
-namespace MetaFramework\Models\Dummy;
+namespace Aboleon\MetaFramework\Models\Dummy;
 
-use MetaFramework\Interfaces\GooglePlacesInterface;
+use Aboleon\MetaFramework\Interfaces\GooglePlacesInterface;
 
 class Address implements GooglePlacesInterface
 {

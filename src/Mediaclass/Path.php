@@ -1,9 +1,9 @@
 <?php
 
-namespace MetaFramework\Mediaclass;
+namespace Aboleon\MetaFramework\Mediaclass;
 
 use Illuminate\Support\Str;
-use MetaFramework\Mediaclass\Interfaces\MediaclassInterface;
+use Aboleon\MetaFramework\Mediaclass\Interfaces\MediaclassInterface;
 use ReflectionClass;
 
 class Path

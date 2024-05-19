@@ -1,12 +1,12 @@
 <?php
 
-namespace MetaFramework\Mediaclass\Components;
+namespace Aboleon\MetaFramework\Mediaclass\Components;
 
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\View\Component;
-use MetaFramework\Mediaclass\Interfaces\MediaclassInterface;
-use MetaFramework\Mediaclass\Models\Media;
+use Aboleon\MetaFramework\Mediaclass\Interfaces\MediaclassInterface;
+use Aboleon\MetaFramework\Mediaclass\Models\Media;
 
 class Stored extends Component
 {

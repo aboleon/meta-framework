@@ -1,6 +1,6 @@
 <?php
 
-namespace MetaFramework\Services\Validation;
+namespace Aboleon\MetaFramework\Services\Validation;
 
 trait ValidationPrefix
 {

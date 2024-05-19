@@ -27,7 +27,7 @@
   },
   "autoload": {
     "psr-4": {
-      "MetaFramework\\": "src"
+      "Aboleon\\MetaFramework\\": "src"
     },
     "files": [
       "src/Functions/loader.php",
@@ -45,12 +45,12 @@
   "extra": {
     "laravel": {
       "providers": [
-        "MetaFramework\\ServiceProvider"
+        "Aboleon\\MetaFramework\\ServiceProvider"
       ],
       "aliases": {
-        "Meta": "MetaFramework\\Facades\\MetaFacade",
-        "Nav": "MetaFramework\\Facades\\NavFacade",
-        "Mediaclass": "MetaFramework\\Mediaclass\\Facades\\MediaclassFacade"
+        "Meta": "Aboleon\\MetaFramework\\Facades\\MetaFacade",
+        "Nav": "Aboleon\\MetaFramework\\Facades\\NavFacade",
+        "Mediaclass": "Aboleon\\MetaFramework\\Mediaclass\\Facades\\MediaclassFacade"
       }
     }
   },

@@ -1,12 +1,12 @@
 <?php
 
-namespace MetaFramework\Mediaclass\Controllers;
+namespace Aboleon\MetaFramework\Mediaclass\Controllers;
 
 
 
-use MetaFramework\Accessors\Users;
-use MetaFramework\Controllers\Controller;
-use MetaFramework\Traits\Ajax;
+use Aboleon\MetaFramework\Accessors\Users;
+use Aboleon\MetaFramework\Controllers\Controller;
+use Aboleon\MetaFramework\Traits\Ajax;
 
 class AjaxController extends Controller
 {

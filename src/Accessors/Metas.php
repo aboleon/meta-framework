@@ -1,8 +1,8 @@
 <?php
 
-namespace MetaFramework\Accessors;
+namespace Aboleon\MetaFramework\Accessors;
 
-use MetaFramework\Models\Meta;
+use Aboleon\MetaFramework\Models\Meta;
 
 class Metas {
     public static function fetchSingleByType(string $type)

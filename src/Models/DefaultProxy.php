@@ -1,8 +1,8 @@
 <?php
 
-namespace MetaFramework\Models;
+namespace Aboleon\MetaFramework\Models;
 
-use MetaFramework\Abstract\MetaModel;
+use Aboleon\MetaFramework\Abstract\MetaModel;
 
 final class DefaultProxy extends MetaModel
 {

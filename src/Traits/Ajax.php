@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace MetaFramework\Traits;
+namespace Aboleon\MetaFramework\Traits;
 
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;

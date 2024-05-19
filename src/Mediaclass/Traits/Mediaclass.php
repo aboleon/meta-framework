@@ -1,16 +1,16 @@
 <?php
 
-namespace MetaFramework\Mediaclass\Traits;
+namespace Aboleon\MetaFramework\Mediaclass\Traits;
 
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\LazyCollection;
 use Illuminate\Support\Str;
-use MetaFramework\Accessors\Locale;
-use MetaFramework\Mediaclass\Models\Media;
-use MetaFramework\Mediaclass\Path;
-use MetaFramework\Traits\Responses;
+use Aboleon\MetaFramework\Accessors\Locale;
+use Aboleon\MetaFramework\Mediaclass\Models\Media;
+use Aboleon\MetaFramework\Mediaclass\Path;
+use Aboleon\MetaFramework\Traits\Responses;
 use ReflectionClass;
 use Throwable;
 

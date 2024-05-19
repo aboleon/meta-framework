@@ -3,7 +3,7 @@
 namespace App\Validation;
 
 
-use MetaFramework\Services\Validation\ValidationAbstract;
+use Aboleon\MetaFramework\Services\Validation\ValidationAbstract;
 
 class UserBasicValidation extends ValidationAbstract
 {

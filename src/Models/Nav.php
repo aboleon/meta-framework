@@ -1,15 +1,15 @@
 <?php
 
-namespace MetaFramework\Models;
+namespace Aboleon\MetaFramework\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Support\Collection;
-use MetaFramework\Accessors\Locale;
-use MetaFramework\Accessors\Routing;
-use MetaFramework\Actions\Translator;
-use MetaFramework\Polyglote\Traits\Translation;
-use MetaFramework\Traits\Responses;
+use Aboleon\MetaFramework\Accessors\Locale;
+use Aboleon\MetaFramework\Accessors\Routing;
+use Aboleon\MetaFramework\Actions\Translator;
+use Aboleon\MetaFramework\Polyglote\Traits\Translation;
+use Aboleon\MetaFramework\Traits\Responses;
 
 class Nav extends Model
 {

@@ -1,6 +1,6 @@
 <?php
 
-use MetaFramework\Mediaclass\Components\Printer;
+use Aboleon\MetaFramework\Mediaclass\Components\Printer;
 
 function mediaclass_url(
     mixed  $model = null,

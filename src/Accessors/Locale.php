@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 
-namespace MetaFramework\Accessors;
+namespace Aboleon\MetaFramework\Accessors;
 
 use Illuminate\Support\Facades\Cache;
 

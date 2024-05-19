@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace MetaFramework\Polyglote\Traits;
+namespace Aboleon\MetaFramework\Polyglote\Traits;
 
-use MetaFramework\Accessors\Locale;
+use Aboleon\MetaFramework\Accessors\Locale;
 
 trait Translation
 {

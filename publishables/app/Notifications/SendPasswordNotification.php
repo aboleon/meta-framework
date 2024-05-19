@@ -4,8 +4,8 @@ namespace App\Notifications;
 
 use App\Mail\PasswordNotification;
 use App\Models\User;
-use MetaFramework\Services\Passwords\PasswordBroker;
-use MetaFramework\Traits\Responses;
+use Aboleon\MetaFramework\Services\Passwords\PasswordBroker;
+use Aboleon\MetaFramework\Traits\Responses;
 use Illuminate\Support\Facades\Mail;
 use Throwable;
 

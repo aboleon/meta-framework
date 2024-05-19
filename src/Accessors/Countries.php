@@ -1,8 +1,8 @@
 <?php
 
-namespace MetaFramework\Accessors;
+namespace Aboleon\MetaFramework\Accessors;
 
-use MetaFramework\Models\Country;
+use Aboleon\MetaFramework\Models\Country;
 use Illuminate\Support\Str;
 
 class Countries

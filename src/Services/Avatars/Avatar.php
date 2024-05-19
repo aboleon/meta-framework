@@ -1,11 +1,11 @@
 <?php
 
-namespace MetaFramework\Services\Avatars;
+namespace Aboleon\MetaFramework\Services\Avatars;
 
 use App\Models\User;
 use Illuminate\Filesystem\FilesystemAdapter;
 use Illuminate\Support\Facades\Storage;
-use MetaFramework\Mediaclass\Path;
+use Aboleon\MetaFramework\Mediaclass\Path;
 
 class Avatar
 {

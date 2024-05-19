@@ -1,14 +1,14 @@
 <?php
 
-namespace MetaFramework\Controllers;
+namespace Aboleon\MetaFramework\Controllers;
 
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\RedirectResponse;
-use MetaFramework\Accessors\Locale;
-use MetaFramework\Models\Nav;
-use MetaFramework\Printers\Nav\Table;
-use MetaFramework\Services\Validation\ValidationTrait;
-use MetaFramework\Traits\Responses;
+use Aboleon\MetaFramework\Accessors\Locale;
+use Aboleon\MetaFramework\Models\Nav;
+use Aboleon\MetaFramework\Printers\Nav\Table;
+use Aboleon\MetaFramework\Services\Validation\ValidationTrait;
+use Aboleon\MetaFramework\Traits\Responses;
 use Throwable;
 
 class NavController extends Controller

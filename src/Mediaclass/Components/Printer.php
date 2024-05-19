@@ -1,15 +1,15 @@
 <?php
 
-namespace MetaFramework\Mediaclass\Components;
+namespace Aboleon\MetaFramework\Mediaclass\Components;
 
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\View\Component;
-use MetaFramework\Mediaclass\Config;
-use MetaFramework\Mediaclass\Parser;
+use Aboleon\MetaFramework\Mediaclass\Config;
+use Aboleon\MetaFramework\Mediaclass\Parser;
 
 class Printer extends Component
 {
-    private \MetaFramework\Mediaclass\Printer $printer;
+    private \Aboleon\MetaFramework\Mediaclass\Printer $printer;
     private array $allowed_types = [
         'img',
         'url'
@@ -37,7 +37,7 @@ class Printer extends Component
         }
         if ($this->model instanceof Parser) {
 
-            $this->printer = new \MetaFramework\Mediaclass\Printer($model);
+            $this->printer = new \Aboleon\MetaFramework\Mediaclass\Printer($model);
 
             $this->printer->setSize($this->size);
 

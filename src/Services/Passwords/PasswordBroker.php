@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace MetaFramework\Services\Passwords;
+namespace Aboleon\MetaFramework\Services\Passwords;
 
 use Illuminate\Http\Request;
-use MetaFramework\Services\Validation\ValidationTrait;
+use Aboleon\MetaFramework\Services\Validation\ValidationTrait;
 
 /**
  * This class is responsible for managing password change requests.

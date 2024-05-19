@@ -1,6 +1,6 @@
 <?php
 
-namespace MetaFramework\Traits;
+namespace Aboleon\MetaFramework\Traits;
 
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder;

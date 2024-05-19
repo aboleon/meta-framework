@@ -1,7 +1,7 @@
 <?php
 
-namespace MetaFramework\Abstract;
-use MetaFramework\Interfaces\Mailer as MailerInterface;
+namespace Aboleon\MetaFramework\Abstract;
+use Aboleon\MetaFramework\Interfaces\Mailer as MailerInterface;
 use App\Mail\MailerMail;
 use Illuminate\Support\Facades\Mail;
 

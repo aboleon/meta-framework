@@ -1,11 +1,11 @@
 <?php
 
-namespace MetaFramework\Components;
+namespace Aboleon\MetaFramework\Components;
 
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\View\Component;
-use MetaFramework\Abstract\MetaModel;
-use MetaFramework\Models\Meta;
+use Aboleon\MetaFramework\Abstract\MetaModel;
+use Aboleon\MetaFramework\Models\Meta;
 
 class MetaBlocs extends Component
 {

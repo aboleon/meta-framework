@@ -1,13 +1,13 @@
 <?php
 
 
-namespace MetaFramework\Traits;
+namespace Aboleon\MetaFramework\Traits;
 
-use MetaFramework\Models\UserRole;
+use Aboleon\MetaFramework\Models\UserRole;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Collection;
-use MetaFramework\Services\Validation\ValidationTrait;
+use Aboleon\MetaFramework\Services\Validation\ValidationTrait;
 
 trait Users
 {

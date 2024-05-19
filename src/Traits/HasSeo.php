@@ -1,8 +1,8 @@
 <?php
 
-namespace MetaFramework\Traits;
+namespace Aboleon\MetaFramework\Traits;
 
-use MetaFramework\Polyglote\Traits\Translation;
+use Aboleon\MetaFramework\Polyglote\Traits\Translation;
 
 trait HasSeo
 {

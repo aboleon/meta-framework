@@ -1,11 +1,11 @@
 <?php
 
-namespace MetaFramework\Mediaclass;
+namespace Aboleon\MetaFramework\Mediaclass;
 
 use Illuminate\Database\Eloquent\Collection as EloquentCollection;
 use Illuminate\Support\Collection;
-use MetaFramework\Mediaclass\Interfaces\MediaclassInterface;
-use MetaFramework\Mediaclass\Models\Media;
+use Aboleon\MetaFramework\Mediaclass\Interfaces\MediaclassInterface;
+use Aboleon\MetaFramework\Mediaclass\Models\Media;
 
 class Mediaclass
 {
@@ -142,7 +142,7 @@ class Mediaclass
 
     /**
      * Récupère les médias pour un Model
-     * @param ?\MetaFramework\Mediaclass\Interfaces\MediaclassInterface $object
+     * @param ?\Aboleon\MetaFramework\Mediaclass\Interfaces\MediaclassInterface $object
      * @return $this
      */
     public function forModel(?MediaclassInterface $object = null, ?string $group = null)

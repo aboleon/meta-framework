@@ -2,9 +2,9 @@
 
 namespace Tests\Unit\Traits;
 
-use MetaFramework\Facades\MetaFacade;
-use MetaFramework\Models\Bloc;
-use MetaFramework\Models\Meta;
+use Aboleon\MetaFramework\Facades\MetaFacade;
+use Aboleon\MetaFramework\Models\Bloc;
+use Aboleon\MetaFramework\Models\Meta;
 use PHPUnit\Framework\TestCase;
 
 class MetaParamsTest extends TestCase

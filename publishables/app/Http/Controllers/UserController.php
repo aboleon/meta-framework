@@ -11,9 +11,9 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-use MetaFramework\Actions\Suppressor;
-use MetaFramework\Services\Passwords\PasswordBroker;
-use MetaFramework\Services\Validation\ValidationTrait;
+use Aboleon\MetaFramework\Actions\Suppressor;
+use Aboleon\MetaFramework\Services\Passwords\PasswordBroker;
+use Aboleon\MetaFramework\Services\Validation\ValidationTrait;
 
 class UserController extends \App\Http\Controllers\Controller
 {

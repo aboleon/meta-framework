@@ -1,8 +1,8 @@
 <?php
 
-namespace MetaFramework\Database\Seeders;
+namespace Aboleon\MetaFramework\Database\Seeders;
 
-use MetaFramework\Models\Vat;
+use Aboleon\MetaFramework\Models\Vat;
 use Illuminate\Database\Seeder;
 
 class VatSeeder extends Seeder

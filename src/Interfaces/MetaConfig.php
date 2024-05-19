@@ -1,6 +1,6 @@
 <?php
 
-namespace MetaFramework\Interfaces;
+namespace Aboleon\MetaFramework\Interfaces;
 
 interface MetaConfig
 {

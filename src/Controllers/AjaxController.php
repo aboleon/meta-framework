@@ -1,12 +1,12 @@
 <?php
 
 
-namespace MetaFramework\Controllers;
+namespace Aboleon\MetaFramework\Controllers;
 
 use Illuminate\Support\Facades\DB;
-use MetaFramework\Models\Meta;
-use MetaFramework\Services\Validation\ValidationTrait;
-use MetaFramework\Traits\Ajax;
+use Aboleon\MetaFramework\Models\Meta;
+use Aboleon\MetaFramework\Services\Validation\ValidationTrait;
+use Aboleon\MetaFramework\Traits\Ajax;
 use Throwable;
 
 class AjaxController extends Controller

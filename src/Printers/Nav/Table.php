@@ -1,10 +1,10 @@
 <?php
 
-namespace MetaFramework\Printers\Nav;
+namespace Aboleon\MetaFramework\Printers\Nav;
 
 use Illuminate\Database\Eloquent\Collection as EloquentCollection;
 use Illuminate\Support\Facades\View;
-use MetaFramework\Accessors\Routing;
+use Aboleon\MetaFramework\Accessors\Routing;
 
 class Table
 {

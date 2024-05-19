@@ -1,6 +1,6 @@
 <?php
 
-namespace MetaFramework\Traits;
+namespace Aboleon\MetaFramework\Traits;
 
 use Barryvdh\DomPDF\Pdf;
 use Illuminate\Http\Response;

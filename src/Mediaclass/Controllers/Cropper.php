@@ -1,14 +1,14 @@
 <?php
 
-namespace MetaFramework\Mediaclass\Controllers;
+namespace Aboleon\MetaFramework\Mediaclass\Controllers;
 
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
-use MetaFramework\Mediaclass\Config;
-use MetaFramework\Mediaclass\Cropable;
-use MetaFramework\Mediaclass\Models\Media;
-use MetaFramework\Mediaclass\Path;
-use MetaFramework\Traits\Responses;
+use Aboleon\MetaFramework\Mediaclass\Config;
+use Aboleon\MetaFramework\Mediaclass\Cropable;
+use Aboleon\MetaFramework\Mediaclass\Models\Media;
+use Aboleon\MetaFramework\Mediaclass\Path;
+use Aboleon\MetaFramework\Traits\Responses;
 use Throwable;
 
 class Cropper

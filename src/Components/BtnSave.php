@@ -1,6 +1,6 @@
 <?php
 
-namespace MetaFramework\Components;
+namespace Aboleon\MetaFramework\Components;
 
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Support\Collection;

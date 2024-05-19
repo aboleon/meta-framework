@@ -4,8 +4,8 @@ namespace App\Models;
 
 use App\Notifications\ResetPasswordNotification;
 use App\Traits\Users;
-use MetaFramework\Mediaclass\Interfaces\MediaclassInterface;
-use MetaFramework\Mediaclass\Traits\Mediaclass;
+use Aboleon\MetaFramework\Mediaclass\Interfaces\MediaclassInterface;
+use Aboleon\MetaFramework\Mediaclass\Traits\Mediaclass;
 
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;

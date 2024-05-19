@@ -22,8 +22,8 @@
                             @php
                                 $value = $error
                                 ? old(request('aboleon-framework-settings.'.$item['name']))
-                                : (MetaFramework\Models\Setting::value($item['name'])
-                                    ?: \MetaFramework\Models\Setting::defaultSettingValue($item['name']));
+                                : (Aboleon\MetaFramework\Models\Setting::value($item['name'])
+                                    ?: \Aboleon\MetaFramework\Models\Setting::defaultSettingValue($item['name']));
                             @endphp
                             @if($item['type'] == 'textarea')
                                 <x-aboleon-inputable::textarea name="{{ $item['name'] }}"

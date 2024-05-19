@@ -1,4 +1,4 @@
-@if(\MetaFramework\Accessors\Locale::multilang())
+@if(\Aboleon\MetaFramework\Accessors\Locale::multilang())
     <ul id="{{ $id }}_tabs" class="nav nav-tabs admintabs" role="tablist">
         @foreach(config('aboleon-framework.translatable.locales') as $locale)
             <li class="nav-item " role="presentation">

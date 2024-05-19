@@ -1,13 +1,13 @@
 <?php
 
-namespace MetaFramework\Actions;
+namespace Aboleon\MetaFramework\Actions;
 
 
 use Exception;
 use Illuminate\Database\Eloquent\Model;
-use MetaFramework\Accessors\Locale;
-use MetaFramework\Polyglote\Traits\Translation;
-use MetaFramework\Traits\{
+use Aboleon\MetaFramework\Accessors\Locale;
+use Aboleon\MetaFramework\Polyglote\Traits\Translation;
+use Aboleon\MetaFramework\Traits\{
     Responses};
 use Throwable;
 

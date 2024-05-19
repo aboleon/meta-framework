@@ -1,14 +1,14 @@
 <?php
 
 
-namespace MetaFramework\Traits;
+namespace Aboleon\MetaFramework\Traits;
 
 
 use Carbon\{
     Carbon,
     CarbonPeriod
 };
-use MetaFramework\Traits\Responses;
+use Aboleon\MetaFramework\Traits\Responses;
 use Throwable;
 
 trait DateManipulator

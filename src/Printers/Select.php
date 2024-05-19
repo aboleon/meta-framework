@@ -1,8 +1,8 @@
 <?php
 
-namespace MetaFramework\Printers;
+namespace Aboleon\MetaFramework\Printers;
 
-use MetaFramework\Traits\TreeBuilder;
+use Aboleon\MetaFramework\Traits\TreeBuilder;
 use Illuminate\Database\Eloquent\Collection as EloquentCollection;
 
 class Select

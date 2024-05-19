@@ -6,7 +6,7 @@
  *  - in controller: GoogleRecaptcha::check()
  */
 
-namespace MetaFramework\Services;
+namespace Aboleon\MetaFramework\Services;
 
 
 use ReCaptcha\ReCaptcha;

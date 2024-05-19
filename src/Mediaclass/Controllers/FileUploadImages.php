@@ -1,6 +1,6 @@
 <?php
 
-namespace MetaFramework\Mediaclass\Controllers;
+namespace Aboleon\MetaFramework\Mediaclass\Controllers;
 
 use Exception;
 use Illuminate\Contracts\Filesystem\Filesystem;
@@ -9,13 +9,13 @@ use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Intervention\Image\Facades\Image;
-use MetaFramework\Mediaclass\Config;
-use MetaFramework\Mediaclass\Cropable;
-use MetaFramework\Mediaclass\Interfaces\MediaclassInterface;
-use MetaFramework\Mediaclass\Mediaclass;
-use MetaFramework\Mediaclass\Models\Media;
-use MetaFramework\Mediaclass\Path;
-use MetaFramework\Traits\Responses;
+use Aboleon\MetaFramework\Mediaclass\Config;
+use Aboleon\MetaFramework\Mediaclass\Cropable;
+use Aboleon\MetaFramework\Mediaclass\Interfaces\MediaclassInterface;
+use Aboleon\MetaFramework\Mediaclass\Mediaclass;
+use Aboleon\MetaFramework\Mediaclass\Models\Media;
+use Aboleon\MetaFramework\Mediaclass\Path;
+use Aboleon\MetaFramework\Traits\Responses;
 use ReflectionClass;
 use Throwable;
 

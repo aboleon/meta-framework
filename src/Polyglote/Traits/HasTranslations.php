@@ -11,16 +11,16 @@ The above copyright notice and this permission notice shall be included in all c
  */
 
 
-namespace MetaFramework\Polyglote\Traits;
+namespace Aboleon\MetaFramework\Polyglote\Traits;
 
 use Exception;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Support\Str;
-use MetaFramework\Accessors\Locale;
-use MetaFramework\Polyglote\Events\TranslationHasBeenSetEvent;
-use MetaFramework\Polyglote\Exceptions\AttributeIsNotTranslatable;
-use MetaFramework\Polyglote\Translatable;
+use Aboleon\MetaFramework\Accessors\Locale;
+use Aboleon\MetaFramework\Polyglote\Events\TranslationHasBeenSetEvent;
+use Aboleon\MetaFramework\Polyglote\Exceptions\AttributeIsNotTranslatable;
+use Aboleon\MetaFramework\Polyglote\Translatable;
 
 trait HasTranslations
 {

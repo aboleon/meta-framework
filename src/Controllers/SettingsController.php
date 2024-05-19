@@ -1,13 +1,13 @@
 <?php
 
-namespace MetaFramework\Controllers;
+namespace Aboleon\MetaFramework\Controllers;
 
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Artisan;
-use MetaFramework\Accessors\Routing;
-use MetaFramework\Models\Setting;
-use MetaFramework\Traits\Responses;
+use Aboleon\MetaFramework\Accessors\Routing;
+use Aboleon\MetaFramework\Models\Setting;
+use Aboleon\MetaFramework\Traits\Responses;
 
 class SettingsController extends Controller
 {

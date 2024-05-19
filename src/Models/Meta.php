@@ -1,6 +1,6 @@
 <?php
 
-namespace MetaFramework\Models;
+namespace Aboleon\MetaFramework\Models;
 
 use Illuminate\Database\Eloquent\{
     Model,
@@ -9,12 +9,12 @@ use Illuminate\Database\Eloquent\{
     Relations\HasOne,
     SoftDeletes};
 use Illuminate\Support\Str;
-use MetaFramework\Abstract\MetaModel;
-use MetaFramework\Accessors\Locale;
-use MetaFramework\Mediaclass\Interfaces\MediaclassInterface;
-use MetaFramework\Mediaclass\Traits\Mediaclass;
-use MetaFramework\Polyglote\Traits\Translation;
-use MetaFramework\Traits\{
+use Aboleon\MetaFramework\Abstract\MetaModel;
+use Aboleon\MetaFramework\Accessors\Locale;
+use Aboleon\MetaFramework\Mediaclass\Interfaces\MediaclassInterface;
+use Aboleon\MetaFramework\Mediaclass\Traits\Mediaclass;
+use Aboleon\MetaFramework\Polyglote\Traits\Translation;
+use Aboleon\MetaFramework\Traits\{
     AccessKey,
     MetaParams,
     OnlineStatus,
@@ -180,7 +180,7 @@ class Meta extends Model implements MediaclassInterface
      * Retourne l'image d'illustration de base du Meta model,
      * si elle existe
      */
-    public function illustration(): ?\MetaFramework\Mediaclass\Models\Media
+    public function illustration(): ?\Aboleon\MetaFramework\Mediaclass\Models\Media
     {
         return $this->media->where('group', 'meta')->first();
     }

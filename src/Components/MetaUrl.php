@@ -1,10 +1,10 @@
 <?php
 
-namespace MetaFramework\Components;
+namespace Aboleon\MetaFramework\Components;
 
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\View\Component;
-use MetaFramework\Models\Meta;
+use Aboleon\MetaFramework\Models\Meta;
 
 class MetaUrl extends Component
 {

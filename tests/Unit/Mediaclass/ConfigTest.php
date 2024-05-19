@@ -2,9 +2,9 @@
 
 namespace Tests\Unit\Mediaclass;
 
-use MetaFramework\ServiceProvider;
+use Aboleon\MetaFramework\ServiceProvider;
 use Orchestra\Testbench\TestCase;
-use MetaFramework\Mediaclass\Config;
+use Aboleon\MetaFramework\Mediaclass\Config;
 use Illuminate\Contracts\Filesystem\Filesystem;
 
 class ConfigTest extends TestCase

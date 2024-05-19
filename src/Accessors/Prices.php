@@ -1,10 +1,10 @@
 <?php
 
-namespace MetaFramework\Accessors;
+namespace Aboleon\MetaFramework\Accessors;
 
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Cache;
-use MetaFramework\Models\Vat;
+use Aboleon\MetaFramework\Models\Vat;
 
 class Prices
 {

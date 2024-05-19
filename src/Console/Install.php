@@ -1,6 +1,6 @@
 <?php
 
-namespace MetaFramework\Console;
+namespace Aboleon\MetaFramework\Console;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\File;
@@ -20,7 +20,7 @@ class Install extends Command
      *
      * @var string
      */
-    protected $description = 'Install the MetaFramework';
+    protected $description = 'Install the Aboleon\MetaFramework';
 
     /**
      * Execute the console command.
@@ -32,7 +32,7 @@ class Install extends Command
         if (method_exists($this, $this->argument('argument'))) {
             $this->{$this->argument('argument')}();
         } else {
-            $this->error("MetaFramework: unknown console command '" . $this->argument('argument') . "'");
+            $this->error("Aboleon\MetaFramework: unknown console command '" . $this->argument('argument') . "'");
         }
     }
 

@@ -1,8 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use MetaFramework\Mediaclass\Cropable;
-use MetaFramework\Mediaclass\Models\Media;
+use Aboleon\MetaFramework\Mediaclass\Cropable;
+use Aboleon\MetaFramework\Mediaclass\Models\Media;
 
 
 Route::prefix('mediaclass')

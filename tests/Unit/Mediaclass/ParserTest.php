@@ -2,11 +2,11 @@
 
 namespace Tests\Unit\Mediaclass;
 
-use MetaFramework\Mediaclass\Config;
-use MetaFramework\Models\Meta\SubModelExample;
+use Aboleon\MetaFramework\Mediaclass\Config;
+use Aboleon\MetaFramework\Models\Meta\SubModelExample;
 use Orchestra\Testbench\TestCase;
-use MetaFramework\Mediaclass\Models\Media;
-use MetaFramework\Mediaclass\Parser;
+use Aboleon\MetaFramework\Mediaclass\Models\Media;
+use Aboleon\MetaFramework\Mediaclass\Parser;
 
 class ParserTest extends TestCase
 {

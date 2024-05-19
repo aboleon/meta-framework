@@ -1,6 +1,6 @@
 <?php
 
-namespace MetaFramework\Functions;
+namespace Aboleon\MetaFramework\Functions;
 
 use Illuminate\Support\Str;
 

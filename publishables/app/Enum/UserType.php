@@ -2,16 +2,8 @@
 
 namespace App\Enum;
 
-interface UserCustomDataInterface
-{
-    public function profileData(): array;
-
-    public function mediaSettings(): array;
-}
-
-
-use MetaFramework\Interfaces\BackedEnumInteface;
-use MetaFramework\Traits\BackedEnum;
+use Aboleon\MetaFramework\Interfaces\BackedEnumInteface;
+use Aboleon\MetaFramework\Traits\BackedEnum;
 
 enum UserType: string implements BackedEnumInteface
 {

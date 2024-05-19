@@ -1,6 +1,6 @@
 <?php
 
-namespace MetaFramework\Components;
+namespace Aboleon\MetaFramework\Components;
 
 use Closure;
 use Illuminate\Contracts\View\View;

@@ -1,8 +1,8 @@
 <?php
 
-namespace MetaFramework\Components;
+namespace Aboleon\MetaFramework\Components;
 
-use MetaFramework\Models\Forms;
+use Aboleon\MetaFramework\Models\Forms;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\View\Component;
 
