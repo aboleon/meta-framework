@@ -34,10 +34,10 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
     public function boot(): void
     {
         $this->loadViewsFrom(__DIR__ . '/Resources/views', 'aboleon-framework');
-        Blade::componentNamespace('Aboleon\MetaFramework\\Components', 'aboleon-framework');
+        Blade::componentNamespace('Aboleon\\MetaFramework\\Components', 'aboleon-framework');
 
         $this->loadViewsFrom(__DIR__ . '/Mediaclass/Views', 'mediaclass');
-        Blade::componentNamespace('Aboleon\MetaFramework\\Mediaclass\\Components', 'mediaclass');
+        Blade::componentNamespace('Aboleon\\MetaFramework\\Mediaclass\\Components', 'mediaclass');
 
         $this->loadRoutesFrom(__DIR__.'/Mediaclass/Routes/public.php');
         $this->loadRoutesFrom(__DIR__.'/Mediaclass/Routes/panel.php');
