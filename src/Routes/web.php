@@ -2,8 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use MetaFramework\Accessors\Routing;
-use MetaFramework\Controllers\{
-    AjaxController,
+use MetaFramework\Controllers\{AjaxController,
+    MailController,
     MetaController,
     NavController,
     SettingsController,
@@ -13,10 +13,13 @@ use MetaFramework\Controllers\{
 
 Route::prefix(Routing::backend())
     ->name('aboleon-framework.')
-    ->middleware(['web', 'auth:sanctum'])->group(function () {
+    ->middleware(['web', 'auth'])->group(function () {
 
         // Ajax requests
         Route::post('ajax', [AjaxController::class, 'distribute'])->name('ajax');
+
+        Route::any('mailer/{type}/{identifier}', [MailController::class, 'distribute'])->name('mailer');
+
 
         Route::resource('siteowner', SiteOwnerController::class);
         Route::resource('nav', NavController::class);

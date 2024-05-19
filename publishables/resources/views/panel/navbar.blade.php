@@ -1,45 +1,32 @@
-<nav class="nav navbar-nav float-end">
-    <ul class="m-0 p-0 list-unstyled" id="my-account">
-        <li>
-            <x-jet-dropdown align="right" width="48">
-                <x-slot name="trigger">
-                    <button id="user_avatar" class="p-0 border-0 bg-transparent">
+<nav class="nav navbar navbar-expand-lg text-dark navbar-nav p-0">
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                   aria-expanded="false">
+                    <img src="{!! \MetaFramework\Services\Avatars\Avatar::avatar(auth()->user()) !!}"
+                         alt="{{ auth()->user()->names() }}" width="36" height="36"/>
+                </a>
+                <ul class="dropdown-menu" style="left:initial;right: 0">
+                    <li><a class="dropdown-item" href="{{ route('profile.edit') }}">{{ __('Profile') }}</a></li>
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+                    <li class="ps-3">
+                        <form method="POST" action="{{ route('logout') }}">
+                            @csrf
 
-                        <x-mediaclass::printer :model="Mediaclass::forModel(auth()->user())->first()"
-                                               :default="asset('media/logo.png')"
-                                               class="rounded-circle"
-                                               size="md"
-                                               :responsive="false"
-                                               :alt="Auth::user()->names()"/>
-                    </button>
-                </x-slot>
-
-                <x-slot name="content">
-
-                    <x-jet-dropdown-link href="{{ route('profile.show') }}">
-                        {{ trans_choice('account.label', 1) }}
-                    </x-jet-dropdown-link>
-
-                    @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
-                        <x-jet-dropdown-link href="{{ route('api-tokens.index') }}">
-                            {{ __('API Tokens') }}
-                        </x-jet-dropdown-link>
-                    @endif
-
-                    <div class="border-top my-2 mx-4"></div>
-
-                    <!-- Authentication -->
-                    <form method="POST" action="{{ route('logout') }}">
-                        @csrf
-
-                        <x-jet-dropdown-link href="{{ route('logout') }}"
-                                             onclick="event.preventDefault();
+                            <a href="{{ route('logout') }}"
+                               class="text-decoration-none text-danger"
+                               onclick="event.preventDefault();
                                         this.closest('form').submit();">
-                            {{ __('account.logout') }}
-                        </x-jet-dropdown-link>
-                    </form>
-                </x-slot>
-            </x-jet-dropdown>
-        </li>
-    </ul>
+                                {{ __('Log Out') }}
+                            </a>
+                        </form>
+
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
 </nav>

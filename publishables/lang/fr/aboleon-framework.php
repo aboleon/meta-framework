@@ -17,12 +17,9 @@ return [
     'active' => 'Actifs',
     'archived' => 'Archivés',
     'actions' => [
-        'admin_only' => "Cette action est réservée aux administrateurs",
-        'create' => "Créer"
+        'admin_only' => "Cette action est réservée aux administrateurs"
     ],
-    'replicate' => 'Dupliquer',
     'select_option' => "Sélectionner",
-    'select_date' => "Choisir une date...",
     'creation' => 'Création',
     'last_actity' => 'Dernière activité',
     'email_address' => 'Adresse e-mail',
@@ -47,7 +44,7 @@ return [
     'role' => 'rôle|rôles',
     'should_i_delete_user' => "Voulez-vous supprimer ce compte ?",
     'should_i_delete_record' => "Voulez-vous supprimer cet enregistrement ?",
-    'delete_user' => 'Suppression de compte',
+    'delete_user' => 'Supression de compte',
     'record_updated' => 'Mise à jour réussie.',
     'record_deleted' => "L'enregistrement a été supprimé.",
     'select_photo' => "Sélectionner une image",
@@ -60,7 +57,7 @@ return [
     'add_m' => 'Ajouter un ',
     'edit_f' => 'Editer une ',
     'edit_m' => 'Editer un ',
-    'deletion' => 'Suppression',
+    'deletion' => 'Supression',
     'needed' => 'nécessaire|nécessaires',
     'no_data_provided' => 'Aucune donnée n\'a été fournie',
     'no_records' => 'Aucun enregistrement dans la base de données',

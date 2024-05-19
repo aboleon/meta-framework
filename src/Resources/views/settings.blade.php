@@ -1,6 +1,6 @@
 <x-backend-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+        <h2>
             Configuration
         </h2>
     </x-slot>

@@ -1,6 +1,6 @@
 <x-backend-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+        <h2>
             {{ $data->id ? "Édition d'une" : "Nouvelle" }} entrée du Menu
         </h2>
     </x-slot>

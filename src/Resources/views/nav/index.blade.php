@@ -14,7 +14,7 @@
 
     <x-slot name="header">
 
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+        <h2>
             Menu principal &raquo;
             <a class="btn btn-sm btn-success"
                href="{{ route('aboleon-framework.nav.create') }}">Créer une entrée principale</a>

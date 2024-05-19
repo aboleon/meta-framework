@@ -50,7 +50,7 @@
                                         </div>
                                     @endfor
                                 @else
-                                    <x-aboleon-inputable::textarea label="Adresse" height="140" class="mb-3" name="address" value="{!! old('address') ?: (is_array($data?->address) ? current($data->address) : $data->address) !!}"/>
+                                    <x-aboleon-inputable::textarea label="Adresse" height="140" class="mb-3" name="address" value="{!! old('address') ?: (is_array($data?->address) ? current($data->address) : '') !!}"/>
                                 @endif
                             </div>
                             <div class="col-sm-6">

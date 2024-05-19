@@ -32,6 +32,9 @@
     "files": [
       "src/Functions/loader.php",
       "src/Mediaclass/functions.php"
+    ],
+    "exclude-from-classmap": [
+      "publishables"
     ]
   },
   "autoload-dev": {
