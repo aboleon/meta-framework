@@ -9,8 +9,8 @@
 
 @for height in range(50, 500) {
     .h-# (height) {
-        height: #(height)px;
-    }
+    height: #(height)px;
+}
 }
 body {
     font-family: 'Nunito', sans-serif;
@@ -453,7 +453,6 @@ ul.aboleon-framework-actions {
 }
 
 #topbar-actions {
-    margin-right: 10px;
 
     a, .btn {
         font-size: 14px;
@@ -461,7 +460,7 @@ ul.aboleon-framework-actions {
     }
 
     .separator {
-        margin: 0 10px;
+        margin: 0 5px;
         padding-left: 10px;
         border-right: 2px dotted #bdbdbd;
         display: inline-block;

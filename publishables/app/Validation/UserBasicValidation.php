@@ -45,9 +45,9 @@ class UserBasicValidation extends ValidationAbstract
             $this->prefix . 'first_name.string' => __('validation.string', ['attribute' => strval(__('account.first_name'))]),
             $this->prefix . 'last_name.required' => __('validation.required', ['attribute' => strval(__('account.last_name'))]),
             $this->prefix . 'last_name.string' => __('validation.string', ['attribute' => strval(__('account.first_name'))]),
-            $this->prefix . 'email.required' => __('validation.required', ['attribute' => strval(__('ui.email_address'))]),
-            $this->prefix . 'email.email' => __('validation.email', ['attribute' => strval(__('ui.email_address'))]),
-            $this->prefix . 'email.unique' => __('validation.unique', ['attribute' => strval(__('ui.email_address'))]),
+            $this->prefix . 'email.required' => __('validation.required', ['attribute' => strval(__('aboleon-framework.email_address'))]),
+            $this->prefix . 'email.email' => __('validation.email', ['attribute' => strval(__('aboleon-framework.email_address'))]),
+            $this->prefix . 'email.unique' => __('validation.unique', ['attribute' => strval(__('aboleon-framework.email_address'))]),
         ];
     }
 }

@@ -99,7 +99,7 @@ class UserController extends \App\Http\Controllers\Controller
             $user->profile()->save(new UserProfile($this->validated_data['profile']));
         }
 
-        $this->responseSuccess(__('ui.record_created'));
+        $this->responseSuccess(__('aboleon-framework.record_created'));
         $this->redirect_to = route('panel.users.edit', $user->id);
         $this->saveAndRedirect(route('panel.users.index', 'super-admin'));
 
@@ -144,7 +144,7 @@ class UserController extends \App\Http\Controllers\Controller
                 Auth::guard('web')->login($user);
             }
             $this->saveAndRedirect(route('panel.users.index', 'super-admin'));
-            $this->responseSuccess(__('ui.record_updated'));
+            $this->responseSuccess(__('aboleon-framework.record_updated'));
 
         } catch (Throwable $e) {
             $this->responseException($e);

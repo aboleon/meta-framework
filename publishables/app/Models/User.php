@@ -2,11 +2,9 @@
 
 namespace App\Models;
 
-use App\Notifications\ResetPasswordNotification;
-use App\Traits\Users;
 use Aboleon\MetaFramework\Mediaclass\Interfaces\MediaclassInterface;
 use Aboleon\MetaFramework\Mediaclass\Traits\Mediaclass;
-
+use App\Traits\Users;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -86,24 +84,22 @@ class User extends Authenticatable implements MediaclassInterface
         return $this->userRole();
     }
 
-    /*
-        public function userSubData(?string $role = null): UserCustomDataInterface|bool
-        {
-            if (!$role) {
-                return false;
-            }
 
-            $subclass = "\App\Models\User\\" . ucfirst(Str::camel($role));
-
-            return class_exists($subclass) ? new $subclass : false;
+    public function userSubData(?string $role = null): UserCustomDataInterface|bool
+    {
+        if (!$role) {
+            return false;
         }
 
-        public function profile(): HasOne
-        {
-            return $this->hasOne(UserProfile::class, 'user_id');
-        }
-    */
+        $subclass = "\App\Models\User\\" . ucfirst(Str::camel($role));
 
+        return class_exists($subclass) ? new $subclass : false;
+    }
+
+    public function profile(): HasOne
+    {
+        return $this->hasOne(UserProfile::class, 'user_id');
+    }
 
 
 }

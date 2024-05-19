@@ -35,7 +35,7 @@
                         <x-jet-dropdown-link href="{{ route('logout') }}"
                                              onclick="event.preventDefault();
                                         this.closest('form').submit();">
-                            {{ __('account.logout') }}
+                            {{ __('aboleon-framework-account.logout') }}
                         </x-jet-dropdown-link>
                     </form>
                 </x-slot>
