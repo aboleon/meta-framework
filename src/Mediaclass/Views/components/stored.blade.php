@@ -57,7 +57,7 @@
 
 <div class="mt-2 mediaclass-alerts" data-msg="Aucun média n'est ajouté">
     @if ($medias->isEmpty())
-        {!! wg_info_notice("Aucun média n'est ajouté") !!}
+        {!! aboleon_info_notice("Aucun média n'est ajouté") !!}
     @endif
 </div>
 

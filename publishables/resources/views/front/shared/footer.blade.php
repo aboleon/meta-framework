@@ -37,9 +37,6 @@
         {!! (new \App\Printers\Nav\Links('footer_3'))() !!}
         <a class="footer-bottom-container-links-item">Copyright {{ date('Y') }}</a>
 
-        <a href="https://wagaia.com">
-            <img src="{{ url('front') }}/images/wagaia.png" alt="Wagaia, création de sites Internet Marseille">
-        </a>
     </div>
 </footer>
 --}}

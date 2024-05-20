@@ -38,7 +38,7 @@
     <x-aboleon-framework::response-messages/>
 
     <div class="shadow p-5 mb-5 bg-body-tertiary rounded">
-        <form method="post" action="{{ $route }}" id="wagaia-form">
+        <form method="post" action="{{ $route }}" id="aboleon-form">
             @php
             if (str_contains(url()->previous(),'oftype')) {
                 session()->put('users_redirect', url()->previous());
