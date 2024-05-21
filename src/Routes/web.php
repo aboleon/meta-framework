@@ -18,10 +18,6 @@ Route::prefix(Routing::backend())
 
         Route::any('mailer/{type}/{identifier}', [MailController::class, 'distribute'])->name('mailer');
 
-
-        Route::resource('nav', NavController::class);
-        Route::resource('vat', VatController::class);
-
         Route::prefix('meta')->name('meta.')->group(function () {
             Route::any('admin/create', [MetaController::class, 'createAdmin'])->name('create_admin');
             Route::get('create/{type}', [MetaController::class, 'create'])->name('create');
