@@ -26,6 +26,6 @@
             @endforeach
         </div>
     @else
-        <input type="hidden" name="roles[]" value="{{ $role['id'] }}"/>
+        <input type="hidden" name="roles[]" value="{{ $role['id'] ?? '' }}"/>
     @endif
 </div>

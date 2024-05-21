@@ -1,5 +1,5 @@
 @php
-    $account_roles = $account->id ? $account->roles : [['role_id' => $role['id']]];
+    $account_roles = $account->id ? $account->roles : [['role_id' => ($role['id'] ?? null)]];
     $error = $errors->any();
 @endphp
 
