@@ -1,9 +1,8 @@
 <?php
 
-namespace Aboleon\MetaFramework\Models;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
 
 class Setting extends Model
@@ -18,11 +17,6 @@ class Setting extends Model
             })->toArray();
     }
 
-    public static function getConfigElementsKeys(): array
-    {
-        return collect(config('aboleon-framework-settings'))->pluck('elements.*.name')->flatten()->toArray();
-    }
-
     public static function getConfigElements(): array
     {
         return collect(config('aboleon-framework-settings'))->reduce(function ($carry, $item) {
@@ -30,24 +24,9 @@ class Setting extends Model
         }, []);
     }
 
-
     private static function getDefinedSettingFields(): Collection
     {
         return collect(config('aboleon-framework-settings'))->pluck('elements')->flatten(1);
-    }
-
-    public static function add($key, $val): ?Setting
-    {
-        $setting = self::get($key);
-        if ($setting) {
-            $setting->value = $val;
-            $setting->save();
-        } else {
-            if (Setting::defaultSettingValue($key) != $val) {
-                $setting = Setting::create(['name' => $key, 'value' => $val]);
-            }
-        }
-        return $setting;
     }
 
     public static function get(string $key): ?Setting

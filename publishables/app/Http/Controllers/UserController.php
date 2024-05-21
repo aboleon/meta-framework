@@ -1,11 +1,9 @@
 <?php
 namespace App\Http\Controllers;
 
-use Aboleon\MetaFramework\Actions\Suppressor;
-use Aboleon\MetaFramework\Services\Passwords\PasswordBroker;
-use Aboleon\MetaFramework\Services\Validation\ValidationTrait;
 use App\Enum\UserType;
 use App\Http\Requests\BackendUserRequest;
+use Throwable;
 use App\Models\{User, UserProfile, UserRole};
 use App\Notifications\SendPasswordNotification;
 use App\Traits\Users;
@@ -14,6 +12,9 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use Aboleon\MetaFramework\Actions\Suppressor;
+use Aboleon\MetaFramework\Services\Passwords\PasswordBroker;
+use Aboleon\MetaFramework\Services\Validation\ValidationTrait;
 
 class UserController extends \App\Http\Controllers\Controller
 {
