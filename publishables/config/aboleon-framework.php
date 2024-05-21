@@ -13,7 +13,7 @@ return [
     'tables' => [
         'user' => 'users'
     ],
-    'siteowner' => [
+    'appowner' => [
         'active' => true,
         'reg_number' => 'SIRET',
         'address_lines' => 1

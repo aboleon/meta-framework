@@ -6,12 +6,12 @@
         <div class="d-flex align-items-center" id="topbar-actions">
             @if ($account->id)
                 <a class="btn btn-sm btn-secondary mx-2"
-                   href="{{ route('panel.users.index', 'super-admin') }}">
+                   href="{{ route('aboleon-framework.users.index', 'super-admin') }}">
                     <i class="fa-solid fa-bars"></i>
                     Index
                 </a>
                 <a class="btn btn-sm btn-success"
-                   href="{{ route('panel.users.create') }}">
+                   href="{{ route('aboleon-framework.users.create') }}">
                     <i class="fa-solid fa-circle-plus"></i>
                     Créer</a>
 
@@ -23,26 +23,27 @@
                 </a>
             @endif
 
-            <div class="separator"></div>
             <x-aboleon-framework::save-btns/>
+
+            <div class="separator"></div>
         </div>
     </x-slot>
 
     @if ($account->id)
-        <x-aboleon-framework::modal :route="route('panel.users.destroy', $account)"
-                                question="Supprimer le compte {{ $account->names() }} ?"
-                                reference="destroy_{{ $account->id }}"/>
+        <x-aboleon-framework::modal :route="route('aboleon-framework.users.destroy', $account)"
+                                    question="Supprimer le compte {{ $account->names() }} ?"
+                                    reference="destroy_{{ $account->id }}"/>
     @endif
 
     <x-aboleon-framework::validation-banner/>
     <x-aboleon-framework::response-messages/>
 
     <div class="shadow p-5 mb-5 bg-body-tertiary rounded">
-        <form method="post" action="{{ $route }}" id="aboleon-form">
+        <form method="post" action="{{ $route }}" id="wagaia-form">
             @php
-            if (str_contains(url()->previous(),'oftype')) {
-                session()->put('users_redirect', url()->previous());
-            }
+                if (str_contains(url()->previous(),'oftype')) {
+                    session()->put('users_redirect', url()->previous());
+                }
             @endphp
             <input type="hidden" name="custom_redirect" value="{{ session('users_redirect') }}">
             @csrf

@@ -1,26 +1,24 @@
 <?php
 
-namespace Aboleon\MetaFramework\Controllers;
+namespace App\Http\Controllers;
 
-use Illuminate\Contracts\Support\Renderable;
-use Illuminate\Support\Facades\Cache;
-use Illuminate\Http\{
-    RedirectResponse,
-    Request
-};
-use Aboleon\MetaFramework\Models\SiteOwner;
+use Aboleon\MetaFramework\Controllers\Controller;
 use Aboleon\MetaFramework\Services\Validation\ValidationTrait;
 use Aboleon\MetaFramework\Traits\Responses;
+use App\Models\AppOwner;
+use Illuminate\Contracts\Support\Renderable;
+use Illuminate\Http\{RedirectResponse, Request};
+use Illuminate\Support\Facades\Cache;
 use Throwable;
 
-class SiteOwnerController extends Controller
+class AppOwnerController extends Controller
 {
     use Responses;
     use ValidationTrait;
 
     public function index(): Renderable
     {
-        return view('aboleon-framework::siteowner')->with('data', SiteOwner::first());
+        return view('appowner')->with('data', AppOwner::first());
     }
 
     public function store(Request $request): RedirectResponse
@@ -29,7 +27,7 @@ class SiteOwnerController extends Controller
         $this->validation();
 
         try {
-            $object = SiteOwner::firstOrNew();
+            $object = AppOwner::firstOrNew();
             $object->name = $request['name'];
             $object->address = $request['address'];
             $object->manager = $request['manager'];
@@ -66,15 +64,15 @@ class SiteOwnerController extends Controller
         ];
 
         $this->validation_messages = [
-            'name.required' => "Le nom de la structure n'est pas renseigné.",
-            'address.required' => "L'adresse de la structure n'est pas renseignée.",
-            'manager.required' => "Le gérant de la structure n'est pas renseigné.",
-            'phone.required' => "Le numéro de téléphone n'est pas renseigné.",
-            'vat_number.required' => "Le numéro TVA n'est pas renseigné.",
-            'reg_number.required' => config('aboleon-framework.siteowner.reg_number') . " n'est pas renseigné.",
-            'email.required' => "L'adresse e-mail n'est pas renseignée.",
-            'zip.required' => "Le code postal n'est pas renseigné.",
-            'locality.required' => "La ville n'est pas renseignée.",
+            'name.required' => __('appowner.name'),
+            'address.required' => __('address.name'),
+            'manager.required' => __('manager.name'),
+            'phone.required' => __('phone.name'),
+            'vat_number.required' => __('vat_number.name'),
+            'reg_number.required' => __('reg_number.name'),
+            'email.required' => __('email.name'),
+            'zip.required' => __('zip.name'),
+            'locality.required' => __('locality.name'),
         ];
     }
 }

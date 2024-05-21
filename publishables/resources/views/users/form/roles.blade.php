@@ -1,5 +1,5 @@
 <div class="d-none">
-    @if (!isset($role) && request()->route()->getName() != 'panel.users.create_type')
+    @if (!isset($role) && request()->route()->getName() != 'aboleon-framework.users.create_type')
         <div class="col-lg-12 mb-3 mt-4">
             <div class="d-flex align-align-items-center mb-4">
                 <b class="d-block">Rôles</b>

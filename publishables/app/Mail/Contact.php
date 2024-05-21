@@ -2,7 +2,7 @@
 
 namespace App\Mail;
 
-use App\Models\SiteOwner;
+use App\Models\AppOwner;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;

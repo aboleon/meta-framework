@@ -5,7 +5,7 @@
         </h2>
         <div class="d-flex align-items-center" id="topbar-actions">
             <a class="btn btn-sm btn-success"
-               href="{{ route('panel.users.create_type', ['role' => $role]) }}">
+               href="{{ route('aboleon-framework.users.create_type', ['role' => $role]) }}">
                 <i class="fa-solid fa-circle-plus"></i>
                 Créer</a>
             <div class="separator"></div>
@@ -16,8 +16,10 @@
         <x-aboleon-framework::response-messages/>
 
         <div class="nav nav-tabs">
-            <a href="{{route('panel.users.index', $role)}}" class="nav-link @if(!$archived) active @endif">{{__('aboleon-framework.active')}}</a>
-            <a href="{{route('panel.users.archived', $role)}}" class="nav-link @if($archived) active @endif">{{__('aboleon-framework.archived')}}</a>
+            <a href="{{route('aboleon-framework.users.index', $role)}}"
+               class="nav-link @if(!$archived) active @endif">{{__('aboleon-framework.active')}}</a>
+            <a href="{{route('aboleon-framework.users.archived', $role)}}"
+               class="nav-link @if($archived) active @endif">{{__('aboleon-framework.archived')}}</a>
         </div>
         <table class="table index">
             <thead>
@@ -39,7 +41,7 @@
                     <td>{{ $item->last_login_at?->format('d/m/Y H:i') }}</td>
                     <td>
                         <ul class="aboleon-framework-actions">
-                            <x-aboleon-framework::edit-link :route="route('panel.users.edit', $item)"/>
+                            <x-aboleon-framework::edit-link :route="route('aboleon-framework.users.edit', $item)"/>
                             @if ($item->trashed())
                                 <x-aboleon-framework::restore-modal-link reference="{{ $item->id }}"/>
                             @else
@@ -49,15 +51,15 @@
 
                         @if ($item->trashed())
                             <x-aboleon-framework::modal :route="route('panel.restore')"
-                                          title="Rétablissement d'un compte"
-                                          :params="['object' => $item::class, 'id' => $item->id, 'success_message' => 'Le compte est rétabli']"
-                                          question="Rétablir s le compte {{ $item->names() }} ?"
-                                          reference="restore_{{ $item->id }}"/>
+                                                        title="Rétablissement d'un compte"
+                                                        :params="['object' => $item::class, 'id' => $item->id, 'success_message' => 'Le compte est rétabli']"
+                                                        question="Rétablir s le compte {{ $item->names() }} ?"
+                                                        reference="restore_{{ $item->id }}"/>
                         @else
-                            <x-aboleon-framework::modal :route="route('panel.users.destroy', $item)"
-                                          question="Archiver le compte {{ $item->names() }} ?"
-                                          title="Archiver un compte"
-                                          reference="destroy_{{ $item->id }}"/>
+                            <x-aboleon-framework::modal :route="route('aboleon-framework.users.destroy', $item)"
+                                                        question="Archiver le compte {{ $item->names() }} ?"
+                                                        title="Archiver un compte"
+                                                        reference="destroy_{{ $item->id }}"/>
                         @endif
                     </td>
                 </tr>

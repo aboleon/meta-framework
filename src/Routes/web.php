@@ -7,7 +7,6 @@ use Aboleon\MetaFramework\Controllers\{AjaxController,
     MetaController,
     NavController,
     SettingsController,
-    SiteOwnerController,
     VatController};
 
 
@@ -21,7 +20,6 @@ Route::prefix(Routing::backend())
         Route::any('mailer/{type}/{identifier}', [MailController::class, 'distribute'])->name('mailer');
 
 
-        Route::resource('siteowner', SiteOwnerController::class);
         Route::resource('nav', NavController::class);
         Route::resource('vat', VatController::class);
 

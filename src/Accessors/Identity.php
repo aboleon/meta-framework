@@ -2,15 +2,15 @@
 
 namespace Aboleon\MetaFramework\Accessors;
 
-use Aboleon\MetaFramework\Models\SiteOwner;
+use App\Models\AppOwner;
 
 class Identity
 {
 
-    public static function model(): ?SiteOwner
+    public static function model(): ?AppOwner
     {
         return cache()->rememberForever('aboleon-framework_siteowner', function () {
-            return SiteOwner::query()->first();
+            return AppOwner::query()->first();
         });
     }
 

@@ -1,6 +1,9 @@
 <?php
 namespace App\Http\Controllers;
 
+use Aboleon\MetaFramework\Actions\Suppressor;
+use Aboleon\MetaFramework\Services\Passwords\PasswordBroker;
+use Aboleon\MetaFramework\Services\Validation\ValidationTrait;
 use App\Enum\UserType;
 use App\Http\Requests\BackendUserRequest;
 use App\Models\{User, UserProfile, UserRole};
@@ -11,9 +14,6 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-use Aboleon\MetaFramework\Actions\Suppressor;
-use Aboleon\MetaFramework\Services\Passwords\PasswordBroker;
-use Aboleon\MetaFramework\Services\Validation\ValidationTrait;
 
 class UserController extends \App\Http\Controllers\Controller
 {
@@ -28,12 +28,12 @@ class UserController extends \App\Http\Controllers\Controller
         }
         return view()->first(['roles.index_' . $role, 'users.index'])->with([
             'data' => User::withRole($role)
-                ->when(Route::currentRouteName() == 'panel.users.archived', fn($q) => $q->onlyTrashed())
+                ->when(Route::currentRouteName() == 'aboleon-framework.users.archived', fn($q) => $q->onlyTrashed())
                 ->orderBy('last_name')
                 ->orderBy('first_name')
                 ->paginate(15),
             'role' => $role,
-            'archived' => request()->routeIs('panel.users.archived'),
+            'archived' => request()->routeIs('aboleon-framework.users.archived'),
         ]);
     }
 
@@ -48,7 +48,7 @@ class UserController extends \App\Http\Controllers\Controller
             'account' => $account,
             'roles' => $this->userTypes(),
             'role' => $parsed_role,
-            'route' => route('panel.users.store'),
+            'route' => route('aboleon-framework.users.store'),
             'label' => 'Nouveau compte ' . ($parsed_role['label'] ?? '')
         ]);
     }
@@ -59,7 +59,7 @@ class UserController extends \App\Http\Controllers\Controller
             'account' => $user,
             'roles' => $user->userTypes(),
             'method' => 'put',
-            'route' => route('panel.users.update', $user),
+            'route' => route('aboleon-framework.users.update', $user),
             'label' => 'Éditer un compte',
         ]);
     }
@@ -100,8 +100,8 @@ class UserController extends \App\Http\Controllers\Controller
         }
 
         $this->responseSuccess(__('aboleon-framework.record_created'));
-        $this->redirect_to = route('panel.users.edit', $user->id);
-        $this->saveAndRedirect(route('panel.users.index', 'super-admin'));
+        $this->redirect_to = route('aboleon-framework.users.edit', $user->id);
+        $this->saveAndRedirect(route('aboleon-framework.users.index', 'super-admin'));
 
         /* } catch (Throwable $e) {
              $this->responseException($e);
@@ -143,7 +143,7 @@ class UserController extends \App\Http\Controllers\Controller
                 session()->flush();
                 Auth::guard('web')->login($user);
             }
-            $this->saveAndRedirect(route('panel.users.index', 'super-admin'));
+            $this->saveAndRedirect(route('aboleon-framework.users.index', 'super-admin'));
             $this->responseSuccess(__('aboleon-framework.record_updated'));
 
         } catch (Throwable $e) {
