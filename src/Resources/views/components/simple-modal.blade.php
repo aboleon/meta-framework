@@ -9,6 +9,7 @@
    data-body="{!! $body !!}"
    data-btn-confirm="{!! $confirm !!}"
    data-callback="{{ $callback }}"
+   data-onshow="{{ $onshow }}"
    data-btn-confirm-class="{!! $confirmclass !!}"
    data-btn-cancel="{!! $cancel !!}"
 >
@@ -16,12 +17,14 @@
 </a>
 
 @pushonce('js')
-    <div class="modal fade" id="mfw-simple-modal" tabindex="-1" aria-labelledby="mfw-simple-modal_Label" aria-hidden="true">
+    <div class="modal fade" id="mfw-simple-modal" tabindex="-1" aria-labelledby="mfw-simple-modal_Label"
+         aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title"></h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="{{ __('mfw.close') }}"></button>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                            aria-label="{{ __('mfw.close') }}"></button>
                 </div>
                 <div class="modal-body"></div>
                 <div class="modal-footer d-flex justify-content-between">
@@ -32,35 +35,35 @@
         </div>
     </div>
     <script>
-      let mfwSimpleModal = new bootstrap.Modal(document.getElementById('mfw-simple-modal'));
+        let mfwSimpleModal = new bootstrap.Modal(document.getElementById('mfw-simple-modal'));
 
-      $(document).ready(function () {
+        $(document).ready(function () {
 
-        let jQuery_mfwSimpleModal = $('#mfw-simple-modal');
+            let jQuery_mfwSimpleModal = $('#mfw-simple-modal');
 
-        jQuery_mfwSimpleModal.off().on('show.bs.modal', function (event) {
-          let button = $(event.relatedTarget),
-            callback = button.data('callback');
+            jQuery_mfwSimpleModal.off().on('show.bs.modal', function (event) {
+                let button = $(event.relatedTarget),
+                    callback = button.data('callback'),
+                    onshow = button.data('onshow');
 
-          jQuery_mfwSimpleModal.find('.modal-title').html(button.data('title')).end().
-          find('.modal-body').html(button.data('body')).end().
-          find('.btn-cancel').html(button.data('btn-cancel')).end().
-          find('.btn-confirm')
-            .addClass(button.data('btn-confirm-class'))
-            .addClass(button.data('modal-id'))
-            .attr('data-model-id', button.data('model-id'))
-            .attr('data-identifier', button.data('identifier'))
-            .html(button.data('btn-confirm'));
+                jQuery_mfwSimpleModal.find('.modal-title').html(button.data('title')).end().find('.modal-body').html(button.data('body')).end().find('.btn-cancel').html(button.data('btn-cancel')).end().find('.btn-confirm')
+                    .addClass(button.data('btn-confirm-class'))
+                    .addClass(button.data('modal-id'))
+                    .attr('data-model-id', button.data('model-id'))
+                    .attr('data-identifier', button.data('identifier'))
+                    .html(button.data('btn-confirm'));
 
-          if (callback !== undefined && typeof window[callback] === 'function') {
-            window[callback]();
-          }
+                if (callback !== undefined && typeof window[callback] === 'function') {
+                    window[callback]();
+                }
+                if (onshow !== undefined && typeof window[onshow] === 'function') {
+                    window[onshow](button.data('identifier'));
+                }
 
-        }).on('hide.bs.modal', function () {
-          jQuery_mfwSimpleModal.find('.modal-title, .modal-body, .btn-confirm, .btn-cancel').html('').end().
-          find('.btn-confirm').attr('class', 'btn btn-confirm').removeAttr('data-model-id').removeAttr('data-identifier');
+            }).on('hide.bs.modal', function () {
+                jQuery_mfwSimpleModal.find('.modal-title, .modal-body, .btn-confirm, .btn-cancel').html('').end().find('.btn-confirm').attr('class', 'btn btn-confirm').removeAttr('data-model-id').removeAttr('data-identifier');
+            });
         });
-      });
     </script>
 
 @endpushonce

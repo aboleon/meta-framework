@@ -26,6 +26,7 @@ class SimpleModal extends Component
         public ?string $class = null,
         public ?string $confirm = null,
         public ?string $callback = null,
+        public ?string $onshow = null,
         public ?string $body = null,
         public ?string $cancel = null,
         public string $confirmclass = 'btn-success'
@@ -37,7 +38,6 @@ class SimpleModal extends Component
         if (!$this->cancel) {
             $this->cancel = __('mfw.cancel');
         }
-        $this->callback = $this->callback ?: $this->id;
     }
 
     public function render(): Renderable
