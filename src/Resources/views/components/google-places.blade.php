@@ -75,14 +75,14 @@
                 name="{{ $field }}[administrative_area_level_1_short]"
                 value="{{ $error ? old($field.'.administrative_area_level_1_short') : ($geo->administrative_area_level_1_short ?? '') }}"/>
         </div>
-        <div class="mb-3 col-sm-4 {{ $inputable('country_code') }}">
+        <div class="mb-3 col-sm-2 {{ $inputable('country_code') }}">
             <x-mfw::input
                 class="field country_code {{ $tagRequired('country_code') }}"
                 :label="trans('mfw.geo.country_code') . $labelRequired('country_code')"
                 name="{{ $field }}[country_code]"
                 value="{{ $error ? old($field.'.country_code') : ($geo->country_code ?? '') }}"/>
         </div>
-        <div class="mb-3 col-sm-8 {{ $inputable('country') }}">
+        <div class="mb-3 col-sm-5 {{ $inputable('country') }}">
             <x-mfw::input
                 class="field country {{ $tagRequired('country') }}"
                 :label="trans('mfw.geo.country') . $labelRequired('country')"
@@ -90,11 +90,23 @@
                 value="{{ $error ? old($field.'.country') : ($geo->country_code ? \MetaFramework\Accessors\Countries::getCountryNameByCode($geo->country_code) : '') }}"
                 readonly/>
         </div>
+        {{-- TODO: continent
+        <div class="mb-3 col-sm-5 {{ $inputable('continent') }}">
+            <x-mfw::input
+                class="field continent {{ $tagRequired('continent') }}"
+                :label="trans('mfw.geo.continent') . $labelRequired('continent')"
+                name="{{ $field }}[continent]"
+                value="{{ $error ? old($field.'.continent') : ($geo->country_code ? \MetaFramework\Accessors\Countries::getCountryNameByCode($geo->country_code) : '') }}"
+                readonly/>
+        </div>
+        --}}
     </div>
     <input type="hidden" class="wa_geo_lat" name="{{ $field }}[lat]"
            value="{{ $error ? old($field.'.lat') : ($geo->lat ?? '') }}"/>
     <input type="hidden" class="wa_geo_lon" name="{{ $field }}[lon]"
            value="{{ $error ? old($field.'.lon') : ($geo->lon ?? '') }}"/>
+    <input type="hidden" class="address_type" name="{{ $field }}[address_type]" />
+    <input type="hidden" class="continent" name="{{ $field }}[continent]" />
 </div>
 @if ($params)
     <span id="params_mapsbar_{{ $random_id }}" class="d-none">{!! collect($params)->toJson() !!}</span>
