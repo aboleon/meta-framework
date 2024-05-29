@@ -51,11 +51,13 @@ function initialize() {
 
         google.maps.event.addListener(autocomplete, 'place_changed', function () {
 
+            element.find('input').not('.g_autocomplete').val('');
+
             // Get the place details from the autocomplete object.
             var place = autocomplete.getPlace();
             console.log(place);
 
-           // element.find('.lockable').prop('readonly', false);
+            // element.find('.lockable').prop('readonly', false);
 
             for (var component in componentForm) {
                 element.find('.' + component).val('').prop('disabled', false);
@@ -68,7 +70,9 @@ function initialize() {
             // Get each component of the address from the place details
             // and fill the corresponding field on the form.
             for (var i = 0; i < place.address_components.length; i++) {
-                var addressType = place.address_components[i].types[0];
+
+                let addressType = place.address_components[i].types[0];
+
                 if (componentForm[addressType]) {
                     var val = place.address_components[i][componentForm[addressType]];
                     element.find('.' + addressType).val(val);
@@ -80,6 +84,13 @@ function initialize() {
                 if (addressType === 'country') {
                     country_code.val(place.address_components[i].short_name);
                 }
+
+                if (addressType === 'continent') {
+                    element.find('.continent').first().val(place.address_components[i].long_name).change();
+                }
+
+                element.find('.address_type').val(place.address_components[0].types[0]);
+
             }
 
             element.find('.wa_geo_lat').val(place.geometry.location.lat()).change();
