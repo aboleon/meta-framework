@@ -16,7 +16,6 @@
     "php": "^8.2",
     "css-crush/css-crush": "^4.1",
     "intervention/image": "^2.7",
-    "laravel/framework": "^11.0",
     "aboleon/laravel-inputables": "dev-main",
     "symfony/mime": "^7.0"
   },
