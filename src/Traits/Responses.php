@@ -131,6 +131,12 @@ trait Responses
         }
     }
 
+    protected function responseLog($message): void
+    {
+        $this->response[$this->messagesKey()][]['log'] = $message;
+
+    }
+
     protected function responseAbort($message): void
     {
         if ($this->enabledMessages()) {
