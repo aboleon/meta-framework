@@ -123,6 +123,12 @@ trait Responses
         return $this;
     }
 
+    protected function responseLog($message): void
+    {
+        $this->response[$this->messagesKey()][]['log'] = $message;
+
+    }
+
     protected function responseError($message): void
     {
         if ($this->enabledMessages()) {
