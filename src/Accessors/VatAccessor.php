@@ -21,7 +21,7 @@ class VatAccessor
 
     public static function netPriceFromVatPrice(float|int $price, int $vat_id): float|int
     {
-        return $price - VatAccessor::vatForPrice($price, $vat_id);
+        return round($price - VatAccessor::vatForPrice($price, $vat_id), 2);
     }
 
 
