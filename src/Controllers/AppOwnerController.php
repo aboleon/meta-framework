@@ -1,11 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace Aboleon\MetaFramework\Controllers;
 
-use Aboleon\MetaFramework\Controllers\Controller;
+use Aboleon\MetaFramework\Models\AppOwner;
 use Aboleon\MetaFramework\Services\Validation\ValidationTrait;
 use Aboleon\MetaFramework\Traits\Responses;
-use App\Models\AppOwner;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\{RedirectResponse, Request};
 use Illuminate\Support\Facades\Cache;
@@ -18,7 +17,7 @@ class AppOwnerController extends Controller
 
     public function index(): Renderable
     {
-        return view('appowner')->with('data', AppOwner::first());
+        return view('aboleon-framework::appowner')->with('data', AppOwner::first());
     }
 
     public function store(Request $request): RedirectResponse

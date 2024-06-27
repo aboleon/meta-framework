@@ -10,7 +10,7 @@
     @endphp
 
     <x-aboleon-framework::response-messages/>
-    <form method="post" action="{{ route('aboleon-framework.settings.update') }}">
+    <form method="post" action="{{ route('aboleon-framework.settings.store') }}">
         @csrf
         <div class="row editable">
             @foreach($config_settings as $config_setting)
@@ -21,7 +21,7 @@
                             @php
                                 $value = $error
                                 ? old($item['name'])
-                                : (App\Models\Setting::value($item['name']) ?: App\Models\Setting::defaultSettingValue($item['name']));
+                                : (Aboleon\MetaFramework\Models\Setting::value($item['name']) ?: Aboleon\MetaFramework\Models\Setting::defaultSettingValue($item['name']));
                             @endphp
                             @if($item['type'] == 'textarea')
                                 <x-aboleon-inputable::textarea name="{{ $item['name'] }}"

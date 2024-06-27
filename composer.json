@@ -14,10 +14,9 @@
   ],
   "require": {
     "php": "^8.2",
-    "css-crush/css-crush": "^4.1",
-    "intervention/image": "^2.7",
     "aboleon/laravel-inputables": "dev-main",
-    "symfony/mime": "^7.0"
+    "css-crush/css-crush": "^4.1",
+    "intervention/image": "^2.7"
   },
   "require-dev": {
     "phpstan/phpstan": "^1.11",

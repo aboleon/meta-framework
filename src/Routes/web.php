@@ -3,10 +3,11 @@
 use Illuminate\Support\Facades\Route;
 use Aboleon\MetaFramework\Accessors\Routing;
 use Aboleon\MetaFramework\Controllers\{AjaxController,
+    AppOwnerController,
     MailController,
     MetaController,
     NavController,
-    VatController};
+    SettingsController};
 
 
 Route::prefix(Routing::backend())
@@ -15,6 +16,10 @@ Route::prefix(Routing::backend())
 
         // Ajax requests
         Route::post('ajax', [AjaxController::class, 'distribute'])->name('ajax');
+
+        Route::resource('nav', NavController::class);
+        Route::resource('settings', SettingsController::class)->only(['index', 'store']);
+        Route::resource('appowner', AppOwnerController::class);
 
         Route::any('mailer/{type}/{identifier}', [MailController::class, 'distribute'])->name('mailer');
 

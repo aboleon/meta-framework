@@ -2,6 +2,7 @@
 
 use Aboleon\MetaFramework\Accessors\Routing;
 use Aboleon\MetaFramework\Controllers\AjaxController;
+use Aboleon\MetaFramework\Controllers\NavController;
 use App\Http\Controllers\AppOwnerController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
@@ -28,8 +29,9 @@ Route::prefix(Routing::backend())
         # App Owner
         # Route::resource('appowner', AppOwnerController::class);
 
-        # VAT
         # Route::resource('nav', NavController::class);
+
+        # VAT
         # Route::resource('vat', VatController::class);
 
         # Users

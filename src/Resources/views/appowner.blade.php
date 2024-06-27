@@ -7,7 +7,7 @@
 
     <div class="shadow p-4 bg-body-tertiary rounded">
         <x-aboleon-framework::validation-banner/>
-        <form method="post" action="{!! route('aboleon-framework.siteowner.store') !!}">
+        <form method="post" action="{!! route('aboleon-framework.appowner.store') !!}">
             @csrf
             <fieldset>
 

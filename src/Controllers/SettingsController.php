@@ -1,10 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace Aboleon\MetaFramework\Controllers;
 
-use Aboleon\MetaFramework\Controllers\Controller;
+use Aboleon\MetaFramework\Models\Setting;
 use Aboleon\MetaFramework\Services\Validation\ValidationTrait;
-use App\Models\Setting;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\DB;
@@ -15,13 +14,13 @@ class SettingsController extends Controller
 
     public function index(): Renderable
     {
-        return view('settings')->with([
+        return view('aboleon-framework::settings')->with([
             'config_settings' => config('aboleon-framework-settings'),
             'settings' => Setting::getAllSettings(),
         ]);
     }
 
-    public function update(): RedirectResponse
+    public function store(): RedirectResponse
     {
         $this->validation_rules = Setting::getValidationRules();
         $this->validation_messages = trans('aboleon-framework-settings.validation');

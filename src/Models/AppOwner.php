@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models;
+namespace Aboleon\MetaFramework\Models;
 
 use Illuminate\Database\Eloquent\Model;
 

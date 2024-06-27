@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Accessors;
+namespace Aboleon\MetaFramework\Accessors;
 
-use App\Models\AppOwner;
+use Aboleon\MetaFramework\Models\AppOwner;
 
 class AppOwnerAccessor
 {
