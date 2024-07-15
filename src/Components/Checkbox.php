@@ -24,13 +24,16 @@ class Checkbox extends Component
         public bool $randomize = true
     )
     {
-
-        if (!$this->affected instanceof Collection) {
-            $this->affected = collect($this->affected);
+        if (is_bool($this->affected)) {
+            $this->isSelected = $this->affected;
+        } else {
+            if (!$this->affected instanceof Collection) {
+                $this->affected = collect($this->affected);
+            }
+            $this->isSelected = $this->affected->contains($this->value);
         }
 
         $this->id = Helpers::generateInputId($this->name . ($this->randomize ? '_' . Str::random(8) : ''));
-        $this->isSelected = $this->affected->contains($this->value);
         $this->name = Helpers::generateInputName($this->name);
     }
 
