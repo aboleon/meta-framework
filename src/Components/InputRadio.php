@@ -18,6 +18,7 @@ class InputRadio extends Component
         public int|string|null $affected,
         public string $label,
         public int|string|null $default = null,
+        public array $params = [],
         public bool $randomize = true
     )
     {
