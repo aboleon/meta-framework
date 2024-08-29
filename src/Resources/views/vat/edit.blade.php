@@ -68,5 +68,4 @@
     @push('js')
         <script src="{{ asset('vendor/mfw/js/published_status.js') }}"></script>
     @endpush
-    @include('mfw::lib.tinymce')
 </x-backend-layout>
