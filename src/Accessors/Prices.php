@@ -23,8 +23,20 @@ class Prices
         return (int)round($price);
     }
 
-    public static function readableFormat(int|float $price, string $currency = '€', string $decimal_separator = ',', string $thousand_separator = ' '): string
+    public static function readableFormat(
+        int|float $price, string $currency = '€',
+        string $decimal_separator = ',',
+        string $thousand_separator = ' ',
+        bool $showDecimals = true): string
     {
-        return rtrim(number_format($price, 2, $decimal_separator, $thousand_separator) . ' '.$currency);
+        $formatted_price = number_format($price, 2, $decimal_separator, $thousand_separator);
+
+        list($integer_part, $decimal_part) = explode($decimal_separator, $formatted_price);
+
+        if ($showDecimals) {
+            return rtrim($formatted_price . ' ' . $currency);
+        }
+
+        return rtrim($integer_part . ' ' . $currency);
     }
 }
