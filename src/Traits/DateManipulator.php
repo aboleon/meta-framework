@@ -62,10 +62,19 @@ trait DateManipulator
 
     public function toDateFormat(string $format, mixed $date, ?string $nullable = null): ?string
     {
+        if ( ! $date) {
+            return ! $nullable ? null : $nullable;
+        }
+
         try {
+            if (str_contains($date, '/')) {
+                return Carbon::createFromFormat('d/m/Y', $date)->format($format);
+            }
+
             return Carbon::parse($date)->format($format);
+
         } catch (Throwable) {
-            return !$nullable ? null : $nullable;
+            return ! $nullable ? null : $nullable;
         }
     }
 
