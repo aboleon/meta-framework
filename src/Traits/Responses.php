@@ -164,6 +164,11 @@ trait Responses
         session()->flash($key, $this->fetchResponse());
     }
 
+    public function flashResponse(string $key = 'session_response'): void
+    {
+        session()->flash($key, $this->fetchResponse());
+    }
+
     public function redirectTo(string $route): static
     {
         $this->redirect_to = $route;
