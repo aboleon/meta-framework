@@ -7,7 +7,7 @@
     />
     @if ($label)
         <label class="form-check-label" for="{{ $id }}">
-            {{ $label }}
+            {!! $label !!}
         </label>
     @endif
 </div>
