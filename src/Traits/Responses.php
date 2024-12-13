@@ -145,10 +145,10 @@ trait Responses
         }
     }
 
-    protected function responseWarning($message): void
+    protected function responseWarning($message, bool $error = true): void
     {
         if ($this->enabledMessages()) {
-            $this->response['error'] = true;
+            $this->response['error'] = $error;
             $this->response[$this->messagesKey()][]['warning'] = $message;
         }
     }
