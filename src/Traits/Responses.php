@@ -16,28 +16,35 @@ trait Responses
     private bool $disable_responses = false;
     protected bool $disable_redirects = false;
     protected bool $ajax_mode = false;
+    protected bool $debugMode = false;
+    protected bool $keepErrors = false;
+    protected bool $restrictedToDev = false;
 
     public function enableAjaxMode(): static
     {
         $this->ajax_mode = true;
+
         return $this;
     }
 
     public function disableAjaxMode(): static
     {
         $this->ajax_mode = false;
+
         return $this;
     }
 
     public function disableMessages(): static
     {
         $this->disable_responses = true;
+
         return $this;
     }
 
     public function enableMessages(): static
     {
         $this->disable_responses = false;
+
         return $this;
     }
 
@@ -52,7 +59,23 @@ trait Responses
             $this->response['ajax_messages'] = $this->response['messages'];
             unset($this->response['messages']);
         }
+
+        if ($this->debugMode && ! $this->keepErrors) {
+            $this->response['error'] = false;
+        }
+
         return $this->response;
+    }
+
+    /*
+     * Force keep errors if disabled by debug mode or else
+     */
+    public function keepErrors(): self
+    {
+        $this->keepErrors        = true;
+        $this->response['error'] = true;
+
+        return $this;
     }
 
     public function fetchMessages(): array
@@ -63,16 +86,16 @@ trait Responses
     public function disableRedirects(): static
     {
         $this->disable_redirects = true;
+
         return $this;
     }
 
     public function fetchErrorMessages(): array
     {
         if (array_key_exists($this->messagesKey(), $this->response)) {
-
             $this->response[$this->messagesKey()] = array_filter($this->response[$this->messagesKey()], fn($key) => array_filter($key, fn($key) => in_array($key, ['danger', 'warning']), ARRAY_FILTER_USE_KEY));
-
         }
+
         return $this->response;
     }
 
@@ -91,9 +114,10 @@ trait Responses
         return array_key_exists('abort', $this->response);
     }
 
-    #[Pure] public function canContinue(): bool
+    #[Pure]
+    public function canContinue(): bool
     {
-        return !$this->mustAbort();
+        return ! $this->mustAbort();
     }
 
     public function responseNotice($message): static
@@ -101,32 +125,36 @@ trait Responses
         if ($this->enabledMessages()) {
             $this->response['messages'][]['info'] = $message;
         }
+
         return $this;
     }
 
     public function responseSuccess($message, string|int $key = ''): static
     {
         if ($this->enabledMessages()) {
-            if (!empty($key)) {
+            if ( ! empty($key)) {
                 $this->response[$this->messagesKey()][$key]['success'] = $message;
             } else {
                 $this->response[$this->messagesKey()][]['success'] = $message;
             }
+
             return $this;
         }
+
         return $this;
     }
 
     public function whitout(string $element): static
     {
         unset($this->response[$element]);
+
         return $this;
     }
 
     protected function responseError($message): void
     {
         if ($this->enabledMessages()) {
-            $this->response['error'] = true;
+            $this->response['error']                          = true;
             $this->response[$this->messagesKey()][]['danger'] = $message;
         }
     }
@@ -134,13 +162,12 @@ trait Responses
     protected function responseLog($message): void
     {
         $this->response[$this->messagesKey()][]['log'] = $message;
-
     }
 
     protected function responseAbort($message): void
     {
         if ($this->enabledMessages()) {
-            $this->response['abort'] = true;
+            $this->response['abort']                          = true;
             $this->response[$this->messagesKey()][]['danger'] = $message;
         }
     }
@@ -148,14 +175,22 @@ trait Responses
     protected function responseWarning($message, bool $error = true): void
     {
         if ($this->enabledMessages()) {
-            $this->response['error'] = $error;
+            $this->response['error']                           = $error;
             $this->response[$this->messagesKey()][]['warning'] = $message;
         }
     }
 
+    protected function responseDebug($message): void
+    {
+        $this->debugMode                                 = true;
+        $this->response[$this->messagesKey()][]['debug'] = $message;
+    }
+
+
     public function responseElement(string $key, $value): static
     {
         $this->response[$key] = $value;
+
         return $this;
     }
 
@@ -172,20 +207,22 @@ trait Responses
     public function redirectTo(string $route): static
     {
         $this->redirect_to = $route;
+
         return $this;
     }
 
     public function redirectRoute(string $route): static
     {
         $this->redirect_route = $route;
+
         return $this;
     }
 
     public function sendResponse(?string $message = null, ?string $type = null): RedirectResponse
     {
         if ($message) {
-            if ($type && method_exists($this, 'response' . ucfirst($type))) {
-                $this->{'response' . ucfirst($type)}($message);
+            if ($type && method_exists($this, 'response'.ucfirst($type))) {
+                $this->{'response'.ucfirst($type)}($message);
             } else {
                 $this->responseWarning($message);
             }
@@ -224,18 +261,21 @@ trait Responses
 
     public function responseException(Throwable $e, string $message = ''): static
     {
-        $this->responseError(!empty($message) ? $message : "Une erreur est survenue.");
+        $this->responseError(! empty($message) ? $message : "Une erreur est survenue.");
 
         if (auth()->check() && auth()->user()->hasRole('dev')) {
             $this->responseWarning($e->getMessage());
         }
         report($e);
+
         return $this;
     }
 
     /**
      * Redirige vers une route après l'enregistrement
-     * @param string $url
+     *
+     * @param  string  $url
+     *
      * @return void
      */
     public function saveAndRedirect(string $url): void
@@ -251,7 +291,7 @@ trait Responses
 
     private function messagesKey(): string
     {
-        return ($this->ajax_mode ? 'ajax_' : '') . 'messages';
+        return ($this->ajax_mode ? 'ajax_' : '').'messages';
     }
 
     public function tabRedirect(): void
@@ -264,6 +304,23 @@ trait Responses
     public function removeFromResponse(string $key): void
     {
         unset($this->response[$key]);
+    }
+
+    public function isInDebugMode(): bool
+    {
+        return $this->debugMode;
+    }
+
+    public function isRestrictedToDev(): bool
+    {
+        return $this->restrictedToDev;
+    }
+
+    public function restrictToDev(): self
+    {
+        $this->restrictedToDev = true;
+        $this->response['restricted_to_dev'] = true;
+        return $this;
     }
 
 }

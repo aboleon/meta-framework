@@ -1,0 +1,100 @@
+<?php
+
+namespace MetaFramework\Accessors;
+
+
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Auth;
+use JetBrains\PhpStorm\Pure;
+
+class ResponseParser
+{
+    public static function parseResponse($response): string
+    {
+        $isConnectedAsDev = Auth::check() && Auth::user()->hasRole('dev');
+
+        $html = '';
+
+        if (is_string($response)) {
+            return self::infoNotice($response);
+        }
+
+        if ($response instanceof RedirectResponse) {
+            return $html;
+        }
+
+        if ( ! is_array($response)) {
+            return $html;
+        }
+
+        if (array_key_exists('messages', $response)) {
+            foreach ($response['messages'] as $val) {
+                foreach ($val as $key => $message) {
+                    $show_debug = false;
+                    if ($key == 'debug') {
+                        if ($isConnectedAsDev || (config('app.debug') && empty($response['restricted_to_dev']))) {
+                            $show_debug = true;
+                        }
+                    }
+                    if ($key == 'debug' && ! $show_debug) {
+                        continue;
+                    }
+                    $html .= self::alertBox($message, $key);
+                }
+            }
+            unset($response['messages']);
+        }
+
+        unset($response['error'], $response['abort']);
+
+        if ($response && $isConnectedAsDev) {
+        ob_start();
+        foreach ($response as $key => $val) {
+            d($val, $key);
+            unset($response[$key]);
+        }
+        $html .= ob_get_contents();
+        ob_end_clean();
+    }
+
+        return $html;
+    }
+
+    public static function validationErrors($errors): void
+    {
+        if ($errors->any()) {
+            foreach ($errors->all() as $error) {
+                echo self::criticalNotice($error);
+            }
+        }
+    }
+
+    public static function alertBox(string $message, string $class): string
+    {
+        return '<div class="alert alert-'.$class.'">'.$message.'</div>';
+    }
+
+    #[Pure]
+    public static function criticalNotice(string $message): string
+    {
+        return self::alertBox($message, 'danger');
+    }
+
+    #[Pure]
+    public static function successNotice(string $message): string
+    {
+        return self::alertBox($message, 'success');
+    }
+
+    #[Pure]
+    public static function warningNotice(string $message): string
+    {
+        return self::alertBox($message, 'warning');
+    }
+
+    #[Pure]
+    public static function infoNotice(string $message): string
+    {
+        return self::alertBox($message, 'info');
+    }
+}
