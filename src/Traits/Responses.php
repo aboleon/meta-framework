@@ -180,9 +180,11 @@ trait Responses
         }
     }
 
-    protected function responseDebug($message): void
+    protected function responseDebug($message, string $notice=''): void
     {
         $this->debugMode                                 = true;
+
+        $this->responseWarning('<b>DEBUG&nbsp;|&nbsp;</b> '. $notice, error: false);
         $this->response[$this->messagesKey()][]['debug'] = $message;
     }
 

@@ -31,7 +31,9 @@ class ResponseParser
             foreach ($response['messages'] as $val) {
                 foreach ($val as $key => $message) {
                     $show_debug = false;
+                    $class = $key;
                     if ($key == 'debug') {
+                        $class = 'light';
                         if ($isConnectedAsDev || (config('app.debug') && empty($response['restricted_to_dev']))) {
                             $show_debug = true;
                         }
@@ -39,7 +41,7 @@ class ResponseParser
                     if ($key == 'debug' && ! $show_debug) {
                         continue;
                     }
-                    $html .= self::alertBox($message, $key);
+                    $html .= self::alertBox($message, $class);
                 }
             }
             unset($response['messages']);
