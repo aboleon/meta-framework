@@ -2,47 +2,36 @@
 
 namespace App\Models;
 
+// use Illuminate\Contracts\Auth\MustVerifyEmail;
 use App\Interfaces\UserCustomDataInterface;
-use App\Models\EventManager\EventGroup\EventGroupContact;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-use MetaFramework\Mediaclass\Interfaces\MediaclassInterface;
-use MetaFramework\Mediaclass\Traits\Mediaclass;
 use App\Notifications\ResetPasswordNotification;
 use App\Traits\Locale;
-use MetaFramework\Traits\Responses;
 use App\Traits\Users;
-
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Str;
-use Laravel\Fortify\TwoFactorAuthenticatable;
-use Laravel\Jetstream\HasProfilePhoto;
-use Laravel\Sanctum\HasApiTokens;
+use MetaFramework\Mediaclass\Traits\Mediaclass;
+use MetaFramework\Traits\Responses;
 
-/**
- * @property AccountProfile|null $accountProfile
- */
-class User extends Authenticatable implements MediaclassInterface
+class User extends Authenticatable
 {
-    use HasFactory;
-    use HasApiTokens;
+    /** @use HasFactory<\Database\Factories\UserFactory> */
+    use HasFactory, Notifiable;
 
-    use HasProfilePhoto;
     use Locale;
     use Mediaclass;
     use Notifiable;
     use Responses;
-    use TwoFactorAuthenticatable;
     use Users;
     use SoftDeletes;
 
     /**
      * The attributes that are mass assignable.
      *
-     * @var array<int, string>
+     * @var list<string>
      */
     protected $fillable = [
         'name',
@@ -57,44 +46,27 @@ class User extends Authenticatable implements MediaclassInterface
     /**
      * The attributes that should be hidden for serialization.
      *
-     * @var array<int, string>
+     * @var list<string>
      */
     protected $hidden = [
         'password',
         'remember_token',
-        'two_factor_recovery_codes',
-        'two_factor_secret',
     ];
 
     /**
-     * The attributes that should be cast.
+     * Get the attributes that should be cast.
      *
-     * @var array<string, string>
+     * @return array<string, string>
      */
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-        'last_login_at' => 'datetime'
-    ];
-
-    /**
-     * The accessors to append to the model's array form.
-     *
-     * @var array
-     */
-    protected $appends = [
-        'profile_photo_url',
-    ];
-
-    public function canImpersonate(): bool
+    protected function casts(): array
     {
-        // For example
-        return true;
+        return [
+            'email_verified_at' => 'datetime',
+            'last_login_at' => 'datetime',
+            'password' => 'hashed',
+        ];
     }
-    public function canBeImpersonated(): bool
-    {
-        // For example
-        return false;
-    }
+
 
     public function processRoles(): static
     {
@@ -111,14 +83,6 @@ class User extends Authenticatable implements MediaclassInterface
             $this->roles()->saveMany($roles);
         }
 
-        return $this;
-    }
-
-    public function processPhoto(): static
-    {
-        if (request()->hasFile('photo')) {
-            $this->updateProfilePhoto(request()->file('photo'));
-        }
         return $this;
     }
 
@@ -152,16 +116,6 @@ class User extends Authenticatable implements MediaclassInterface
     public function account(): HasOne
     {
         return $this->hasOne(Account::class, 'id', 'id');
-    }
-
-    public function events(): BelongsToMany
-    {
-        return $this->belongsToMany(Event::class, 'events_contacts', 'user_id', 'event_id');
-    }
-
-    public function eventGroupContacts(): BelongsToMany
-    {
-        return $this->belongsToMany(EventGroupContact::class, 'event_group_contacts', 'user_id', 'event_group_id');
     }
 
 
